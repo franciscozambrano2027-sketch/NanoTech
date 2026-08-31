@@ -1,2 +1,1 @@
-# Add the exact line supplied by Google AdSense after your publisher account is created.
-# Example only (do not use this line): google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-5675726602507111, DIRECT, f08c47fec0942fa0

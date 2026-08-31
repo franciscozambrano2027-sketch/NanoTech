@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://franciscozambrano2027-sketch.github.io/NanoTech/sitemap.xml
+Sitemap: https://nucleo-tech.org/sitemap.xml
