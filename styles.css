@@ -141,3 +141,578 @@ background:rgba(10,15,22,.84);backdrop-filter:blur(16px)}
 /* v7: no floating shortcut panels over long-form content */
 .repair-filter{position:static;backdrop-filter:none}
 .teardown-toc{position:static}
+
+/* =========================================================
+SOBRE NOSOTROS — NÚCLEOTECH
+========================================================= */
+
+.about-hero {
+display: grid;
+grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+gap: 64px;
+align-items: center;
+margin: 20px 0 90px;
+}
+
+.about-hero-text h1 {
+max-width: 760px;
+margin-bottom: 28px;
+}
+
+.about-hero-text h1 span {
+display: block;
+}
+
+.about-lead {
+font-size: 1.18rem;
+line-height: 1.8;
+max-width: 720px;
+}
+
+.about-hero-text p {
+max-width: 720px;
+}
+
+about-hero-image {
+position: relative;
+width: 100%;
+overflow: hidden;
+border-radius: 22px;
+background: var(--panel, #111);
+border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.about-hero-image img {
+display: block;
+width: 100%;
+height: auto;
+max-width: 100%;
+object-fit: contain;
+border-radius: 22px 22px 0 0;
+}
+
+.about-image-caption {
+position: static;
+display: flex;
+flex-direction: column;
+gap: 5px;
+padding: 16px 20px 18px;
+background: rgba(255, 255, 255, .025);
+color: inherit;
+}
+
+.about-image-caption strong {
+font-size: .95rem;
+}
+
+.about-image-caption span {
+font-size: .85rem;
+opacity: .65;
+}
+
+.about-section {
+max-width: 980px;
+margin: 0 auto 90px;
+}
+
+.about-section > p {
+max-width: 850px;
+line-height: 1.8;
+}
+
+.about-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 18px;
+margin-top: 36px;
+}
+
+.about-card {
+padding: 28px;
+border: 1px solid rgba(255, 255, 255, .08);
+border-radius: 18px;
+background: rgba(255, 255, 255, .025);
+transition: transform .2s ease, border-color .2s ease;
+}
+
+.about-card:hover {
+transform: translateY(-3px);
+border-color: rgba(255, 255, 255, .18);
+}
+
+.about-card-icon {
+font-size: .78rem;
+letter-spacing: .12em;
+opacity: .5;
+margin-bottom: 24px;
+}
+
+.about-card h3 {
+margin-bottom: 12px;
+}
+
+.about-card p {
+margin: 0;
+line-height: 1.7;
+opacity: .78;
+}
+
+.about-highlight {
+display: grid;
+grid-template-columns: .85fr 1.15fr;
+gap: 70px;
+padding: 55px;
+border-radius: 24px;
+border: 1px solid rgba(255, 255, 255, .08);
+background: rgba(255, 255, 255, .025);
+}
+
+.about-highlight h2 {
+margin: 0;
+}
+
+.about-highlight p {
+margin-top: 0;
+margin-bottom: 22px;
+}
+
+.about-final {
+max-width: 800px;
+margin: 20px auto 100px;
+padding: 65px 20px;
+text-align: center;
+border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.about-final h2 {
+margin-bottom: 22px;
+}
+
+.about-final p {
+max-width: 680px;
+margin: 0 auto 30px;
+line-height: 1.8;
+}
+
+.btn-primary {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 13px 22px;
+border-radius: 10px;
+text-decoration: none;
+font-weight: 600;
+transition: transform .2s ease, opacity .2s ease;
+}
+
+.btn-primary:hover {
+transform: translateY(-2px);
+opacity: .9;
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+
+```
+.about-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 70px;
+}
+
+.about-hero-image {
+    max-height: 520px;
+}
+
+.about-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.about-highlight {
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+```
+
+}
+
+/* MÓVILES */
+
+@media (max-width: 600px) {
+
+```
+.about-hero {
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.about-hero-text h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+}
+
+.about-lead {
+    font-size: 1.05rem;
+}
+
+.about-hero-image,
+.about-hero-image img {
+    min-height: 340px;
+}
+
+.about-grid {
+    grid-template-columns: 1fr;
+}
+
+.about-section {
+    margin-bottom: 65px;
+}
+
+.about-highlight {
+    padding: 30px 24px;
+    border-radius: 18px;
+}
+
+.about-final {
+    margin-bottom: 60px;
+    padding: 50px 10px;
+}
+```
+
+}
+
+/* =========================================================
+CONTACTO — NÚCLEOTECH
+========================================================= */
+
+.contact-page {
+padding-bottom: 40px;
+}
+
+/* HERO */
+
+.contact-hero {
+display: grid;
+grid-template-columns: 1.2fr .8fr;
+gap: 70px;
+align-items: center;
+margin: 20px 0 90px;
+}
+
+.contact-hero h1 {
+margin-bottom: 25px;
+}
+
+.contact-lead {
+font-size: 1.18rem;
+line-height: 1.8;
+max-width: 700px;
+}
+
+.contact-hero-text > p:not(.eyebrow-plain) {
+max-width: 700px;
+line-height: 1.8;
+}
+
+.contact-intro-box {
+padding: 38px;
+border-radius: 22px;
+border: 1px solid rgba(255, 255, 255, .08);
+background: rgba(255, 255, 255, .025);
+}
+
+.contact-box-label {
+display: block;
+margin-bottom: 18px;
+font-size: .78rem;
+letter-spacing: .1em;
+text-transform: uppercase;
+opacity: .55;
+}
+
+.contact-intro-box strong {
+display: block;
+font-size: 1.35rem;
+line-height: 1.5;
+}
+
+/* SECCIONES */
+
+.contact-section {
+max-width: 1000px;
+margin: 0 auto 90px;
+}
+
+.contact-section > h2 {
+margin-bottom: 32px;
+}
+
+/* REDES */
+
+.contact-social-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 18px;
+}
+
+.contact-social {
+display: flex;
+align-items: center;
+gap: 18px;
+padding: 22px;
+border-radius: 17px;
+border: 1px solid rgba(255, 255, 255, .08);
+background: rgba(255, 255, 255, .025);
+color: inherit;
+text-decoration: none;
+transition: transform .2s ease,
+border-color .2s ease,
+background .2s ease;
+}
+
+.contact-social:hover {
+transform: translateY(-3px);
+border-color: rgba(255, 255, 255, .18);
+background: rgba(255, 255, 255, .045);
+}
+
+.contact-social-icon {
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+border-radius: 13px;
+border: 1px solid rgba(255, 255, 255, .1);
+font-size: 1.35rem;
+font-weight: 700;
+}
+
+.contact-social-content {
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+.contact-social-content strong {
+font-size: 1rem;
+}
+
+.contact-social-content span {
+font-size: .88rem;
+opacity: .6;
+}
+
+.contact-social-arrow {
+margin-left: auto;
+font-size: 1.1rem;
+opacity: .5;
+}
+
+/* CORREO */
+
+.contact-email-section {
+max-width: 1000px;
+}
+
+.contact-email {
+display: grid;
+grid-template-columns: 1fr auto;
+align-items: center;
+gap: 45px;
+padding: 42px;
+border-radius: 22px;
+border: 1px solid rgba(255, 255, 255, .08);
+background: rgba(255, 255, 255, .025);
+}
+
+.contact-email h2 {
+margin-bottom: 15px;
+}
+
+.contact-email p:not(.eyebrow-plain) {
+max-width: 650px;
+line-height: 1.7;
+opacity: .75;
+}
+
+.contact-email-button {
+display: inline-flex;
+align-items: center;
+gap: 15px;
+padding: 15px 19px;
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, .12);
+text-decoration: none;
+color: inherit;
+font-size: .9rem;
+white-space: nowrap;
+transition: transform .2s ease,
+background .2s ease;
+}
+
+.contact-email-button:hover {
+transform: translateY(-2px);
+background: rgba(255, 255, 255, .06);
+}
+
+.contact-email-button span {
+opacity: .55;
+}
+
+/* TEMAS */
+
+.contact-topics {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1px;
+border: 1px solid rgba(255, 255, 255, .08);
+border-radius: 18px;
+overflow: hidden;
+}
+
+.contact-topic {
+display: flex;
+gap: 22px;
+padding: 30px;
+background: rgba(255, 255, 255, .02);
+}
+
+.contact-topic > span {
+font-size: .75rem;
+opacity: .4;
+letter-spacing: .1em;
+}
+
+.contact-topic h3 {
+margin: 0 0 9px;
+}
+
+.contact-topic p {
+margin: 0;
+line-height: 1.65;
+opacity: .68;
+}
+
+/* NOTA */
+
+.contact-note {
+max-width: 1000px;
+margin: 0 auto 90px;
+padding: 28px 30px;
+border-left: 2px solid currentColor;
+background: rgba(255, 255, 255, .025);
+}
+
+.contact-note strong {
+display: block;
+margin-bottom: 9px;
+}
+
+.contact-note p {
+margin: 0;
+max-width: 850px;
+line-height: 1.7;
+opacity: .7;
+}
+
+/* CIERRE */
+
+.contact-final {
+max-width: 780px;
+margin: 20px auto 100px;
+padding: 65px 20px;
+text-align: center;
+border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.contact-final h2 {
+margin-bottom: 20px;
+}
+
+.contact-final > p:not(.eyebrow-plain) {
+max-width: 650px;
+margin: 0 auto;
+line-height: 1.8;
+opacity: .75;
+}
+
+.contact-final-links {
+display: flex;
+justify-content: center;
+gap: 25px;
+margin-top: 30px;
+}
+
+.contact-final-links a {
+text-decoration: none;
+color: inherit;
+font-weight: 600;
+border-bottom: 1px solid currentColor;
+padding-bottom: 3px;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+```
+.contact-hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+
+.contact-email {
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+```
+
+}
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+
+```
+.contact-hero {
+    margin-bottom: 65px;
+}
+
+.contact-social-grid {
+    grid-template-columns: 1fr;
+}
+
+.contact-topics {
+    grid-template-columns: 1fr;
+}
+
+.contact-email {
+    padding: 28px 23px;
+}
+
+.contact-email-button {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-intro-box {
+    padding: 28px;
+}
+
+.contact-topic {
+    padding: 24px;
+}
+
+.contact-final-links {
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+```
+
+}

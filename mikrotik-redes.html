@@ -1,12 +1,497 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+
+<head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5675726602507111"
-     crossorigin="anonymous"></script>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1.0" name="viewport"/><title>Fundamentos MikroTik RouterOS: CLI y diagnóstico | NúcleoTech</title><meta content="Fundamentos de MikroTik RouterOS: interfaces, IP, rutas, ping, DNS, NAT, firewall y exportación con comandos CLI paso a paso." name="description"/><link href="styles.css" rel="stylesheet"/>
+        crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+    <title>Fundamentos MikroTik RouterOS: CLI y diagnóstico | NúcleoTech</title>
+    <meta
+        content="Fundamentos de MikroTik RouterOS: interfaces, IP, rutas, ping, DNS, NAT, firewall y exportación con comandos CLI paso a paso."
+        name="description" />
+    <link href="styles.css" rel="stylesheet" />
     <link rel="canonical" href="https://nucleo-tech.org/mikrotik-redes.html">
-</head><body><header class="site-header"><div class="wrap"><a class="logo" href="index.html">Núcleo<span>Tech</span></a><nav class="main-nav"><a href="index.html">Inicio</a><a href="resenas.html">Reseñas</a><a class="" href="reparaciones.html">Reparaciones</a><a class="active" href="mikrotik.html">MikroTik</a><a href="comunidad-facebook.html">Comunidad</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="contacto.html">Contacto</a></nav><button aria-expanded="false" aria-label="Abrir menú" class="nav-toggle">Menú</button></div></header><header class="repair-hero"><div class="wrap"><p class="eyebrow-plain">MikroTik · FUNDAMENTOS</p><h1>RouterOS desde la terminal: qué consultar antes de configurar.</h1><p class="dek">Una guía base para aprender el orden de diagnóstico y dejar cada consulta documentada. No se mezclan comandos de PC ni celulares: aquí todo gira alrededor de RouterOS.</p><div class="repair-meta"><span>RouterOS v7</span><span>CLI + diagnóstico</span><span>NanoTech · 2026</span></div></div></header><main class="wrap repair-guide"><div class="repair-shell"><aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button><div class="repair-toc-links"><p class="toc-title">Contenido</p><a data-target="paso-0" href="#paso-0">Introducción</a><a data-target="paso-1" href="#paso-1">1. Identificar interfaces</a><a data-target="paso-2" href="#paso-2">2. Revisar direccionamiento</a><a data-target="paso-3" href="#paso-3">3. Revisar rutas</a><a data-target="paso-4" href="#paso-4">4. Probar conectividad</a><a data-target="paso-5" href="#paso-5">5. Probar DNS</a><a data-target="paso-6" href="#paso-6">6. Revisar NAT</a><a data-target="paso-7" href="#paso-7">7. Observar firewall</a><a data-target="paso-8" href="#paso-8">8. Documentar y respaldar</a><a data-target="paso-99" href="#paso-99">Reglas de trabajo</a><a href="mikrotik.html">← Biblioteca MikroTik</a></div></aside><article class="repair-main"><div class="mikrotik-code-note"><strong>Regla de oro:</strong> primero consulta, después configura y finalmente vuelve a consultar. No pegues un bloque sin revisar interfaz WAN/LAN, subred, listas y versión de RouterOS.</div><section id="paso-0"><h2>Introducción</h2><figure class="repair-photo"><img alt="Diagrama de fundamentos MikroTik" loading="eager" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Diagrama original de NanoTech para visualizar la relación entre interfaz, IP, ruta, DNS, NAT y firewall.</figcaption></figure><div class="repair-intro"><strong>Objetivo</strong><p>Aprender una secuencia repetible para diagnosticar MikroTik sin cambiar reglas al azar. Cada etapa contiene un comando principal y una consulta de verificación.</p></div></section><section class="repair-step" id="paso-1"><div class="repair-step-head"><span class="repair-step-num">01</span><div><h3>Identificar interfaces</h3><p>Antes de tocar IP, identifica WAN, LAN y bridges reales.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Identificar interfaces" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/interface print detail
-/interface bridge print detail</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/interface bridge port print detail</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-2"><div class="repair-step-head"><span class="repair-step-num">02</span><div><h3>Revisar direccionamiento</h3><p>Comprueba qué IP tiene cada interfaz y si existe un DHCP client en la WAN.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Revisar direccionamiento" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip address print detail
-/ip dhcp-client print detail</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip dhcp-client print detail</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-3"><div class="repair-step-head"><span class="repair-step-num">03</span><div><h3>Revisar rutas</h3><p>La ruta por defecto debe estar activa para salir a Internet.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Revisar rutas" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip route print detail</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ping 1.1.1.1 count=5</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-4"><div class="repair-step-head"><span class="repair-step-num">04</span><div><h3>Probar conectividad</h3><p>Separa LAN, gateway y salida pública con pruebas simples.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Probar conectividad" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ping 192.168.88.1 count=5
-/ping 1.1.1.1 count=5</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip route print detail</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-5"><div class="repair-step-head"><span class="repair-step-num">05</span><div><h3>Probar DNS</h3><p>Si IP funciona pero los dominios no, revisa DNS antes de tocar NAT.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Probar DNS" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip dns print
-/resolve example.com</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip dns cache print</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-6"><div class="repair-step-head"><span class="repair-step-num">06</span><div><h3>Revisar NAT</h3><p>Para una WAN dinámica, la regla de masquerade suele ir en srcnat y debe coincidir con la interfaz WAN/lista WAN.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Revisar NAT" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip firewall nat print detail
-/ip firewall nat print stats</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip firewall connection print</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-7"><div class="repair-step-head"><span class="repair-step-num">07</span><div><h3>Observar firewall</h3><p>Comprueba contadores y estados antes de cambiar reglas.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Observar firewall" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip firewall filter print stats detail</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/ip firewall connection print where connection-state=new</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section class="repair-step" id="paso-8"><div class="repair-step-head"><span class="repair-step-num">08</span><div><h3>Documentar y respaldar</h3><p>Después de estabilizar, guarda un export para poder comparar cambios.</p></div></div><div class="repair-step-body"><div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div><figure><img alt="Diagrama NanoTech: Documentar y respaldar" loading="lazy" src="imagenes/biblioteca/mikrotik-ip.svg"/><figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son la parte operativa.</figcaption></figure><div class="mikrotik-code-injected"><div class="code-block"><div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/export terse file=nanotech-fundamentos</code></pre></div><div class="code-block"><div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code" type="button">Copiar</button></div><pre><code>/file print detail</code></pre></div><p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP, interfaces y nombres de listas a tu topología.</p></div><div class="repair-step-grid"><div><h4>Qué observar</h4><ol><li>Ejecuta un solo bloque a la vez.</li><li>Compara el resultado con la etapa anterior.</li><li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté funcionando.</p><strong>Interpretación</strong><p>Documenta el estado antes de hacer cambios.</p></div></div></div></section><section id="paso-99"><h2>Reglas de trabajo</h2><div class="repair-note"><ol><li>Haz export antes de cambios importantes.</li><li>Una modificación por vez.</li><li>Guarda la salida de las consultas cuando diagnostiques una incidencia.</li><li>En producción, prueba con una segunda sesión antes de cerrar tu acceso actual.</li></ol></div></section><section><h2>Fuentes oficiales</h2><p><a href="https://help.mikrotik.com/docs/spaces/ROS/pages/328134/Command%2BLine%2BInterface" rel="noopener noreferrer" target="_blank">CLI de RouterOS</a> · <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/24805500/DHCP" rel="noopener noreferrer" target="_blank">DHCP</a> · <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT" rel="noopener noreferrer" target="_blank">NAT</a> · <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/37748767/DNS" rel="noopener noreferrer" target="_blank">DNS</a> · <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/48660574/Filter" rel="noopener noreferrer" target="_blank">Firewall Filter</a>.</p></section></article></div></main><footer class="site-footer"><div class="wrap footer-grid"><span>© 2026 NúcleoTech. Todos los derechos reservados.</span><div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a href="noticias.html">Noticias</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div></div></footer><script src="script.js"></script><script data-copy-code="">document.addEventListener('click',async(e)=>{const b=e.target.closest('.copy-code');if(!b)return;const code=b.closest('.code-block')?.querySelector('code');if(!code)return;try{await navigator.clipboard.writeText(code.innerText);b.textContent='Copiado';b.classList.add('copied');setTimeout(()=>{b.textContent='Copiar';b.classList.remove('copied')},1400)}catch(err){b.textContent='Selecciona el código'}});</script></body></html>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="wrap"><a class="logo" href="index.html">Núcleo<span>Tech</span></a>
+            <nav class="main-nav"><a href="index.html">Inicio</a><a href="resenas.html">Reseñas</a><a class=""
+                    href="reparaciones.html">Reparaciones</a><a class="active" href="mikrotik.html">MikroTik</a><a
+                    href="comunidad-facebook.html">Comunidad</a><a href="sobre-nosotros.html">Sobre nosotros</a><a
+                    href="contacto.html">Contacto</a></nav><button aria-expanded="false" aria-label="Abrir menú"
+                class="nav-toggle">Menú</button>
+        </div>
+    </header>
+    <header class="repair-hero">
+        <div class="wrap">
+            <p class="eyebrow-plain">MikroTik · FUNDAMENTOS</p>
+            <h1>RouterOS desde la terminal: qué consultar antes de configurar.</h1>
+            <p class="dek">Una guía base para aprender el orden de diagnóstico y dejar cada consulta documentada. No se
+                mezclan comandos de PC ni celulares: aquí todo gira alrededor de RouterOS.</p>
+            <div class="repair-meta"><span>RouterOS v7</span><span>CLI + diagnóstico</span><span>NanoTech · 2026</span>
+            </div>
+        </div>
+    </header>
+    <main class="wrap repair-guide">
+        <div class="repair-shell">
+            <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button>
+                <div class="repair-toc-links">
+                    <p class="toc-title">Contenido</p><a data-target="paso-0" href="#paso-0">Introducción</a><a
+                        data-target="paso-1" href="#paso-1">1. Identificar interfaces</a><a data-target="paso-2"
+                        href="#paso-2">2. Revisar direccionamiento</a><a data-target="paso-3" href="#paso-3">3. Revisar
+                        rutas</a><a data-target="paso-4" href="#paso-4">4. Probar conectividad</a><a
+                        data-target="paso-5" href="#paso-5">5. Probar DNS</a><a data-target="paso-6" href="#paso-6">6.
+                        Revisar NAT</a><a data-target="paso-7" href="#paso-7">7. Observar firewall</a><a
+                        data-target="paso-8" href="#paso-8">8. Documentar y respaldar</a><a data-target="paso-99"
+                        href="#paso-99">Reglas de trabajo</a><a href="mikrotik.html">← Biblioteca MikroTik</a>
+                </div>
+            </aside>
+            <article class="repair-main">
+                <div class="mikrotik-code-note"><strong>Regla de oro:</strong> primero consulta, después configura y
+                    finalmente vuelve a consultar. No pegues un bloque sin revisar interfaz WAN/LAN, subred, listas y
+                    versión de RouterOS.</div>
+                <section id="paso-0">
+                    <h2>Introducción</h2>
+                    <figure class="repair-photo"><img alt="Diagrama de fundamentos MikroTik" loading="eager"
+                            src="imagenes/mikrotik/Mikrotik-ClienteSinIP.png" />
+                        <figcaption>Diagrama original de NanoTech para visualizar la relación entre interfaz, IP, ruta,
+                            DNS, NAT y firewall.</figcaption>
+                    </figure>
+                    <div class="repair-intro"><strong>Objetivo</strong>
+                        <p>Aprender una secuencia repetible para diagnosticar MikroTik sin cambiar reglas al azar. Cada
+                            etapa contiene un comando principal y una consulta de verificación.</p>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-1">
+                    <div class="repair-step-head"><span class="repair-step-num">01</span>
+                        <div>
+                            <h3>Identificar interfaces</h3>
+                            <p>Antes de tocar IP, identifica WAN, LAN y bridges reales.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Identificar interfaces" loading="lazy"
+                                src="imagenes/mikrotik/IdentificarInterfaz.png" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/interface print detail
+/interface bridge print detail</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/interface bridge port print detail</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-2">
+                    <div class="repair-step-head"><span class="repair-step-num">02</span>
+                        <div>
+                            <h3>Revisar direccionamiento</h3>
+                            <p>Comprueba qué IP tiene cada interfaz y si existe un DHCP client en la WAN.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Revisar direccionamiento" loading="lazy"
+                                src="imagenes/mikrotik/direccionamiento.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip address print detail
+/ip dhcp-client print detail</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip dhcp-client print detail</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-3">
+                    <div class="repair-step-head"><span class="repair-step-num">03</span>
+                        <div>
+                            <h3>Revisar rutas</h3>
+                            <p>La ruta por defecto debe estar activa para salir a Internet.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Revisar rutas" loading="lazy"
+                                src="imagenes/mikrotik/rutas.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip route print detail</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ping 1.1.1.1 count=5</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-4">
+                    <div class="repair-step-head"><span class="repair-step-num">04</span>
+                        <div>
+                            <h3>Probar conectividad</h3>
+                            <p>Separa LAN, gateway y salida pública con pruebas simples.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Probar conectividad" loading="lazy"
+                                src="imagenes/mikrotik/pruebasConectividad.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ping 192.168.88.1 count=5
+/ping 1.1.1.1 count=5</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip route print detail</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-5">
+                    <div class="repair-step-head"><span class="repair-step-num">05</span>
+                        <div>
+                            <h3>Probar DNS</h3>
+                            <p>Si IP funciona pero los dominios no, revisa DNS antes de tocar NAT.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Probar DNS" loading="lazy"
+                                src="imagenes/mikrotik/dns.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip dns print
+/resolve example.com</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip dns cache print</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-6">
+                    <div class="repair-step-head"><span class="repair-step-num">06</span>
+                        <div>
+                            <h3>Revisar NAT</h3>
+                            <p>Para una WAN dinámica, la regla de masquerade suele ir en srcnat y debe coincidir con la
+                                interfaz WAN/lista WAN.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Revisar NAT" loading="lazy"
+                                src="imagenes/mikrotik/nat.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip firewall nat print detail
+/ip firewall nat print stats</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip firewall connection print</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-7">
+                    <div class="repair-step-head"><span class="repair-step-num">07</span>
+                        <div>
+                            <h3>Observar firewall</h3>
+                            <p>Comprueba contadores y estados antes de cambiar reglas.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Observar firewall" loading="lazy"
+                                src="imagenes/mikrotik/firewall.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip firewall filter print stats detail</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/ip firewall connection print where connection-state=new</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="repair-step" id="paso-8">
+                    <div class="repair-step-head"><span class="repair-step-num">08</span>
+                        <div>
+                            <h3>Documentar y respaldar</h3>
+                            <p>Después de estabilizar, guarda un export para poder comparar cambios.</p>
+                        </div>
+                    </div>
+                    <div class="repair-step-body">
+                        <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
+                            consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
+                            hipótesis.</div>
+                        <figure><img alt="Diagrama NanoTech: Documentar y respaldar" loading="lazy"
+                                src="imagenes/mikrotik/documentar.jpg" />
+                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                                la parte operativa.</figcaption>
+                        </figure>
+                        <div class="mikrotik-code-injected">
+                            <div class="code-block">
+                                <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/export terse file=nanotech-fundamentos</code></pre>
+                            </div>
+                            <div class="code-block">
+                                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                                        type="button">Copiar</button></div>
+                                <pre><code>/file print detail</code></pre>
+                            </div>
+                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
+                                interfaces y nombres de listas a tu topología.</p>
+                        </div>
+                        <div class="repair-step-grid">
+                            <div>
+                                <h4>Qué observar</h4>
+                                <ol>
+                                    <li>Ejecuta un solo bloque a la vez.</li>
+                                    <li>Compara el resultado con la etapa anterior.</li>
+                                    <li>Si el resultado no coincide, detén la configuración y vuelve al diagnóstico.
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="check"><strong>Punto de control</strong>
+                                <p>Una consulta correcta reduce hipótesis; no confirma por sí sola que toda la red esté
+                                    funcionando.</p><strong>Interpretación</strong>
+                                <p>Documenta el estado antes de hacer cambios.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="paso-99">
+                    <h2>Reglas de trabajo</h2>
+                    <div class="repair-note">
+                        <ol>
+                            <li>Haz export antes de cambios importantes.</li>
+                            <li>Una modificación por vez.</li>
+                            <li>Guarda la salida de las consultas cuando diagnostiques una incidencia.</li>
+                            <li>En producción, prueba con una segunda sesión antes de cerrar tu acceso actual.</li>
+                        </ol>
+                    </div>
+                </section>
+                <section>
+                    <h2>Fuentes oficiales</h2>
+                    <p><a href="https://help.mikrotik.com/docs/spaces/ROS/pages/328134/Command%2BLine%2BInterface"
+                            rel="noopener noreferrer" target="_blank">CLI de RouterOS</a> · <a
+                            href="https://help.mikrotik.com/docs/spaces/ROS/pages/24805500/DHCP"
+                            rel="noopener noreferrer" target="_blank">DHCP</a> · <a
+                            href="https://help.mikrotik.com/docs/spaces/ROS/pages/3211299/NAT" rel="noopener noreferrer"
+                            target="_blank">NAT</a> · <a
+                            href="https://help.mikrotik.com/docs/spaces/ROS/pages/37748767/DNS"
+                            rel="noopener noreferrer" target="_blank">DNS</a> · <a
+                            href="https://help.mikrotik.com/docs/spaces/ROS/pages/48660574/Filter"
+                            rel="noopener noreferrer" target="_blank">Firewall Filter</a>.</p>
+                </section>
+            </article>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap footer-grid"><span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
+            <div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a
+                    href="noticias.html">Noticias</a><a href="sobre-nosotros.html">Sobre nosotros</a><a
+                    href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a
+                    href="contacto.html">Contacto</a></div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script
+        data-copy-code="">document.addEventListener('click', async (e) => { const b = e.target.closest('.copy-code'); if (!b) return; const code = b.closest('.code-block')?.querySelector('code'); if (!code) return; try { await navigator.clipboard.writeText(code.innerText); b.textContent = 'Copiado'; b.classList.add('copied'); setTimeout(() => { b.textContent = 'Copiar'; b.classList.remove('copied') }, 1400) } catch (err) { b.textContent = 'Selecciona el código' } });</script>
+</body>
+
+</html>
