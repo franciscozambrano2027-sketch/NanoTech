@@ -22,6 +22,37 @@ GitHub Actions (cron diario)
   └─ si hay archivos nuevos: git commit + git push automático
 ```
 
+## Volumen diario y aviso automático
+
+Configuración actual: hasta **7 noticias + 1 guía = hasta 8 piezas por día**.
+
+Después de cada corrida (haya publicado algo o no), el workflow crea un **Issue** en tu
+repositorio de GitHub con el listado y los enlaces de lo publicado ese día. Para que te
+llegue por correo:
+
+1. Ve a tu repo → botón **"Watch"** (arriba a la derecha) → elige **"All Activity"**
+   (o al menos que incluya "Issues").
+2. Revisa que tu correo de notificaciones de GitHub esté activo en
+   [github.com/settings/notifications](https://github.com/settings/notifications).
+
+Si más adelante quieres que **no se publique solo** y revisarlo tú antes, dímelo: se puede
+cambiar el flujo para que el workflow abra un *pull request* con los artículos nuevos en vez
+de hacer push directo a `main`, y tú lo apruebas manualmente desde GitHub.
+
+### Sobre publicar mucho contenido rápido — léelo antes de subir el volumen aún más
+
+Google (tanto para el ranking en buscadores como para AdSense) penaliza el **"contenido
+escalado de forma abusiva"**: sitios que publican grandes volúmenes de texto generado por IA
+con poco valor añadido. El riesgo no es solo "que no ayude" — puede terminar en que **todo el
+sitio pierda posicionamiento o la cuenta de AdSense sea rechazada/suspendida**.
+
+Recomendaciones si sigues subiendo el volumen:
+- No superes las ~8-10 piezas diarias con un modelo pequeño como `llama3.2:3b` sin revisión
+  humana regular.
+- Revisa cada tanto (semanalmente) una muestra de los artículos publicados.
+- Prioriza calidad sobre cantidad: `automation/config/feeds.json` ya tiene varias fuentes para
+  evitar noticias repetidas o de relleno.
+
 ## Puesta en marcha (una sola vez)
 
 1. **Sube estos archivos a tu repositorio** (incluye la carpeta `.github/workflows/`,

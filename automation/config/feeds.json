@@ -15,6 +15,26 @@
       "nombre": "Xataka Móvil",
       "url": "https://www.xatakamovil.com/feedburner2.xml",
       "categoria": "Smartphones"
+    },
+    {
+      "nombre": "Genbeta",
+      "url": "https://feeds.weblogssl.com/genbeta",
+      "categoria": "Software"
+    },
+    {
+      "nombre": "Applesfera",
+      "url": "https://feeds.weblogssl.com/applesfera",
+      "categoria": "Apple"
+    },
+    {
+      "nombre": "Hipertextual Tecnología",
+      "url": "https://hipertextual.com/tecnologia/feed",
+      "categoria": "Tecnología"
+    },
+    {
+      "nombre": "Microsiervos",
+      "url": "https://www.microsiervos.com/index.xml",
+      "categoria": "Tecnología"
     }
   ]
 }

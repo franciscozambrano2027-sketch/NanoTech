@@ -326,8 +326,29 @@ def main() -> None:
         print(f"[resumen] {len(generados)} pieza(s) publicada(s) hoy:")
         for g in generados:
             print(f"  - ({g['tipo']}) {g['titulo']} -> {g['slug']}.html")
+        escribir_resumen_notificacion(generados)
     else:
         print("[resumen] no se genero contenido nuevo hoy.")
+
+
+def escribir_resumen_notificacion(generados: list[dict]) -> None:
+    """Escribe un resumen en Markdown fuera del repo, para que el workflow
+    de GitHub Actions lo use como aviso (issue) y como resumen del run.
+    No se guarda dentro del repositorio."""
+    sitio = "https://nucleo-tech.org"
+    lineas = [f"Se publicaron **{len(generados)}** pieza(s) nuevas hoy:", ""]
+    for g in generados:
+        etiqueta = "Noticia" if g["tipo"] == "noticia" else "Guía"
+        lineas.append(f"- **[{etiqueta}]** [{g['titulo']}]({sitio}/{g['slug']}.html)")
+    resumen = "\n".join(lineas) + "\n"
+
+    with open("/tmp/nucleotech_resumen.md", "w", encoding="utf-8") as f:
+        f.write(resumen)
+
+    resumen_paso = os.environ.get("GITHUB_STEP_SUMMARY")
+    if resumen_paso:
+        with open(resumen_paso, "a", encoding="utf-8") as f:
+            f.write("\n" + resumen)
 
 
 if __name__ == "__main__":

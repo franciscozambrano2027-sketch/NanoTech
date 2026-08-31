@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: publicar-diario
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   generar-y-publicar:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -50,7 +51,7 @@ jobs:
       - name: Generar contenido del dia
         env:
           OLLAMA_MODEL: ${{ vars.OLLAMA_MODEL || 'llama3.2:3b' }}
-          NUM_NOTICIAS: ${{ vars.NUM_NOTICIAS || '1' }}
+          NUM_NOTICIAS: ${{ vars.NUM_NOTICIAS || '7' }}
           GENERAR_GUIA: ${{ vars.GENERAR_GUIA || '1' }}
         run: python automation/generate_content.py
 
@@ -64,4 +65,17 @@ jobs:
           else
             git commit -m "Publicacion automatica: $(date -u +'%Y-%m-%d')"
             git push
+          fi
+
+      - name: Avisar con un Issue si se publico algo
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -s /tmp/nucleotech_resumen.md ]; then
+            gh issue create \
+              --title "Publicacion automatica $(date -u +'%Y-%m-%d')" \
+              --body-file /tmp/nucleotech_resumen.md
+          else
+            echo "No hubo contenido nuevo hoy, no se crea aviso."
           fi
