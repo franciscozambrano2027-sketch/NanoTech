@@ -6,9 +6,16 @@
     "https://www.xataka.com/ecologia-y-naturaleza/organismo-pesado-planeta-no-ballena-arbol-utah",
     "https://www.xataka.com/ecologia-y-naturaleza/solo-hay-monte-importante-mundo-que-jamas-ha-registrado-serio-intento-ascension-esta-china-kailash",
     "https://www.xataka.com/magnet/hace-600-anos-alguien-escondio-2-600-monedas-medio-guerras-peste-ha-desvelado-poder-oculto-ciudad-rusa",
-    "https://www.xataka.com/medicina-y-salud/gimnasio-picapiedra-existe-hemos-probado-sus-maquinas-estan-hechas-palos-piedras-chatarra"
+    "https://www.xataka.com/medicina-y-salud/gimnasio-picapiedra-existe-hemos-probado-sus-maquinas-estan-hechas-palos-piedras-chatarra",
+    "https://www.xataka.com/magnet/rafa-nadal-40-anos-mi-padre-empezo-cero-construyo-mayor-empresa-cristales-baleares-su-dedicacion-ha-sido-mi-mayor-inspiracion",
+    "https://www.xataka.com/magnet/todo-que-hay-que-saber-para-orientarse-mundo-hobonichi-techo-2027-agendas-japonesas-que-estan-invadiendo-todo-mundo",
+    "https://www.xataka.com/ecologia-y-naturaleza/2009-23-bisontes-llegaron-a-mexico-metidos-camion-hoy-500-tienen-calve-para-salvar-tesoro-natural-a-punto-colapsar",
+    "https://www.xataka.com/empresas-y-economia/amancio-ortega-esta-dando-giro-estrategia-crecimiento-pontegadea-vender",
+    "https://www.xataka.com/espacio/nasa-se-rinde-telescopio-swift-su-mision-rescate-ha-fracasado-solo-queda-exprimirlo-se-queme-atmosfera",
+    "https://www.xataka.com/magnet/eeuu-va-a-convertir-base-aparcamiento-pilar-su-triada-nuclear-sorprendente-donde-sevilla",
+    "https://www.xataka.com/magnet/sequia-esta-obligando-a-francia-a-hacer-algo-hace-poco-inimaginable-replantearse-como-elabora-sus-quesos-famosos"
   ],
-  "indice_guia_siguiente": 1,
+  "indice_guia_siguiente": 2,
   "articulos": [
     {
       "slug": "como-nintendo-se-convirtio-en-una-empresa-de-diversion-global",
@@ -65,6 +72,62 @@
       "tipo": "guia",
       "categoria": "Mantenimiento",
       "resumen_meta": "Descubre cómo limpiar el polvo de tu PC de manera segura y efectiva sin dañar sus componentes internos."
+    },
+    {
+      "slug": "rafa-nadal-la-historia-detras-de-la-empresa-de-cristales-de-baleares-q",
+      "titulo": "Rafa Nadal: La historia detrás de la empresa de cristales de Baleares que inspiró su dedicación",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "Rafa Nadal habla sobre cómo su padre construyó una empresa de cristales de Baleares desde cero, inspirándole en su carrera deportiva"
+    },
+    {
+      "slug": "la-saga-de-hobonichi-techo-por-que-las-agendas-japonesas-estan-conquis",
+      "titulo": "La saga de Hobonichi Techo: por qué las agendas japonesas están conquistando el mundo",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "La agenda japonesa Hobonichi Techo se ha convertido en un fenómeno global, con más de 46 millones de euros de ventas y una cotización en Bolsa."
+    },
+    {
+      "slug": "la-recuperacion-del-desierto-norteamericano-un-exito-de-conservacion",
+      "titulo": "La recuperación del desierto norteamericano: un éxito de conservación",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "México logra recuperar ampliamente el desierto norteamericano mediante la conservación de la especie del bisonte, con más de 500 ejemplares"
+    },
+    {
+      "slug": "amancio-ortega-vende-acciones-de-pontegadea-a-una-compania-estatal-por",
+      "titulo": "Amancio Ortega vende acciones de Pontegadea a una compañía estatal portuguesa",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "Amancio Ortega vende acciones de Pontegadea a una compañía estatal portuguesa, marcando un cambio en la estrategia de crecimiento del holding"
+    },
+    {
+      "slug": "la-nasa-se-enfrenta-a-una-desorbitacion-inminente-para-su-telescopio-s",
+      "titulo": "La NASA se enfrenta a una desorbitación inminente para su telescopio Swift",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "La NASA lucha por recopilar datos antes de que el telescopio Swift caiga a la atmósfera"
+    },
+    {
+      "slug": "ee-uu-amplia-su-presencia-militar-en-espana",
+      "titulo": "EE.UU. amplía su presencia militar en España",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "EE.UU. va a convertir una base en el aparcamiento de un pilar de su triada nuclear, ubicada en Sevilla"
+    },
+    {
+      "slug": "la-sequia-obliga-a-francia-a-reinventar-sus-quesos-mas-famosos",
+      "titulo": "La sequía obliga a Francia a reinventar sus quesos más famosos",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "La sequía afecta la producción de quesos franceses, obligando a revisar las normas de calidad y sostenibilidad"
+    },
+    {
+      "slug": "cuando-necesitas-reiniciar-tu-router-con-un-toque-de-fuerza",
+      "titulo": "¿Cuándo necesitas reiniciar tu router con un toque de fuerza?",
+      "tipo": "guia",
+      "categoria": "Redes",
+      "resumen_meta": "Aprende a identificar las señales que indican que tu router necesita un reinicio de fábrica, no solo una apagada."
     }
   ]
 }
