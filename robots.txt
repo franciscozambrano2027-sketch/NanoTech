@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Add your final GitHub Pages/custom-domain sitemap URL after publishing.

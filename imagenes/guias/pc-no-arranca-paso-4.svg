@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="PC de escritorio no arranca: diagnóstico POST paso a paso: Paso 4 — Interpretar POST">
+<rect width="1200" height="620" rx="24" fill="#0b121a"/><rect x="35" y="35" width="1130" height="550" rx="20" fill="#101923" stroke="#263443"/>
+<text x="75" y="95" fill="#f5f7fa" font-family="Arial,sans-serif" font-size="31" font-weight="700">PC de escritorio no arranca: diagnóstico POST paso a paso</text>
+<text x="75" y="137" fill="#f0ad45" font-family="Arial,sans-serif" font-size="22" font-weight="700">Paso 4 — Interpretar POST</text>
+<g font-family="Arial,sans-serif" text-anchor="middle">
+<rect x="95" y="205" width="230" height="105" rx="18" fill="#172331" stroke="#f0ad45"/><text x="210" y="248" fill="#fff" font-size="22">OBSERVAR</text><text x="210" y="280" fill="#9eabb8" font-size="17">síntoma / señal</text>
+<rect x="485" y="205" width="230" height="105" rx="18" fill="#172331" stroke="#f0ad45"/><text x="600" y="248" fill="#fff" font-size="22">PROBAR</text><text x="600" y="280" fill="#9eabb8" font-size="17">una variable</text>
+<rect x="875" y="205" width="230" height="105" rx="18" fill="#172331" stroke="#f0ad45"/><text x="990" y="248" fill="#fff" font-size="22">DECIDIR</text><text x="990" y="280" fill="#9eabb8" font-size="17">siguiente hipótesis</text>
+<path d="M325 258h160M715 258h160" stroke="#82909e" stroke-width="4"/>
+<rect x="175" y="385" width="850" height="105" rx="16" fill="#0d161f" stroke="#263443"/>
+<text x="600" y="428" fill="#fff" font-size="21">Punto de control</text><text x="600" y="461" fill="#9eabb8" font-size="18">Los códigos del fabricante son más útiles que cambiar piezas al azar.</text>
+</g></svg>
