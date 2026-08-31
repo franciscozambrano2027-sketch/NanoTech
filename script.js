@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!sections.length) return;
     const obs=new IntersectionObserver(entries=>{
       entries.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle('active',a.dataset.target===e.target.id)); } });
-    },{rootMargin:'-25% 0px -60% 0px',threshold:0});
+    },{rootMargin:'-18% 0px -68% 0px',threshold:0});
     sections.forEach(s=>obs.observe(s));
     links.forEach(a=>a.addEventListener('click',()=>{ if(window.innerWidth<=900) toc.classList.remove('open'); }));
   });

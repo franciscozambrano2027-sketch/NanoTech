@@ -25,3 +25,11 @@ Los contenedores `adsense-slot` quedan preparados para insertar unidades despué
 
 ## Imágenes
 Los diagramas de `imagenes/guias` y `imagenes/biblioteca` son gráficos originales de NúcleoTech. Las fotografías de terceros, cuando existan, deben conservar su atribución y licencia correspondiente.
+
+
+## NúcleoTech v7 — navegación y biblioteca
+- Reparaciones reorganizada como biblioteca compacta por categoría + búsqueda por síntoma.
+- MikroTik separado de PC/celulares.
+- Cada guía MikroTik mantiene comandos de consulta, configuración y verificación; la interfaz ahora explica el flujo de trabajo.
+- Diseño responsive y navegación de artículos sin menú lateral sticky.
+- URL pública: https://franciscozambrano2027-sketch.github.io/NanoTech/

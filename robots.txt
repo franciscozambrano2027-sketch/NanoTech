@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add your final GitHub Pages/custom-domain sitemap URL after publishing.
+Sitemap: https://franciscozambrano2027-sketch.github.io/NanoTech/sitemap.xml
