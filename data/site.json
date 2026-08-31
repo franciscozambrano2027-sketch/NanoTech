@@ -1,0 +1,17 @@
+{
+  "site": {
+    "name": "NúcleoTech",
+    "url": "https://nucleo-tech.org",
+    "language": "es",
+    "locale": "es-EC"
+  },
+  "author": {
+    "name": "NúcleoTech"
+  },
+  "seo": {
+    "default_title_suffix": " — NúcleoTech"
+  },
+  "publishing": {
+    "default_status": "draft"
+  }
+}

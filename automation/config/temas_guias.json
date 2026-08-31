@@ -1,0 +1,17 @@
+{
+  "_comentario": "Temas para los articulos-guia generados por IA. El script los usa en orden y avanza el indice en estado/estado.json. Anade tantos como quieras al final de la lista.",
+  "temas": [
+    { "titulo": "Cómo limpiar el polvo de tu PC sin dañar los componentes", "categoria": "Mantenimiento" },
+    { "titulo": "Señales de que tu router necesita un reinicio de fábrica, no solo apagarlo", "categoria": "Redes" },
+    { "titulo": "Cómo saber si conviene reparar o cambiar tu laptop", "categoria": "Laptops" },
+    { "titulo": "Qué hacer antes de llevar tu consola a servicio técnico", "categoria": "Consolas" },
+    { "titulo": "Cómo proteger tu celular del calor en época de verano", "categoria": "Smartphones" },
+    { "titulo": "Errores comunes al intentar reparar electrónica en casa", "categoria": "Mantenimiento" },
+    { "titulo": "Cómo elegir un multímetro básico para reparaciones caseras", "categoria": "Herramientas" },
+    { "titulo": "Por qué tu SSD se siente lento con el tiempo y cómo revisarlo", "categoria": "PC / Laptop" },
+    { "titulo": "Cómo saber si el problema de tu Wi-Fi es el router o el proveedor", "categoria": "Redes" },
+    { "titulo": "Mantenimiento básico para alargar la vida de tu PS4 o PS5", "categoria": "Consolas" },
+    { "titulo": "Cómo diagnosticar una pantalla de celular que falla de forma intermitente", "categoria": "Smartphones" },
+    { "titulo": "Guía para armar un kit básico de herramientas de reparación", "categoria": "Herramientas" }
+  ]
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{site.language}}">
+<head>
+{{adsense}}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{{title}} — {{site.name}}</title>
+<meta name="description" content="{{description}}">
+<link rel="stylesheet" href="styles.css">
+<link rel="canonical" href="{{canonical}}">
+</head>
+<body>
+<header class="site-header"><div class="wrap">
+<a href="index.html" class="logo">Núcleo<span>Tech</span></a>
+<nav class="main-nav">
+<a href="index.html">Inicio</a>
+<a href="resenas.html" class="active">Reseñas</a>
+<a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a>
+<a href="comunidad-facebook.html">Comunidad</a>
+<a href="sobre-nosotros.html">Sobre nosotros</a>
+<a href="contacto.html">Contacto</a>
+</nav><button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+</div></header>
+<article><div class="wrap article-header">
+<p class="eyebrow-plain">{{subcategory}}</p>
+<h1>{{title}}</h1>
+<p class="dek-lead">{{description}}</p>
+<p class="hero-meta">Por {{author}} · Actualizado {{updated_label}} · {{reading_time}} min de lectura</p>
+</div>
+<div class="wrap content-layout"><div class="article-body">
+<img class="article-cover" src="{{hero_image}}" alt="{{hero_alt}}" loading="eager">
+{{content_html}}
+</div><aside>
+<div class="sidebar-block"><h2 class="section-heading">Sigue leyendo</h2><ul class="sidebar-list">
+{{related}}
+</ul></div>
+<div class="adsense-slot adsense-slot--rectangle"></div>
+</aside></div></article>
+<footer class="site-footer"><div class="wrap footer-grid">
+<span>© 2026 {{site.name}}. Todos los derechos reservados.</span>
+<div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div>
+</div></footer><script src="script.js"></script>
+</body></html>
