@@ -1,5 +1,15 @@
 {
-  "noticias_publicadas": [],
+  "noticias_publicadas": [
+    "https://www.xataka.com/empresas-y-economia/cuando-nintendo-tenia-flota-taxis-vendia-arroz-instantaneo-buscaba-negocio-mucho-alla-entretenimiento"
+  ],
   "indice_guia_siguiente": 0,
-  "articulos": []
+  "articulos": [
+    {
+      "slug": "como-nintendo-se-convirtio-en-una-empresa-de-diversion-global",
+      "titulo": "Cómo Nintendo se convirtió en una empresa de diversión global",
+      "tipo": "noticia",
+      "categoria": "Tecnología",
+      "resumen_meta": "La historia de Nintendo, de taxis a videojuegos y personajes icónicos"
+    }
+  ]
 }
