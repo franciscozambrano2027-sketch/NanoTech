@@ -1,10 +1,10 @@
 {
-  "_comentario": "Lista de feeds RSS de noticias de tecnologia. Puedes anadir, quitar o reemplazar URLs. Verifica cada URL en tu navegador antes de anadirla: pega la URL y confirma que carga XML valido.",
+  "_comentario": "Fuentes RSS de noticias de tecnologia.",
   "fuentes": [
     {
       "nombre": "Xataka",
       "url": "https://www.xataka.com/feedburner.xml",
-      "categoria": "Tecnología"
+      "categoria": "Tecnologia"
     },
     {
       "nombre": "Xataka Android",
@@ -12,7 +12,7 @@
       "categoria": "Smartphones"
     },
     {
-      "nombre": "Xataka Móvil",
+      "nombre": "Xataka Movil",
       "url": "https://www.xatakamovil.com/feedburner2.xml",
       "categoria": "Smartphones"
     },
@@ -27,14 +27,14 @@
       "categoria": "Apple"
     },
     {
-      "nombre": "Hipertextual Tecnología",
-      "url": "https://hipertextual.com/tecnologia/feed",
-      "categoria": "Tecnología"
+      "nombre": "Hipertextual Tecnologia",
+      "url": "https://hipertextual.com/feed",
+      "categoria": "Tecnologia"
     },
     {
       "nombre": "Microsiervos",
       "url": "https://www.microsiervos.com/index.xml",
-      "categoria": "Tecnología"
+      "categoria": "Tecnologia"
     }
   ]
 }
