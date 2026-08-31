@@ -1,0 +1,12 @@
+<svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="El Kailash, el monte mágico que nadie ha escalado">
+<rect width="1400" height="700" fill="#0a0f16"/>
+
+    <circle cx="1180" cy="140" r="180" fill="#f0ad45" opacity="0.18"/>
+    <circle cx="1260" cy="520" r="120" fill="#172331" opacity="0.22"/>
+    <rect x="0" y="0" width="10" height="700" fill="#f0ad45"/>
+    
+<text x="80" y="222" font-family="DM Sans, system-ui, sans-serif" font-size="26" font-weight="700"
+ letter-spacing="2" fill="#f0ad45">TECNOLOGÍA</text>
+<text x="80" y="286" font-family="Space Grotesk, system-ui, sans-serif" font-size="46" font-weight="700" fill="#f5f7fa">El Kailash, el monte</text><text x="80" y="350" font-family="Space Grotesk, system-ui, sans-serif" font-size="46" font-weight="700" fill="#f5f7fa">mágico que nadie ha</text><text x="80" y="414" font-family="Space Grotesk, system-ui, sans-serif" font-size="46" font-weight="700" fill="#f5f7fa">escalado</text>
+<text x="80" y="640" font-family="DM Sans, system-ui, sans-serif" font-size="22" fill="#9eabb8">NucleoTech</text>
+</svg>
