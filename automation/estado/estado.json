@@ -18,109 +18,11 @@
   "indice_guia_siguiente": 2,
   "articulos": [
     {
-      "slug": "como-nintendo-se-convirtio-en-una-empresa-de-diversion-global",
-      "titulo": "Cómo Nintendo se convirtió en una empresa de diversión global",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "La historia de Nintendo, de taxis a videojuegos y personajes icónicos"
-    },
-    {
-      "slug": "la-verdadera-magnitud-del-crecimiento-exponencial",
-      "titulo": "La verdadera magnitud del crecimiento exponencial",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "Una hoja de papel puede crecer hasta 440.000 kilómetros doblándola 42 veces, superando la distancia media entre la Tierra y la Luna"
-    },
-    {
-      "slug": "por-que-las-ballenas-no-pueden-volver-a-caminar-sobre-la-tierra",
-      "titulo": "¿Por qué las ballenas no pueden volver a caminar sobre la tierra?",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "Una investigación revela que la evolución impidió que las ballenas regresen a la tierra firme después de abandonarla hace 50 millones de años."
-    },
-    {
-      "slug": "un-arbol-de-utah-que-ha-vivido-durante-80-000-anos",
-      "titulo": "Un 'árbol' de Utah que ha vivido durante 80.000 años",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "En el Bosque Nacional Fishlake, se ha descubierto un clon de álamo temblón que se ha extendido por 42,6 hectáreas"
-    },
-    {
-      "slug": "el-kailash-el-monte-magico-que-nadie-ha-escalado",
-      "titulo": "El Kailash, el monte mágico que nadie ha escalado",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "En la cordillera Gangdisê, un monte de 6.638 metros en el Himalaya, China, no ha sido escalado con éxito hasta la cumbre."
-    },
-    {
-      "slug": "descubren-un-tesoro-de-mas-de-2-600-monedas-en-una-ciudad-rusa-medieva",
-      "titulo": "Descubren un tesoro de más de 2.600 monedas en una ciudad rusa medieval",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "En Kolomna, una ciudad rusa, se ha encontrado un cántaro con más de 2.600 monedas de plata de la época medieval"
-    },
-    {
-      "slug": "descubre-el-gimnasio-mas-inusual-de-espana-donde-el-chatarra-es-el-mat",
-      "titulo": "Descubre el gimnasio más inusual de España: donde el chatarra es el material principal",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "Un gimnasio de León, España, construido con chatarra, palos y piedras, ofrece una experiencia única para sus usuarios"
-    },
-    {
       "slug": "como-limpiar-el-polvo-de-tu-pc-sin-danar-los-componentes",
       "titulo": "Cómo limpiar el polvo de tu PC sin dañar los componentes",
       "tipo": "guia",
       "categoria": "Mantenimiento",
       "resumen_meta": "Descubre cómo limpiar el polvo de tu PC de manera segura y efectiva sin dañar sus componentes internos."
-    },
-    {
-      "slug": "rafa-nadal-la-historia-detras-de-la-empresa-de-cristales-de-baleares-q",
-      "titulo": "Rafa Nadal: La historia detrás de la empresa de cristales de Baleares que inspiró su dedicación",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "Rafa Nadal habla sobre cómo su padre construyó una empresa de cristales de Baleares desde cero, inspirándole en su carrera deportiva"
-    },
-    {
-      "slug": "la-saga-de-hobonichi-techo-por-que-las-agendas-japonesas-estan-conquis",
-      "titulo": "La saga de Hobonichi Techo: por qué las agendas japonesas están conquistando el mundo",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "La agenda japonesa Hobonichi Techo se ha convertido en un fenómeno global, con más de 46 millones de euros de ventas y una cotización en Bolsa."
-    },
-    {
-      "slug": "la-recuperacion-del-desierto-norteamericano-un-exito-de-conservacion",
-      "titulo": "La recuperación del desierto norteamericano: un éxito de conservación",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "México logra recuperar ampliamente el desierto norteamericano mediante la conservación de la especie del bisonte, con más de 500 ejemplares"
-    },
-    {
-      "slug": "amancio-ortega-vende-acciones-de-pontegadea-a-una-compania-estatal-por",
-      "titulo": "Amancio Ortega vende acciones de Pontegadea a una compañía estatal portuguesa",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "Amancio Ortega vende acciones de Pontegadea a una compañía estatal portuguesa, marcando un cambio en la estrategia de crecimiento del holding"
-    },
-    {
-      "slug": "la-nasa-se-enfrenta-a-una-desorbitacion-inminente-para-su-telescopio-s",
-      "titulo": "La NASA se enfrenta a una desorbitación inminente para su telescopio Swift",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "La NASA lucha por recopilar datos antes de que el telescopio Swift caiga a la atmósfera"
-    },
-    {
-      "slug": "ee-uu-amplia-su-presencia-militar-en-espana",
-      "titulo": "EE.UU. amplía su presencia militar en España",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "EE.UU. va a convertir una base en el aparcamiento de un pilar de su triada nuclear, ubicada en Sevilla"
-    },
-    {
-      "slug": "la-sequia-obliga-a-francia-a-reinventar-sus-quesos-mas-famosos",
-      "titulo": "La sequía obliga a Francia a reinventar sus quesos más famosos",
-      "tipo": "noticia",
-      "categoria": "Tecnología",
-      "resumen_meta": "La sequía afecta la producción de quesos franceses, obligando a revisar las normas de calidad y sostenibilidad"
     },
     {
       "slug": "cuando-necesitas-reiniciar-tu-router-con-un-toque-de-fuerza",
