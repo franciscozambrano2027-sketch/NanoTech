@@ -48,6 +48,7 @@ CONFIG_TEMAS = AUTO / "config" / "temas_guias.json"
 ESTADO_PATH = AUTO / "estado" / "estado.json"
 TEMPLATES_DIR = AUTO / "templates"
 IMG_AUTO_DIR = BASE / "imagenes" / "auto"
+IMG_NOTICIAS_DIR = BASE / "imagenes" / "noticias"
 
 
 # ============================================================================
@@ -194,6 +195,47 @@ def slugify(texto: str) -> str:
     )
 
     return texto[:80].rstrip("-")
+
+def ruta_imagen_relativa(slug: str, tipo: str = "noticia") -> str:
+    """Devuelve una única imagen para el artículo y todos sus listados.
+
+    Si existe una imagen editorial con el mismo slug en imagenes/noticias,
+    se reutiliza. Si no, se usa el banner SVG generado en imagenes/auto.
+    """
+    if tipo == "noticia":
+        IMG_NOTICIAS_DIR.mkdir(parents=True, exist_ok=True)
+        for extension in (".jpg", ".jpeg", ".png", ".webp", ".svg"):
+            candidata = IMG_NOTICIAS_DIR / f"{slug}{extension}"
+            if candidata.exists():
+                return f"imagenes/noticias/{candidata.name}"
+
+    return f"imagenes/auto/{slug}.svg"
+
+
+def normalizar_imagen_estado(entrada: dict) -> dict:
+    """Garantiza que los artículos antiguos también tengan un campo imagen."""
+    if not isinstance(entrada, dict):
+        return entrada
+
+    slug = str(entrada.get("slug", "")).strip()
+    tipo = str(entrada.get("tipo", "noticia")).strip() or "noticia"
+
+    imagen = str(entrada.get("imagen", "")).strip()
+    if not imagen and slug:
+        imagen = ruta_imagen_relativa(slug, tipo)
+
+    # Si el estado aún apunta al SVG y apareció una foto editorial con el
+    # mismo slug, la foto pasa a ser la fuente única para todos los listados.
+    if slug and tipo == "noticia" and (
+        not imagen or imagen == f"imagenes/auto/{slug}.svg"
+    ):
+        candidata = ruta_imagen_relativa(slug, tipo)
+        if candidata != f"imagenes/auto/{slug}.svg":
+            imagen = candidata
+
+    entrada["imagen"] = imagen
+    return entrada
+
 
 
 def slug_unico(base_slug: str) -> str:
@@ -989,10 +1031,18 @@ def render_y_guardar(
         if a.get("tipo") == datos["tipo"]
     ][-3:]
 
+    # Una sola fuente de imagen: la misma ruta se usa en la noticia,
+    # noticias.html e index.html.
+    imagen = str(datos.get("imagen", "")).strip()
+    if not imagen:
+        imagen = ruta_imagen_relativa(slug, datos["tipo"])
+
     contexto = {
         **datos,
 
         "slug": slug,
+
+        "imagen": imagen,
 
         "fecha_legible": fecha_legible(),
 
@@ -1038,21 +1088,23 @@ def render_y_guardar(
         exist_ok=True
     )
 
-    banner = build_banner_svg(
-        datos["titulo"],
-        datos["categoria"],
-        seed=slug
-    )
+    # Solo necesitamos generar el banner si no existe una imagen editorial.
+    if imagen == f"imagenes/auto/{slug}.svg":
+        banner = build_banner_svg(
+            datos["titulo"],
+            datos["categoria"],
+            seed=slug
+        )
 
-    ruta_banner = (
-        IMG_AUTO_DIR / f"{slug}.svg"
-    )
+        ruta_banner = (
+            IMG_AUTO_DIR / f"{slug}.svg"
+        )
 
-    ruta_banner.write_text(
-        banner,
-        encoding="utf-8",
-        newline="\n"
-    )
+        ruta_banner.write_text(
+            banner,
+            encoding="utf-8",
+            newline="\n"
+        )
 
     print(
         f"[ok] generado "
@@ -1079,6 +1131,8 @@ def render_y_guardar(
             "resumen_meta"
         ],
 
+        "imagen": imagen,
+
         "fuente_nombre": datos.get(
             "fuente_nombre",
             ""
@@ -1097,7 +1151,7 @@ def render_y_guardar(
 
 TARJETA_TMPL = """
 <article class="review-card">
-<img src="imagenes/auto/{slug}.svg"
+<img src="{imagen}"
      alt="{titulo}"
      loading="lazy">
 <div>
@@ -1149,11 +1203,22 @@ def crear_tarjeta(
         "slug"
     ]
 
+    imagen = html.escape(
+        str(
+            entrada.get(
+                "imagen",
+                ruta_imagen_relativa(slug, entrada.get("tipo", "noticia"))
+            )
+        ),
+        quote=True
+    )
+
     return TARJETA_TMPL.format(
         slug=slug,
         titulo=titulo,
         categoria=categoria,
         resumen_meta=resumen,
+        imagen=imagen,
     ).strip()
 
 
@@ -1353,7 +1418,7 @@ def reconstruir_home(estado: dict, maximo_lista: int = 6) -> None:
         f'<p class="dek">{esc(destacado.get("resumen_meta"))}</p>'
         f'<p class="hero-meta">Por el equipo de NúcleoTech · {esc(destacado.get("categoria"))}</p>'
         f'<a class="btn" href="{destacado.get("slug")}.html">Leer {accion}</a></div>'
-        f'<img class="hero-image" src="imagenes/auto/{destacado.get("slug")}.svg" '
+        f'<img class="hero-image" src="{esc(destacado.get("imagen") or ruta_imagen_relativa(destacado.get("slug"), destacado.get("tipo", "noticia")))}" '
         f'alt="{esc(destacado.get("titulo"))}" loading="eager">'
     )
 
@@ -1363,7 +1428,7 @@ def reconstruir_home(estado: dict, maximo_lista: int = 6) -> None:
         tipo_legible = "Noticia" if a.get("tipo") == "noticia" else "Guía"
         filas.append(
             '<article class="article-row">'
-            f'<img class="article-thumb" src="imagenes/auto/{a.get("slug")}.svg" '
+            f'<img class="article-thumb" src="{esc(a.get("imagen") or ruta_imagen_relativa(a.get("slug"), a.get("tipo", "noticia")))}" '
             f'alt="{esc(a.get("titulo"))}" loading="lazy">'
             f'<div><p class="category">{esc(a.get("categoria"))}</p>'
             f'<h3><a href="{a.get("slug")}.html">{esc(a.get("titulo"))}</a></h3>'
@@ -1579,6 +1644,14 @@ def main() -> None:
     estado = normalizar_estado(
         estado
     )
+
+    # Migración de artículos existentes: todos reciben una ruta de imagen
+    # única para que noticia, listado y portada siempre coincidan.
+    estado["articulos"] = [
+        normalizar_imagen_estado(a)
+        for a in estado.get("articulos", [])
+        if isinstance(a, dict)
+    ]
 
     # ----------------------------------------------------------------------
     # Entorno Jinja

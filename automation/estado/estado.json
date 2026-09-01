@@ -24,14 +24,16 @@
       "titulo": "Cómo limpiar el polvo de tu PC sin dañar los componentes",
       "tipo": "guia",
       "categoria": "Mantenimiento",
-      "resumen_meta": "Descubre cómo limpiar el polvo de tu PC de manera segura y efectiva sin dañar sus componentes internos."
+      "resumen_meta": "Descubre cómo limpiar el polvo de tu PC de manera segura y efectiva sin dañar sus componentes internos.",
+      "imagen": "imagenes/auto/como-limpiar-el-polvo-de-tu-pc-sin-danar-los-componentes.svg"
     },
     {
       "slug": "cuando-necesitas-reiniciar-tu-router-con-un-toque-de-fuerza",
       "titulo": "¿Cuándo necesitas reiniciar tu router con un toque de fuerza?",
       "tipo": "guia",
       "categoria": "Redes",
-      "resumen_meta": "Aprende a identificar las señales que indican que tu router necesita un reinicio de fábrica, no solo una apagada."
+      "resumen_meta": "Aprende a identificar las señales que indican que tu router necesita un reinicio de fábrica, no solo una apagada.",
+      "imagen": "imagenes/auto/cuando-necesitas-reiniciar-tu-router-con-un-toque-de-fuerza.svg"
     },
     {
       "slug": "como-internet-ha-evolucionado-en-las-ultimas-dos-decadas",
@@ -40,7 +42,8 @@
       "categoria": "Software",
       "resumen_meta": "Internet ha cambiado significativamente desde su lanzamiento en 2005",
       "fuente_nombre": "Genbeta",
-      "fuente_url": "https://www.genbeta.com/a-fondo/asi-ha-cambiado-internet-20-anos-transcurridos-lanzamiento-genbeta"
+      "fuente_url": "https://www.genbeta.com/a-fondo/asi-ha-cambiado-internet-20-anos-transcurridos-lanzamiento-genbeta",
+      "imagen": "imagenes/noticias/evolucion-del-internet.jpg"
     },
     {
       "slug": "por-que-los-millennials-rechazan-ascensos-en-la-empresa",
@@ -49,7 +52,8 @@
       "categoria": "Software",
       "resumen_meta": "Los millennials en Europa Central rechazan ascensos por razones que sorprenden a sus jefes del baby boom",
       "fuente_nombre": "Genbeta",
-      "fuente_url": "https://www.genbeta.com/laboral/jefe-boomer-no-entendia-que-sus-empleados-millennials-no-quisieran-cargos-directivos-ellos-tienen-claras-razones"
+      "fuente_url": "https://www.genbeta.com/laboral/jefe-boomer-no-entendia-que-sus-empleados-millennials-no-quisieran-cargos-directivos-ellos-tienen-claras-razones",
+      "imagen": "imagenes/noticias/millennials-no-le-interesan-ascensos.jpg"
     },
     {
       "slug": "como-saber-si-conviene-reparar-o-cambiar-tu-laptop",
@@ -58,7 +62,8 @@
       "categoria": "Laptops",
       "resumen_meta": "Descubre si vale la pena arreglar o reemplazar tu laptop, y cómo hacerlo de manera segura y efectiva.",
       "fuente_nombre": "",
-      "fuente_url": ""
+      "fuente_url": "",
+      "imagen": "imagenes/auto/como-saber-si-conviene-reparar-o-cambiar-tu-laptop.svg"
     }
   ]
 }
