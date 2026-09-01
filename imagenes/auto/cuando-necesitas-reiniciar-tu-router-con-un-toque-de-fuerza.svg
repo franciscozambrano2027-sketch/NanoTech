@@ -1,12 +1,1 @@
-<svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="¿Cuándo necesitas reiniciar tu router con un toque de fuerza?">
-<rect width="1400" height="700" fill="#0a0f16"/>
-
-    <circle cx="1180" cy="140" r="180" fill="#172331" opacity="0.18"/>
-    <circle cx="1260" cy="520" r="120" fill="#45c7b1" opacity="0.22"/>
-    <rect x="0" y="0" width="10" height="700" fill="#172331"/>
-    
-<text x="80" y="222" font-family="DM Sans, system-ui, sans-serif" font-size="26" font-weight="700"
- letter-spacing="2" fill="#172331">REDES</text>
-<text x="80" y="286" font-family="Space Grotesk, system-ui, sans-serif" font-size="46" font-weight="700" fill="#f5f7fa">¿Cuándo necesitas</text><text x="80" y="350" font-family="Space Grotesk, system-ui, sans-serif" font-size="46" font-weight="700" fill="#f5f7fa">reiniciar tu router con un</text><text x="80" y="414" font-family="Space Grotesk, system-ui, sans-serif" font-size="46" font-weight="700" fill="#f5f7fa">toque de fuerza?</text>
-<text x="80" y="640" font-family="DM Sans, system-ui, sans-serif" font-size="22" fill="#9eabb8">NucleoTech</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 875"><rect width="1400" height="875" fill="#0a0f16"/><circle cx="1180" cy="170" r="210" fill="#45c7b1" opacity=".12"/><rect x="140" y="240" width="1120" height="390" rx="34" fill="#101923" stroke="#2a3948" stroke-width="3"/><rect x="230" y="330" width="940" height="180" rx="26" fill="#172331" stroke="#45c7b1" stroke-width="4"/><circle cx="330" cy="420" r="18" fill="#45c7b1"/><circle cx="390" cy="420" r="18" fill="#45c7b1" opacity=".7"/><circle cx="450" cy="420" r="18" fill="#f0ad45"/><rect x="555" y="388" width="280" height="64" rx="14" fill="#0b121a" stroke="#334555"/><rect x="595" y="410" width="115" height="20" rx="10" fill="#45c7b1" opacity=".55"/><rect x="730" y="410" width="70" height="20" rx="10" fill="#263443"/><path d="M975 395c70-70 170-70 220 0" fill="none" stroke="#45c7b1" stroke-width="12" stroke-linecap="round"/><path d="M1000 450c50-45 120-45 165 0" fill="none" stroke="#45c7b1" stroke-width="12" stroke-linecap="round" opacity=".75"/><path d="M1030 500c30-24 70-24 98 0" fill="none" stroke="#f0ad45" stroke-width="12" stroke-linecap="round"/><circle cx="1080" cy="548" r="10" fill="#9eabb8"/><path d="M250 690h900" stroke="#263443" stroke-width="5"/><circle cx="310" cy="690" r="10" fill="#45c7b1"/><circle cx="630" cy="690" r="10" fill="#f0ad45"/><circle cx="950" cy="690" r="10" fill="#45c7b1"/><text x="700" y="770" text-anchor="middle" fill="#9eabb8" font-family="Arial,sans-serif" font-size="28">reinicio · diagnóstico · configuración</text></svg>

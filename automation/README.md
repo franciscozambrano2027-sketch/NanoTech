@@ -1,113 +1,107 @@
-# Automatización de contenido diario — NúcleoTech
+# Automatización editorial de NúcleoTech
 
-Publica automáticamente, todos los días, 1 noticia resumida (de RSS reales) + 1 artículo-guía
-(sobre un tema rotativo de reparación/mantenimiento), usando un **modelo de IA open-source
-gratuito** (Ollama) que corre dentro del propio runner de GitHub Actions — **sin API keys de
-pago y sin costo**, mientras el repositorio sea público.
+El sistema ahora está dividido en **generar → revisar → publicar**. Esto evita que una pieza generada automáticamente llegue al sitio sin revisión ni imagen editorial.
 
-## Cómo funciona (resumen)
+## Flujo diario
 
+```text
+GitHub Actions
+   ↓
+generate_content.py
+   ↓
+drafts/pending/*.json
+   ↓
+revisión humana
+   ├─ corregir texto
+   ├─ elegir/añadir imagen
+   └─ mover JSON a drafts/approved/
+   ↓
+Publicar contenido aprobado
+   ↓
+HTML + noticias.html/resenas.html/index.html + estado.json
 ```
-GitHub Actions (cron diario)
-  └─ instala Ollama y descarga el modelo (llama3.2:3b por defecto)
-  └─ python automation/generate_content.py
-       ├─ lee automation/config/feeds.json → descarga RSS → elige noticias no publicadas
-       ├─ le pide al modelo que las reescriba en español, con voz propia (nunca copia texto)
-       ├─ toma el siguiente tema de automation/config/temas_guias.json
-       ├─ le pide al modelo un artículo práctico sobre ese tema
-       ├─ genera un banner SVG original para cada pieza (sin fotos de terceros)
-       ├─ escribe {slug}.html usando las plantillas de automation/templates/
-       ├─ inserta una tarjeta en noticias.html (noticias) o resenas.html (guías)
-       └─ actualiza automation/estado/estado.json para no repetir contenido
-  └─ si hay archivos nuevos: git commit + git push automático
+
+### 1. Generación
+
+El workflow `Generar borradores diarios` corre a las **08:00 de Ecuador (13:00 UTC)** y crea hasta 2 noticias y 1 guía por defecto.
+
+Las noticias proceden de RSS tecnológicos configurados en `config/feeds.json`. El modelo debe aportar contexto y redacción propia; no debe copiar ni limitarse a sustituir palabras.
+
+Los borradores quedan en:
+
+`automation/drafts/pending/`
+
+Nada de esa carpeta se publica.
+
+### 2. Elegir la imagen
+
+Abre el JSON del borrador. Encontrarás:
+
+```json
+"imagen": ""
 ```
 
-## Volumen diario y aviso automático
+Coloca tu imagen dentro del proyecto, por ejemplo:
 
-Configuración actual: hasta **7 noticias + 1 guía = hasta 8 piezas por día**.
+`imagenes/noticias/mi-foto.jpg`
 
-Después de cada corrida (haya publicado algo o no), el workflow crea un **Issue** en tu
-repositorio de GitHub con el listado y los enlaces de lo publicado ese día. Para que te
-llegue por correo:
+y cambia el campo:
 
-1. Ve a tu repo → botón **"Watch"** (arriba a la derecha) → elige **"All Activity"**
-   (o al menos que incluya "Issues").
-2. Revisa que tu correo de notificaciones de GitHub esté activo en
-   [github.com/settings/notifications](https://github.com/settings/notifications).
+```json
+"imagen": "imagenes/noticias/mi-foto.jpg"
+```
 
-Si más adelante quieres que **no se publique solo** y revisarlo tú antes, dímelo: se puede
-cambiar el flujo para que el workflow abra un *pull request* con los artículos nuevos en vez
-de hacer push directo a `main`, y tú lo apruebas manualmente desde GitHub.
+También puedes utilizar una imagen local de `imagenes/auto/`.
 
-### Sobre publicar mucho contenido rápido — léelo antes de subir el volumen aún más
+Si dejas el campo vacío, el publicador genera un SVG original como respaldo. Para AdSense y para la identidad editorial de NúcleoTech, es preferible revisar cada imagen antes de publicar.
 
-Google (tanto para el ranking en buscadores como para AdSense) penaliza el **"contenido
-escalado de forma abusiva"**: sitios que publican grandes volúmenes de texto generado por IA
-con poco valor añadido. El riesgo no es solo "que no ayude" — puede terminar en que **todo el
-sitio pierda posicionamiento o la cuenta de AdSense sea rechazada/suspendida**.
+### 3. Aprobar
 
-Recomendaciones si sigues subiendo el volumen:
-- No superes las ~8-10 piezas diarias con un modelo pequeño como `llama3.2:3b` sin revisión
-  humana regular.
-- Revisa cada tanto (semanalmente) una muestra de los artículos publicados.
-- Prioriza calidad sobre cantidad: `automation/config/feeds.json` ya tiene varias fuentes para
-  evitar noticias repetidas o de relleno.
+Después de revisar título, texto, fuente y fotografía, mueve el JSON de:
 
-## Puesta en marcha (una sola vez)
+`automation/drafts/pending/`
 
-1. **Sube estos archivos a tu repositorio** (incluye la carpeta `.github/workflows/`,
-   `automation/` y las páginas modificadas: `noticias.html`, `resenas.html`, y la barra de
-   navegación con el nuevo enlace "Noticias" en todas las páginas).
-2. En GitHub → **Settings → Actions → General → Workflow permissions**, marca
-   **"Read and write permissions"** (para que el workflow pueda hacer `git push`).
-3. Ve a la pestaña **Actions** de tu repo y ejecuta manualmente el workflow
-   **"Publicar contenido diario"** (botón *Run workflow*) para probarlo antes de esperar al cron.
-4. Revisa el resultado: debería aparecer un commit nuevo con 1-2 archivos `.html`, sus SVG en
-   `imagenes/auto/`, y las tarjetas nuevas en `noticias.html`/`resenas.html`.
+a:
 
-El cron ya viene configurado para correr todos los días a las **08:00 hora Ecuador**
-(13:00 UTC). Puedes cambiarlo editando la línea `cron` en
-`.github/workflows/publicar-diario.yml` ([ayuda con sintaxis cron](https://crontab.guru)).
+`automation/drafts/approved/`
 
-## Cómo personalizar
+Puedes hacerlo desde Visual Studio Code.
 
-- **Fuentes de noticias**: edita `automation/config/feeds.json`. Verifica cada URL de RSS en tu
-  navegador antes de agregarla (debe cargar un XML, no una página web normal).
-- **Temas de las guías**: edita `automation/config/temas_guias.json`. El script los usa en orden
-  y vuelve a empezar cuando llega al final — puedes agregar tantos como quieras.
-- **Cuántas noticias por día**: variable de repositorio `NUM_NOTICIAS` (Settings → Secrets and
-  variables → Actions → Variables). Por defecto: 1.
-- **Desactivar la guía diaria**: variable `GENERAR_GUIA=0`.
-- **Cambiar de modelo**: variable `OLLAMA_MODEL` (por defecto `llama3.2:3b`, rápido y liviano).
-  Si quieres más calidad de redacción a cambio de más tiempo de ejecución, prueba
-  `qwen2.5:7b-instruct`. Cualquier modelo de la [librería de Ollama](https://ollama.com/library)
-  funciona sin cambiar código.
+### 4. Publicar
 
-## Cosas importantes a tener en cuenta
-
-- **Revisión editorial**: el modelo es gratuito y liviano, así que ocasionalmente puede cometer
-  errores de hecho o redactar de forma torpe. Te recomendamos revisar los primeros días de
-  publicaciones antes de confiar el proceso al 100%. Nada se publica sin pasar por tu propio
-  repositorio: siempre puedes revisar el commit antes de que se refleje en GitHub Pages, o
-  simplemente borrar/editar un artículo después de publicado.
-- **AdSense y contenido generado por IA**: Google permite contenido creado con ayuda de IA,
-  pero penaliza el contenido "delgado" o creado en masa sin valor añadido para el lector
-  (política de "contenido escalado con fines de manipulación de buscadores"). Por eso el script
-  limita la producción a 1-2 piezas diarias, cuida el resumen/atribución de fuentes y evita
-  copiar texto ajeno. Aun así, es tu responsabilidad revisar que el contenido cumpla las
-  políticas de AdSense a medida que el sitio crece.
-- **Derechos de las noticias**: el script nunca copia el texto de la fuente; genera un resumen
-  con palabras propias y siempre enlaza al artículo original con crédito visible.
-- **Sin API keys ni tarjetas de crédito**: todo corre en el runner gratuito de GitHub Actions
-  (ilimitado en repos públicos) con un modelo open-source local. Si en el futuro quieres mejor
-  calidad de texto, puedes cambiar `llamar_modelo()` en `generate_content.py` para usar la API
-  de Claude u otro proveedor — pero eso ya implicaría una API key y costo por uso.
-
-## Probar en tu propia computadora (opcional)
+Ejecuta el workflow **Publicar contenido aprobado** desde GitHub Actions o, localmente:
 
 ```bash
-pip install -r automation/requirements.txt
-ollama serve &                # requiere tener Ollama instalado: https://ollama.com/download
-ollama pull llama3.2:3b
-python automation/generate_content.py
+python automation/publish_approved.py
 ```
+
+El publicador comprueba que la imagen exista, genera el HTML y utiliza **la misma ruta de imagen** para el artículo, `noticias.html`/`resenas.html` y `index.html`.
+
+## Por qué se cambió el sistema
+
+El objetivo ya no es publicar mucho, sino publicar material que merezca permanecer en el sitio. Google indica que el contenido con poco valor, páginas con poco contenido original y contenido replicado sin aportación adicional puede afectar la monetización. Por eso la revisión humana y la selección de imagen forman ahora parte del flujo editorial.
+
+## Variables
+
+- `NUM_NOTICIAS`: 1 a 3, por defecto 2.
+- `GENERAR_GUIA`: `1` para generar una guía; `0` para desactivarla.
+- `OLLAMA_MODEL`: modelo de Ollama. Por defecto `llama3.2:3b`.
+- `MODO_BORRADOR`: debe permanecer en `1` para el workflow diario.
+
+## Regla editorial
+
+Antes de aprobar una pieza, comprueba:
+
+- ¿El artículo aporta información concreta?
+- ¿Hay datos o afirmaciones que deban verificarse?
+- ¿La noticia sigue siendo realmente tecnológica?
+- ¿La redacción aporta contexto propio?
+- ¿La imagen corresponde al tema?
+- ¿La imagen es local y tenemos derecho a utilizarla?
+- ¿El artículo sería útil aunque no tuviera anuncios?
+
+Si la respuesta es no, el borrador debe corregirse o rechazarse.
+
+
+## Imágenes editoriales
+Las publicaciones nuevas requieren una imagen local antes de pasar a `drafts/approved/`. Consulta `drafts/README_IMAGENES.md`.

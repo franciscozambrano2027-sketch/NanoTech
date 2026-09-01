@@ -7,7 +7,8 @@ FUNCIONES:
 2. Detecta noticias que todavía no han sido publicadas.
 3. Genera entre 2 y 3 noticias diarias mediante Ollama.
 4. Genera 1 artículo-guía diario si GENERAR_GUIA=1.
-5. Crea un HTML individual para cada artículo.
+5. Por defecto guarda las piezas como borradores para revisión humana.
+6. Crea un HTML individual solo cuando una pieza es aprobada.
 6. Genera un banner SVG original para cada artículo.
 7. Actualiza noticias.html mostrando solamente las noticias recientes.
 8. Actualiza resenas.html mostrando solamente las guías recientes.
@@ -93,6 +94,11 @@ MAX_GUIAS_EN_PORTADA = 8
 MAX_ARTICULOS_ESTADO = 500
 MAX_NOTICIAS_PUBLICADAS = 1000
 
+# La automatización genera borradores por defecto. La publicación pasa por revisión humana.
+MODO_BORRADOR = os.environ.get("MODO_BORRADOR", "1") == "1"
+DRAFT_PENDING_DIR = AUTO / "drafts" / "pending"
+DRAFT_APPROVED_DIR = AUTO / "drafts" / "approved"
+
 
 # ============================================================================
 # IMPORTAR GENERADOR SVG
@@ -100,7 +106,6 @@ MAX_NOTICIAS_PUBLICADAS = 1000
 
 sys.path.insert(0, str(AUTO))
 
-from svg_banner import build_banner_svg  # noqa: E402
 
 
 # ============================================================================
@@ -197,19 +202,24 @@ def slugify(texto: str) -> str:
     return texto[:80].rstrip("-")
 
 def ruta_imagen_relativa(slug: str, tipo: str = "noticia") -> str:
-    """Devuelve una única imagen para el artículo y todos sus listados.
+    """Busca una imagen editorial existente para el artículo.
 
-    Si existe una imagen editorial con el mismo slug en imagenes/noticias,
-    se reutiliza. Si no, se usa el banner SVG generado en imagenes/auto.
+    No crea imágenes automáticamente: una publicación nueva debe tener una
+    imagen elegida por el editor antes de pasar a approved/.
     """
-    if tipo == "noticia":
-        IMG_NOTICIAS_DIR.mkdir(parents=True, exist_ok=True)
-        for extension in (".jpg", ".jpeg", ".png", ".webp", ".svg"):
-            candidata = IMG_NOTICIAS_DIR / f"{slug}{extension}"
-            if candidata.exists():
-                return f"imagenes/noticias/{candidata.name}"
+    slug = str(slug or "").strip()
+    if not slug:
+        return ""
 
-    return f"imagenes/auto/{slug}.svg"
+    for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg"):
+        candidata = IMG_NOTICIAS_DIR / f"{slug}{ext}"
+        if candidata.is_file():
+            return f"imagenes/noticias/{candidata.name}"
+        candidata = IMG_AUTO_DIR / f"{slug}{ext}"
+        if candidata.is_file():
+            return f"imagenes/auto/{candidata.name}"
+
+    return ""
 
 
 def normalizar_imagen_estado(entrada: dict) -> dict:
@@ -505,6 +515,28 @@ def llamar_modelo(
 
 
 # ============================================================================
+# FILTRO DE RELEVANCIA TECNOLÓGICA
+# ============================================================================
+
+TECH_TERMS = (
+    "tecnolog", "hardware", "software", "internet", "wifi", "wi-fi",
+    "router", "redes", "5g", "4g", "fibra", "ethernet", "bluetooth",
+    "usb", "ssd", "nvme", "ram", "procesador", "cpu", "gpu", "nvidia",
+    "amd", "intel", "windows", "linux", "android", "ios", "iphone",
+    "ipad", "mac", "macbook", "samsung", "pixel", "xiaomi", "motorola",
+    "playstation", "xbox", "nintendo", "consola", "smartphone", "celular",
+    "laptop", "computadora", "pc", "monitor", "teclado", "mouse", "ia",
+    "inteligencia artificial", "openai", "google", "microsoft", "apple",
+    "meta", "amazon", "chip", "semiconductor", "app", "aplicación",
+    "ciberseguridad", "seguridad informática", "routeros", "mikrotik",
+)
+
+def es_tecnologica(titulo: str, resumen: str, categoria: str) -> bool:
+    texto = f"{titulo} {resumen} {categoria}".lower()
+    return any(term in texto for term in TECH_TERMS)
+
+
+# ============================================================================
 # RSS
 # ============================================================================
 
@@ -520,6 +552,11 @@ def obtener_noticias_nuevas(
     publicadas = set(
         estado.get(
             "noticias_publicadas",
+            []
+        )
+    ) | set(
+        estado.get(
+            "noticias_en_revision",
             []
         )
     )
@@ -684,7 +721,13 @@ def obtener_noticias_nuevas(
                     "published",
                     ""
                 )
+                or entrada.get("updated", "")
+                or entrada.get("created", "")
             ).strip()
+
+            if not es_tecnologica(titulo, resumen, categoria):
+                print(f"[omitida] No parece tecnológica: {titulo}")
+                continue
 
             candidatas.append(
                 {
@@ -779,14 +822,19 @@ RESUMEN ORIGINAL:
 URL DE LA FUENTE:
 {cruda['link']}
 
-Escribe una noticia propia de aproximadamente 350 a 450 palabras.
+Escribe una noticia propia de aproximadamente 650 a 900 palabras. La pieza debe aportar contexto y análisis suficiente para que tenga valor por sí misma.
 
 La estructura debe:
 
-1. Explicar qué ocurrió.
-2. Dar contexto.
-3. Explicar por qué puede ser relevante.
-4. Cerrar con una conclusión útil para el lector.
+1. Explicar con precisión qué ocurrió y qué se sabe realmente.
+2. Separar hechos confirmados de interpretaciones o expectativas.
+3. Dar contexto técnico que ayude a entender la noticia.
+4. Explicar por qué puede importar a usuarios, empresas o consumidores.
+5. Añadir una sección de "Qué significa en la práctica" con ejemplos concretos.
+6. Cerrar con una conclusión útil, sin repetir el titular.
+
+No rellenes el texto con generalidades. Si la fuente no aporta un dato, no lo inventes.
+No conviertas una noticia de otra categoría en una noticia tecnológica solo para publicarla.
 
 El artículo debe tener al menos dos encabezados <h2>.
 
@@ -892,17 +940,18 @@ Tema:
 Categoría:
 {tema['categoria']}
 
-Escribe una guía práctica de aproximadamente 500 a 650 palabras.
+Escribe una guía práctica de aproximadamente 800 a 1100 palabras.
 
 La guía debe:
 
-- Resolver una necesidad real.
-- Ser clara.
-- Ser práctica.
-- Evitar relleno.
-- Incluir pasos concretos cuando corresponda.
-- Explicar los errores más comunes.
-- Incluir recomendaciones útiles.
+- Resolver una necesidad real y concreta.
+- Ser original y específica, no una introducción genérica al tema.
+- Explicar el razonamiento detrás de cada recomendación.
+- Incluir pasos concretos y comprobaciones cuando corresponda.
+- Explicar errores frecuentes y cómo reconocerlos.
+- Incluir criterios para decidir cuándo una solución no conviene.
+- Incorporar una sección de "qué comprobar después" para verificar el resultado.
+- Evitar frases de relleno y consejos que podrían aplicarse a cualquier dispositivo.
 - No inventar especificaciones.
 - No mencionar que eres una IA.
 - No utilizar Markdown.
@@ -992,6 +1041,54 @@ Devuelve EXCLUSIVAMENTE un objeto JSON válido:
 
 
 # ============================================================================
+# BORRADORES
+# ============================================================================
+
+def guardar_borrador(datos: dict, origen: dict | None = None) -> dict:
+    """Guarda una pieza en revisión sin crear HTML público ni tocar los listados."""
+    DRAFT_PENDING_DIR.mkdir(parents=True, exist_ok=True)
+
+    slug_base = slugify(datos.get("titulo", "")) or "borrador"
+    fecha = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+    slug = f"{slug_base}-{fecha}"
+
+    borrador = {
+        "estado": "pendiente",
+        "creado": datetime.now(timezone.utc).isoformat(),
+        "slug_sugerido": slug,
+        "titulo": datos.get("titulo", ""),
+        "resumen_meta": datos.get("resumen_meta", ""),
+        "cuerpo_html": datos.get("cuerpo_html", ""),
+        "categoria": datos.get("categoria", "Tecnologia"),
+        "tipo": datos.get("tipo", "noticia"),
+        "fuente_nombre": datos.get("fuente_nombre", ""),
+        "fuente_url": datos.get("fuente_url", ""),
+        "imagen": "",
+        "imagen_instrucciones": (
+            "OBLIGATORIO: coloca primero la imagen elegida dentro del repositorio y escribe aqui su ruta relativa, "
+            "por ejemplo imagenes/noticias/nombre.jpg. Este borrador no se puede publicar sin imagen."
+        ),
+    }
+
+    if origen:
+        borrador["origen"] = {
+            "fuente_nombre": origen.get("fuente_nombre", ""),
+            "fuente_url": origen.get("link", ""),
+            "titulo_original": origen.get("titulo_original", ""),
+        }
+
+    ruta = DRAFT_PENDING_DIR / f"{slug}.json"
+    ruta.write_text(
+        json.dumps(borrador, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+    print(f"[borrador] {ruta.relative_to(BASE)}")
+    return borrador
+
+
+# ============================================================================
 # RENDERIZADO
 # ============================================================================
 
@@ -1034,8 +1131,18 @@ def render_y_guardar(
     # Una sola fuente de imagen: la misma ruta se usa en la noticia,
     # noticias.html e index.html.
     imagen = str(datos.get("imagen", "")).strip()
-    if not imagen:
+    if imagen:
+        if imagen.startswith(("http://", "https://")):
+            raise ValueError("Las imágenes editoriales deben ser locales al proyecto.")
+        ruta_img = (BASE / imagen).resolve()
+        if BASE.resolve() not in ruta_img.parents or not ruta_img.is_file():
+            raise FileNotFoundError(f"No existe la imagen editorial: {imagen}")
+    else:
         imagen = ruta_imagen_relativa(slug, datos["tipo"])
+        if not imagen:
+            raise ValueError(
+                "No hay imagen editorial. La publicación requiere una imagen local antes de aprobarse."
+            )
 
     contexto = {
         **datos,
@@ -1078,33 +1185,6 @@ def render_y_guardar(
         encoding="utf-8",
         newline="\n"
     )
-
-    # ----------------------------------------------------------------------
-    # Banner SVG
-    # ----------------------------------------------------------------------
-
-    IMG_AUTO_DIR.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    # Solo necesitamos generar el banner si no existe una imagen editorial.
-    if imagen == f"imagenes/auto/{slug}.svg":
-        banner = build_banner_svg(
-            datos["titulo"],
-            datos["categoria"],
-            seed=slug
-        )
-
-        ruta_banner = (
-            IMG_AUTO_DIR / f"{slug}.svg"
-        )
-
-        ruta_banner.write_text(
-            banner,
-            encoding="utf-8",
-            newline="\n"
-        )
 
     print(
         f"[ok] generado "
@@ -1277,6 +1357,9 @@ def reconstruir_listado(
     ][-maximo:]
 
     tarjetas = "\n"
+
+    if not recientes:
+        tarjetas = '<div class="repair-empty">Aún no hay publicaciones en esta sección.</div>\n'
 
     # Más reciente primero.
     for entrada in reversed(
@@ -1499,6 +1582,16 @@ def normalizar_estado(
             "articulos"
         ] = []
 
+    if not isinstance(
+        estado.get(
+            "noticias_en_revision"
+        ),
+        list
+    ):
+        estado[
+            "noticias_en_revision"
+        ] = []
+
     try:
 
         estado[
@@ -1534,11 +1627,12 @@ def escribir_resumen_notificacion(
         "https://nucleo-tech.org"
     )
 
+    accion = "generaron para revisión" if MODO_BORRADOR else "publicaron"
     lineas = [
         (
-            f"Se publicaron **"
+            f"Se {accion} **"
             f"{len(generados)}"
-            f"** pieza(s) nuevas hoy:"
+            f" pieza(s) nuevas hoy:"
         ),
         "",
     ]
@@ -1551,16 +1645,21 @@ def escribir_resumen_notificacion(
             else "Guia"
         )
 
-        url = (
-            f"{sitio}/"
-            f"{generado['slug']}.html"
-        )
-
-        lineas.append(
-            f"- **[{etiqueta}]** "
-            f"[{generado['titulo']}]"
-            f"({url})"
-        )
+        if MODO_BORRADOR:
+            lineas.append(
+                f"- **[{etiqueta}]** {generado['titulo']} "
+                f"— revisar en `automation/drafts/pending/`."
+            )
+        else:
+            url = (
+                f"{sitio}/"
+                f"{generado['slug']}.html"
+            )
+            lineas.append(
+                f"- **[{etiqueta}]** "
+                f"[{generado['titulo']}]"
+                f"({url})"
+            )
 
     resumen = (
         "\n".join(lineas)
@@ -1624,6 +1723,10 @@ def main() -> None:
         f"[config] Modelo Ollama: "
         f"{OLLAMA_MODEL}"
     )
+    print(
+        f"[config] Modo borrador: "
+        f"{MODO_BORRADOR}"
+    )
 
     print("=" * 70)
 
@@ -1636,6 +1739,7 @@ def main() -> None:
 
         {
             "noticias_publicadas": [],
+            "noticias_en_revision": [],
             "indice_guia_siguiente": 0,
             "articulos": [],
         }
@@ -1707,32 +1811,25 @@ def main() -> None:
                 cruda
             )
 
-            entrada = render_y_guardar(
-                datos,
-                estado,
-                env
-            )
-
-            # Registrar URL como publicada.
-            if cruda["link"] not in estado[
-                "noticias_publicadas"
-            ]:
-
-                estado[
-                    "noticias_publicadas"
-                ].append(
-                    cruda["link"]
+            if MODO_BORRADOR:
+                guardar_borrador(datos, cruda)
+                if cruda["link"] not in estado["noticias_en_revision"]:
+                    estado["noticias_en_revision"].append(cruda["link"])
+                generados.append({
+                    "titulo": datos["titulo"],
+                    "tipo": "noticia",
+                    "slug": slugify(datos["titulo"]),
+                })
+            else:
+                entrada = render_y_guardar(
+                    datos,
+                    estado,
+                    env
                 )
-
-            estado[
-                "articulos"
-            ].append(
-                entrada
-            )
-
-            generados.append(
-                entrada
-            )
+                if cruda["link"] not in estado["noticias_publicadas"]:
+                    estado["noticias_publicadas"].append(cruda["link"])
+                estado["articulos"].append(entrada)
+                generados.append(entrada)
 
         except Exception as e:
 
@@ -1794,27 +1891,23 @@ def main() -> None:
                     tema
                 )
 
-                entrada = render_y_guardar(
-                    datos,
-                    estado,
-                    env
-                )
-
-                estado[
-                    "indice_guia_siguiente"
-                ] = (
-                    idx + 1
-                ) % len(temas)
-
-                estado[
-                    "articulos"
-                ].append(
-                    entrada
-                )
-
-                generados.append(
-                    entrada
-                )
+                if MODO_BORRADOR:
+                    guardar_borrador(datos)
+                    estado["indice_guia_siguiente"] = (idx + 1) % len(temas)
+                    generados.append({
+                        "titulo": datos["titulo"],
+                        "tipo": "guia",
+                        "slug": slugify(datos["titulo"]),
+                    })
+                else:
+                    entrada = render_y_guardar(
+                        datos,
+                        estado,
+                        env
+                    )
+                    estado["indice_guia_siguiente"] = (idx + 1) % len(temas)
+                    estado["articulos"].append(entrada)
+                    generados.append(entrada)
 
             except Exception as e:
 
@@ -1849,18 +1942,15 @@ def main() -> None:
     # ACTUALIZAR NOTICIAS.HTML Y RESENAS.HTML
     # ======================================================================
 
-    print("")
-    print(
-        ">>> ACTUALIZANDO LISTADOS"
-    )
-
-    reconstruir_listados(
-        estado
-    )
-
-    reconstruir_home(
-        estado
-    )
+    if not MODO_BORRADOR:
+        print("")
+        print(">>> ACTUALIZANDO LISTADOS")
+        reconstruir_listados(estado)
+        reconstruir_home(estado)
+    else:
+        print("")
+        print("[revision] Los borradores NO se publican automaticamente.")
+        print('[revision] Añade la imagen al repositorio, completa el campo "imagen" y mueve el JSON a drafts/approved/.')
 
     # ======================================================================
     # GUARDAR ESTADO

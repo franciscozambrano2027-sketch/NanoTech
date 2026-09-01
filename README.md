@@ -20,8 +20,10 @@ Cada guía sigue el ciclo:
 
 Los comandos usan ejemplos RouterOS v7 y deben adaptarse a la topología real (interfaces, subredes, listas WAN/LAN y versión instalada).
 
-## AdSense
+## AdSense y criterio editorial
 Los contenedores `adsense-slot` quedan preparados para insertar unidades después de configurar AdSense. No se incentivan clics ni se camuflan anuncios como contenido.
+
+La publicación diaria está separada en dos fases: `automation/generate_content.py` genera borradores y `automation/publish_approved.py` publica únicamente piezas revisadas. Las imágenes se seleccionan antes de publicar.
 
 ## Imágenes
 Los diagramas de `imagenes/guias` y `imagenes/biblioteca` son gráficos originales de NúcleoTech. Las fotografías de terceros, cuando existan, deben conservar su atribución y licencia correspondiente.
@@ -32,4 +34,4 @@ Los diagramas de `imagenes/guias` y `imagenes/biblioteca` son gráficos original
 - MikroTik separado de PC/celulares.
 - Cada guía MikroTik mantiene comandos de consulta, configuración y verificación; la interfaz ahora explica el flujo de trabajo.
 - Diseño responsive y navegación de artículos sin menú lateral sticky.
-- URL pública: https://franciscozambrano2027-sketch.github.io/NanoTech/
+- URL pública: https://nucleo-tech.org/

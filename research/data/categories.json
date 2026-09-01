@@ -2,12 +2,12 @@
   "categories": [
     {
       "id": "reviews",
-      "name": "Reseñas y guías de compra",
+      "name": "Guías y análisis",
       "path": "/resenas.html"
     },
     {
       "id": "guides",
-      "name": "Guías",
+      "name": "Guías prácticas",
       "path": "/resenas.html"
     },
     {

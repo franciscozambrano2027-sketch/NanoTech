@@ -1,0 +1,44 @@
+name: Publicar contenido aprobado
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publicar-aprobados
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install -r automation/requirements.txt
+
+      - name: Publicar aprobados
+        run: python automation/publish_approved.py
+
+      - name: Commit y push
+        run: |
+          git config user.name "nucleotech-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No hubo publicaciones."
+          else
+            git commit -m "Publicacion editorial aprobada: $(date -u +'%Y-%m-%d')"
+            git push
+          fi
