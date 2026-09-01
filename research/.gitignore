@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+.vscode/
+.env
+node_modules/
+
+# NúcleoTech automation runtime
+__pycache__/
+*.pyc
+logs/*.log
+
+# Logs de Ollama
+ollama.log

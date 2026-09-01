@@ -1,0 +1,40 @@
+{
+  "_comentario": "Fuentes RSS de noticias de tecnologia.",
+  "fuentes": [
+    {
+      "nombre": "Xataka",
+      "url": "https://www.xataka.com/feedburner.xml",
+      "categoria": "Tecnologia"
+    },
+    {
+      "nombre": "Xataka Android",
+      "url": "https://www.xatakandroid.com/feedburner2.xml",
+      "categoria": "Smartphones"
+    },
+    {
+      "nombre": "Xataka Movil",
+      "url": "https://www.xatakamovil.com/feedburner2.xml",
+      "categoria": "Smartphones"
+    },
+    {
+      "nombre": "Genbeta",
+      "url": "https://feeds.weblogssl.com/genbeta",
+      "categoria": "Software"
+    },
+    {
+      "nombre": "Applesfera",
+      "url": "https://feeds.weblogssl.com/applesfera",
+      "categoria": "Apple"
+    },
+    {
+      "nombre": "Hipertextual Tecnologia",
+      "url": "https://hipertextual.com/feed",
+      "categoria": "Tecnologia"
+    },
+    {
+      "nombre": "Microsiervos",
+      "url": "https://www.microsiervos.com/index.xml",
+      "categoria": "Tecnologia"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "id": "reviews",
+      "name": "Reseñas y guías de compra",
+      "path": "/resenas.html"
+    },
+    {
+      "id": "guides",
+      "name": "Guías",
+      "path": "/resenas.html"
+    },
+    {
+      "id": "repairs",
+      "name": "Reparaciones",
+      "path": "/reparaciones.html"
+    },
+    {
+      "id": "mikrotik",
+      "name": "MikroTik",
+      "path": "/mikrotik.html"
+    }
+  ]
+}
