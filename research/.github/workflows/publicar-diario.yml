@@ -1,0 +1,81 @@
+name: Publicar contenido diario
+
+on:
+  schedule:
+    # 13:00 UTC = 08:00 en Ecuador (UTC-5). Ajusta la hora a tu gusto.
+    - cron: "0 13 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publicar-diario
+  cancel-in-progress: false
+
+jobs:
+  generar-y-publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias de Python
+        run: pip install -r automation/requirements.txt
+
+      - name: Instalar Ollama (modelo open-source local, sin costo ni API key)
+        run: curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Iniciar servidor de Ollama
+        run: |
+          nohup ollama serve > ollama.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:11434 >/dev/null && break
+            sleep 2
+          done
+
+      - name: Descargar el modelo
+        env:
+          OLLAMA_MODEL: ${{ vars.OLLAMA_MODEL || 'llama3.2:3b' }}
+        run: ollama pull "$OLLAMA_MODEL"
+
+      - name: Generar contenido del dia
+        env:
+          OLLAMA_MODEL: ${{ vars.OLLAMA_MODEL || 'llama3.2:3b' }}
+          NUM_NOTICIAS: ${{ vars.NUM_NOTICIAS || '2' }}
+          GENERAR_GUIA: ${{ vars.GENERAR_GUIA || '1' }}
+        run: python automation/generate_content.py
+
+      - name: Commit y push si hay cambios
+        run: |
+          git config user.name "nucleotech-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Sin cambios que publicar hoy."
+          else
+            git commit -m "Publicacion automatica: $(date -u +'%Y-%m-%d')"
+            git push
+          fi
+
+      - name: Avisar con un Issue si se publico algo
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -s /tmp/nucleotech_resumen.md ]; then
+            gh issue create \
+              --title "Publicacion automatica $(date -u +'%Y-%m-%d')" \
+              --body-file /tmp/nucleotech_resumen.md
+          else
+            echo "No hubo contenido nuevo hoy, no se crea aviso."
+          fi
