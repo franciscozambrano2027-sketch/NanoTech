@@ -28,7 +28,7 @@
     <header class="site-header">
         <div class="wrap"><a class="logo" href="index.html">Núcleo<span>Tech</span></a>
             <nav class="main-nav"><a href="index.html">Inicio</a><a href="resenas.html">Reseñas</a><a class=""
-                    href="reparaciones.html">Reparaciones</a><a class="active" href="mikrotik.html">MikroTik</a><a
+                    href="reparaciones.html">Reparaciones</a><a class="active" href="mikrotik.html">MikroTik</a><a href="cotizacion.html">Cotización</a><a
                     href="comunidad-facebook.html">Comunidad</a><a href="sobre-nosotros.html">Sobre nosotros</a><a
                     href="contacto.html">Contacto</a></nav><button aria-expanded="false" aria-label="Abrir menú"
                 class="nav-toggle">Menú</button>
@@ -102,8 +102,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/interface bridge port print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Lista todas las interfaces fisicas y virtuales con su estado. Busca una "R" junto al nombre: significa "running" (activa). Si falta, la interfaz esta caida o deshabilitada. Lista que puertos fisicos pertenecen a cada bridge (la "red" logica que agrupa varios puertos). Si el puerto de tu cliente no aparece aqui, esta fisicamente conectado pero no forma parte de esa red.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -151,8 +150,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/ip dhcp-client print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Lista las direcciones IP asignadas a cada interfaz. Confirma que la IP se creo correctamente y que no choca con otra direccion ya existente en la red. Muestra si el propio router esta recibiendo IP por DHCP en su interfaz WAN (tipico al conectarse a un modem/ISP). "status: bound" significa que ya obtuvo IP, gateway y DNS del proveedor; cualquier otro estado indica que el router no ha logrado conectarse.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -199,8 +197,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/ping 1.1.1.1 count=5</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Lista las rutas que el router conoce. Para salir a Internet debe existir una ruta "0.0.0.0/0" (ruta por defecto); si no aparece, el router no sabe hacia donde mandar el trafico que no es de su propia red. Prueba de conectividad hacia Internet usando una IP publica conocida (Cloudflare), sin depender del DNS. Si responde con 0% de perdida, el problema NO es de ruteo o de Internet, sino probablemente de DNS.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -248,8 +245,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/ip route print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Prueba de conectividad hacia el propio router/gateway desde un cliente de la LAN. Si no responde, el problema esta en la red local -cableado, bridge o IP-, no en Internet. Lista las rutas que el router conoce. Para salir a Internet debe existir una ruta "0.0.0.0/0" (ruta por defecto); si no aparece, el router no sabe hacia donde mandar el trafico que no es de su propia red.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -297,8 +293,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/ip dns cache print</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Muestra los servidores DNS configurados en el router y si tiene habilitado el modo "allow-remote-requests" para servir de DNS a los clientes. Muestra las resoluciones DNS que el router ya tiene guardadas en cache. Ayuda a diferenciar un fallo de resolucion nuevo de uno que ya estaba fallando desde antes.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -347,8 +342,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/ip firewall connection print</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Confirma que la regla de NAT existe, esta activa y tiene la accion "masquerade". Lista las conexiones activas que el router esta rastreando (connection tracking). Si el trafico de un cliente no aparece aqui, es probable que ni siquiera este llegando al router.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -395,8 +389,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/ip firewall connection print where connection-state=new</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Igual que el listado normal, pero suma cuantos paquetes y bytes ha procesado cada regla. Una regla con contador en cero probablemente nunca se esta aplicando -revisa su orden o sus condiciones-. Filtra las conexiones activas por un criterio especifico -aqui, solo las que se estan estableciendo en ese momento-, para ver trafico nuevo en tiempo real sin el ruido de las conexiones ya existentes.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -443,8 +436,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/file print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta la consulta y registra el resultado. Adapta las IP,
-                                interfaces y nombres de listas a tu topología.</p>
+                            <p class="code-caption">Exporta toda la configuracion actual a un archivo de texto (.rsc) legible, que puedes descargar o leer en pantalla. Es tu respaldo "en texto plano" antes de tocar nada: si algo sale mal, sabes exactamente que habia antes. Lista los archivos guardados en el router -respaldos, exports, logs-. Usalo para confirmar que el archivo se creo, revisar su tamano y su fecha.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>

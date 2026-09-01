@@ -314,7 +314,6 @@ opacity: .9;
 
 @media (max-width: 900px) {
 
-```
 .about-hero {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -333,7 +332,6 @@ opacity: .9;
     grid-template-columns: 1fr;
     gap: 30px;
 }
-```
 
 }
 
@@ -341,7 +339,6 @@ opacity: .9;
 
 @media (max-width: 600px) {
 
-```
 .about-hero {
     margin-top: 10px;
     margin-bottom: 60px;
@@ -377,7 +374,6 @@ opacity: .9;
     margin-bottom: 60px;
     padding: 50px 10px;
 }
-```
 
 }
 
@@ -657,7 +653,6 @@ padding-bottom: 3px;
 
 @media (max-width: 900px) {
 
-```
 .contact-hero {
     grid-template-columns: 1fr;
     gap: 35px;
@@ -667,7 +662,6 @@ padding-bottom: 3px;
     grid-template-columns: 1fr;
     gap: 25px;
 }
-```
 
 }
 
@@ -675,7 +669,6 @@ padding-bottom: 3px;
 
 @media (max-width: 600px) {
 
-```
 .contact-hero {
     margin-bottom: 65px;
 }
@@ -713,6 +706,68 @@ padding-bottom: 3px;
     gap: 18px;
     align-items: center;
 }
-```
 
+}
+
+/* =========================================================
+COTIZACION — NUCLEOTECH
+========================================================= */
+
+.quote-hero{display:grid;gap:18px;max-width:820px;margin:20px 0 50px}
+.quote-hero p.lead{font-size:1.1rem;line-height:1.7;color:var(--muted)}
+
+.quote-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:60px}
+.quote-card{display:flex;flex-direction:column;gap:10px;padding:26px 22px;border-radius:16px;border:1px solid var(--line);background:rgba(17,25,35,.55);cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:.2s}
+.quote-card:hover{transform:translateY(-3px);border-color:#405365}
+.quote-card .icono{font-size:1.7rem}
+.quote-card h3{font:600 18px var(--display);margin:0}
+.quote-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+.quote-card .desde{margin-top:auto;padding-top:10px;font:700 12px var(--display);color:var(--amber)}
+
+.quote-builder{border:1px solid var(--line);border-radius:20px;background:rgba(17,25,35,.5);padding:34px;margin-bottom:60px}
+.quote-builder h2{margin:0 0 6px}
+.quote-builder>p{color:var(--muted);margin:0 0 26px;max-width:70ch}
+.builder-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:34px;align-items:start}
+.builder-fields{display:grid;gap:14px}
+.builder-field{display:grid;gap:6px}
+.builder-field label{font:600 12px var(--display);letter-spacing:.03em;color:var(--muted);text-transform:uppercase}
+.builder-field select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:14px var(--body)}
+.builder-summary{position:sticky;top:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:22px}
+.builder-summary h3{margin:0 0 14px;font:600 16px var(--display)}
+.builder-line{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+.builder-line span:first-child{color:var(--muted)}
+.builder-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.builder-total strong{font:700 26px var(--display);color:var(--amber)}
+.builder-note{font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.builder-summary .btn{width:100%;margin-top:16px}
+
+.quote-modal-overlay{position:fixed;inset:0;background:rgba(6,9,13,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:200}
+.quote-modal-overlay.open{display:flex}
+.quote-modal{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px}
+.quote-modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
+.quote-modal-head h3{margin:0;font:600 22px var(--display)}
+.quote-modal-close{background:none;border:0;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;padding:4px}
+.quote-modal-close:hover{color:var(--text)}
+.quote-modal p.sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+.quote-service{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.quote-service:last-of-type{border-bottom:none}
+.quote-service input[type=checkbox]{margin-right:12px;accent-color:var(--amber)}
+.quote-service-label{display:flex;align-items:center;font-size:14px}
+.quote-service-price{font:700 13px var(--display);color:var(--teal);white-space:nowrap}
+.quote-modal textarea{width:100%;margin-top:16px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:13.5px var(--body);resize:vertical;min-height:80px}
+.quote-modal-total{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0 4px}
+.quote-modal-total strong{font:700 22px var(--display);color:var(--amber)}
+.quote-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.quote-modal-actions .btn{margin-top:0;flex:1;min-width:160px;text-align:center}
+.quote-modal-note{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.5}
+
+@media(max-width:1050px){
+.quote-grid{grid-template-columns:repeat(2,1fr)}
+.builder-grid{grid-template-columns:1fr}
+.builder-summary{position:static}
+}
+@media(max-width:600px){
+.quote-grid{grid-template-columns:1fr}
+.quote-builder{padding:22px 18px}
+.quote-modal{padding:20px}
 }

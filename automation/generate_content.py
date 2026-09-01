@@ -1304,6 +1304,101 @@ def reconstruir_listados(
 
 
 # ============================================================================
+# PORTADA (index.html) - CONTENIDO ROTATIVO
+# ============================================================================
+
+def _reemplazar_entre_marcas(
+    contenido: str,
+    marca_inicio: str,
+    marca_fin: str,
+    nuevo_bloque: str,
+) -> str | None:
+    inicio = contenido.find(marca_inicio)
+    fin = contenido.find(marca_fin)
+    if inicio == -1 or fin == -1:
+        return None
+    fin += len(marca_fin)
+    return contenido[:inicio] + marca_inicio + nuevo_bloque + marca_fin + contenido[fin:]
+
+
+def reconstruir_home(estado: dict, maximo_lista: int = 6) -> None:
+    """Actualiza index.html con el contenido publicado más reciente
+    (noticias + guías mezcladas), para que la portada deje de ser estática."""
+
+    ruta = BASE / "index.html"
+    if not ruta.exists():
+        print("[aviso] No existe index.html; no se puede actualizar la portada.")
+        return
+
+    articulos = [a for a in estado.get("articulos", []) if isinstance(a, dict)]
+    if not articulos:
+        print("[info] Sin artículos todavía; la portada queda sin cambios.")
+        return
+
+    recientes = list(reversed(articulos))  # más nuevo primero
+    destacado = recientes[0]
+    lista = recientes[1 : 1 + maximo_lista]
+    sidebar = recientes[: max(5, 1)][:5]
+
+    def esc(v):
+        return html.escape(str(v or ""), quote=True)
+
+    # --- Hero destacado ---
+    tipo = destacado.get("tipo")
+    eyebrow = "NOTICIA DESTACADA" if tipo == "noticia" else "GUÍA DESTACADA"
+    accion = "la noticia" if tipo == "noticia" else "la guía"
+    hero_html = (
+        f'<div><p class="eyebrow-plain">{eyebrow}</p>'
+        f'<h1>{esc(destacado.get("titulo"))}</h1>'
+        f'<p class="dek">{esc(destacado.get("resumen_meta"))}</p>'
+        f'<p class="hero-meta">Por el equipo de NúcleoTech · {esc(destacado.get("categoria"))}</p>'
+        f'<a class="btn" href="{destacado.get("slug")}.html">Leer {accion}</a></div>'
+        f'<img class="hero-image" src="imagenes/auto/{destacado.get("slug")}.svg" '
+        f'alt="{esc(destacado.get("titulo"))}" loading="eager">'
+    )
+
+    # --- Últimas publicaciones ---
+    filas = []
+    for a in lista:
+        tipo_legible = "Noticia" if a.get("tipo") == "noticia" else "Guía"
+        filas.append(
+            '<article class="article-row">'
+            f'<img class="article-thumb" src="imagenes/auto/{a.get("slug")}.svg" '
+            f'alt="{esc(a.get("titulo"))}" loading="lazy">'
+            f'<div><p class="category">{esc(a.get("categoria"))}</p>'
+            f'<h3><a href="{a.get("slug")}.html">{esc(a.get("titulo"))}</a></h3>'
+            f'<p>{esc(a.get("resumen_meta"))}</p>'
+            f'<p class="meta">{tipo_legible}</p></div></article>'
+        )
+    lista_html = "\n".join(filas)
+
+    # --- Sidebar "recién publicado" ---
+    items = []
+    for i, a in enumerate(sidebar, start=1):
+        items.append(
+            f'<li><span class="num">{i:03d}</span>'
+            f'<a href="{a.get("slug")}.html">{esc(a.get("titulo"))}</a></li>'
+        )
+    sidebar_html = "\n".join(items)
+
+    contenido = ruta.read_text(encoding="utf-8")
+
+    for marca_i, marca_f, bloque in [
+        ("<!-- HERO_DESTACADO_START -->", "<!-- HERO_DESTACADO_END -->", hero_html),
+        ("<!-- ULTIMAS_PUBLICACIONES_START -->", "<!-- ULTIMAS_PUBLICACIONES_END -->", lista_html),
+        ("<!-- RECIENTES_SIDEBAR_START -->", "<!-- RECIENTES_SIDEBAR_END -->", sidebar_html),
+    ]:
+        nuevo = _reemplazar_entre_marcas(contenido, marca_i, marca_f, "\n" + bloque + "\n")
+        if nuevo is None:
+            print(f"[aviso] No se encontraron las marcas {marca_i} en index.html")
+            continue
+        contenido = nuevo
+
+    ruta.write_text(contenido, encoding="utf-8", newline="\n")
+    print(f"[ok] portada (index.html) actualizada con lo más reciente: {destacado.get('titulo')}")
+
+
+# ============================================================================
 # ESTADO
 # ============================================================================
 
@@ -1687,6 +1782,10 @@ def main() -> None:
     )
 
     reconstruir_listados(
+        estado
+    )
+
+    reconstruir_home(
         estado
     )
 

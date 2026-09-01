@@ -31,7 +31,7 @@
             <nav class="main-nav">
                 <a class="" href="index.html">Inicio</a>
                 <a class="" href="resenas.html">Reseñas</a>
-                <a class="" href="reparaciones.html">Reparaciones</a><a class="active" href="mikrotik.html">MikroTik</a>
+                <a class="" href="reparaciones.html">Reparaciones</a><a class="active" href="mikrotik.html">MikroTik</a><a href="cotizacion.html">Cotización</a>
                 <a href="comunidad-facebook.html">Comunidad</a>
                 <a class="" href="sobre-nosotros.html">Sobre nosotros</a>
                 <a class="" href="contacto.html">Contacto</a>
@@ -123,9 +123,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/file print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico. Si
-                                modificas la configuración, vuelve a ejecutar la consulta y compara el resultado. Adapta
-                                interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                            <p class="code-caption">Exporta toda la configuracion actual a un archivo de texto (.rsc) legible, que puedes descargar o leer en pantalla. Es tu respaldo "en texto plano" antes de tocar nada: si algo sale mal, sabes exactamente que habia antes. Lista los archivos guardados en el router -respaldos, exports, logs-. Usalo para confirmar que el archivo se creo, revisar su tamano y su fecha.</p>
                         </div>
                     </div>
                 </section>
@@ -156,9 +154,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/file print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico. Si
-                                modificas la configuración, vuelve a ejecutar la consulta y compara el resultado. Adapta
-                                interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                            <p class="code-caption">Crea un respaldo binario completo (.backup) del router, incluyendo usuarios y certificados. A diferencia del export, este archivo solo se puede restaurar en un router con el mismo modelo/arquitectura, pero recupera el equipo tal cual estaba. Lista los archivos guardados en el router -respaldos, exports, logs-. Usalo para confirmar que el archivo se creo, revisar su tamano y su fecha.</p>
                         </div>
                     </div>
                 </section>
@@ -190,9 +186,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/system routerboard print</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico. Si
-                                modificas la configuración, vuelve a ejecutar la consulta y compara el resultado. Adapta
-                                interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                            <p class="code-caption">Muestra el uso de CPU, la memoria RAM libre y el tiempo de actividad (uptime) del router. Sirve para descartar que el problema sea, simplemente, un equipo sobrecargado. Muestra el modelo de la placa, la version de RouterBOOT y el numero de serie. Sirve para confirmar que el respaldo corresponde al equipo correcto antes de restaurar en otro router.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
@@ -237,9 +231,7 @@
                                         type="button">Copiar</button></div>
                                 <pre><code>/file print detail</code></pre>
                             </div>
-                            <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico. Si
-                                modificas la configuración, vuelve a ejecutar la consulta y compara el resultado. Adapta
-                                interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                            <p class="code-caption">Aplica un archivo .rsc previamente exportado, ejecutando esos comandos como si los escribieras a mano. Se usa para restaurar una configuracion guardada; si el archivo tiene errores, RouterOS se detiene en la primera linea que falle. Lista los archivos guardados en el router -respaldos, exports, logs-. Usalo para confirmar que el archivo se creo, revisar su tamano y su fecha.</p>
                         </div>
                         <div class="repair-step-grid">
                             <div>
