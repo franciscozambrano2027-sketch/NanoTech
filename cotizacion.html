@@ -1,423 +1,595 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cotización — NúcleoTech</title>
-<meta name="description" content="Cotizaciones inteligentes de PC, celulares, consolas, redes y servicios técnicos en NúcleoTech.">
-<link rel="stylesheet" href="styles.css">
-<link rel="canonical" href="https://nucleo-tech.org/cotizacion.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Cotización — NúcleoTech</title>
+    <meta name="description"
+        content="Cotizaciones inteligentes de PC, celulares, consolas, redes y servicios técnicos en NúcleoTech.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="canonical" href="https://nucleo-tech.org/cotizacion.html">
 
-<style>
-.quote-grid-pro{gap:18px;margin:24px 0 34px}
-.quote-card-pro{position:relative;text-align:left;min-height:185px;padding:24px;border:1px solid rgba(127,127,127,.20);border-radius:20px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;overflow:hidden}
-.quote-card-pro:before{content:"";position:absolute;inset:auto -30px -60px auto;width:150px;height:150px;border-radius:50%;background:rgba(127,127,127,.06)}
-.quote-card-pro:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(0,0,0,.12);border-color:rgba(127,127,127,.42)}
-.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.quote-card-pro .icono{font-size:32px}
-.card-arrow{font-size:22px;opacity:.55}
-.quote-card-pro h3{font-size:21px;margin:0 0 8px}
-.quote-card-pro p{font-size:14px;opacity:.75;margin:0 0 18px}
-.quote-card-pro .desde{font-weight:700;font-size:13px}
-.market-info{display:flex;flex-direction:column;gap:4px;padding:13px 16px;margin-top:10px;border-left:3px solid currentColor;border-radius:8px;background:rgba(127,127,127,.06);font-size:13px}
-.market-info span{opacity:.7}
-.builder-line span{display:flex;flex-direction:column;gap:3px}
-.builder-line small{font-size:12px;opacity:.65}
-.quote-modal{max-width:720px!important;border-radius:22px!important;box-shadow:0 24px 70px rgba(0,0,0,.28)}
-.quote-modal-head{padding:22px 24px!important}
-.quote-modal-head h3{font-size:22px}
-.quote-services{display:grid;gap:8px}
-.quote-service{border:1px solid rgba(127,127,127,.16);border-radius:12px;padding:13px 14px!important;transition:background .15s,border-color .15s}
-.quote-service:hover{background:rgba(127,127,127,.05);border-color:rgba(127,127,127,.32)}
-.quote-service-label{display:flex;align-items:center;gap:9px}
-.quote-service-price{font-weight:700;white-space:nowrap}
-</style>
+    <style>
+        .quote-grid-pro {
+            gap: 18px;
+            margin: 24px 0 34px
+        }
+
+        .quote-card-pro {
+            position: relative;
+            text-align: left;
+            min-height: 185px;
+            padding: 24px;
+            border: 1px solid rgba(127, 127, 127, .20);
+            border-radius: 20px;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+            overflow: hidden
+        }
+
+        .quote-card-pro:before {
+            content: "";
+            position: absolute;
+            inset: auto -30px -60px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(127, 127, 127, .06)
+        }
+
+        .quote-card-pro:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, .12);
+            border-color: rgba(127, 127, 127, .42)
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px
+        }
+
+        .quote-card-pro .icono {
+            font-size: 32px
+        }
+
+        .card-arrow {
+            font-size: 22px;
+            opacity: .55
+        }
+
+        .quote-card-pro h3 {
+            font-size: 21px;
+            margin: 0 0 8px
+        }
+
+        .quote-card-pro p {
+            font-size: 14px;
+            opacity: .75;
+            margin: 0 0 18px
+        }
+
+        .quote-card-pro .desde {
+            font-weight: 700;
+            font-size: 13px
+        }
+
+        .market-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 13px 16px;
+            margin-top: 10px;
+            border-left: 3px solid currentColor;
+            border-radius: 8px;
+            background: rgba(127, 127, 127, .06);
+            font-size: 13px
+        }
+
+        .market-info span {
+            opacity: .7
+        }
+
+        .builder-line span {
+            display: flex;
+            flex-direction: column;
+            gap: 3px
+        }
+
+        .builder-line small {
+            font-size: 12px;
+            opacity: .65
+        }
+
+        .quote-modal {
+            max-width: 720px !important;
+            border-radius: 22px !important;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, .28)
+        }
+
+        .quote-modal-head {
+            padding: 22px 24px !important
+        }
+
+        .quote-modal-head h3 {
+            font-size: 22px
+        }
+
+        .quote-services {
+            display: grid;
+            gap: 8px
+        }
+
+        .quote-service {
+            border: 1px solid rgba(127, 127, 127, .16);
+            border-radius: 12px;
+            padding: 13px 14px !important;
+            transition: background .15s, border-color .15s
+        }
+
+        .quote-service:hover {
+            background: rgba(127, 127, 127, .05);
+            border-color: rgba(127, 127, 127, .32)
+        }
+
+        .quote-service-label {
+            display: flex;
+            align-items: center;
+            gap: 9px
+        }
+
+        .quote-service-price {
+            font-weight: 700;
+            white-space: nowrap
+        }
+    </style>
 </head>
+
 <body>
-<header class="site-header"><div class="wrap">
-<a href="index.html" class="logo">Núcleo<span>Tech</span></a>
-<nav class="main-nav">
-<a href="index.html">Inicio</a><a href="resenas.html">Reseñas</a><a href="reparaciones.html">Reparaciones</a>
-<a href="mikrotik.html">MikroTik</a><a href="noticias.html">Noticias</a><a href="cotizacion.html" class="active">Cotización</a>
-<a href="comunidad-facebook.html">Comunidad</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="contacto.html">Contacto</a>
-</nav><button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
-</div></header>
+    <header class="site-header">
+        <div class="wrap">
+            <a href="index.html" class="logo">Núcleo<span>Tech</span></a>
+            <nav class="main-nav">
+                <a href="index.html">Inicio</a><a href="resenas.html">Reseñas</a><a
+                    href="reparaciones.html">Reparaciones</a>
+                <a href="mikrotik.html">MikroTik</a><a href="noticias.html">Noticias</a><a href="cotizacion.html"
+                    class="active">Cotización</a>
+                <a href="comunidad-facebook.html">Comunidad</a><a href="sobre-nosotros.html">Sobre nosotros</a><a
+                    href="contacto.html">Contacto</a>
+            </nav><button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+        </div>
+    </header>
 
-<main class="wrap page-body">
-<p class="eyebrow-plain">COTIZACIÓN INTELIGENTE</p>
-<div style="margin:12px 0 22px;padding:14px 16px;border:1px solid rgba(127,127,127,.35);border-radius:12px;font-size:.92rem;">
-<strong>Base de precios actualizada: 31 de agosto de 2026.</strong>
- Los precios de hardware son referencias comerciales para Ecuador; pueden cambiar por proveedor, stock, importación y forma de pago.
- En reparaciones, el valor es mano de obra/servicio cuando se indique y el repuesto puede cobrarse aparte.
-</div>
-<div class="quote-hero">
-<h1>Cotiza tu equipo con más precisión</h1>
-<p class="lead">Selecciona el equipo, modelo o plataforma y el sistema mostrará servicios y componentes compatibles. Los valores son referenciales para Ecuador y deben confirmarse según repuesto, disponibilidad y diagnóstico.</p>
-</div>
+    <main class="wrap page-body">
+        <p class="eyebrow-plain">COTIZACIÓN INTELIGENTE</p>
+        <div
+            style="margin:12px 0 22px;padding:14px 16px;border:1px solid rgba(127,127,127,.35);border-radius:12px;font-size:.92rem;">
+            <strong>Base de precios actualizada: 31 de agosto de 2026.</strong>
+            Los precios de hardware son referencias comerciales para Ecuador; pueden cambiar por proveedor, stock,
+            importación y forma de pago.
+            En reparaciones, el valor es mano de obra/servicio cuando se indique y el repuesto puede cobrarse aparte.
+        </div>
+        <div class="quote-hero">
+            <h1>Cotiza tu equipo con más precisión</h1>
+            <p class="lead">Selecciona el equipo, modelo o plataforma y el sistema mostrará servicios y componentes
+                compatibles. Los valores son referenciales para Ecuador y deben confirmarse según repuesto,
+                disponibilidad y diagnóstico.</p>
+        </div>
 
-<div class="quote-grid quote-grid-pro">
-<button class="quote-card quote-card-pro" data-modal="modal-consolas">
-<span class="card-top"><span class="icono">🎮</span><span class="card-arrow">↗</span></span>
-<h3>Consolas</h3><p>PS2 → PS5 · Xbox · Switch</p><span class="desde">Cotizar por modelo</span>
-</button>
-<button class="quote-card quote-card-pro" data-modal="modal-pcserv">
-<span class="card-top"><span class="icono">🖥️</span><span class="card-arrow">↗</span></span>
-<h3>PC & Laptop</h3><p>Mantenimiento · upgrades · diagnóstico</p><span class="desde">Cotizar por equipo</span>
-</button>
-<button class="quote-card quote-card-pro" data-modal="modal-redes">
-<span class="card-top"><span class="icono">📡</span><span class="card-arrow">↗</span></span>
-<h3>Redes</h3><p>MikroTik · Wi-Fi · VLAN · Firewall</p><span class="desde">Desde $15</span>
-</button>
-<button class="quote-card quote-card-pro" data-modal="modal-celular">
-<span class="card-top"><span class="icono">📱</span><span class="card-arrow">↗</span></span>
-<h3>Smartphones</h3><p>Apple · Samsung · Xiaomi · Motorola</p><span class="desde">Cotizar por modelo</span>
-</button>
-</div>
+        <div class="quote-grid quote-grid-pro">
+            <button class="quote-card quote-card-pro" data-modal="modal-consolas">
+                <span class="card-top"><span class="icono">🎮</span><span class="card-arrow">↗</span></span>
+                <h3>Consolas</h3>
+                <p>PS2 → PS5 · Xbox · Switch</p><span class="desde">Cotizar por modelo</span>
+            </button>
+            <button class="quote-card quote-card-pro" data-modal="modal-pcserv">
+                <span class="card-top"><span class="icono">🖥️</span><span class="card-arrow">↗</span></span>
+                <h3>PC & Laptop</h3>
+                <p>Mantenimiento · upgrades · diagnóstico</p><span class="desde">Cotizar por equipo</span>
+            </button>
+            <button class="quote-card quote-card-pro" data-modal="modal-redes">
+                <span class="card-top"><span class="icono">📡</span><span class="card-arrow">↗</span></span>
+                <h3>Redes</h3>
+                <p>MikroTik · Wi-Fi · VLAN · Firewall</p><span class="desde">Desde $15</span>
+            </button>
+            <button class="quote-card quote-card-pro" data-modal="modal-celular">
+                <span class="card-top"><span class="icono">📱</span><span class="card-arrow">↗</span></span>
+                <h3>Smartphones</h3>
+                <p>Apple · Samsung · Xiaomi · Motorola</p><span class="desde">Cotizar por modelo</span>
+            </button>
+        </div>
 
-<section class="quote-builder">
-<h2>Arma tu PC por piezas</h2>
-<p>Primero selecciona la plataforma. Después solo aparecerán piezas compatibles con ella. También puedes cambiar socket, memoria y gama cuando corresponda.</p>
+        <section class="quote-builder">
+            <h2>Arma tu PC por piezas</h2>
+            <p>Primero selecciona la plataforma. Después solo aparecerán piezas compatibles con ella. También puedes
+                cambiar socket, memoria y gama cuando corresponda.</p>
 
-<div class="builder-grid">
-<div class="builder-fields" id="builder-fields">
-<div class="builder-field"><label>Plataforma</label><select id="plataforma">
-<option value="">Selecciona plataforma</option>
-<option value="am4">AMD AM4 — DDR4</option>
-<option value="am5">AMD AM5 — DDR5</option>
-<option value="lga1200">Intel LGA1200 — DDR4</option>
-<option value="lga1700">Intel LGA1700 — DDR4/DDR5</option>
-<option value="lga1851">Intel LGA1851 — DDR5</option>
-</select></div>
-<div id="compat-note" class="builder-note">Selecciona una plataforma para habilitar los componentes compatibles.</div>
-</div>
+            <div class="builder-grid">
+                <div class="builder-fields" id="builder-fields">
+                    <div class="builder-field"><label>Plataforma</label><select id="plataforma">
+                            <option value="">Selecciona plataforma</option>
+                            <option value="am4">AMD AM4 — DDR4</option>
+                            <option value="am5">AMD AM5 — DDR5</option>
+                            <option value="lga1200">Intel LGA1200 — DDR4</option>
+                            <option value="lga1700">Intel LGA1700 — DDR4/DDR5</option>
+                            <option value="lga1851">Intel LGA1851 — DDR5</option>
+                        </select></div>
+                    <div id="compat-note" class="builder-note">Selecciona una plataforma para habilitar los componentes
+                        compatibles.</div>
+                </div>
 
-<div class="builder-summary">
-<h3>Tu cotización</h3>
-<div id="builder-lines"></div>
-<div class="builder-total"><span>Total estimado</span><strong id="builder-total">$0.00</strong></div>
-<div class="builder-actions">
-<button class="btn" id="builder-reset" type="button">Limpiar</button>
-<a class="btn" id="builder-enviar" href="#">Enviar por correo</a>
-</div>
-<p class="builder-note">Los precios de hardware son referenciales y pueden cambiar por marca, disponibilidad, importación y proveedor. Mano de obra de armado e instalación se cotiza aparte.</p>
-</div>
-</div>
-</section>
+                <div class="builder-summary">
+                    <h3>Tu cotización</h3>
+                    <div id="builder-lines"></div>
+                    <div class="builder-total"><span>Total estimado</span><strong id="builder-total">$0.00</strong>
+                    </div>
+                    <div class="builder-actions">
+                        <button class="btn" id="builder-reset" type="button">Limpiar</button>
+                        <a class="btn" id="builder-enviar" href="#">Enviar por correo</a>
+                    </div>
+                    <p class="builder-note">Los precios de hardware son referenciales y pueden cambiar por marca,
+                        disponibilidad, importación y proveedor. Mano de obra de armado e instalación se cotiza aparte.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<!-- CONSOLAS -->
-<div class="quote-modal-overlay" id="modal-consolas"><div class="quote-modal">
-<div class="quote-modal-head"><h3>Servicio para consolas</h3><button class="quote-modal-close" data-close>×</button></div>
-<p class="sub">Selecciona primero la consola. Los servicios y valores cambian según generación y dificultad.</p>
-<div class="builder-field"><label>Consola</label><select id="console-model"></select></div>
-<div id="console-services" class="quote-services"></div>
-<textarea id="console-detail" placeholder="Describe la falla: no enciende, se apaga, no lee discos, sobrecalienta, HDMI, etc."></textarea>
-<div class="quote-modal-total"><span>Total estimado</span><strong id="console-total">$0.00</strong></div>
-<div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir Messenger</a><a class="btn" id="console-email">Enviar por correo</a></div>
-<p class="quote-modal-note">Referencia basada en tarifas publicadas de servicios técnicos de Guayaquil y criterios de dificultad. El diagnóstico puede cambiar el precio final. No se incluyen repuestos salvo que se indique.</p>
-</div></div>
+        <!-- CONSOLAS -->
+        <div class="quote-modal-overlay" id="modal-consolas">
+            <div class="quote-modal">
+                <div class="quote-modal-head">
+                    <h3>Servicio para consolas</h3><button class="quote-modal-close" data-close>×</button>
+                </div>
+                <p class="sub">Selecciona primero la consola. Los servicios y valores cambian según generación y
+                    dificultad.</p>
+                <div class="builder-field"><label>Consola</label><select id="console-model"></select></div>
+                <div id="console-services" class="quote-services"></div>
+                <textarea id="console-detail"
+                    placeholder="Describe la falla: no enciende, se apaga, no lee discos, sobrecalienta, HDMI, etc."></textarea>
+                <div class="quote-modal-total"><span>Total estimado</span><strong id="console-total">$0.00</strong>
+                </div>
+                <div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir
+                        Messenger</a><a class="btn" id="console-email">Enviar por correo</a></div>
+                <p class="quote-modal-note">Referencia basada en tarifas publicadas de servicios técnicos de Guayaquil y
+                    criterios de dificultad. El diagnóstico puede cambiar el precio final. No se incluyen repuestos
+                    salvo que se indique.</p>
+            </div>
+        </div>
 
-<!-- CELULARES -->
-<div class="quote-modal-overlay" id="modal-celular"><div class="quote-modal">
-<div class="quote-modal-head"><h3>Servicio para smartphones</h3><button class="quote-modal-close" data-close>×</button></div>
-<p class="sub">Marca + modelo + servicio. La mano de obra se separa del repuesto para evitar cotizaciones engañosas.</p>
-<div class="builder-field"><label>Marca</label><select id="phone-brand"></select></div>
-<div class="builder-field"><label>Modelo</label><select id="phone-model"></select></div>
-<div id="phone-services" class="quote-services"></div>
-<textarea id="phone-detail" placeholder="Describe el problema o agrega información sobre el estado del equipo."></textarea>
-<div class="quote-modal-total"><span>Total estimado</span><strong id="phone-total">$0.00</strong></div>
-<div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir Messenger</a><a class="btn" id="phone-email">Enviar por correo</a></div>
-<p class="quote-modal-note">Pantallas y baterías pueden variar mucho por calidad (OEM, compatible, original), generación y disponibilidad. El precio mostrado separa mano de obra y repuesto estimado.</p>
-</div></div>
+        <!-- CELULARES -->
+        <div class="quote-modal-overlay" id="modal-celular">
+            <div class="quote-modal">
+                <div class="quote-modal-head">
+                    <h3>Servicio para smartphones</h3><button class="quote-modal-close" data-close>×</button>
+                </div>
+                <p class="sub">Marca + modelo + servicio. La mano de obra se separa del repuesto para evitar
+                    cotizaciones engañosas.</p>
+                <div class="builder-field"><label>Marca</label><select id="phone-brand"></select></div>
+                <div class="builder-field"><label>Modelo</label><select id="phone-model"></select></div>
+                <div id="phone-services" class="quote-services"></div>
+                <textarea id="phone-detail"
+                    placeholder="Describe el problema o agrega información sobre el estado del equipo."></textarea>
+                <div class="quote-modal-total"><span>Total estimado</span><strong id="phone-total">$0.00</strong></div>
+                <div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir
+                        Messenger</a><a class="btn" id="phone-email">Enviar por correo</a></div>
+                <p class="quote-modal-note">Pantallas y baterías pueden variar mucho por calidad (OEM, compatible,
+                    original), generación y disponibilidad. El precio mostrado separa mano de obra y repuesto estimado.
+                </p>
+            </div>
+        </div>
 
-<!-- PC SERVICIO -->
-<div class="quote-modal-overlay" id="modal-pcserv"><div class="quote-modal">
-<div class="quote-modal-head"><h3>Servicio para PC y laptop</h3><button class="quote-modal-close" data-close>×</button></div>
-<div class="builder-field"><label>Tipo de equipo</label><select id="pc-type">
-<option value="desktop">PC de escritorio</option><option value="laptop">Laptop</option><option value="gaming">PC gaming</option><option value="allinone">All-in-One</option>
-</select></div>
-<div id="pc-services" class="quote-services"></div>
-<textarea id="pc-detail" placeholder="Indica síntomas, modelo o lo que deseas mejorar."></textarea>
-<div class="quote-modal-total"><span>Total estimado</span><strong id="pc-total">$0.00</strong></div>
-<div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir Messenger</a><a class="btn" id="pc-email">Enviar por correo</a></div>
-</div></div>
+        <!-- PC SERVICIO -->
+        <div class="quote-modal-overlay" id="modal-pcserv">
+            <div class="quote-modal">
+                <div class="quote-modal-head">
+                    <h3>Servicio para PC y laptop</h3><button class="quote-modal-close" data-close>×</button>
+                </div>
+                <div class="builder-field"><label>Tipo de equipo</label><select id="pc-type">
+                        <option value="desktop">PC de escritorio</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="gaming">PC gaming</option>
+                        <option value="allinone">All-in-One</option>
+                    </select></div>
+                <div id="pc-services" class="quote-services"></div>
+                <textarea id="pc-detail" placeholder="Indica síntomas, modelo o lo que deseas mejorar."></textarea>
+                <div class="quote-modal-total"><span>Total estimado</span><strong id="pc-total">$0.00</strong></div>
+                <div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir
+                        Messenger</a><a class="btn" id="pc-email">Enviar por correo</a></div>
+            </div>
+        </div>
 
-<!-- REDES -->
-<div class="quote-modal-overlay" id="modal-redes"><div class="quote-modal">
-<div class="quote-modal-head"><h3>Redes y MikroTik</h3><button class="quote-modal-close" data-close>×</button></div>
-<div id="network-services" class="quote-services"></div>
-<textarea id="network-detail" placeholder="Cantidad de usuarios/equipos, modelo de MikroTik, problema actual, si requiere visita, etc."></textarea>
-<div class="quote-modal-total"><span>Total estimado</span><strong id="network-total">$0.00</strong></div>
-<div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir Messenger</a><a class="btn" id="network-email">Enviar por correo</a></div>
-</div></div>
-</main>
+        <!-- REDES -->
+        <div class="quote-modal-overlay" id="modal-redes">
+            <div class="quote-modal">
+                <div class="quote-modal-head">
+                    <h3>Redes y MikroTik</h3><button class="quote-modal-close" data-close>×</button>
+                </div>
+                <div id="network-services" class="quote-services"></div>
+                <textarea id="network-detail"
+                    placeholder="Cantidad de usuarios/equipos, modelo de MikroTik, problema actual, si requiere visita, etc."></textarea>
+                <div class="quote-modal-total"><span>Total estimado</span><strong id="network-total">$0.00</strong>
+                </div>
+                <div class="quote-modal-actions"><a class="btn facebook-btn" data-messenger>Copiar cotización y abrir
+                        Messenger</a><a class="btn" id="network-email">Enviar por correo</a></div>
+            </div>
+        </div>
+    </main>
 
-<footer class="site-footer"><div class="wrap footer-grid">
-<span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
-<div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a href="noticias.html">Noticias</a><a href="cotizacion.html">Cotización</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div>
-</div></footer>
-<script src="script.js"></script>
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+            <span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
+            <div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a
+                    href="noticias.html">Noticias</a><a href="cotizacion.html">Cotización</a><a
+                    href="sobre-nosotros.html">Sobre nosotros</a><a href="politica-privacidad.html">Política de
+                    privacidad</a><a href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
 
-<script>
-(function(){
-"use strict";
-const EMAIL="technucleo99@gmail.com", MESSENGER="https://m.me/61593321905984";
+    <script>
+        (function () {
+            "use strict";
+            const EMAIL = "technucleo99@gmail.com", MESSENGER = "https://m.me/61593321905984";
 
-const PC={
-am4:{
-cpu:[
-["Ryzen 3 4100",105],["Ryzen 5 4500",135],["Ryzen 5 5500",155],["Ryzen 5 5600",190],["Ryzen 5 5600G",205],["Ryzen 5 5600GT",230],
-["Ryzen 7 5700G",280],["Ryzen 7 5700X",245],["Ryzen 7 5700X3D",365],["Ryzen 7 5800X3D",430],["Ryzen 9 5900X",430],["Ryzen 9 5950X",520]
-],
-mb:[
-["A320 básica",80],["A520 ASUS/ASRock",100],["B450",115],["B450 gaming",135],["B550",150],["B550 Wi-Fi",185],["B550 gaming",205],["X570",240],["X570 Wi-Fi",280]
-],
-ram:[
-["8GB DDR4 3200 — 1 módulo",55],["16GB DDR4 3200 — 1x16",145],["16GB DDR4 3200 — 2x8",105],["32GB DDR4 3200 — 2x16",175],
-["32GB DDR4 3600 — 2x16",190],["64GB DDR4 3200 — 2x32",310],["64GB DDR4 3600 — 2x32",340],["128GB DDR4 — 4x32",590]
-],
-cool:[
-["Cooler stock AMD",0],["Torre 120mm básica",35],["Torre 120mm 4 heatpipes",55],["Torre doble ventilador",75],["AIO 240mm",110],["AIO 360mm",155]
-],
-storage:[
-["SSD SATA 480/512GB",65],["SSD SATA 1TB",120],["NVMe 500/512GB Gen3",75],["NVMe 1TB Gen3",135],["NVMe 1TB Gen4",155],["NVMe 2TB Gen4",265],["NVMe 2TB Gen5",390],
-["HDD 1TB 7200rpm",70],["HDD 2TB 7200rpm",105],["HDD 4TB",175]
-],
-gpu:[
-["Sin tarjeta dedicada",0],["GTX 1650 4GB",230],["RTX 3050 6GB",350],["RTX 4060 8GB",420],["RTX 4060 Ti 8GB",560],["RTX 5060 8GB",665],["RTX 5060 Ti 8GB",780],
-["RTX 5060 Ti 16GB",900],["RTX 5070 12GB",1190],["RTX 5070 Ti 16GB",1450],["RTX 5080 16GB",1750],["RX 7600 8GB",390],["RX 9060 XT 16GB",720],["RX 9070 16GB",900],["RX 9070 XT 16GB",1050]
-],
-psu:[
-["500W 80+ Bronze",75],["550W 80+ Bronze",85],["650W 80+ Bronze",100],["650W 80+ Gold",125],["750W 80+ Bronze",110],["750W 80+ Gold",145],["850W 80+ Gold",175],["1000W 80+ Gold",230],["1200W 80+ Gold",290]
-],
-case:[
-["Micro-ATX básico",55],["ATX básico con vidrio",70],["ATX mesh airflow",95],["Gaming RGB",120],["Gaming premium",170],["Full tower",230]
-]
-},
-am5:{
-cpu:[
-["Ryzen 5 7500F",245],["Ryzen 5 7600",260],["Ryzen 5 7600X",285],["Ryzen 5 8500G",249],["Ryzen 5 8600G",290],["Ryzen 7 7700",350],
-["Ryzen 7 7700X",385],["Ryzen 7 7800X3D",520],["Ryzen 7 9700X",430],["Ryzen 7 9800X3D",590],["Ryzen 9 9900X",520],["Ryzen 9 9950X",680]
-],
-mb:[
-["A620 básica",120],["A620 Wi-Fi",155],["B650",180],["B650 Wi-Fi",220],["B650E",270],["B850",220],["B850 Wi-Fi",260],["X670E",340],["X870",310],["X870 Wi-Fi",350],["X870E",430]
-],
-ram:[
-["16GB DDR5 5600 — 1x16",190],["16GB DDR5 6000 — 2x8",145],["32GB DDR5 5600 — 2x16",240],["32GB DDR5 6000 — 2x16",260],
-["32GB DDR5 6000 CL30 — 2x16",290],["48GB DDR5 6000 — 2x24",350],["64GB DDR5 6000 — 2x32",470],["96GB DDR5 6000",690],["128GB DDR5 — 4x32",900]
-],
-cool:[
-["Torre 120mm",35],["Torre premium 4 heatpipes",60],["Torre doble",80],["AIO 240mm",110],["AIO 360mm",160],["AIO 360mm premium",220]
-],
-storage:[
-["SSD SATA 1TB",120],["NVMe 500/512GB Gen3",75],["NVMe 1TB Gen3",135],["NVMe 1TB Gen4",155],["NVMe 2TB Gen4",265],["NVMe 4TB Gen4",500],["NVMe 2TB Gen5",390],["NVMe 4TB Gen5",720]
-],
-gpu:[
-["Sin tarjeta dedicada",0],["RTX 4060 8GB",420],["RTX 4060 Ti 8GB",560],["RTX 5060 8GB",665],["RTX 5060 Ti 8GB",780],["RTX 5060 Ti 16GB",900],
-["RTX 5070 12GB",1190],["RTX 5070 Ti 16GB",1450],["RTX 5080 16GB",1750],["RTX 5090 32GB",2800],["RX 9060 XT 16GB",720],["RX 9070 16GB",900],["RX 9070 XT 16GB",1050]
-],
-psu:[
-["650W 80+ Bronze",100],["650W 80+ Gold",125],["750W 80+ Bronze",110],["750W 80+ Gold",145],["850W 80+ Gold",175],["1000W 80+ Gold",230],["1200W 80+ Gold",290]
-],
-case:[
-["ATX mesh",95],["Gaming RGB",120],["Gaming premium",170],["Full tower",230],["Full tower premium",300]
-]
-},
-lga1200:{
-cpu:[
-["Core i3-10100F",120],["Core i5-10400F",150],["Core i5-10600K",190],["Core i5-11400F",175],["Core i7-10700",250],["Core i7-11700",348],["Core i9-10900K",360],["Core i9-11900K",420]
-],
-mb:[["H410/H510",90],["B460/B560",120],["B560 Wi-Fi",150],["Z490",190],["Z590",220]],
-ram:[
-["8GB DDR4 3200",55],["16GB DDR4 3200 — 2x8",105],["32GB DDR4 3200 — 2x16",175],["64GB DDR4 — 2x32",310]
-],
-cool:[["Torre básica",35],["Torre premium",60],["AIO 240mm",110]],
-storage:[["SSD SATA 480/512GB",65],["SSD SATA 1TB",120],["NVMe 500GB",75],["NVMe 1TB",135],["NVMe 2TB",265],["HDD 2TB",105]],
-gpu:[["Sin dedicada",0],["GTX 1650",230],["RTX 3050",350],["RTX 4060",420],["RTX 5060",665],["RX 7600",390]],
-psu:[["550W Bronze",85],["650W Bronze",100],["650W Gold",125],["750W Gold",145],["850W Gold",175]],
-case:[["ATX básico",55],["ATX airflow",95],["Gaming",120],["Premium",170]]
-},
-lga1700:{
-cpu:[
-["Core i3-12100F",135],["Core i5-12400F",220],["Core i5-12400",235],["Core i5-13400F",205],["Core i5-13500",250],["Core i5-14400F",247],["Core i5-14600K",315],
-["Core i7-12700K",320],["Core i7-13700K",430],["Core i7-14700K",500],["Core i9-13900K",620],["Core i9-14900K",680]
-],
-mb:[
-["H610 DDR4",96],["H610 DDR5",117],["B660 DDR4",140],["B760 DDR4",145],["B760 DDR5",159],["B760 Wi-Fi DDR5",210],["Z690",240],["Z790",290],["Z790 Wi-Fi",340]
-],
-ram:[
-["16GB DDR4 3200 — 2x8",105],["32GB DDR4 3200 — 2x16",175],["64GB DDR4 — 2x32",310],["16GB DDR5 5600 — 2x8",145],
-["32GB DDR5 5600 — 2x16",240],["32GB DDR5 6000 — 2x16",260],["64GB DDR5 6000 — 2x32",470],["96GB DDR5",690]
-],
-cool:[["Torre 120mm",35],["Torre premium",60],["Doble torre",80],["AIO 240mm",110],["AIO 360mm",160]],
-storage:[["SSD SATA 1TB",120],["NVMe 500GB",75],["NVMe 1TB",155],["NVMe 2TB",265],["NVMe 4TB",500],["HDD 2TB",105],["HDD 4TB",175]],
-gpu:[["Sin dedicada",0],["RTX 3050",350],["RTX 4060",420],["RTX 4060 Ti",560],["RTX 5060",665],["RTX 5060 Ti 16GB",900],["RTX 5070",1190],["RTX 5070 Ti",1450],["RTX 5080",1750],["RX 9070 XT",1050]],
-psu:[["650W Bronze",100],["650W Gold",125],["750W Gold",145],["850W Gold",175],["1000W Gold",230],["1200W Gold",290]],
-case:[["ATX mesh",95],["Gaming",120],["Premium",170],["Full tower",230]]
-},
-lga1851:{
-cpu:[
-["Core Ultra 5 225F",235],["Core Ultra 5 225",255],["Core Ultra 5 245K",290],["Core Ultra 7 265F",350],["Core Ultra 7 265K",390],["Core Ultra 9 285K",560]
-],
-mb:[
-["H810 DDR5",149],["B860",185],["B860 Wi-Fi",225],["Z890",285],["Z890 Wi-Fi",340]
-],
-ram:[
-["16GB DDR5 5600 — 2x8",145],["32GB DDR5 5600 — 2x16",240],["32GB DDR5 6000 — 2x16",260],["64GB DDR5 6000 — 2x32",470],["96GB DDR5 6000",690],["128GB DDR5",900]
-],
-cool:[["Torre premium",60],["Doble torre",80],["AIO 240mm",110],["AIO 360mm",160],["AIO 360 premium",220]],
-storage:[["NVMe 1TB Gen4",155],["NVMe 2TB Gen4",265],["NVMe 4TB Gen4",500],["NVMe 2TB Gen5",390],["NVMe 4TB Gen5",720]],
-gpu:[["Sin dedicada",0],["RTX 5060",665],["RTX 5060 Ti 16GB",900],["RTX 5070",1190],["RTX 5070 Ti",1450],["RTX 5080",1750],["RTX 5090",2800],["RX 9070 XT",1050]],
-psu:[["650W Gold",125],["750W Gold",145],["850W Gold",175],["1000W Gold",230],["1200W Gold",290]],
-case:[["ATX mesh",95],["Gaming",120],["Premium",170],["Full tower",230]]
-}};
+            const PC = {
+                am4: {
+                    cpu: [
+                        ["Ryzen 3 4100", 105], ["Ryzen 5 4500", 135], ["Ryzen 5 5500", 155], ["Ryzen 5 5600", 190], ["Ryzen 5 5600G", 205], ["Ryzen 5 5600GT", 230],
+                        ["Ryzen 7 5700G", 280], ["Ryzen 7 5700X", 245], ["Ryzen 7 5700X3D", 365], ["Ryzen 7 5800X3D", 430], ["Ryzen 9 5900X", 430], ["Ryzen 9 5950X", 520]
+                    ],
+                    mb: [
+                        ["A320 básica", 80], ["A520 ASUS/ASRock", 100], ["B450", 115], ["B450 gaming", 135], ["B550", 150], ["B550 Wi-Fi", 185], ["B550 gaming", 205], ["X570", 240], ["X570 Wi-Fi", 280]
+                    ],
+                    ram: [
+                        ["8GB DDR4 3200 — 1 módulo", 55], ["16GB DDR4 3200 — 1x16", 145], ["16GB DDR4 3200 — 2x8", 105], ["32GB DDR4 3200 — 2x16", 175],
+                        ["32GB DDR4 3600 — 2x16", 190], ["64GB DDR4 3200 — 2x32", 310], ["64GB DDR4 3600 — 2x32", 340], ["128GB DDR4 — 4x32", 590]
+                    ],
+                    cool: [
+                        ["Cooler stock AMD", 0], ["Torre 120mm básica", 35], ["Torre 120mm 4 heatpipes", 55], ["Torre doble ventilador", 75], ["AIO 240mm", 110], ["AIO 360mm", 155]
+                    ],
+                    storage: [
+                        ["SSD SATA 480/512GB", 65], ["SSD SATA 1TB", 120], ["NVMe 500/512GB Gen3", 75], ["NVMe 1TB Gen3", 135], ["NVMe 1TB Gen4", 155], ["NVMe 2TB Gen4", 265], ["NVMe 2TB Gen5", 390],
+                        ["HDD 1TB 7200rpm", 70], ["HDD 2TB 7200rpm", 105], ["HDD 4TB", 175]
+                    ],
+                    gpu: [
+                        ["Sin tarjeta dedicada", 0], ["GTX 1650 4GB", 230], ["RTX 3050 6GB", 350], ["RTX 4060 8GB", 420], ["RTX 4060 Ti 8GB", 560], ["RTX 5060 8GB", 665], ["RTX 5060 Ti 8GB", 780],
+                        ["RTX 5060 Ti 16GB", 900], ["RTX 5070 12GB", 1190], ["RTX 5070 Ti 16GB", 1450], ["RTX 5080 16GB", 1750], ["RX 7600 8GB", 390], ["RX 9060 XT 16GB", 720], ["RX 9070 16GB", 900], ["RX 9070 XT 16GB", 1050]
+                    ],
+                    psu: [
+                        ["500W 80+ Bronze", 75], ["550W 80+ Bronze", 85], ["650W 80+ Bronze", 100], ["650W 80+ Gold", 125], ["750W 80+ Bronze", 110], ["750W 80+ Gold", 145], ["850W 80+ Gold", 175], ["1000W 80+ Gold", 230], ["1200W 80+ Gold", 290]
+                    ],
+                    case: [
+                        ["Micro-ATX básico", 55], ["ATX básico con vidrio", 70], ["ATX mesh airflow", 95], ["Gaming RGB", 120], ["Gaming premium", 170], ["Full tower", 230]
+                    ]
+                },
+                am5: {
+                    cpu: [
+                        ["Ryzen 5 7500F", 245], ["Ryzen 5 7600", 260], ["Ryzen 5 7600X", 285], ["Ryzen 5 8500G", 249], ["Ryzen 5 8600G", 290], ["Ryzen 7 7700", 350],
+                        ["Ryzen 7 7700X", 385], ["Ryzen 7 7800X3D", 520], ["Ryzen 7 9700X", 430], ["Ryzen 7 9800X3D", 590], ["Ryzen 9 9900X", 520], ["Ryzen 9 9950X", 680]
+                    ],
+                    mb: [
+                        ["A620 básica", 120], ["A620 Wi-Fi", 155], ["B650", 180], ["B650 Wi-Fi", 220], ["B650E", 270], ["B850", 220], ["B850 Wi-Fi", 260], ["X670E", 340], ["X870", 310], ["X870 Wi-Fi", 350], ["X870E", 430]
+                    ],
+                    ram: [
+                        ["16GB DDR5 5600 — 1x16", 190], ["16GB DDR5 6000 — 2x8", 145], ["32GB DDR5 5600 — 2x16", 240], ["32GB DDR5 6000 — 2x16", 260],
+                        ["32GB DDR5 6000 CL30 — 2x16", 290], ["48GB DDR5 6000 — 2x24", 350], ["64GB DDR5 6000 — 2x32", 470], ["96GB DDR5 6000", 690], ["128GB DDR5 — 4x32", 900]
+                    ],
+                    cool: [
+                        ["Torre 120mm", 35], ["Torre premium 4 heatpipes", 60], ["Torre doble", 80], ["AIO 240mm", 110], ["AIO 360mm", 160], ["AIO 360mm premium", 220]
+                    ],
+                    storage: [
+                        ["SSD SATA 1TB", 120], ["NVMe 500/512GB Gen3", 75], ["NVMe 1TB Gen3", 135], ["NVMe 1TB Gen4", 155], ["NVMe 2TB Gen4", 265], ["NVMe 4TB Gen4", 500], ["NVMe 2TB Gen5", 390], ["NVMe 4TB Gen5", 720]
+                    ],
+                    gpu: [
+                        ["Sin tarjeta dedicada", 0], ["RTX 4060 8GB", 420], ["RTX 4060 Ti 8GB", 560], ["RTX 5060 8GB", 665], ["RTX 5060 Ti 8GB", 780], ["RTX 5060 Ti 16GB", 900],
+                        ["RTX 5070 12GB", 1190], ["RTX 5070 Ti 16GB", 1450], ["RTX 5080 16GB", 1750], ["RTX 5090 32GB", 2800], ["RX 9060 XT 16GB", 720], ["RX 9070 16GB", 900], ["RX 9070 XT 16GB", 1050]
+                    ],
+                    psu: [
+                        ["650W 80+ Bronze", 100], ["650W 80+ Gold", 125], ["750W 80+ Bronze", 110], ["750W 80+ Gold", 145], ["850W 80+ Gold", 175], ["1000W 80+ Gold", 230], ["1200W 80+ Gold", 290]
+                    ],
+                    case: [
+                        ["ATX mesh", 95], ["Gaming RGB", 120], ["Gaming premium", 170], ["Full tower", 230], ["Full tower premium", 300]
+                    ]
+                },
+                lga1200: {
+                    cpu: [
+                        ["Core i3-10100F", 120], ["Core i5-10400F", 150], ["Core i5-10600K", 190], ["Core i5-11400F", 175], ["Core i7-10700", 250], ["Core i7-11700", 348], ["Core i9-10900K", 360], ["Core i9-11900K", 420]
+                    ],
+                    mb: [["H410/H510", 90], ["B460/B560", 120], ["B560 Wi-Fi", 150], ["Z490", 190], ["Z590", 220]],
+                    ram: [
+                        ["8GB DDR4 3200", 55], ["16GB DDR4 3200 — 2x8", 105], ["32GB DDR4 3200 — 2x16", 175], ["64GB DDR4 — 2x32", 310]
+                    ],
+                    cool: [["Torre básica", 35], ["Torre premium", 60], ["AIO 240mm", 110]],
+                    storage: [["SSD SATA 480/512GB", 65], ["SSD SATA 1TB", 120], ["NVMe 500GB", 75], ["NVMe 1TB", 135], ["NVMe 2TB", 265], ["HDD 2TB", 105]],
+                    gpu: [["Sin dedicada", 0], ["GTX 1650", 230], ["RTX 3050", 350], ["RTX 4060", 420], ["RTX 5060", 665], ["RX 7600", 390]],
+                    psu: [["550W Bronze", 85], ["650W Bronze", 100], ["650W Gold", 125], ["750W Gold", 145], ["850W Gold", 175]],
+                    case: [["ATX básico", 55], ["ATX airflow", 95], ["Gaming", 120], ["Premium", 170]]
+                },
+                lga1700: {
+                    cpu: [
+                        ["Core i3-12100F", 135], ["Core i5-12400F", 220], ["Core i5-12400", 235], ["Core i5-13400F", 205], ["Core i5-13500", 250], ["Core i5-14400F", 247], ["Core i5-14600K", 315],
+                        ["Core i7-12700K", 320], ["Core i7-13700K", 430], ["Core i7-14700K", 500], ["Core i9-13900K", 620], ["Core i9-14900K", 680]
+                    ],
+                    mb: [
+                        ["H610 DDR4", 96], ["H610 DDR5", 117], ["B660 DDR4", 140], ["B760 DDR4", 145], ["B760 DDR5", 159], ["B760 Wi-Fi DDR5", 210], ["Z690", 240], ["Z790", 290], ["Z790 Wi-Fi", 340]
+                    ],
+                    ram: [
+                        ["16GB DDR4 3200 — 2x8", 105], ["32GB DDR4 3200 — 2x16", 175], ["64GB DDR4 — 2x32", 310], ["16GB DDR5 5600 — 2x8", 145],
+                        ["32GB DDR5 5600 — 2x16", 240], ["32GB DDR5 6000 — 2x16", 260], ["64GB DDR5 6000 — 2x32", 470], ["96GB DDR5", 690]
+                    ],
+                    cool: [["Torre 120mm", 35], ["Torre premium", 60], ["Doble torre", 80], ["AIO 240mm", 110], ["AIO 360mm", 160]],
+                    storage: [["SSD SATA 1TB", 120], ["NVMe 500GB", 75], ["NVMe 1TB", 155], ["NVMe 2TB", 265], ["NVMe 4TB", 500], ["HDD 2TB", 105], ["HDD 4TB", 175]],
+                    gpu: [["Sin dedicada", 0], ["RTX 3050", 350], ["RTX 4060", 420], ["RTX 4060 Ti", 560], ["RTX 5060", 665], ["RTX 5060 Ti 16GB", 900], ["RTX 5070", 1190], ["RTX 5070 Ti", 1450], ["RTX 5080", 1750], ["RX 9070 XT", 1050]],
+                    psu: [["650W Bronze", 100], ["650W Gold", 125], ["750W Gold", 145], ["850W Gold", 175], ["1000W Gold", 230], ["1200W Gold", 290]],
+                    case: [["ATX mesh", 95], ["Gaming", 120], ["Premium", 170], ["Full tower", 230]]
+                },
+                lga1851: {
+                    cpu: [
+                        ["Core Ultra 5 225F", 235], ["Core Ultra 5 225", 255], ["Core Ultra 5 245K", 290], ["Core Ultra 7 265F", 350], ["Core Ultra 7 265K", 390], ["Core Ultra 9 285K", 560]
+                    ],
+                    mb: [
+                        ["H810 DDR5", 149], ["B860", 185], ["B860 Wi-Fi", 225], ["Z890", 285], ["Z890 Wi-Fi", 340]
+                    ],
+                    ram: [
+                        ["16GB DDR5 5600 — 2x8", 145], ["32GB DDR5 5600 — 2x16", 240], ["32GB DDR5 6000 — 2x16", 260], ["64GB DDR5 6000 — 2x32", 470], ["96GB DDR5 6000", 690], ["128GB DDR5", 900]
+                    ],
+                    cool: [["Torre premium", 60], ["Doble torre", 80], ["AIO 240mm", 110], ["AIO 360mm", 160], ["AIO 360 premium", 220]],
+                    storage: [["NVMe 1TB Gen4", 155], ["NVMe 2TB Gen4", 265], ["NVMe 4TB Gen4", 500], ["NVMe 2TB Gen5", 390], ["NVMe 4TB Gen5", 720]],
+                    gpu: [["Sin dedicada", 0], ["RTX 5060", 665], ["RTX 5060 Ti 16GB", 900], ["RTX 5070", 1190], ["RTX 5070 Ti", 1450], ["RTX 5080", 1750], ["RTX 5090", 2800], ["RX 9070 XT", 1050]],
+                    psu: [["650W Gold", 125], ["750W Gold", 145], ["850W Gold", 175], ["1000W Gold", 230], ["1200W Gold", 290]],
+                    case: [["ATX mesh", 95], ["Gaming", 120], ["Premium", 170], ["Full tower", 230]]
+                }
+            };
 
-const labels={cpu:"Procesador",mb:"Placa madre",ram:"Memoria RAM",cool:"Refrigeración",storage:"Almacenamiento",gpu:"Tarjeta gráfica",psu:"Fuente de poder",case:"Gabinete"};
-const platform=document.getElementById("plataforma"), fields=document.getElementById("builder-fields"), lines=document.getElementById("builder-lines"), total=document.getElementById("builder-total"), note=document.getElementById("compat-note");
-let selects={};
+            const labels = { cpu: "Procesador", mb: "Placa madre", ram: "Memoria RAM", cool: "Refrigeración", storage: "Almacenamiento", gpu: "Tarjeta gráfica", psu: "Fuente de poder", case: "Gabinete" };
+            const platform = document.getElementById("plataforma"), fields = document.getElementById("builder-fields"), lines = document.getElementById("builder-lines"), total = document.getElementById("builder-total"), note = document.getElementById("compat-note");
+            let selects = {};
 
-function money(n){return "$"+Number(n).toFixed(2);}
-function makeSelect(key,list){
-const wrap=document.createElement("div"); wrap.className="builder-field";
-const label=document.createElement("label"); label.textContent=labels[key];
-const sel=document.createElement("select"); sel.dataset.key=key;
-sel.innerHTML='<option value="0">No seleccionar</option>';
-list.forEach(x=>{const o=document.createElement("option");o.value=x[1];o.textContent=x[0]+" — "+money(x[1]);o.dataset.name=x[0];sel.appendChild(o);});
-wrap.append(label,sel); fields.appendChild(wrap); selects[key]=sel;
-sel.addEventListener("change",updatePC);
-}
-function loadPlatform(){
-Object.keys(selects).forEach(k=>{selects[k].parentElement.remove();});
-selects={};
-if(!platform.value){note.textContent="Selecciona una plataforma para habilitar los componentes compatibles.";updatePC();return;}
-const data=PC[platform.value];
-note.textContent=platform.value==="am4"?"AM4: Ryzen de plataforma AM4 + DDR4.":"";
-if(platform.value==="am5")note.textContent="AM5: Ryzen AM5 + DDR5. Las placas AM4 y DDR4 quedan fuera.";
-if(platform.value==="lga1200")note.textContent="Intel LGA1200: procesadores de 10ª/11ª generación y DDR4.";
-if(platform.value==="lga1700")note.textContent="Intel LGA1700: algunas placas admiten DDR4 y otras DDR5; elige la memoria según la placa.";
-if(platform.value==="lga1851")note.textContent="Intel LGA1851: Core Ultra de escritorio + DDR5.";
-["cpu","mb","ram","cool","storage","gpu","psu","case"].forEach(k=>makeSelect(k,data[k]));
-updatePC();
-}
-function updatePC(){
-let sum=0,msg="Hola NúcleoTech, quiero cotizar un PC:\n\n";
-if(platform.value)msg+="Plataforma: "+platform.options[platform.selectedIndex].text+"\n";
-lines.innerHTML="";
-Object.keys(selects).forEach(k=>{
-const s=selects[k],o=s.options[s.selectedIndex],p=Number(s.value);sum+=p;
-if(p){lines.insertAdjacentHTML("beforeend",'<div class="builder-line"><span>'+labels[k]+'<small>'+o.dataset.name+'</small></span><strong>'+money(p)+'</strong></div>');msg+="- "+labels[k]+": "+o.dataset.name+" ("+money(p)+")\n";}
-});
-total.textContent=money(sum);msg+="\nTotal estimado: "+money(sum)+"\n\n(Cotización generada desde nucleo-tech.org)";
-document.getElementById("builder-enviar").href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Cotización de PC NúcleoTech")+"&body="+encodeURIComponent(msg);
-}
-platform.addEventListener("change",loadPlatform);
-document.getElementById("builder-reset").addEventListener("click",()=>{platform.value="";loadPlatform();});
-loadPlatform();
+            function money(n) { return "$" + Number(n).toFixed(2); }
+            function makeSelect(key, list) {
+                const wrap = document.createElement("div"); wrap.className = "builder-field";
+                const label = document.createElement("label"); label.textContent = labels[key];
+                const sel = document.createElement("select"); sel.dataset.key = key;
+                sel.innerHTML = '<option value="0">No seleccionar</option>';
+                list.forEach(x => { const o = document.createElement("option"); o.value = x[1]; o.textContent = x[0] + " — " + money(x[1]); o.dataset.name = x[0]; sel.appendChild(o); });
+                wrap.append(label, sel); fields.appendChild(wrap); selects[key] = sel;
+                sel.addEventListener("change", updatePC);
+            }
+            function loadPlatform() {
+                Object.keys(selects).forEach(k => { selects[k].parentElement.remove(); });
+                selects = {};
+                if (!platform.value) { note.textContent = "Selecciona una plataforma para habilitar los componentes compatibles."; updatePC(); return; }
+                const data = PC[platform.value];
+                note.textContent = platform.value === "am4" ? "AM4: Ryzen de plataforma AM4 + DDR4." : "";
+                if (platform.value === "am5") note.textContent = "AM5: Ryzen AM5 + DDR5. Las placas AM4 y DDR4 quedan fuera.";
+                if (platform.value === "lga1200") note.textContent = "Intel LGA1200: procesadores de 10ª/11ª generación y DDR4.";
+                if (platform.value === "lga1700") note.textContent = "Intel LGA1700: algunas placas admiten DDR4 y otras DDR5; elige la memoria según la placa.";
+                if (platform.value === "lga1851") note.textContent = "Intel LGA1851: Core Ultra de escritorio + DDR5.";
+                ["cpu", "mb", "ram", "cool", "storage", "gpu", "psu", "case"].forEach(k => makeSelect(k, data[k]));
+                updatePC();
+            }
+            function updatePC() {
+                let sum = 0, msg = "Hola NúcleoTech, quiero cotizar un PC:\n\n";
+                if (platform.value) msg += "Plataforma: " + platform.options[platform.selectedIndex].text + "\n";
+                lines.innerHTML = "";
+                Object.keys(selects).forEach(k => {
+                    const s = selects[k], o = s.options[s.selectedIndex], p = Number(s.value); sum += p;
+                    if (p) { lines.insertAdjacentHTML("beforeend", '<div class="builder-line"><span>' + labels[k] + '<small>' + o.dataset.name + '</small></span><strong>' + money(p) + '</strong></div>'); msg += "- " + labels[k] + ": " + o.dataset.name + " (" + money(p) + ")\n"; }
+                });
+                total.textContent = money(sum); msg += "\nTotal estimado: " + money(sum) + "\n\n(Cotización generada desde nucleo-tech.org)";
+                document.getElementById("builder-enviar").href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Cotización de PC NúcleoTech") + "&body=" + encodeURIComponent(msg);
+            }
+            platform.addEventListener("change", loadPlatform);
+            document.getElementById("builder-reset").addEventListener("click", () => { platform.value = ""; loadPlatform(); });
+            loadPlatform();
 
-const consoles={
-"PlayStation 2":{services:[["Diagnóstico",10],["Mantenimiento y limpieza",25],["Limpieza + ajuste de lector",25],["Cambio de lente / lector — mano de obra",25],["Reparación de video/puerto — diagnóstico",25]]},
-"PlayStation 3":{services:[["Diagnóstico",15],["Mantenimiento preventivo",45],["Cambio de pasta térmica",35],["Reparación HDMI — mano de obra",50],["Reparación de lector — mano de obra",35],["Reparación de placa / soldadura — desde",50]]},
-"PlayStation 4":{services:[["Diagnóstico",15],["Mantenimiento preventivo",45],["Cambio de pasta térmica",40],["Reparación HDMI — mano de obra",50],["Reparación de lector — mano de obra",40],["Falla de encendido — diagnóstico/reparación",35]]},
-"PlayStation 5":{services:[["Diagnóstico",20],["Mantenimiento profundo",55],["Mantenimiento + metal líquido",65],["Reparación HDMI — mano de obra",60],["Reparación de lector — mano de obra",50],["Falla de encendido — diagnóstico/reparación",50]]},
-"Xbox 360":{services:[["Diagnóstico",15],["Mantenimiento",30],["Limpieza + pasta térmica",35],["Reparación HDMI/video",40],["Reparación de lector",35]]},
-"Xbox One":{services:[["Diagnóstico",15],["Mantenimiento",35],["Limpieza + pasta térmica",40],["Reparación HDMI/video",50],["Reparación de lector",40]]},
-"Xbox Series S":{services:[["Diagnóstico",20],["Mantenimiento",40],["Limpieza profunda + pasta térmica",45],["Reparación HDMI — mano de obra",55],["Falla de encendido",45]]},
-"Xbox Series X":{services:[["Diagnóstico",20],["Mantenimiento profundo",55],["Limpieza + pasta térmica",55],["Reparación HDMI — mano de obra",60],["Falla de encendido",55]]},
-"Nintendo Switch":{services:[["Diagnóstico",15],["Mantenimiento",30],["Cambio de pasta térmica",35],["Reparación USB-C — mano de obra",45],["Reparación de lector/cartucho",35]]},
-"Nintendo Switch OLED":{services:[["Diagnóstico",18],["Mantenimiento",35],["Cambio de pasta térmica",40],["Reparación USB-C — mano de obra",50],["Reparación de placa — desde",55]]}
-};
-const cs=document.getElementById("console-model");
-Object.keys(consoles).forEach(x=>cs.add(new Option(x,x)));
-function renderConsole(){renderServices("console-services",consoles[cs.value].services,"console-total");}
-cs.addEventListener("change",renderConsole);renderConsole();
+            const consoles = {
+                "PlayStation 2": { services: [["Diagnóstico", 10], ["Mantenimiento y limpieza", 25], ["Limpieza + ajuste de lector", 25], ["Cambio de lente / lector — mano de obra", 25], ["Reparación de video/puerto — diagnóstico", 25]] },
+                "PlayStation 3": { services: [["Diagnóstico", 15], ["Mantenimiento preventivo", 45], ["Cambio de pasta térmica", 35], ["Reparación HDMI — mano de obra", 50], ["Reparación de lector — mano de obra", 35], ["Reparación de placa / soldadura — desde", 50]] },
+                "PlayStation 4": { services: [["Diagnóstico", 15], ["Mantenimiento preventivo", 45], ["Cambio de pasta térmica", 40], ["Reparación HDMI — mano de obra", 50], ["Reparación de lector — mano de obra", 40], ["Falla de encendido — diagnóstico/reparación", 35]] },
+                "PlayStation 5": { services: [["Diagnóstico", 20], ["Mantenimiento profundo", 55], ["Mantenimiento + metal líquido", 65], ["Reparación HDMI — mano de obra", 60], ["Reparación de lector — mano de obra", 50], ["Falla de encendido — diagnóstico/reparación", 50]] },
+                "Xbox 360": { services: [["Diagnóstico", 15], ["Mantenimiento", 30], ["Limpieza + pasta térmica", 35], ["Reparación HDMI/video", 40], ["Reparación de lector", 35]] },
+                "Xbox One": { services: [["Diagnóstico", 15], ["Mantenimiento", 35], ["Limpieza + pasta térmica", 40], ["Reparación HDMI/video", 50], ["Reparación de lector", 40]] },
+                "Xbox Series S": { services: [["Diagnóstico", 20], ["Mantenimiento", 40], ["Limpieza profunda + pasta térmica", 45], ["Reparación HDMI — mano de obra", 55], ["Falla de encendido", 45]] },
+                "Xbox Series X": { services: [["Diagnóstico", 20], ["Mantenimiento profundo", 55], ["Limpieza + pasta térmica", 55], ["Reparación HDMI — mano de obra", 60], ["Falla de encendido", 55]] },
+                "Nintendo Switch": { services: [["Diagnóstico", 15], ["Mantenimiento", 30], ["Cambio de pasta térmica", 35], ["Reparación USB-C — mano de obra", 45], ["Reparación de lector/cartucho", 35]] },
+                "Nintendo Switch OLED": { services: [["Diagnóstico", 18], ["Mantenimiento", 35], ["Cambio de pasta térmica", 40], ["Reparación USB-C — mano de obra", 50], ["Reparación de placa — desde", 55]] }
+            };
+            const cs = document.getElementById("console-model");
+            Object.keys(consoles).forEach(x => cs.add(new Option(x, x)));
+            function renderConsole() { renderServices("console-services", consoles[cs.value].services, "console-total"); }
+            cs.addEventListener("change", renderConsole); renderConsole();
 
-const phones={
-"Apple":["iPhone 11","iPhone 12","iPhone 13","iPhone 14","iPhone 15","iPhone 16","iPhone 16 Pro","iPhone 16 Pro Max"],
-"Samsung":["Galaxy A14","Galaxy A24","Galaxy A34","Galaxy A54","Galaxy S21","Galaxy S22","Galaxy S23","Galaxy S24","Galaxy S25","Galaxy S25 Ultra"],
-"Xiaomi / Redmi":["Redmi Note 12","Redmi Note 13","Redmi Note 14","Redmi Note 14 Pro","POCO X6","POCO X7","Xiaomi 14","Xiaomi 15"],
-"Motorola":["Moto G54","Moto G84","Moto G85","Edge 40","Edge 50"],
-"Honor":["Honor X8b","Honor 200","Honor 400"],
-"Otros":["Otro modelo — confirmar disponibilidad"]
-};
-const pb=document.getElementById("phone-brand"),pm=document.getElementById("phone-model");
-Object.keys(phones).forEach(x=>pb.add(new Option(x,x)));
-pb.addEventListener("change",()=>{pm.innerHTML="";phones[pb.value].forEach(x=>pm.add(new Option(x,x)));renderPhone();});
-function phoneBase(){
-const m=pm.value||"";
-let tier="mid";
-if(/Pro Max|Ultra/.test(m))tier="flag";
-else if(/A14|A24|Moto G|X8b|Note 12/.test(m))tier="entry";
-return tier;
-}
-function renderPhone(){
-const tier=phoneBase();
-const base={entry:{diag:8,batt:12,screen:20,charge:12,water:20},mid:{diag:10,batt:18,screen:30,charge:15,water:25},flag:{diag:15,batt:25,screen:45,charge:20,water:35}}[tier];
-renderServices("phone-services",[
-["Diagnóstico",base.diag],
-["Cambio de batería — mano de obra",base.batt],
-["Cambio de pantalla — mano de obra",base.screen],
-["Cambio de puerto de carga — mano de obra",base.charge],
-["Limpieza de puerto / problemas de carga",10],
-["Daño por líquido — limpieza técnica inicial",base.water]
-],"phone-total");
-}
-pb.value="Apple";pb.dispatchEvent(new Event("change"));pm.selectedIndex=0;
+            const phones = {
+                "Apple": ["iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14", "iPhone 15", "iPhone 16", "iPhone 16 Pro", "iPhone 16 Pro Max"],
+                "Samsung": ["Galaxy A14", "Galaxy A24", "Galaxy A34", "Galaxy A54", "Galaxy S21", "Galaxy S22", "Galaxy S23", "Galaxy S24", "Galaxy S25", "Galaxy S25 Ultra"],
+                "Xiaomi / Redmi": ["Redmi Note 12", "Redmi Note 13", "Redmi Note 14", "Redmi Note 14 Pro", "POCO X6", "POCO X7", "Xiaomi 14", "Xiaomi 15"],
+                "Motorola": ["Moto G54", "Moto G84", "Moto G85", "Edge 40", "Edge 50"],
+                "Honor": ["Honor X8b", "Honor 200", "Honor 400"],
+                "Otros": ["Otro modelo — confirmar disponibilidad"]
+            };
+            const pb = document.getElementById("phone-brand"), pm = document.getElementById("phone-model");
+            Object.keys(phones).forEach(x => pb.add(new Option(x, x)));
+            pb.addEventListener("change", () => { pm.innerHTML = ""; phones[pb.value].forEach(x => pm.add(new Option(x, x))); renderPhone(); });
+            function phoneBase() {
+                const m = pm.value || "";
+                let tier = "mid";
+                if (/Pro Max|Ultra/.test(m)) tier = "flag";
+                else if (/A14|A24|Moto G|X8b|Note 12/.test(m)) tier = "entry";
+                return tier;
+            }
+            function renderPhone() {
+                const tier = phoneBase();
+                const base = { entry: { diag: 8, batt: 12, screen: 20, charge: 12, water: 20 }, mid: { diag: 10, batt: 18, screen: 30, charge: 15, water: 25 }, flag: { diag: 15, batt: 25, screen: 45, charge: 20, water: 35 } }[tier];
+                renderServices("phone-services", [
+                    ["Diagnóstico", base.diag],
+                    ["Cambio de batería — mano de obra", base.batt],
+                    ["Cambio de pantalla — mano de obra", base.screen],
+                    ["Cambio de puerto de carga — mano de obra", base.charge],
+                    ["Limpieza de puerto / problemas de carga", 10],
+                    ["Daño por líquido — limpieza técnica inicial", base.water]
+                ], "phone-total");
+            }
+            pb.value = "Apple"; pb.dispatchEvent(new Event("change")); pm.selectedIndex = 0;
 
-const pcServices={
-desktop:[["Diagnóstico general",15],["Mantenimiento + limpieza + pasta térmica",35],["Formateo + instalación SO",30],["Instalación/clonado SSD — mano de obra",20],["Armado de PC — mano de obra",50],["Cableado/gestión interna",25],["Actualización BIOS",25],["Instalación de RAM/GPU/PSU",20],["Optimización de temperaturas",25],["Diagnóstico de no encendido",25],["Diagnóstico de reinicios/pantallazos",25]],
-gaming:[["Diagnóstico gaming",20],["Mantenimiento profundo",45],["Cambio de pasta térmica CPU/GPU — según modelo",55],["Armado y gestión de cableado",60],["Instalación de componentes",25],["Actualización BIOS",25],["Pruebas de estabilidad/temperatura",30],["Optimización de ventiladores",25]],
-laptop:[["Diagnóstico",15],["Limpieza + pasta térmica",40],["Formateo + instalación SO",30],["Cambio de batería — mano de obra",25],["Cambio de pantalla — mano de obra",30],["Instalación/clonado SSD — mano de obra",25],["Upgrade de RAM — mano de obra",20],["Reparación de bisagras — diagnóstico",30],["Diagnóstico de carga",20]],
-allinone:[["Diagnóstico",15],["Mantenimiento interno",35],["Formateo + instalación SO",25],["Cambio de almacenamiento — mano de obra",25],["Revisión de pantalla/encendido",25]]
-};
-const pt=document.getElementById("pc-type");
-function renderPCService(){renderServices("pc-services",pcServices[pt.value],"pc-total");}
-pt.addEventListener("change",renderPCService);renderPCService();
+            const pcServices = {
+                desktop: [["Diagnóstico general", 15], ["Mantenimiento + limpieza + pasta térmica", 35], ["Formateo + instalación SO", 30], ["Instalación/clonado SSD — mano de obra", 20], ["Armado de PC — mano de obra", 50], ["Cableado/gestión interna", 25], ["Actualización BIOS", 25], ["Instalación de RAM/GPU/PSU", 20], ["Optimización de temperaturas", 25], ["Diagnóstico de no encendido", 25], ["Diagnóstico de reinicios/pantallazos", 25]],
+                gaming: [["Diagnóstico gaming", 20], ["Mantenimiento profundo", 45], ["Cambio de pasta térmica CPU/GPU — según modelo", 55], ["Armado y gestión de cableado", 60], ["Instalación de componentes", 25], ["Actualización BIOS", 25], ["Pruebas de estabilidad/temperatura", 30], ["Optimización de ventiladores", 25]],
+                laptop: [["Diagnóstico", 15], ["Limpieza + pasta térmica", 40], ["Formateo + instalación SO", 30], ["Cambio de batería — mano de obra", 25], ["Cambio de pantalla — mano de obra", 30], ["Instalación/clonado SSD — mano de obra", 25], ["Upgrade de RAM — mano de obra", 20], ["Reparación de bisagras — diagnóstico", 30], ["Diagnóstico de carga", 20]],
+                allinone: [["Diagnóstico", 15], ["Mantenimiento interno", 35], ["Formateo + instalación SO", 25], ["Cambio de almacenamiento — mano de obra", 25], ["Revisión de pantalla/encendido", 25]]
+            };
+            const pt = document.getElementById("pc-type");
+            function renderPCService() { renderServices("pc-services", pcServices[pt.value], "pc-total"); }
+            pt.addEventListener("change", renderPCService); renderPCService();
 
-const net=[["Diagnóstico de red",15],["MikroTik DHCP + NAT",25],["Firewall básico/seguridad",35],["Respaldo y organización de configuración",20],["VLAN / red de invitados",30],["Configuración Wi-Fi/AP",25],["QoS / control de ancho de banda",30],["Instalación y puesta en marcha en sitio — desde",40]];
-renderServices("network-services",net,"network-total");
+            const net = [["Diagnóstico de red", 15], ["MikroTik DHCP + NAT", 25], ["Firewall básico/seguridad", 35], ["Respaldo y organización de configuración", 20], ["VLAN / red de invitados", 30], ["Configuración Wi-Fi/AP", 25], ["QoS / control de ancho de banda", 30], ["Instalación y puesta en marcha en sitio — desde", 40]];
+            renderServices("network-services", net, "network-total");
 
-function renderServices(containerId,data,totalId){
-const box=document.getElementById(containerId);box.innerHTML="";
-data.forEach((x,i)=>{
-const l=document.createElement("label");l.className="quote-service";
-l.innerHTML='<span class="quote-service-label"><input type="checkbox" data-price="'+x[1]+'"> '+x[0]+'</span><span class="quote-service-price">'+money(x[1])+'</span>';
-box.appendChild(l);
-l.querySelector("input").addEventListener("change",()=>updateServiceTotal(box,totalId));
-});
-updateServiceTotal(box,totalId);
-}
-function updateServiceTotal(box,totalId){
-let n=0;box.querySelectorAll("input:checked").forEach(x=>n+=Number(x.dataset.price));
-document.getElementById(totalId).textContent=money(n);
-}
-function serviceMessage(title,box,detail,totalId){
-const items=[];box.querySelectorAll("input:checked").forEach(x=>items.push("- "+x.parentElement.textContent.trim()));
-return "Hola NúcleoTech, quiero cotizar: "+title+"\n\n"+(items.length?"Servicios:\n"+items.join("\n")+"\n\n":"")+"Total estimado: "+document.getElementById(totalId).textContent+"\n\n"+(detail?"Detalles: "+detail+"\n\n":"")+"(Cotización generada desde nucleo-tech.org)";
-}
+            function renderServices(containerId, data, totalId) {
+                const box = document.getElementById(containerId); box.innerHTML = "";
+                data.forEach((x, i) => {
+                    const l = document.createElement("label"); l.className = "quote-service";
+                    l.innerHTML = '<span class="quote-service-label"><input type="checkbox" data-price="' + x[1] + '"> ' + x[0] + '</span><span class="quote-service-price">' + money(x[1]) + '</span>';
+                    box.appendChild(l);
+                    l.querySelector("input").addEventListener("change", () => updateServiceTotal(box, totalId));
+                });
+                updateServiceTotal(box, totalId);
+            }
+            function updateServiceTotal(box, totalId) {
+                let n = 0; box.querySelectorAll("input:checked").forEach(x => n += Number(x.dataset.price));
+                document.getElementById(totalId).textContent = money(n);
+            }
+            function serviceMessage(title, box, detail, totalId) {
+                const items = []; box.querySelectorAll("input:checked").forEach(x => items.push("- " + x.parentElement.textContent.trim()));
+                return "Hola NúcleoTech, quiero cotizar: " + title + "\n\n" + (items.length ? "Servicios:\n" + items.join("\n") + "\n\n" : "") + "Total estimado: " + document.getElementById(totalId).textContent + "\n\n" + (detail ? "Detalles: " + detail + "\n\n" : "") + "(Cotización generada desde nucleo-tech.org)";
+            }
 
-document.querySelectorAll("[data-modal]").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.modal).classList.add("open")));
-document.querySelectorAll(".quote-modal-overlay").forEach(o=>{
-o.addEventListener("click",e=>{if(e.target===o)o.classList.remove("open")});
-o.querySelector("[data-close]").addEventListener("click",()=>o.classList.remove("open"));
-});
-function wireModal(modalId,title,getBox,getDetail,totalId,emailId){
-const o=document.getElementById(modalId), messenger=o.querySelector("[data-messenger]"),email=document.getElementById(emailId);
-function update(){
-const msg=serviceMessage(title,getBox(),getDetail().value,totalId);
-email.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Cotización: "+title)+"&body="+encodeURIComponent(msg);
-messenger.onclick=async function(){
-try{await navigator.clipboard.writeText(msg);alert("Cotización copiada. Se abrirá Messenger; pega el detalle en el chat.");}catch(e){alert("Copia manualmente la cotización antes de enviarla.");}
-window.open(MESSENGER,"_blank");
-};
-}
-o.addEventListener("change",update);getDetail().addEventListener("input",update);update();
-}
-wireModal("modal-consolas","Consola "+cs.value,()=>document.getElementById("console-services"),()=>document.getElementById("console-detail"),"console-total","console-email");
-cs.addEventListener("change",()=>wireModal("modal-consolas","Consola "+cs.value,()=>document.getElementById("console-services"),()=>document.getElementById("console-detail"),"console-total","console-email"));
-wireModal("modal-celular","Smartphone",()=>document.getElementById("phone-services"),()=>document.getElementById("phone-detail"),"phone-total","phone-email");
-wireModal("modal-pcserv","PC/Laptop",()=>document.getElementById("pc-services"),()=>document.getElementById("pc-detail"),"pc-total","pc-email");
-wireModal("modal-redes","Redes y MikroTik",()=>document.getElementById("network-services"),()=>document.getElementById("network-detail"),"network-total","network-email");
+            document.querySelectorAll("[data-modal]").forEach(b => b.addEventListener("click", () => document.getElementById(b.dataset.modal).classList.add("open")));
+            document.querySelectorAll(".quote-modal-overlay").forEach(o => {
+                o.addEventListener("click", e => { if (e.target === o) o.classList.remove("open") });
+                o.querySelector("[data-close]").addEventListener("click", () => o.classList.remove("open"));
+            });
+            function wireModal(modalId, title, getBox, getDetail, totalId, emailId) {
+                const o = document.getElementById(modalId), messenger = o.querySelector("[data-messenger]"), email = document.getElementById(emailId);
+                function update() {
+                    const msg = serviceMessage(title, getBox(), getDetail().value, totalId);
+                    email.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Cotización: " + title) + "&body=" + encodeURIComponent(msg);
+                    messenger.onclick = async function () {
+                        try { await navigator.clipboard.writeText(msg); alert("Cotización copiada. Se abrirá Messenger; pega el detalle en el chat."); } catch (e) { alert("Copia manualmente la cotización antes de enviarla."); }
+                        window.open(MESSENGER, "_blank");
+                    };
+                }
+                o.addEventListener("change", update); getDetail().addEventListener("input", update); update();
+            }
+            wireModal("modal-consolas", "Consola " + cs.value, () => document.getElementById("console-services"), () => document.getElementById("console-detail"), "console-total", "console-email");
+            cs.addEventListener("change", () => wireModal("modal-consolas", "Consola " + cs.value, () => document.getElementById("console-services"), () => document.getElementById("console-detail"), "console-total", "console-email"));
+            wireModal("modal-celular", "Smartphone", () => document.getElementById("phone-services"), () => document.getElementById("phone-detail"), "phone-total", "phone-email");
+            wireModal("modal-pcserv", "PC/Laptop", () => document.getElementById("pc-services"), () => document.getElementById("pc-detail"), "pc-total", "pc-email");
+            wireModal("modal-redes", "Redes y MikroTik", () => document.getElementById("network-services"), () => document.getElementById("network-detail"), "network-total", "network-email");
 
-})();
-</script>
+        })();
+    </script>
 </body>
+
 </html>
