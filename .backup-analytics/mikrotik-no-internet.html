@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="es">
 
@@ -17,7 +17,7 @@
         crossorigin="anonymous"></script>
     <meta charset="utf-8" />
     <meta content="width=device-width,initial-scale=1.0" name="viewport" />
-    <title>MikroTik sin Internet: diagnóstico paso a paso por capas | NúcleoTech</title>
+    <title>MikroTik sin Internet: diagnÃ³stico paso a paso por capas | NÃºcleoTech</title>
     <meta content="Comprueba enlace, IP, gateway, salida por IP, DNS, ruta y NAT en ese orden." name="description" />
     <link href="styles.css" rel="stylesheet" />
     <link rel="canonical" href="https://nucleo-tech.org/mikrotik-no-internet.html">
@@ -26,69 +26,69 @@
 <body>
     <header class="site-header">
         <div class="wrap">
-            <a class="logo" href="index.html">Núcleo<span>Tech</span></a>
+            <a class="logo" href="index.html">NÃºcleo<span>Tech</span></a>
             <nav class="main-nav">
                 <a class="" href="index.html">Inicio</a>
-                <a class="" href="resenas.html">Reseñas</a>
+                <a class="" href="resenas.html">ReseÃ±as</a>
                 <a class="" href="reparaciones.html">Reparaciones</a>
                 <a href="comunidad-facebook.html">Comunidad</a>
                 <a class="" href="sobre-nosotros.html">Sobre nosotros</a>
                 <a class="" href="contacto.html">Contacto</a>
-            </nav><button aria-expanded="false" aria-label="Abrir menú" class="nav-toggle">Menú</button>
+            </nav><button aria-expanded="false" aria-label="Abrir menÃº" class="nav-toggle">MenÃº</button>
         </div>
     </header>
     <header class="repair-hero">
         <div class="wrap">
             <p class="eyebrow-plain">MikroTik y Redes</p>
-            <h1>MikroTik sin Internet: diagnóstico paso a paso por capas</h1>
+            <h1>MikroTik sin Internet: diagnÃ³stico paso a paso por capas</h1>
             <p class="dek">Comprueba enlace, IP, gateway, salida por IP, DNS, ruta y NAT en ese orden.</p>
-            <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech ·
+            <div class="repair-meta"><span>GuÃ­a paso a paso</span><span>DiagnÃ³stico primero</span><span>NanoTech Â·
                     2026</span></div>
         </div>
     </header>
     <main class="wrap repair-guide">
         <div class="repair-shell">
-            <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button>
+            <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guÃ­a</button>
                 <div class="repair-toc-links">
                     <p class="toc-title">Contenido</p><a data-target="introduccion"
-                        href="#introduccion">Introducción</a><a data-target="seguridad"
+                        href="#introduccion">IntroducciÃ³n</a><a data-target="seguridad"
                         href="#seguridad">Seguridad</a><a data-target="herramientas"
                         href="#herramientas">Herramientas</a><a data-target="diagnostico"
-                        href="#diagnostico">Diagnóstico</a><a data-target="fuentes" href="#fuentes">Fuentes</a><a
+                        href="#diagnostico">DiagnÃ³stico</a><a data-target="fuentes" href="#fuentes">Fuentes</a><a
                         data-target="paso-1" href="#paso-1">1. Confirmar el alcance</a><a data-target="paso-2"
                         href="#paso-2">2. Comprobar enlace</a><a data-target="paso-3" href="#paso-3">3. Comprobar
                         IP</a><a data-target="paso-4" href="#paso-4">4. Probar gateway</a><a data-target="paso-5"
-                        href="#paso-5">5. Probar una IP pública</a><a data-target="paso-6" href="#paso-6">6. Comprobar
+                        href="#paso-5">5. Probar una IP pÃºblica</a><a data-target="paso-6" href="#paso-6">6. Comprobar
                         DNS</a><a data-target="paso-7" href="#paso-7">7. Revisar ruta y NAT</a>
                 </div>
             </aside>
             <article class="repair-main">
-                <div class="mikrotik-code-note"><strong>Cómo usar los comandos:</strong> primero ejecuta las consultas
-                    de diagnóstico; después aplica la configuración; finalmente vuelve a consultar para confirmar el
+                <div class="mikrotik-code-note"><strong>CÃ³mo usar los comandos:</strong> primero ejecuta las consultas
+                    de diagnÃ³stico; despuÃ©s aplica la configuraciÃ³n; finalmente vuelve a consultar para confirmar el
                     cambio. Los valores de ejemplo deben adaptarse a tu interfaz WAN/LAN y subred.</div>
                 <section id="introduccion">
-                    <h2>Introducción</h2>
-                    <figure class="repair-photo"><img alt="Diagrama de diagnóstico de MikroTik y Redes" loading="eager"
+                    <h2>IntroducciÃ³n</h2>
+                    <figure class="repair-photo"><img alt="Diagrama de diagnÃ³stico de MikroTik y Redes" loading="eager"
                             src="../imagenes/mikrotik/mikrotik-sin-internet.jpg" />
-                        <figcaption>Diagrama original de NanoTech. La documentación externa se utiliza como referencia
-                            técnica, no como sustituto del contenido.</figcaption>
+                        <figcaption>Diagrama original de NanoTech. La documentaciÃ³n externa se utiliza como referencia
+                            tÃ©cnica, no como sustituto del contenido.</figcaption>
                     </figure>
-                    <div class="repair-intro"><strong>Objetivo de esta guía</strong>
-                        <p>La meta es llegar a una hipótesis con evidencia. No se trata de desmontar por desmontar: cada
+                    <div class="repair-intro"><strong>Objetivo de esta guÃ­a</strong>
+                        <p>La meta es llegar a una hipÃ³tesis con evidencia. No se trata de desmontar por desmontar: cada
                             paso elimina una causa posible y prepara el siguiente.</p>
                     </div>
                 </section>
                 <section id="seguridad">
                     <h2>Antes de empezar: seguridad</h2>
-                    <div class="repair-warning"><strong>⚠ Desconecta completamente el equipo.</strong>
-                        <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta
-                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>
+                    <div class="repair-warning"><strong>âš  Desconecta completamente el equipo.</strong>
+                        <p>Retira alimentaciÃ³n y perifÃ©ricos antes de abrir. No trabajes con una fuente de red abierta
+                            ni realices mediciones energizadas si no tienes formaciÃ³n e instrumental apropiados.</p>
                     </div>
                     <ul>
                         <li>Trabaja sobre una superficie limpia, seca y bien iluminada.</li>
                         <li>Organiza tornillos y conectores por etapa.</li>
-                        <li>Fotografía conexiones antes de desconectarlas cuando desmontes.</li>
-                        <li>No fuerces una cubierta: una resistencia inesperada suele indicar una fijación pendiente.
+                        <li>FotografÃ­a conexiones antes de desconectarlas cuando desmontes.</li>
+                        <li>No fuerces una cubierta: una resistencia inesperada suele indicar una fijaciÃ³n pendiente.
                         </li>
                     </ul>
                 </section>
@@ -96,46 +96,46 @@
                     <h2>Herramientas y material</h2>
                     <div class="repair-tools"><span class="repair-tool">WinBox/WebFig/CLI</span><span
                             class="repair-tool">Cable Ethernet</span><span class="repair-tool">PC de
-                            diagnóstico</span><span class="repair-tool">Ping/traceroute</span><span
-                            class="repair-tool">Copia de seguridad de configuración</span></div>
+                            diagnÃ³stico</span><span class="repair-tool">Ping/traceroute</span><span
+                            class="repair-tool">Copia de seguridad de configuraciÃ³n</span></div>
                     <div class="repair-note"><strong>Regla NanoTech:</strong> una herramienta debe resolver una tarea
-                        concreta. Si una intervención requiere instrumental que no tienes, la guía debe detenerse ahí,
+                        concreta. Si una intervenciÃ³n requiere instrumental que no tienes, la guÃ­a debe detenerse ahÃ­,
                         no improvisar.</div>
                 </section>
                 <section id="diagnostico">
-                    <h2>Diagnóstico paso a paso</h2>
+                    <h2>DiagnÃ³stico paso a paso</h2>
                     <section class="repair-step" id="paso-1">
                         <div class="repair-step-head"><span class="repair-step-num">01</span>
                             <div>
                                 <h3>Confirmar el alcance</h3>
-                                <p>Determina si falla un solo cliente, una VLAN, toda la LAN o también el propio router.
+                                <p>Determina si falla un solo cliente, una VLAN, toda la LAN o tambiÃ©n el propio router.
                                 </p>
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
                             <figure><img alt="Diagrama NanoTech: Confirmar el alcance" loading="lazy"
                                     src="../imagenes/mikrotik/determinar-alcance.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Identificar interfaces y estado · COMANDO PRINCIPAL
+                                    <div class="code-label"><span>Identificar interfaces y estado Â· COMANDO PRINCIPAL
                                             Copiar</span><button class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/interface print detail
 /interface ethernet monitor ether1 once</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/interface print detail</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                         </div>
                     </section>
@@ -143,34 +143,34 @@
                         <div class="repair-step-head"><span class="repair-step-num">02</span>
                             <div>
                                 <h3>Comprobar enlace</h3>
-                                <p>Revisa puerto Ethernet, enlace inalámbrico y estado de la interfaz.</p>
+                                <p>Revisa puerto Ethernet, enlace inalÃ¡mbrico y estado de la interfaz.</p>
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
                             <figure><img alt="Diagrama NanoTech: Comprobar enlace" loading="lazy"
                                     src="../imagenes/mikrotik/comprobar-enlace.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Consultar enlace y bridge · COMANDO
+                                    <div class="code-label"><span>Consultar enlace y bridge Â· COMANDO
                                             PRINCIPAL</span><button class="copy-code" type="button">Copiar</button>
                                     </div>
                                     <pre><code>/interface bridge port print detail
 /interface ethernet monitor ether1 once</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/interface bridge host print detail</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                         </div>
                     </section>
@@ -178,35 +178,35 @@
                         <div class="repair-step-head"><span class="repair-step-num">03</span>
                             <div>
                                 <h3>Comprobar IP</h3>
-                                <p>Verifica que el cliente tenga dirección, máscara y gateway correctos. Revisa DHCP si
+                                <p>Verifica que el cliente tenga direcciÃ³n, mÃ¡scara y gateway correctos. Revisa DHCP si
                                     corresponde.</p>
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
                             <figure><img alt="Diagrama NanoTech: Comprobar IP" loading="lazy"
                                     src="../imagenes/mikrotik/comprobar-ip.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Consultar IP y DHCP · COMANDO PRINCIPAL</span><button
+                                    <div class="code-label"><span>Consultar IP y DHCP Â· COMANDO PRINCIPAL</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ip address print detail
 /ip dhcp-client print detail
 /ip dhcp-server lease print detail</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ip address print detail</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                         </div>
                     </section>
@@ -218,78 +218,78 @@
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
                             <figure><img alt="Diagrama NanoTech: Probar gateway" loading="lazy"
                                     src="../imagenes/mikrotik/gateway.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Ping al gateway · COMANDO PRINCIPAL</span><button
+                                    <div class="code-label"><span>Ping al gateway Â· COMANDO PRINCIPAL</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ping 192.168.88.1 count=5</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ip route print detail</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                         </div>
                     </section>
                     <section class="repair-step" id="paso-5">
                         <div class="repair-step-head"><span class="repair-step-num">05</span>
                             <div>
-                                <h3>Probar una IP pública</h3>
-                                <p>Haz ping a una IP pública conocida. Si responde y los dominios no, DNS gana
+                                <h3>Probar una IP pÃºblica</h3>
+                                <p>Haz ping a una IP pÃºblica conocida. Si responde y los dominios no, DNS gana
                                     prioridad.</p>
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Probar una IP pública" loading="lazy"
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
+                            <figure><img alt="Diagrama NanoTech: Probar una IP pÃºblica" loading="lazy"
                                     src="../imagenes/mikrotik/ip-publica.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Ping a Internet por IP · COMANDO
+                                    <div class="code-label"><span>Ping a Internet por IP Â· COMANDO
                                             PRINCIPAL</span><button class="copy-code" type="button">Copiar</button>
                                     </div>
                                     <pre><code>/ping 1.1.1.1 count=5</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ip route print detail</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                             <div class="repair-step-grid">
                                 <div>
-                                    <h4>Qué hacer</h4>
+                                    <h4>QuÃ© hacer</h4>
                                     <ol>
                                         <li>Haz la prueba desde el cliente afectado.</li>
-                                        <li>Compara gateway, IP pública y dominio.</li>
-                                        <li>Guarda copia de configuración antes de cambios.</li>
+                                        <li>Compara gateway, IP pÃºblica y dominio.</li>
+                                        <li>Guarda copia de configuraciÃ³n antes de cambios.</li>
                                     </ol>
                                 </div>
                                 <div class="check"><strong>Punto de control</strong>
-                                    <p>Esta prueba separa conectividad de resolución de nombres.</p><strong>Resultado
+                                    <p>Esta prueba separa conectividad de resoluciÃ³n de nombres.</p><strong>Resultado
                                         esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+                                    <p>Si la prueba es correcta, continÃºa. Si no lo es, conserva el resultado y sigue la
+                                        rama de diagnÃ³stico correspondiente.</p>
                                 </div>
                             </div>
                         </div>
@@ -298,48 +298,48 @@
                         <div class="repair-step-head"><span class="repair-step-num">06</span>
                             <div>
                                 <h3>Comprobar DNS</h3>
-                                <p>Revisa servidores DNS y resolución de dominios.</p>
+                                <p>Revisa servidores DNS y resoluciÃ³n de dominios.</p>
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
                             <figure><img alt="Diagrama NanoTech: Comprobar DNS" loading="lazy"
                                     src="../imagenes/mikrotik/comprobar-dns.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Resolver un dominio · COMANDO PRINCIPAL</span><button
+                                    <div class="code-label"><span>Resolver un dominio Â· COMANDO PRINCIPAL</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/resolve example.com
 /ip dns print</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ip dns print</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                             <div class="repair-step-grid">
                                 <div>
-                                    <h4>Qué hacer</h4>
+                                    <h4>QuÃ© hacer</h4>
                                     <ol>
                                         <li>Haz la prueba desde el cliente afectado.</li>
-                                        <li>Compara gateway, IP pública y dominio.</li>
-                                        <li>Guarda copia de configuración antes de cambios.</li>
+                                        <li>Compara gateway, IP pÃºblica y dominio.</li>
+                                        <li>Guarda copia de configuraciÃ³n antes de cambios.</li>
                                     </ol>
                                 </div>
                                 <div class="check"><strong>Punto de control</strong>
                                     <p>No cambies firewall/NAT para arreglar un problema que solo afecta DNS.</p>
                                     <strong>Resultado esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+                                    <p>Si la prueba es correcta, continÃºa. Si no lo es, conserva el resultado y sigue la
+                                        rama de diagnÃ³stico correspondiente.</p>
                                 </div>
                             </div>
                         </div>
@@ -348,22 +348,22 @@
                         <div class="repair-step-head"><span class="repair-step-num">07</span>
                             <div>
                                 <h3>Revisar ruta y NAT</h3>
-                                <p>Comprueba ruta por defecto, gateway WAN y regla src-nat/masquerade según la
-                                    topología.</p>
+                                <p>Comprueba ruta por defecto, gateway WAN y regla src-nat/masquerade segÃºn la
+                                    topologÃ­a.</p>
                             </div>
                         </div>
                         <div class="repair-step-body">
-                            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
-                                consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
-                                hipótesis.</div>
+                            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a
+                                consultar â†’ prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la
+                                hipÃ³tesis.</div>
                             <figure><img alt="Diagrama NanoTech: Revisar ruta y NAT" loading="lazy"
                                     src="../imagenes/mikrotik/comprueba-ruta.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NanoTech para entender la lÃ³gica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
                                 <div class="code-block">
-                                    <div class="code-label"><span>Consultar ruta, NAT y firewall · COMANDO
+                                    <div class="code-label"><span>Consultar ruta, NAT y firewall Â· COMANDO
                                             PRINCIPAL</span><button class="copy-code" type="button">Copiar</button>
                                     </div>
                                     <pre><code>/ip route print detail
@@ -372,44 +372,44 @@
 /ip firewall connection print</code></pre>
                                 </div>
                                 <div class="code-block">
-                                    <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button
+                                    <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button
                                             class="copy-code" type="button">Copiar</button></div>
                                     <pre><code>/ip firewall nat print stats</code></pre>
                                 </div>
-                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnóstico.
-                                    Si modificas la configuración, vuelve a ejecutar la consulta y compara el resultado.
-                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topología.</p>
+                                <p class="code-caption">Ejecuta primero la consulta cuando sea una etapa de diagnÃ³stico.
+                                    Si modificas la configuraciÃ³n, vuelve a ejecutar la consulta y compara el resultado.
+                                    Adapta interfaces, subredes, listas WAN/LAN y nombres a tu topologÃ­a.</p>
                             </div>
                             <div class="repair-step-grid">
                                 <div>
-                                    <h4>Qué hacer</h4>
+                                    <h4>QuÃ© hacer</h4>
                                     <ol>
                                         <li>Haz la prueba desde el cliente afectado.</li>
-                                        <li>Compara gateway, IP pública y dominio.</li>
-                                        <li>Guarda copia de configuración antes de cambios.</li>
+                                        <li>Compara gateway, IP pÃºblica y dominio.</li>
+                                        <li>Guarda copia de configuraciÃ³n antes de cambios.</li>
                                     </ol>
                                 </div>
                                 <div class="check"><strong>Punto de control</strong>
-                                    <p>Haz respaldo antes de cambios en producción.</p><strong>Resultado
+                                    <p>Haz respaldo antes de cambios en producciÃ³n.</p><strong>Resultado
                                         esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+                                    <p>Si la prueba es correcta, continÃºa. Si no lo es, conserva el resultado y sigue la
+                                        rama de diagnÃ³stico correspondiente.</p>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <div class="repair-result"><strong>Cómo interpretar el resultado</strong>
-                        <p>Una prueba negativa no es un fracaso: es información. Registra qué se probó, con qué pieza o
-                            condición y qué cambió. Evita reemplazar varios componentes al mismo tiempo.</p>
+                    <div class="repair-result"><strong>CÃ³mo interpretar el resultado</strong>
+                        <p>Una prueba negativa no es un fracaso: es informaciÃ³n. Registra quÃ© se probÃ³, con quÃ© pieza o
+                            condiciÃ³n y quÃ© cambiÃ³. Evita reemplazar varios componentes al mismo tiempo.</p>
                     </div>
-                    <h2>Tabla rápida de diagnóstico</h2>
+                    <h2>Tabla rÃ¡pida de diagnÃ³stico</h2>
                     <div class="repair-table-wrap">
                         <table class="repair-table">
                             <thead>
                                 <tr>
-                                    <th>Síntoma</th>
-                                    <th>Primera comprobación</th>
-                                    <th>Siguiente hipótesis</th>
+                                    <th>SÃ­ntoma</th>
+                                    <th>Primera comprobaciÃ³n</th>
+                                    <th>Siguiente hipÃ³tesis</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -424,7 +424,7 @@
                                     <td>Prioridad: enlace/VLAN/firewall</td>
                                 </tr>
                                 <tr>
-                                    <td>IP pública responde, dominio no</td>
+                                    <td>IP pÃºblica responde, dominio no</td>
                                     <td>DNS falla</td>
                                     <td>Prioridad: DNS</td>
                                 </tr>
@@ -441,39 +441,39 @@
                     <h2>Fuentes, licencias y referencias</h2>
                     <ul class="repair-sources">
                         <li><a href="https://help.mikrotik.com/docs/" rel="noopener noreferrer" target="_blank">Fuente
-                                de imagen / referencia</a> — revisa la licencia indicada en la ficha antes de
+                                de imagen / referencia</a> â€” revisa la licencia indicada en la ficha antes de
                             redistribuir.</li>
                         <li><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener noreferrer"
                                 target="_blank">Creative Commons BY-SA 4.0</a> cuando aplique a la imagen.</li>
                         <li><a href="https://www.ifixit.com/Device/PlayStation_4" rel="noopener noreferrer"
-                                target="_blank">iFixit / documentación de reparación</a> como referencia técnica para
+                                target="_blank">iFixit / documentaciÃ³n de reparaciÃ³n</a> como referencia tÃ©cnica para
                             PlayStation cuando corresponda.</li>
                     </ul>
-                    <div class="repair-note"><strong>Transparencia:</strong> las fotografías de terceros se mantienen
-                        con su atribución/licencia correspondiente. Los diagramas de esta guía son originales de
-                        NanoTech. El texto y el flujo de diagnóstico están redactados para este sitio y no reproducen
-                        literalmente otras guías.</div>
+                    <div class="repair-note"><strong>Transparencia:</strong> las fotografÃ­as de terceros se mantienen
+                        con su atribuciÃ³n/licencia correspondiente. Los diagramas de esta guÃ­a son originales de
+                        NanoTech. El texto y el flujo de diagnÃ³stico estÃ¡n redactados para este sitio y no reproducen
+                        literalmente otras guÃ­as.</div>
                 </section>
                 <section>
-                    <h2>Artículos relacionados</h2>
+                    <h2>ArtÃ­culos relacionados</h2>
                     <ul>
                         <li><a href="mikrotik.html">Mikrotik Redes</a></li>
                         <li><a href="mantenimiento-pc.html">Mantenimiento Pc</a></li>
                     </ul>
-                    <div class="repair-bottom-nav"><a class="btn secondary" href="pc-no-arranca.html">← Anterior</a><a
-                            class="btn" href="mikrotik.html">Siguiente →</a></div>
+                    <div class="repair-bottom-nav"><a class="btn secondary" href="pc-no-arranca.html">â† Anterior</a><a
+                            class="btn" href="mikrotik.html">Siguiente â†’</a></div>
                 </section>
             </article>
             <aside class="repair-side">
                 <div class="adsense-slot adsense-slot--rectangle"></div>
                 <div class="repair-side-card"><strong>Comunidad</strong>
-                    <p>Publicaciones visuales, casos y consejos de reparación.</p><a class="btn facebook-btn"
+                    <p>Publicaciones visuales, casos y consejos de reparaciÃ³n.</p><a class="btn facebook-btn"
                         href="https://www.facebook.com/profile.php?id=61593321905984" rel="noopener"
                         target="_blank">Facebook NanoTech</a>
                 </div>
-                <div class="repair-side-card"><strong>Nota técnica</strong>
-                    <p class="repair-disclaimer">Los procedimientos internos dependen de la revisión exacta del equipo.
-                        Comprueba el modelo, la revisión de hardware y la documentación del fabricante antes de
+                <div class="repair-side-card"><strong>Nota tÃ©cnica</strong>
+                    <p class="repair-disclaimer">Los procedimientos internos dependen de la revisiÃ³n exacta del equipo.
+                        Comprueba el modelo, la revisiÃ³n de hardware y la documentaciÃ³n del fabricante antes de
                         desmontar.</p>
                 </div>
             </aside>
@@ -481,9 +481,9 @@
     </main>
     <footer class="site-footer">
         <div class="wrap footer-grid">
-            <span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
+            <span>Â© 2026 NÃºcleoTech. Todos los derechos reservados.</span>
             <div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="sobre-nosotros.html">Sobre
-                    nosotros</a><a href="politica-privacidad.html">Política de privacidad</a><a
+                    nosotros</a><a href="politica-privacidad.html">PolÃ­tica de privacidad</a><a
                     href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div>
         </div>
     </footer>
@@ -499,7 +499,7 @@
     </script>
     <script src="script.js"></script>
     <script
-        data-copy-code="">document.addEventListener('click', async (e) => { const b = e.target.closest('.copy-code'); if (!b) return; const code = b.closest('.code-block')?.querySelector('code'); if (!code) return; try { await navigator.clipboard.writeText(code.innerText); b.textContent = 'Copiado'; b.classList.add('copied'); setTimeout(() => { b.textContent = 'Copiar'; b.classList.remove('copied') }, 1400) } catch (err) { b.textContent = 'Selecciona el código' } });</script>
+        data-copy-code="">document.addEventListener('click', async (e) => { const b = e.target.closest('.copy-code'); if (!b) return; const code = b.closest('.code-block')?.querySelector('code'); if (!code) return; try { await navigator.clipboard.writeText(code.innerText); b.textContent = 'Copiado'; b.classList.add('copied'); setTimeout(() => { b.textContent = 'Copiar'; b.classList.remove('copied') }, 1400) } catch (err) { b.textContent = 'Selecciona el cÃ³digo' } });</script>
 </body>
 
 </html>
