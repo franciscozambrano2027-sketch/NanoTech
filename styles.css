@@ -3381,3 +3381,65 @@ COTIZACION — NUCLEOTECH
 .article-cover[src$=".svg"] {
   padding: 0;
 }
+
+
+/* =========================================================
+   CORRECCIÓN DEFINITIVA — LAYOUT DE GUÍAS DE REPARACIÓN
+   El .repair-shell contiene: TOC + contenido + sidebar.
+   Esta regla final evita que .repair-side caiga debajo.
+   ========================================================= */
+
+.repair-shell {
+  display: grid;
+  grid-template-columns: minmax(190px, 215px) minmax(0, 1fr) minmax(210px, 230px);
+  gap: 34px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.repair-toc,
+.repair-main,
+.repair-side {
+  min-width: 0;
+}
+
+.repair-toc {
+  align-self: start;
+}
+
+.repair-main {
+  width: 100%;
+  max-width: 850px;
+}
+
+.repair-side {
+  width: 100%;
+  align-self: start;
+}
+
+/* Tablet: se conserva el contenido principal y se oculta el lateral. */
+@media (max-width: 1050px) {
+  .repair-shell {
+    grid-template-columns: minmax(190px, 200px) minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .repair-side {
+    display: none;
+  }
+}
+
+/* Móvil: una sola columna y sin lateral derecho. */
+@media (max-width: 760px) {
+  .repair-shell {
+    display: block;
+  }
+
+  .repair-toc {
+    margin-bottom: 18px;
+  }
+
+  .repair-side {
+    display: none;
+  }
+}
