@@ -22,6 +22,8 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
+from asset_paths import canonicalize_existing_image
+
 from generate_content import (
     BASE,
     ESTADO_PATH,
@@ -41,30 +43,14 @@ PUBLISHED_DIR = AUTO / "drafts" / "published"
 
 
 def validar_imagen(draft: dict) -> str:
+    """Valida y normaliza la imagen editorial antes de publicar."""
     imagen = str(draft.get("imagen", "")).strip()
-
     if not imagen:
         raise ValueError(
-            "No hay imagen editorial. Coloca una imagen local y escribe su ruta en el campo 'imagen' antes de aprobar."
+            "No hay imagen editorial. Coloca primero la imagen elegida dentro de imagenes/ "
+            "y escribe su ruta en el campo 'imagen'."
         )
-
-    if imagen.startswith(("http://", "https://")):
-        raise ValueError(
-            "La imagen debe ser un archivo local del proyecto. "
-            "Usa una ruta como imagenes/noticias/mi-imagen.jpg."
-        )
-
-    ruta = (BASE / imagen).resolve()
-
-    if BASE.resolve() not in ruta.parents and ruta != BASE.resolve():
-        raise ValueError("La ruta de imagen sale del directorio del sitio.")
-
-    if not ruta.exists() or not ruta.is_file():
-        raise FileNotFoundError(
-            f"No existe la imagen indicada: {imagen}"
-        )
-
-    return imagen
+    return canonicalize_existing_image(imagen)
 
 
 def publicar_draft(path: Path, estado: dict, env: Environment) -> dict:
