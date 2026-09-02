@@ -3443,3 +3443,126 @@ COTIZACION — NUCLEOTECH
     display: none;
   }
 }
+
+
+/* =========================================================
+   MEJORA V2 — GUÍAS: CONTENIDO MÁS ANCHO + TOC FLOTANTE
+   ========================================================= */
+
+/*
+ * Las guías necesitan más espacio horizontal que el resto del sitio.
+ * Aumentamos únicamente el ancho del contenedor de las guías para no
+ * alterar el header ni las demás páginas.
+ */
+.repair-guide > .wrap {
+  max-width: 1320px;
+}
+
+/*
+ * Tres columnas en escritorio:
+ *   índice | contenido | panel lateral
+ *
+ * El centro queda flexible y aprovecha todo el espacio disponible.
+ */
+.repair-guide .repair-shell {
+  grid-template-columns: 220px minmax(0, 1fr) 250px;
+  gap: 30px;
+}
+
+/*
+ * El artículo central ya no queda limitado a 820/850px.
+ * Esto permite que textos, tablas, imágenes y tarjetas respiren mejor.
+ */
+.repair-guide .repair-main {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+}
+
+/*
+ * Índice flotante:
+ * permanece visible al hacer scroll y se desplaza con la ventana,
+ * respetando el header sticky.
+ *
+ * max-height + overflow permiten recorrer índices muy largos sin
+ * ocupar más altura que la pantalla.
+ */
+.repair-guide .repair-toc {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  max-height: calc(100vh - 116px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  z-index: 5;
+}
+
+/* El listado interno acompaña al contenedor sin crear un segundo scroll
+   innecesario cuando el índice cabe completo en pantalla. */
+.repair-guide .repair-toc-links {
+  max-height: none;
+  overflow: visible;
+}
+
+/* El panel derecho también puede permanecer visible mientras se lee,
+   pero no interfiere con el artículo. */
+.repair-guide .repair-side {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  max-height: calc(100vh - 116px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Tablet: damos prioridad al contenido principal. */
+@media (max-width: 1050px) {
+  .repair-guide > .wrap {
+    max-width: 1180px;
+  }
+
+  .repair-guide .repair-shell {
+    grid-template-columns: 205px minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .repair-guide .repair-side {
+    display: none;
+  }
+
+  .repair-guide .repair-main {
+    max-width: none;
+  }
+}
+
+/* Móvil: el índice deja de ser sticky porque se convierte en bloque
+   superior/colapsable y así no tapa el contenido. */
+@media (max-width: 760px) {
+  .repair-guide > .wrap {
+    max-width: 100%;
+  }
+
+  .repair-guide .repair-shell {
+    display: block;
+  }
+
+  .repair-guide .repair-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 18px;
+  }
+
+  .repair-guide .repair-toc-links {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .repair-guide .repair-side {
+    display: none;
+  }
+
+  .repair-guide .repair-main {
+    max-width: none;
+  }
+}
