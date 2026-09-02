@@ -926,12 +926,6 @@ img {
 .repair-guide {
   padding: 36px 24px 80px;
 }
-.repair-shell {
-  display: grid;
-  grid-template-columns: 215px minmax(0, 1fr);
-  gap: 34px;
-  align-items: start;
-}
 .repair-toc {
   position: static;
   align-self: start;
