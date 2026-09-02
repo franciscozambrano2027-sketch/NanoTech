@@ -31,9 +31,9 @@ research/imagenes/...
 
 ## Comprobación realizada
 
-La auditoría local del proyecto devuelve:
+La auditoría final del proyecto devuelve:
 
-- Referencias de imágenes en HTML: **279**
+- Referencias locales de imágenes auditadas en el proyecto: **717**
 - Archivos inexistentes: **0**
 - Rutas no canónicas: **0**
 - Archivos problemáticos dentro de `imagenes/`: **0**
