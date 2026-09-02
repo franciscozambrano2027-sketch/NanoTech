@@ -31,6 +31,9 @@ jobs:
       - name: Publicar aprobados
         run: python automation/publish_approved.py
 
+      - name: Validar rutas de imágenes
+        run: python scripts/validate/validate_assets.py
+
       - name: Commit y push
         run: |
           git config user.name "nucleotech-bot"

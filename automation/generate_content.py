@@ -36,6 +36,8 @@ import feedparser
 import requests
 from jinja2 import Environment, FileSystemLoader
 
+from asset_paths import canonical_relative_path, canonicalize_existing_image
+
 
 # ============================================================================
 # RUTAS
@@ -1132,17 +1134,14 @@ def render_y_guardar(
     # noticias.html e index.html.
     imagen = str(datos.get("imagen", "")).strip()
     if imagen:
-        if imagen.startswith(("http://", "https://")):
-            raise ValueError("Las imágenes editoriales deben ser locales al proyecto.")
-        ruta_img = (BASE / imagen).resolve()
-        if BASE.resolve() not in ruta_img.parents or not ruta_img.is_file():
-            raise FileNotFoundError(f"No existe la imagen editorial: {imagen}")
+        imagen = canonicalize_existing_image(imagen)
     else:
         imagen = ruta_imagen_relativa(slug, datos["tipo"])
         if not imagen:
             raise ValueError(
                 "No hay imagen editorial. La publicación requiere una imagen local antes de aprobarse."
             )
+        imagen = canonical_relative_path(imagen)
 
     contexto = {
         **datos,

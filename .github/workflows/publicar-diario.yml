@@ -81,6 +81,9 @@ jobs:
           MODO_BORRADOR: "1"
         run: python automation/generate_content.py
 
+      - name: Validar rutas de imágenes
+        run: python scripts/validate/validate_assets.py
+
       - name: Commit de borradores
         run: |
           git config user.name "nucleotech-bot"

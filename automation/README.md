@@ -105,3 +105,24 @@ Si la respuesta es no, el borrador debe corregirse o rechazarse.
 
 ## Imágenes editoriales
 Las publicaciones nuevas requieren una imagen local antes de pasar a `drafts/approved/`. Consulta `drafts/README_IMAGENES.md`.
+
+## Rutas de imágenes (regla obligatoria)
+
+Las imágenes publicadas deben vivir dentro de `imagenes/`. Las referencias HTML usan siempre rutas relativas POSIX, sin `/` inicial. Se recomienda usar nombres ASCII en minúsculas, con guiones y sin tildes, espacios ni caracteres especiales.
+
+Ejemplo válido:
+
+```text
+imagenes/mikrotik/mikrotik-dns-para-clientes-y-diagnostico/1-probar-ip-publica.jpg
+```
+
+Al publicar un borrador, la automatización normaliza automáticamente el nombre de una imagen local si todavía contiene espacios o caracteres Unicode. Si la imagen está fuera de `imagenes/`, la publicación se detiene.
+
+Antes de hacer push puedes comprobar todo el sitio con:
+
+```bash
+python scripts/validate/validate_assets.py
+```
+
+La misma validación se ejecuta en GitHub Actions antes de hacer commit.
+
