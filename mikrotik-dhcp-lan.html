@@ -3,6 +3,10 @@
 <html lang="es">
 
 <head>
+    <!-- Favicon NúcleoTech -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
   <script>
@@ -17,7 +21,7 @@
     crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta content="width=device-width,initial-scale=1.0" name="viewport" />
-  <title>MikroTik: configurar DHCP Server para una LAN desde cero | NúcleoTech</title>
+  <title>MikroTik: configurar DHCP Server para una LAN desde cero | NÃºcleoTech</title>
   <meta content="Ejemplo RouterOS v7 para una LAN 192.168.88.0/24, con gateway 192.168.88.1 y pool de clientes."
     name="description" />
   <link href="styles.css" rel="stylesheet" />
@@ -27,18 +31,18 @@
 <body>
   <header class="site-header">
     <div class="wrap">
-      <a class="logo" href="index.html">Núcleo<span>Tech</span></a>
+      <a class="logo" href="index.html">NÃºcleo<span>Tech</span></a>
       <nav class="main-nav">
         <a href="index.html">Inicio</a>
-        <a href="resenas.html">Guías</a>
+        <a href="resenas.html">GuÃ­as</a>
         <a href="reparaciones.html">Reparaciones</a>
         <a href="mikrotik.html" class="active">MikroTik</a>
         <a href="noticias.html">Noticias</a>
-        <a href="cotizacion.html">Cotización</a>
+        <a href="cotizacion.html">CotizaciÃ³n</a>
         <a href="comunidad-facebook.html">Comunidad</a>
         <a href="sobre-nosotros.html">Sobre nosotros</a>
         <a href="contacto.html">Contacto</a>
-      </nav><button aria-expanded="false" aria-label="Abrir menú" class="nav-toggle">Menú</button>
+      </nav><button aria-expanded="false" aria-label="Abrir menÃº" class="nav-toggle">MenÃº</button>
     </div>
   </header>
   <header class="repair-hero">
@@ -46,50 +50,50 @@
       <p class="eyebrow-plain">MikroTik</p>
       <h1>MikroTik: configurar DHCP Server para una LAN desde cero</h1>
       <p class="dek">Ejemplo RouterOS v7 para una LAN 192.168.88.0/24, con gateway 192.168.88.1 y pool de clientes.</p>
-      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech · 2026</span>
+      <div class="repair-meta"><span>GuÃ­a paso a paso</span><span>DiagnÃ³stico primero</span><span>NanoTech Â· 2026</span>
       </div>
     </div>
   </header>
   <main class="wrap repair-guide">
     <div class="repair-shell">
-      <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button>
+      <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guÃ­a</button>
         <div class="repair-toc-links">
-          <p class="toc-title">Contenido</p><a data-target="paso-1" href="#paso-1">Introducción</a><a
+          <p class="toc-title">Contenido</p><a data-target="paso-1" href="#paso-1">IntroducciÃ³n</a><a
             data-target="paso-2" href="#paso-2">Seguridad</a><a data-target="paso-3" href="#paso-3">Herramientas</a><a
             data-target="paso-4" href="#paso-4">1. Hacer respaldo</a><a data-target="paso-5" href="#paso-5">2. Crear IP
             de la LAN</a><a data-target="paso-6" href="#paso-6">3. Crear pool</a><a data-target="paso-7"
             href="#paso-7">4. Crear servidor DHCP</a><a data-target="paso-8" href="#paso-8">5. Validar</a><a
-            data-target="paso-99" href="#paso-99">Diagnóstico final</a><a data-target="paso-100"
+            data-target="paso-99" href="#paso-99">DiagnÃ³stico final</a><a data-target="paso-100"
             href="#paso-100">Fuentes</a>
         </div>
       </aside>
       <article class="repair-main">
-        <div class="mikrotik-code-note"><strong>Cómo usar los comandos:</strong> primero ejecuta las consultas de
-          diagnóstico; después aplica la configuración; finalmente vuelve a consultar para confirmar el cambio. Los
+        <div class="mikrotik-code-note"><strong>CÃ³mo usar los comandos:</strong> primero ejecuta las consultas de
+          diagnÃ³stico; despuÃ©s aplica la configuraciÃ³n; finalmente vuelve a consultar para confirmar el cambio. Los
           valores de ejemplo deben adaptarse a tu interfaz WAN/LAN y subred.</div>
         <section id="paso-1">
-          <h2>Introducción</h2>
+          <h2>IntroducciÃ³n</h2>
           <figure class="repair-photo"><img alt="Diagrama MikroTik: configurar DHCP Server para una LAN desde cero"
               loading="eager" src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero.jpg" />
-            <figcaption>Diagrama original de NanoTech para visualizar el problema y el orden de comprobación.
+            <figcaption>Diagrama original de NanoTech para visualizar el problema y el orden de comprobaciÃ³n.
             </figcaption>
           </figure>
           <div class="repair-intro"><strong>Objetivo</strong>
-            <p>Ejemplo RouterOS v7 para una LAN 192.168.88.0/24, con gateway 192.168.88.1 y pool de clientes. La guía
+            <p>Ejemplo RouterOS v7 para una LAN 192.168.88.0/24, con gateway 192.168.88.1 y pool de clientes. La guÃ­a
               busca que puedas separar causas antes de sustituir componentes.</p>
           </div>
         </section>
         <section id="paso-2">
           <h2>Antes de empezar: seguridad</h2>
-          <div class="repair-warning"><strong>⚠ Precaución</strong>
-            <p>Desconecta el equipo cuando corresponda y no realices mediciones peligrosas sin formación e instrumental.
-              En baterías, fuentes y placas, detén el procedimiento si detectas daño físico, líquido, olor extraño o
+          <div class="repair-warning"><strong>âš  PrecauciÃ³n</strong>
+            <p>Desconecta el equipo cuando corresponda y no realices mediciones peligrosas sin formaciÃ³n e instrumental.
+              En baterÃ­as, fuentes y placas, detÃ©n el procedimiento si detectas daÃ±o fÃ­sico, lÃ­quido, olor extraÃ±o o
               calor anormal.</p>
           </div>
           <ul>
             <li>Documenta el estado inicial.</li>
-            <li>Haz una sola modificación cada vez.</li>
-            <li>Conserva tornillos, cables y configuración original.</li>
+            <li>Haz una sola modificaciÃ³n cada vez.</li>
+            <li>Conserva tornillos, cables y configuraciÃ³n original.</li>
           </ul>
         </section>
         <section id="paso-3">
@@ -106,22 +110,22 @@
             </div>
           </div>
           <div class="repair-step-body">
-            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
-              prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
+            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a consultar â†’
+              prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la hipÃ³tesis.</div>
             <figure><img alt="Diagrama NanoTech: 1. Hacer respaldo" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/1-hacer-respaldo.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
-                medición.</figcaption>
+              <figcaption>Esquema original NanoTech. Ãšsalo junto con el procedimiento, no como sustituto de una
+                mediciÃ³n.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
               <div class="code-block">
-                <div class="code-label"><span>Respaldo antes del cambio · COMANDO PRINCIPAL Copiar</span><button
+                <div class="code-label"><span>Respaldo antes del cambio Â· COMANDO PRINCIPAL Copiar</span><button
                     class="copy-code" type="button">Copiar</button></div>
                 <pre><code>/export terse file=nanotech-dhcp-before
 /system backup save name=nanotech-dhcp-before</code></pre>
               </div>
               <div class="code-block">
-                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/file print detail</code></pre>
               </div>
@@ -140,21 +144,21 @@
             </div>
           </div>
           <div class="repair-step-body">
-            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
-              prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
+            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a consultar â†’
+              prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la hipÃ³tesis.</div>
             <figure><img alt="Diagrama NanoTech: 2. Crear IP de la LAN" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/2-crear-ip-de-la-lan.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
-                medición.</figcaption>
+              <figcaption>Esquema original NanoTech. Ãšsalo junto con el procedimiento, no como sustituto de una
+                mediciÃ³n.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
               <div class="code-block">
-                <div class="code-label"><span>Configurar gateway LAN · COMANDO PRINCIPAL</span><button class="copy-code"
+                <div class="code-label"><span>Configurar gateway LAN Â· COMANDO PRINCIPAL</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip address add address=192.168.88.1/24 interface=bridge1 comment="LAN gateway"</code></pre>
               </div>
               <div class="code-block">
-                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip address print detail</code></pre>
               </div>
@@ -169,25 +173,25 @@
           <div class="repair-step-head"><span class="repair-step-num">03</span>
             <div>
               <h3>3. Crear pool</h3>
-              <p>El pool define las direcciones que DHCP entregará.</p>
+              <p>El pool define las direcciones que DHCP entregarÃ¡.</p>
             </div>
           </div>
           <div class="repair-step-body">
-            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
-              prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
+            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a consultar â†’
+              prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la hipÃ³tesis.</div>
             <figure><img alt="Diagrama NanoTech: 3. Crear pool" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/3-crear-pool.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
-                medición.</figcaption>
+              <figcaption>Esquema original NanoTech. Ãšsalo junto con el procedimiento, no como sustituto de una
+                mediciÃ³n.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
               <div class="code-block">
-                <div class="code-label"><span>Crear pool de clientes · COMANDO PRINCIPAL</span><button class="copy-code"
+                <div class="code-label"><span>Crear pool de clientes Â· COMANDO PRINCIPAL</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip pool add name=dhcp_pool0 ranges=192.168.88.10-192.168.88.254</code></pre>
               </div>
               <div class="code-block">
-                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip pool print detail</code></pre>
               </div>
@@ -198,7 +202,7 @@
             </div>
             <div class="repair-step-grid">
               <div>
-                <h4>Qué hacer</h4>
+                <h4>QuÃ© hacer</h4>
                 <ol>
                   <li>Reserva la IP del router fuera del pool.</li>
                   <li>Usa 192.168.88.10-192.168.88.254 como ejemplo.</li>
@@ -206,8 +210,8 @@
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>El pool define las direcciones que DHCP entregará.</p>
+                <p>Registra el resultado antes de continuar.</p><strong>InterpretaciÃ³n</strong>
+                <p>El pool define las direcciones que DHCP entregarÃ¡.</p>
               </div>
             </div>
           </div>
@@ -220,34 +224,34 @@
             </div>
           </div>
           <div class="repair-step-body">
-            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
-              prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
+            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a consultar â†’
+              prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la hipÃ³tesis.</div>
             <figure><img alt="Diagrama NanoTech: 4. Crear servidor DHCP" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/4-crear-servidor-dhcp.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
-                medición.</figcaption>
+              <figcaption>Esquema original NanoTech. Ãšsalo junto con el procedimiento, no como sustituto de una
+                mediciÃ³n.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
               <div class="code-block">
-                <div class="code-label"><span>Crear DHCP Server · COMANDO PRINCIPAL</span><button class="copy-code"
+                <div class="code-label"><span>Crear DHCP Server Â· COMANDO PRINCIPAL</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip dhcp-server network add address=192.168.88.0/24 gateway=192.168.88.1 dns-server=192.168.88.1
 /ip dhcp-server add name=dhcp1 interface=bridge1 address-pool=dhcp_pool0 disabled=no</code></pre>
               </div>
               <div class="code-block">
-                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip dhcp-server print detail
 /ip dhcp-server network print detail</code></pre>
               </div>
               <p class="code-caption">Define los parametros que el DHCP entregara a los clientes de esa subred -gateway
-                y DNS-, independientemente del servicio DHCP en si. Es la "tarjeta de datos" que acompaña a cada IP
+                y DNS-, independientemente del servicio DHCP en si. Es la "tarjeta de datos" que acompaÃ±a a cada IP
                 entregada. Confirma que el servidor DHCP existe y esta habilitado. Si aparece "disabled=yes", el
                 servicio esta creado pero apagado y no repartira direcciones.</p>
             </div>
             <div class="repair-step-grid">
               <div>
-                <h4>Qué hacer</h4>
+                <h4>QuÃ© hacer</h4>
                 <ol>
                   <li>Crea el DHCP server.</li>
                   <li>Define gateway y DNS en la red DHCP.</li>
@@ -255,7 +259,7 @@
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
+                <p>Registra el resultado antes de continuar.</p><strong>InterpretaciÃ³n</strong>
                 <p>Asocia el servidor al bridge y al pool.</p>
               </div>
             </div>
@@ -269,20 +273,20 @@
             </div>
           </div>
           <div class="repair-step-body">
-            <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
-              prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
+            <div class="mt-step-rule">Orden recomendado: consulta â†’ interpreta â†’ configura â†’ vuelve a consultar â†’
+              prueba. Si el resultado no coincide, detÃ©n el procedimiento y corrige la hipÃ³tesis.</div>
             <figure><img alt="Diagrama NanoTech: 5. Validar" loading="lazy" src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/5-validar.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
-                medición.</figcaption>
+              <figcaption>Esquema original NanoTech. Ãšsalo junto con el procedimiento, no como sustituto de una
+                mediciÃ³n.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
               <div class="code-block">
-                <div class="code-label"><span>Validar leases · COMANDO PRINCIPAL</span><button class="copy-code"
+                <div class="code-label"><span>Validar leases Â· COMANDO PRINCIPAL</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip dhcp-server lease print detail</code></pre>
               </div>
               <div class="code-block">
-                <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
+                <div class="code-label"><span>CONSULTA Â· VERIFICACIÃ“N</span><button class="copy-code"
                     type="button">Copiar</button></div>
                 <pre><code>/ip dhcp-server lease print detail</code></pre>
               </div>
@@ -291,30 +295,30 @@
             </div>
             <div class="repair-step-grid">
               <div>
-                <h4>Qué hacer</h4>
+                <h4>QuÃ© hacer</h4>
                 <ol>
-                  <li>Renueva la concesión.</li>
+                  <li>Renueva la concesiÃ³n.</li>
                   <li>Comprueba IP y gateway.</li>
                   <li>Haz ping al router y luego a Internet.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
+                <p>Registra el resultado antes de continuar.</p><strong>InterpretaciÃ³n</strong>
                 <p>Confirma IP, gateway, DNS e Internet desde el cliente.</p>
               </div>
             </div>
           </div>
         </section>
         <section id="paso-99">
-          <h2>Diagnóstico final</h2>
+          <h2>DiagnÃ³stico final</h2>
           <div class="repair-note"><strong>Resultado:</strong> si todas las pruebas externas son correctas y el fallo
-            permanece, ya tienes una hipótesis más concreta. No cambies chips, puertos o placas por intuición: documenta
-            síntomas y mediciones.</div>
+            permanece, ya tienes una hipÃ³tesis mÃ¡s concreta. No cambies chips, puertos o placas por intuiciÃ³n: documenta
+            sÃ­ntomas y mediciones.</div>
         </section>
         <section id="paso-100">
           <h2>Fuentes y notas</h2>
-          <p>Los comandos son un ejemplo educativo para RouterOS v7. La documentación oficial indica que DHCP requiere
-            pool, red DHCP, dirección del gateway y servidor asociado a la interfaz. Verifica nombres de interfaces y
+          <p>Los comandos son un ejemplo educativo para RouterOS v7. La documentaciÃ³n oficial indica que DHCP requiere
+            pool, red DHCP, direcciÃ³n del gateway y servidor asociado a la interfaz. Verifica nombres de interfaces y
             subred antes de aplicar.</p>
         </section>
       </article>
@@ -322,16 +326,16 @@
   </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
-      <span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
+      <span>Â© 2026 NÃºcleoTech. Todos los derechos reservados.</span>
       <div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a
-          href="noticias.html">Noticias</a><a href="cotizacion.html">Cotización</a><a href="sobre-nosotros.html">Sobre
-          nosotros</a><a href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a
+          href="noticias.html">Noticias</a><a href="cotizacion.html">CotizaciÃ³n</a><a href="sobre-nosotros.html">Sobre
+          nosotros</a><a href="politica-privacidad.html">PolÃ­tica de privacidad</a><a href="fuentes.html">Fuentes</a><a
           href="contacto.html">Contacto</a></div>
     </div>
   </footer>
   <script src="script.js"></script>
   <script
-    data-copy-code="">document.addEventListener('click', async (e) => { const b = e.target.closest('.copy-code'); if (!b) return; const code = b.closest('.code-block')?.querySelector('code'); if (!code) return; try { await navigator.clipboard.writeText(code.innerText); b.textContent = 'Copiado'; b.classList.add('copied'); setTimeout(() => { b.textContent = 'Copiar'; b.classList.remove('copied') }, 1400) } catch (err) { b.textContent = 'Selecciona el código' } });</script>
+    data-copy-code="">document.addEventListener('click', async (e) => { const b = e.target.closest('.copy-code'); if (!b) return; const code = b.closest('.code-block')?.querySelector('code'); if (!code) return; try { await navigator.clipboard.writeText(code.innerText); b.textContent = 'Copiado'; b.classList.add('copied'); setTimeout(() => { b.textContent = 'Copiar'; b.classList.remove('copied') }, 1400) } catch (err) { b.textContent = 'Selecciona el cÃ³digo' } });</script>
 </body>
 
 </html>
