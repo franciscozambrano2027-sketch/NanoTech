@@ -2,10 +2,10 @@
 <html lang="es">
 
 <head>
-    <!-- Favicon NúcleoTech -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
-    <link rel="apple-touch-icon" href="/assets/favicon.png">
+  <!-- Favicon NúcleoTech -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
   <script>
@@ -71,9 +71,8 @@
       <article class="repair-main">
         <section id="introduccion">
           <h2>Introducción</h2>
-          <figure class="repair-photo"><img
-              src="imagenes/PC/Mantenimiento-de-PC.jpg"
-              alt="Equipo informático" loading="eager">
+          <figure class="repair-photo"><img src="imagenes/PC/Mantenimiento-de-PC.jpg" alt="Equipo informático"
+              loading="eager">
             <figcaption>Raimond Spekking / Wikimedia Commons — CC BY-SA 4.0. <a
                 href="https://commons.wikimedia.org/wiki/File:Lenovo_G500s_laptop-2905.jpg" target="_blank"
                 rel="noopener noreferrer">Ver ficha de licencia y origen</a>.</figcaption>
@@ -124,19 +123,23 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Identifica qué carpetas son insustituibles (documentos, fotos, proyectos) frente a lo
+                      reinstalable (programas, sistema operativo).</li>
+                    <li>Usa como mínimo la regla 3-2-1: al menos 3 copias, en 2 medios distintos, con 1 copia fuera del
+                      equipo (nube o disco externo desconectado).</li>
+                    <li>Verifica que el respaldo realmente abra: prueba un par de archivos al azar desde la copia antes
+                      de continuar, no confíes solo en que el proceso terminó sin errores.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>Un mantenimiento nunca debe empezar poniendo en riesgo los datos.</p><strong>Resultado
+                  <p>Un respaldo que nunca se probó no es un respaldo, es una promesa: la corrupción silenciosa o una
+                    copia interrumpida son más comunes de lo que parece.</p><strong>Resultado
                     esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Respaldo verificado y accesible → continúa con el resto del mantenimiento. Sin forma de respaldar
+                    por falta de espacio o medio → al menos anota manualmente las rutas de los archivos críticos antes
+                    de tocar el almacenamiento.</p>
                 </div>
               </div>
-            </div>
           </section>
           <section class="repair-step" id="paso-2">
             <div class="repair-step-head"><span class="repair-step-num">02</span>
@@ -146,26 +149,34 @@
               </div>
             </div>
             <div class="repair-step-body">
-              <figure><img src="imagenes/PC/limpia-externamente.jpg"
-                  alt="Diagrama NanoTech: Limpiar externamente" loading="lazy">
+              <figure><img src="imagenes/PC/limpia-externamente.jpg" alt="Diagrama NanoTech: Limpiar externamente"
+                  loading="lazy">
                 <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption>
               </figure>
               <div class="repair-step-grid">
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Apaga y desconecta el equipo de la corriente; en equipos de escritorio, retira también el cable
+                      de la fuente, no basta con el botón de encendido.</li>
+                    <li>Limpia rejillas y filtros con aire comprimido en ráfagas cortas. En escritorio, abre el panel
+                      lateral y limpia disipador de CPU y aspas de ventiladores por ambos lados, sujetando el rotor para
+                      que no gire en vacío.</li>
+                    <li>Limpia la superficie externa con un paño ligeramente húmedo (nunca rocíes líquido directo) y
+                      alcohol isopropílico al 70-90% para puertos si hace falta.</li>
+                    <li>En laptops, revisa también bajo las teclas: la acumulación de migas o polvo ahí causa teclas
+                      pegajosas o fallos intermitentes con el tiempo.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>No introduzcas líquidos ni humedad en el equipo.</p><strong>Resultado esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>No introduzcas líquidos ni humedad en el equipo, y nunca uses aspiradora doméstica directamente
+                    sobre componentes: puede generar electricidad estática que dañe la placa.</p><strong>Resultado
+                    esperado</strong>
+                  <p>Limpieza completada sin daños visibles → continúa al paso 3 para ver si mejoró la temperatura.
+                    Encontraste corrosión, líquido derramado antiguo o componentes hinchados → detén el mantenimiento
+                    rutinario, eso es una reparación aparte.</p>
                 </div>
               </div>
-            </div>
           </section>
           <section class="repair-step" id="paso-3">
             <div class="repair-step-head"><span class="repair-step-num">03</span>
@@ -183,19 +194,25 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Con una herramienta de monitorización (HWiNFO, HWMonitor), registra CPU y GPU en reposo tras 5
+                      minutos sin actividad, y bajo una carga conocida (el mismo juego o tarea de siempre).</li>
+                    <li>Compara contra el historial de mantenimientos anteriores (paso 6): un aumento de 10°C o más
+                      respecto al mismo punto de referencia, sin cambios de uso, indica acumulación de polvo o pasta
+                      térmica degradándose.</li>
+                    <li>Verifica las RPM del ventilador bajo carga: si no sube de velocidad cuando sube la temperatura,
+                      la curva de ventilación configurada en BIOS/EC podría estar limitando el enfriamiento
+                      innecesariamente.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>Una tendencia ascendente puede anticipar un problema de refrigeración.</p><strong>Resultado
+                  <p>Una tendencia ascendente respecto a mediciones anteriores anticipa un problema de refrigeración;
+                    70-80°C bajo carga sostenida es normal en muchos equipos, lo que importa es la tendencia, no un
+                    número aislado.</p><strong>Resultado
                     esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Temperaturas estables o mejoradas tras la limpieza → el mantenimiento cumplió su función. Siguen
+                    altas pese a limpieza reciente → considera revisar la pasta térmica antes del próximo ciclo.</p>
                 </div>
               </div>
-            </div>
           </section>
           <section class="repair-step" id="paso-4">
             <div class="repair-step-head"><span class="repair-step-num">04</span>
@@ -205,27 +222,31 @@
               </div>
             </div>
             <div class="repair-step-body">
-              <figure><img src="imagenes/PC/revisa-almacenamiento.jpg"
-                  alt="Diagrama NanoTech: Revisar almacenamiento" loading="lazy">
+              <figure><img src="imagenes/PC/revisa-almacenamiento.jpg" alt="Diagrama NanoTech: Revisar almacenamiento"
+                  loading="lazy">
                 <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption>
               </figure>
               <div class="repair-step-grid">
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Comprueba el espacio libre: menos de 10-15% libre en el disco del sistema puede ralentizar el
+                      equipo notablemente, sobre todo en SSD (afecta al TRIM y al rendimiento de escritura).</li>
+                    <li>Revisa el estado S.M.A.R.T. con una herramienta como CrystalDiskInfo, prestando atención a
+                      "Reallocated Sector Count", "Pending Sector Count" y la temperatura del disco.</li>
+                    <li>Ejecuta una verificación del sistema de archivos (chkdsk en Windows) para detectar errores
+                      lógicos, distintos de una falla física.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>Si el disco presenta fallas, prioriza respaldo antes de cualquier reparación.</p><strong>Resultado
+                  <p>Si el disco presenta fallas, prioriza respaldo antes de cualquier reparación: un disco con sectores
+                    reasignados en aumento puede seguir funcionando semanas o meses antes de fallar del todo.</p>
+                  <strong>Resultado
                     esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>SMART limpio y espacio libre adecuado → almacenamiento en buen estado. SMART con advertencias o
+                    sectores en aumento → respalda de inmediato y planifica el reemplazo, no esperes a que falle.</p>
                 </div>
               </div>
-            </div>
           </section>
           <section class="repair-step" id="paso-5">
             <div class="repair-step-head"><span class="repair-step-num">05</span>
@@ -244,18 +265,23 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Instala actualizaciones del sistema y controladores solo desde fuentes oficiales (Windows Update
+                      o el sitio del fabricante de GPU/chipset), evitando "optimizadores" de terceros.</li>
+                    <li>Antes de una actualización mayor del sistema o del driver de GPU, crea un punto de restauración
+                      para poder revertir si algo sale mal.</li>
+                    <li>Actualiza un componente a la vez cuando sea posible (primero GPU, verifica estabilidad unos
+                      días, luego BIOS si hace falta) para poder identificar cuál causó un problema si aparece.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>Mantén una ruta de reversión para cambios importantes.</p><strong>Resultado esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Mantén una ruta de reversión para cambios importantes: actualizar BIOS/UEFI conlleva más riesgo que
+                    software normal, una interrupción de energía a mitad del proceso puede dejar la placa inutilizable.
+                  </p><strong>Resultado esperado</strong>
+                  <p>Actualizaciones aplicadas sin problemas → continúa al registro final. Inestabilidad tras una
+                    actualización puntual → revierte ese componente con el punto de restauración, en vez de reinstalar
+                    todo el sistema.</p>
                 </div>
               </div>
-            </div>
           </section>
           <section class="repair-step" id="paso-6">
             <div class="repair-step-head"><span class="repair-step-num">06</span>
@@ -265,27 +291,30 @@
               </div>
             </div>
             <div class="repair-step-body">
-              <figure><img src="imagenes/PC/informe.jpg" alt="Diagrama NanoTech: Documentar"
-                  loading="lazy">
+              <figure><img src="imagenes/PC/informe.jpg" alt="Diagrama NanoTech: Documentar" loading="lazy">
                 <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption>
               </figure>
               <div class="repair-step-grid">
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Registra fecha, temperaturas del paso 3, espacio libre y estado SMART del paso 4, y qué acciones
+                      concretas se realizaron.</li>
+                    <li>Guarda el registro en un lugar accesible para el próximo mantenimiento (una hoja de cálculo
+                      simple sirve), no solo en la memoria.</li>
+                    <li>Anota también cualquier anomalía que decidiste no resolver todavía (un ventilador algo ruidoso,
+                      por ejemplo) para darle seguimiento en el próximo ciclo.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>El historial convierte el mantenimiento en un proceso medible.</p><strong>Resultado
+                  <p>El historial convierte el mantenimiento en un proceso medible: sin un registro de referencia no
+                    puedes distinguir "esto siempre estuvo así" de "esto cambió desde la última revisión".</p>
+                  <strong>Resultado
                     esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Con el historial guardado, el próximo mantenimiento (recomendado cada 6 a 12 meses según el uso)
+                    parte de una línea base real, no de la sensación subjetiva de "ahora está más caliente".</p>
                 </div>
               </div>
-            </div>
           </section>
           <div class="repair-result"><strong>Cómo interpretar el resultado</strong>
             <p>Una prueba negativa no es un fracaso: es información. Registra qué se probó, con qué pieza o condición y
