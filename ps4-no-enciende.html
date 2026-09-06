@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -6,344 +7,1953 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-5TYV7T1LR0');
-</script>
+    ```
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-5TYV7T1LR0');
+    </script>
 
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5675726602507111"
         crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PS4 no enciende: diagnóstico completo antes de cambiar piezas | NúcleoTech</title>
+
     <meta name="description"
-        content="Separa alimentación, señales de vida y fallas internas con una ruta ordenada. No cambies la fuente o la placa por intuición.">
-    <link rel="stylesheet" href="styles.css">
+        content="Diagnóstico técnico de una PlayStation 4 que no enciende. Aprende a comprobar alimentación, identificar la fuente, medir 5 V de standby y 12 V, interpretar la secuencia de encendido y separar una falla de fuente de una falla de placa.">
+
+    <meta name="keywords"
+        content="PS4 no enciende, PlayStation 4 no enciende, PS4 fuente alimentación, PS4 5V standby, PS4 12V, medir fuente PS4, multímetro PS4, reparar PS4, fuente ADP-160, fuente ADP-200, fuente ADP-240">
+
+    <meta name="author" content="NúcleoTech">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="PS4 no enciende: diagnóstico técnico paso a paso">
+    <meta property="og:description"
+        content="Cómo diagnosticar una PS4 que no enciende, comprobar la fuente de alimentación, medir 5 V de standby y 12 V y determinar si la falla está en la fuente o en la placa.">
+    <meta property="og:url" content="https://nucleo-tech.org/ps4-no-enciende.html">
+    <meta property="og:site_name" content="NúcleoTech">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PS4 no enciende: diagnóstico técnico">
+    <meta name="twitter:description"
+        content="Guía práctica para diagnosticar fuente de alimentación, standby, 12 V y placa de una PS4.">
+
     <link rel="canonical" href="https://nucleo-tech.org/ps4-no-enciende.html">
+
+    <link rel="stylesheet" href="styles.css">
+    ```
+
 </head>
 
 <body>
+
+    ```
     <header class="site-header">
         <div class="wrap">
-            <a href="index.html" class="logo">Núcleo<span>Tech</span></a>
-            <nav class="main-nav">
-<a href="index.html">Inicio</a>
-<a href="resenas.html">Guías</a>
-<a href="reparaciones.html">Reparaciones</a>
-<a href="mikrotik.html">MikroTik</a>
-<a href="noticias.html">Noticias</a>
-<a href="cotizacion.html">Cotización</a>
-<a href="comunidad-facebook.html">Comunidad</a>
-<a href="sobre-nosotros.html">Sobre nosotros</a>
-<a href="contacto.html">Contacto</a>
-</nav><button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+
+            <a href="index.html" class="logo">
+                Núcleo<span>Tech</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="index.html">Inicio</a>
+                <a href="resenas.html">Guías</a>
+                <a href="reparaciones.html">Reparaciones</a>
+                <a href="mikrotik.html">MikroTik</a>
+                <a href="noticias.html">Noticias</a>
+                <a href="cotizacion.html">Cotización</a>
+                <a href="comunidad-facebook.html">Comunidad</a>
+                <a href="sobre-nosotros.html">Sobre nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                Menú
+            </button>
+
         </div>
     </header>
+
     <header class="repair-hero">
         <div class="wrap">
-            <p class="eyebrow-plain">PlayStation</p>
-            <h1>PS4 no enciende: diagnóstico completo antes de cambiar piezas</h1>
-            <p class="dek">Separa alimentación, señales de vida y fallas internas con una ruta ordenada. No cambies la
-                fuente o la placa por intuición.</p>
-            <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech ·
-                    2026</span></div>
+
+            <p class="eyebrow-plain">
+                PlayStation
+            </p>
+
+            <h1>
+                PS4 no enciende: diagnóstico completo antes de cambiar piezas
+            </h1>
+
+            <p class="dek">
+                Separa alimentación, señales de vida y fallas internas con una ruta ordenada.
+                No cambies la fuente o la placa por intuición.
+            </p>
+
+            <div class="repair-meta">
+                <span>Guía paso a paso</span>
+                <span>Diagnóstico electrónico</span>
+                <span>NúcleoTech · 2026</span>
+            </div>
+
         </div>
     </header>
+
     <main class="wrap repair-guide">
+
         <div class="repair-shell">
-            <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button>
+
+            <aside class="repair-toc">
+
+                <button class="repair-toc-toggle" type="button" aria-expanded="false">
+                    Atajos de esta guía
+                </button>
+
                 <div class="repair-toc-links">
-                    <p class="toc-title">Contenido</p><a href="#introduccion"
-                        data-target="introduccion">Introducción</a><a href="#seguridad"
-                        data-target="seguridad">Seguridad</a><a href="#herramientas"
-                        data-target="herramientas">Herramientas</a><a href="#diagnostico"
-                        data-target="diagnostico">Diagnóstico</a><a href="#fuentes" data-target="fuentes">Fuentes</a><a
-                        href="#paso-1" data-target="paso-1">1. Preparar la consola</a><a href="#paso-2"
-                        data-target="paso-2">2. Comprobar la alimentación externa</a><a href="#paso-3"
-                        data-target="paso-3">3. Buscar señales de vida</a><a href="#paso-4" data-target="paso-4">4.
-                        Separar fallo externo de fallo interno</a><a href="#paso-5" data-target="paso-5">5. Criterio de
-                        parada</a>
+
+                    <p class="toc-title">
+                        Contenido
+                    </p>
+
+                    <a href="#introduccion" data-target="introduccion">
+                        Introducción
+                    </a>
+
+                    <a href="#seguridad" data-target="seguridad">
+                        Seguridad
+                    </a>
+
+                    <a href="#herramientas" data-target="herramientas">
+                        Herramientas
+                    </a>
+
+                    <a href="#diagnostico" data-target="diagnostico">
+                        Diagnóstico
+                    </a>
+
+                    <a href="#paso-1" data-target="paso-1">
+                        1. Preparar e identificar la consola
+                    </a>
+
+                    <a href="#paso-2" data-target="paso-2">
+                        2. Comprobar alimentación externa
+                    </a>
+
+                    <a href="#paso-3" data-target="paso-3">
+                        3. Buscar señales de vida
+                    </a>
+
+                    <a href="#paso-4" data-target="paso-4">
+                        4. Identificar modelo y fuente
+                    </a>
+
+                    <a href="#paso-5" data-target="paso-5">
+                        5. Medir 5 V y 12 V
+                    </a>
+
+                    <a href="#interpretar" data-target="interpretar">
+                        6. Interpretar las mediciones
+                    </a>
+
+                    <a href="#placa" data-target="placa">
+                        7. Si la fuente está bien
+                    </a>
+
+                    <a href="#tabla" data-target="tabla">
+                        Tabla de diagnóstico
+                    </a>
+
+                    <a href="#errores" data-target="errores">
+                        Errores frecuentes
+                    </a>
+
+                    <a href="#fuentes" data-target="fuentes">
+                        Fuentes
+                    </a>
+
                 </div>
+
             </aside>
+
             <article class="repair-main">
+
                 <section id="introduccion">
-                    <h2>Introducción</h2>
-                    <figure class="repair-photo"><img
-                            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sony-PlayStation-4-PS4-Console-BR.jpg"
+
+                    <h2>
+                        Introducción
+                    </h2>
+
+                    <figure class="repair-photo">
+
+                        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sony-PlayStation-4-PS4-Console-BR.jpg"
                             alt="PlayStation 4 vista trasera" loading="eager">
-                        <figcaption>Evan-Amos / Wikimedia Commons — dominio público. <a
-                                href="https://commons.wikimedia.org/wiki/File:Sony-PlayStation-4-PS4-Console-BR.jpg"
-                                target="_blank" rel="noopener noreferrer">Ver ficha de licencia y origen</a>.
+
+                        <figcaption>
+                            Evan-Amos / Wikimedia Commons — dominio público.
+                            <a href="https://commons.wikimedia.org/wiki/File:Sony-PlayStation-4-PS4-Console-BR.jpg"
+                                target="_blank" rel="noopener noreferrer">
+                                Ver ficha de licencia y origen
+                            </a>.
                         </figcaption>
+
                     </figure>
-                    <div class="repair-intro"><strong>Objetivo de esta guía</strong>
-                        <p>La meta es llegar a una hipótesis con evidencia. No se trata de desmontar por desmontar: cada
-                            paso elimina una causa posible y prepara el siguiente.</p>
+
+                    <div class="repair-intro">
+
+                        <strong>
+                            Objetivo de esta guía
+                        </strong>
+
+                        <p>
+                            Una PlayStation 4 que no enciende no debe diagnosticarse
+                            simplemente sustituyendo piezas hasta que funcione.
+                            La finalidad de esta guía es seguir una ruta lógica que
+                            permita determinar si el problema está en la alimentación
+                            externa, la fuente interna, la señal de encendido o la
+                            placa principal.
+                        </p>
+
+                        <p>
+                            La PS4 utiliza una fuente de alimentación con una etapa
+                            de standby y una salida principal que se habilita cuando
+                            la electrónica de control solicita el encendido.
+                            Por eso, encontrar aproximadamente 5 V no demuestra que
+                            toda la fuente esté funcionando correctamente.
+                        </p>
+
+                        <p>
+                            Del mismo modo, encontrar 12 V no demuestra por sí solo
+                            que la placa principal esté funcionando. Cada medición
+                            debe relacionarse con el estado de la consola y con la
+                            secuencia en la que aparece o desaparece la tensión.
+                        </p>
+
                     </div>
+
+                    <div class="repair-note">
+
+                        <strong>
+                            Principio de diagnóstico NúcleoTech:
+                        </strong>
+
+                        una medición solamente tiene valor si sabemos
+                        qué punto estamos midiendo, qué tensión esperamos,
+                        en qué estado se encuentra la consola y qué significa
+                        el resultado para el siguiente paso.
+
+                    </div>
+
                 </section>
+
+
                 <section id="seguridad">
-                    <h2>Antes de empezar: seguridad</h2>
-                    <div class="repair-warning"><strong>âš  Desconecta completamente el equipo.</strong>
-<<<<<<< HEAD
-                        <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta
-                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>
-=======
-                        <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta
-                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>
->>>>>>> abec3c0cd60900cb868d11ccb395d0a71f695002
+
+                    <h2>
+                        Antes de empezar: seguridad
+                    </h2>
+
+                    <div class="repair-warning">
+
+                        <strong>
+                            ⚠ Desconecta completamente el equipo.
+                        </strong>
+
+                        <p>
+                            Retira la alimentación y los periféricos antes de abrir
+                            la consola. No trabajes con una fuente de red abierta
+                            ni realices mediciones energizadas si no tienes formación
+                            e instrumental apropiados.
+                        </p>
+
                     </div>
+
                     <ul>
-                        <li>Trabaja sobre una superficie limpia, seca y bien iluminada.</li>
-                        <li>Organiza tornillos y conectores por etapa.</li>
-                        <li>Fotografía conexiones antes de desconectarlas cuando desmontes.</li>
-                        <li>No fuerces una cubierta: una resistencia inesperada suele indicar una fijación pendiente.
+
+                        <li>
+                            Trabaja sobre una superficie limpia, seca y bien iluminada.
                         </li>
+
+                        <li>
+                            Organiza tornillos y conectores por etapa.
+                        </li>
+
+                        <li>
+                            Fotografía las conexiones antes de desconectarlas.
+                        </li>
+
+                        <li>
+                            No fuerces una cubierta. Una resistencia inesperada suele
+                            indicar que todavía existe una fijación pendiente.
+                        </li>
+
+                        <li>
+                            No midas el primario de la fuente si no tienes formación
+                            específica en fuentes conmutadas.
+                        </li>
+
+                        <li>
+                            No toques los capacitores grandes ni componentes del
+                            primario de una fuente conectada o recientemente desconectada.
+                        </li>
+
+                        <li>
+                            No introduzcas puntas metálicas sin aislamiento en conectores
+                            donde puedan provocar un cortocircuito.
+                        </li>
+
+                        <li>
+                            Nunca sustituyas un fusible por uno de mayor corriente
+                            ni lo puentes.
+                        </li>
+
                     </ul>
+
                 </section>
+
+
                 <section id="herramientas">
-                    <h2>Herramientas y material</h2>
-                    <div class="repair-tools"><span class="repair-tool">Destornillador Phillips #0</span><span
-                            class="repair-tool">#Torx de seguridad TR9</span><span
-                            class="repair-tool">Pinzas</span><span class="repair-tool">Herramienta plástica</span><span
-                            class="repair-tool">Linterna</span><span class="repair-tool">Lupa</span><span
-                            class="repair-tool">Multímetro solo para diagnóstico técnico</span></div>
-                    <div class="repair-note"><strong>Regla NanoTech:</strong> una herramienta debe resolver una tarea
-                        concreta. Si una intervención requiere instrumental que no tienes, la guía debe detenerse ahí,
-                        no improvisar.</div>
+
+                    <h2>
+                        Herramientas y material
+                    </h2>
+
+                    <div class="repair-tools">
+
+                        <span class="repair-tool">
+                            Destornillador Phillips #0
+                        </span>
+
+                        <span class="repair-tool">
+                            Torx de seguridad TR9
+                        </span>
+
+                        <span class="repair-tool">
+                            Pinzas
+                        </span>
+
+                        <span class="repair-tool">
+                            Herramienta plástica
+                        </span>
+
+                        <span class="repair-tool">
+                            Linterna
+                        </span>
+
+                        <span class="repair-tool">
+                            Lupa
+                        </span>
+
+                        <span class="repair-tool">
+                            Multímetro digital
+                        </span>
+
+                        <span class="repair-tool">
+                            Puntas de prueba aisladas
+                        </span>
+
+                        <span class="repair-tool">
+                            Documentación / pinout exacto
+                        </span>
+
+                    </div>
+
+                    <div class="repair-note">
+
+                        <strong>
+                            Regla NúcleoTech:
+                        </strong>
+
+                        una herramienta debe resolver una tarea concreta.
+                        Si una intervención requiere instrumental que no tienes,
+                        la guía debe detenerse ahí. No improvises una medición
+                        energizada con herramientas inadecuadas.
+
+                    </div>
+
                 </section>
+
+
                 <section id="diagnostico">
-                    <h2>Diagnóstico paso a paso</h2>
+
+                    <h2>
+                        Diagnóstico paso a paso
+                    </h2>
+
+
                     <section class="repair-step" id="paso-1">
-                        <div class="repair-step-head"><span class="repair-step-num">01</span>
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                01
+                            </span>
+
                             <div>
-                                <h3>Preparar la consola</h3>
-                                <p>Desconecta alimentación, HDMI, USB y red. Trabaja sobre una mesa seca, limpia y bien
-                                    iluminada. No abras la fuente de alimentación si no tienes formación específica.</p>
+
+                                <h3>
+                                    Preparar la consola e identificar el problema
+                                </h3>
+
+                                <p>
+                                    Antes de desmontar, determina exactamente qué hace
+                                    la consola cuando intentas encenderla.
+                                </p>
+
                             </div>
+
                         </div>
+
                         <div class="repair-step-body">
-                            <figure><img src="imagenes/guias/ps4-no-enciende-paso-1.svg"
-                                    alt="Diagrama NanoTech: Preparar la consola" loading="lazy">
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-1.svg"
+                                    alt="Diagrama NúcleoTech: preparar la consola para el diagnóstico" loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
                                 </figcaption>
+
                             </figure>
+
                             <div class="repair-step-grid">
+
                                 <div>
-                                    <h4>Qué hacer</h4>
+
+                                    <h4>
+                                        Qué hacer
+                                    </h4>
+
                                     <ol>
-                                        <li>Lee el síntoma completo antes de desmontar.</li>
-                                        <li>Realiza una sola prueba y anota el resultado.</li>
-                                        <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas
-                                            todavía.</li>
+
+                                        <li>
+                                            Desconecta alimentación, HDMI, USB y red.
+                                        </li>
+
+                                        <li>
+                                            Deja conectados únicamente los elementos
+                                            necesarios para comprobar el comportamiento
+                                            básico de la consola.
+                                        </li>
+
+                                        <li>
+                                            Observa si existe beep, LED, ventilador,
+                                            cambio de color o cualquier otra señal.
+                                        </li>
+
+                                        <li>
+                                            Anota exactamente qué ocurre al pulsar
+                                            el botón de encendido.
+                                        </li>
+
                                     </ol>
+
                                 </div>
-                                <div class="check"><strong>Punto de control</strong>
-                                    <p>El equipo debe quedar completamente aislado antes de pasar a inspección física.
-                                    </p><strong>Resultado esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+
+                                <div class="check">
+
+                                    <strong>
+                                        Punto de control
+                                    </strong>
+
+                                    <p>
+                                        La consola debe estar completamente aislada
+                                        antes de comenzar cualquier inspección interna.
+                                    </p>
+
+                                    <strong>
+                                        Resultado esperado
+                                    </strong>
+
+                                    <p>
+                                        Al finalizar este paso debes poder describir
+                                        el síntoma sin utilizar todavía una conclusión
+                                        como "la fuente está dañada".
+                                    </p>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </section>
+
+
                     <section class="repair-step" id="paso-2">
-                        <div class="repair-step-head"><span class="repair-step-num">02</span>
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                02
+                            </span>
+
                             <div>
-                                <h3>Comprobar la alimentación externa</h3>
-                                <p>Prueba la toma con otro aparato. Revisa el cable y el conector de entrada. Si
-                                    dispones de otro cable compatible y seguro, úsalo como prueba cruzada.</p>
+
+                                <h3>
+                                    Comprobar la alimentación externa
+                                </h3>
+
+                                <p>
+                                    Antes de desmontar la PS4, elimina las causas
+                                    externas más sencillas.
+                                </p>
+
                             </div>
+
                         </div>
+
                         <div class="repair-step-body">
-                            <figure><img src="imagenes/guias/ps4-no-enciende-paso-2.svg"
-                                    alt="Diagrama NanoTech: Comprobar la alimentación externa" loading="lazy">
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-2.svg"
+                                    alt="Diagrama NúcleoTech: comprobar la alimentación externa" loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
                                 </figcaption>
+
                             </figure>
+
                             <div class="repair-step-grid">
+
                                 <div>
-                                    <h4>Qué hacer</h4>
+
+                                    <h4>
+                                        Qué comprobar
+                                    </h4>
+
                                     <ol>
-                                        <li>Comprueba primero la alimentación externa.</li>
-                                        <li>No abras una fuente de red si no tienes formación e instrumental.</li>
-                                        <li>Documenta voltajes o indicadores solo cuando el procedimiento del modelo lo
-                                            permita.</li>
+
+                                        <li>
+                                            Prueba la toma eléctrica con otro aparato
+                                            que sepas que funciona.
+                                        </li>
+
+                                        <li>
+                                            Inspecciona visualmente el cable de alimentación.
+                                        </li>
+
+                                        <li>
+                                            Comprueba que el conector entre correctamente
+                                            en la consola.
+                                        </li>
+
+                                        <li>
+                                            Si dispones de otro cable compatible y seguro,
+                                            realiza una prueba cruzada.
+                                        </li>
+
                                     </ol>
+
                                 </div>
-                                <div class="check"><strong>Punto de control</strong>
-                                    <p>Si otra toma/cable resuelve el problema, la consola no necesita diagnóstico de
-                                        placa.</p><strong>Resultado esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+
+                                <div class="check">
+
+                                    <strong>
+                                        Punto de control
+                                    </strong>
+
+                                    <p>
+                                        Si una toma o un cable diferente hace que la
+                                        consola funcione, no existe razón para desmontar
+                                        la fuente ni diagnosticar la placa.
+                                    </p>
+
+                                    <strong>
+                                        Resultado esperado
+                                    </strong>
+
+                                    <p>
+                                        La alimentación externa debe quedar descartada
+                                        antes de avanzar hacia la electrónica interna.
+                                    </p>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </section>
+
+
                     <section class="repair-step" id="paso-3">
-                        <div class="repair-step-head"><span class="repair-step-num">03</span>
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                03
+                            </span>
+
                             <div>
-                                <h3>Buscar señales de vida</h3>
-                                <p>Conecta únicamente lo necesario y observa pitido, LED, ventilador o cambio de estado.
-                                    Una ausencia total de señales y una consola que intenta arrancar son escenarios
-                                    distintos.</p>
+
+                                <h3>
+                                    Buscar señales de vida
+                                </h3>
+
+                                <p>
+                                    El comportamiento de la consola proporciona información
+                                    sobre la etapa que debemos investigar.
+                                </p>
+
                             </div>
+
                         </div>
+
                         <div class="repair-step-body">
-                            <figure><img src="imagenes/guias/ps4-no-enciende-paso-3.svg"
-                                    alt="Diagrama NanoTech: Buscar señales de vida" loading="lazy">
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-3.svg"
+                                    alt="Diagrama NúcleoTech: buscar señales de vida en una PS4" loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
                                 </figcaption>
+
                             </figure>
+
                             <div class="repair-step-grid">
+
                                 <div>
-                                    <h4>Qué hacer</h4>
-                                    <ol>
-                                        <li>Lee el síntoma completo antes de desmontar.</li>
-                                        <li>Realiza una sola prueba y anota el resultado.</li>
-                                        <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas
-                                            todavía.</li>
-                                    </ol>
+
+                                    <h4>
+                                        Observa el patrón
+                                    </h4>
+
+                                    <ul>
+
+                                        <li>
+                                            <strong>
+                                                No hay beep, luz ni reacción:
+                                            </strong>
+                                            comienza por alimentación externa,
+                                            standby y fuente.
+                                        </li>
+
+                                        <li>
+                                            <strong>
+                                                Hace beep pero no continúa:
+                                            </strong>
+                                            la consola recibió una orden de encendido;
+                                            hay que comprobar qué ocurre después.
+                                        </li>
+
+                                        <li>
+                                            <strong>
+                                                Luz azul durante un instante y se apaga:
+                                            </strong>
+                                            puede existir un problema en la fuente,
+                                            una protección o una falla en la placa.
+                                        </li>
+
+                                        <li>
+                                            <strong>
+                                                Enciende y se apaga bajo carga:
+                                            </strong>
+                                            observa especialmente el comportamiento
+                                            de la línea principal de 12 V.
+                                        </li>
+
+                                        <li>
+                                            <strong>
+                                                Enciende pero no muestra imagen:
+                                            </strong>
+                                            no condenes automáticamente la fuente.
+                                            El diagnóstico puede desplazarse hacia vídeo,
+                                            APU, memoria, almacenamiento o placa.
+                                        </li>
+
+                                    </ul>
+
                                 </div>
-                                <div class="check"><strong>Punto de control</strong>
-                                    <p>La señal de vida define la siguiente rama del diagnóstico.</p><strong>Resultado
-                                        esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+
+                                <div class="check">
+
+                                    <strong>
+                                        No confundas síntoma con diagnóstico
+                                    </strong>
+
+                                    <p>
+                                        Que una PS4 se apague inmediatamente después
+                                        de intentar encenderse puede estar relacionado
+                                        con la fuente, pero ese comportamiento por sí
+                                        solo no demuestra que la fuente sea la causa.
+                                    </p>
+
+                                    <strong>
+                                        Siguiente paso
+                                    </strong>
+
+                                    <p>
+                                        Antes de comprar una fuente, mide sus tensiones
+                                        y observa cuándo aparecen y cuándo desaparecen.
+                                    </p>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </section>
+
+
                     <section class="repair-step" id="paso-4">
-                        <div class="repair-step-head"><span class="repair-step-num">04</span>
+
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                04
+                            </span>
+
                             <div>
-                                <h3>Separar fallo externo de fallo interno</h3>
-                                <p>Si el equipo sigue completamente muerto tras las pruebas externas, documenta modelo y
-                                    síntomas. Solo entonces tiene sentido pasar a alimentación interna con instrumental
-                                    adecuado.</p>
+
+                                <h3>
+                                    Identificar el modelo y la fuente de alimentación
+                                </h3>
+
+                                <p>
+                                    No existe un único pinout universal para todas
+                                    las fuentes de PlayStation 4.
+                                </p>
+
                             </div>
+
                         </div>
+
                         <div class="repair-step-body">
-                            <figure><img src="imagenes/guias/ps4-no-enciende-paso-4.svg"
-                                    alt="Diagrama NanoTech: Separar fallo externo de fallo interno" loading="lazy">
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-4.svg"
+                                    alt="Diagrama NúcleoTech: identificar modelo y fuente de alimentación de PS4"
+                                    loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
                                 </figcaption>
+
                             </figure>
+
                             <div class="repair-step-grid">
+
                                 <div>
-                                    <h4>Qué hacer</h4>
+
+                                    <h4>
+                                        Qué debes identificar
+                                    </h4>
+
                                     <ol>
-                                        <li>Lee el síntoma completo antes de desmontar.</li>
-                                        <li>Realiza una sola prueba y anota el resultado.</li>
-                                        <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas
-                                            todavía.</li>
+
+                                        <li>
+                                            Localiza la etiqueta inferior de la consola
+                                            y anota el modelo completo <strong>CUH-xxxx</strong>.
+                                        </li>
+
+                                        <li>
+                                            Si desmontas la consola, identifica también
+                                            el número de parte de la fuente.
+                                        </li>
+
+                                        <li>
+                                            Entre las familias utilizadas en diferentes
+                                            revisiones pueden encontrarse referencias
+                                            como <strong>ADP-160</strong>,
+                                            <strong>ADP-200</strong> y
+                                            <strong>ADP-240</strong>.
+                                        </li>
+
+                                        <li>
+                                            Algunas variantes documentadas incluyen
+                                            referencias como <strong>ADP-200ER</strong>,
+                                            <strong>ADP-240CR</strong> y
+                                            <strong>ADP-240AR</strong>.
+                                        </li>
+
+                                        <li>
+                                            No asumas que el conector de una PS4 original,
+                                            PS4 Slim o PS4 Pro tiene la misma distribución
+                                            de señales.
+                                        </li>
+
+                                        <li>
+                                            Busca el pinout correspondiente a la combinación
+                                            exacta de consola y fuente antes de colocar
+                                            las puntas del multímetro.
+                                        </li>
+
                                     </ol>
+
                                 </div>
-                                <div class="check"><strong>Punto de control</strong>
-                                    <p>No sustituyas una PSU sin demostrar que la ruta de alimentación es la causa.</p>
-                                    <strong>Resultado esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+
+                                <div class="check">
+
+                                    <strong>
+                                        Punto de control
+                                    </strong>
+
+                                    <p>
+                                        Debes terminar esta etapa sabiendo exactamente
+                                        qué fuente estás midiendo y cuál es la distribución
+                                        de sus pines.
+                                    </p>
+
+                                    <strong>
+                                        Importante
+                                    </strong>
+
+                                    <p>
+                                        Un pinout incorrecto puede provocar un cortocircuito
+                                        o llevarte a interpretar una señal de control como
+                                        si fuera una salida de alimentación.
+                                    </p>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </section>
+
+
                     <section class="repair-step" id="paso-5">
-                        <div class="repair-step-head"><span class="repair-step-num">05</span>
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                05
+                            </span>
+
                             <div>
-                                <h3>Criterio de parada</h3>
-                                <p>Si el diagnóstico llega a fuente de alimentación abierta, mediciones de red o placa
-                                    energizada, detén la guía doméstica y deriva a un técnico con instrumental.</p>
+
+                                <h3>
+                                    Medir 5 V de standby y salida de 12 V
+                                </h3>
+
+                                <p>
+                                    Las mediciones de la fuente deben realizarse en el
+                                    lado secundario y respetando el momento correcto.
+                                </p>
+
                             </div>
+
                         </div>
+
                         <div class="repair-step-body">
-                            <figure><img src="imagenes/guias/ps4-no-enciende-paso-5.svg"
-                                    alt="Diagrama NanoTech: Criterio de parada" loading="lazy">
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-5.svg"
+                                    alt="Diagrama NúcleoTech: medir 5 V de standby y 12 V de una fuente de PS4"
+                                    loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
                                 </figcaption>
+
                             </figure>
-                            <div class="repair-step-grid">
-                                <div>
-                                    <h4>Qué hacer</h4>
-                                    <ol>
-                                        <li>Lee el síntoma completo antes de desmontar.</li>
-                                        <li>Realiza una sola prueba y anota el resultado.</li>
-                                        <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas
-                                            todavía.</li>
-                                    </ol>
-                                </div>
-                                <div class="check"><strong>Punto de control</strong>
-                                    <p>La seguridad tiene prioridad sobre completar el desmontaje.</p><strong>Resultado
-                                        esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
-                                </div>
+
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    Qué estamos intentando comprobar
+                                </strong>
+
+                                <p>
+                                    La fuente no necesariamente entrega 12 V durante
+                                    todo el tiempo. El circuito de standby puede permanecer
+                                    activo mientras la salida principal de 12 V permanece
+                                    deshabilitada.
+                                </p>
+
+                                <p>
+                                    Cuando la consola solicita el encendido, una señal
+                                    de control hace que la fuente habilite la salida
+                                    principal.
+                                </p>
+
                             </div>
+
+
+                            <h4>
+                                Configuración del multímetro
+                            </h4>
+
+                            <ol>
+
+                                <li>
+                                    Coloca el multímetro en <strong>voltaje DC</strong>.
+                                </li>
+
+                                <li>
+                                    Si tu multímetro utiliza rangos manuales, selecciona
+                                    un rango que incluya 12 V DC; un rango de 20 V DC
+                                    es habitual en multímetros manuales.
+                                </li>
+
+                                <li>
+                                    Coloca la punta negra en un punto identificado
+                                    correctamente como <strong>GND</strong> del lado
+                                    secundario.
+                                </li>
+
+                                <li>
+                                    Coloca la punta roja únicamente sobre el pin o punto
+                                    que la documentación identifica como
+                                    <strong>5 V standby / 5VSB</strong> o
+                                    <strong>12 V</strong>.
+                                </li>
+
+                                <li>
+                                    Nunca selecciones medición de corriente para realizar
+                                    estas pruebas de tensión.
+                                </li>
+
+                            </ol>
+
+
+                            <h4>
+                                Medición de 5 V de standby
+                            </h4>
+
+                            <p>
+                                El standby es una de las primeras referencias que debemos
+                                comprobar porque permite determinar si la fuente está
+                                generando su tensión secundaria de espera.
+                            </p>
+
+                            <ol>
+
+                                <li>
+                                    Con la fuente correctamente conectada a la alimentación
+                                    de CA y siguiendo el procedimiento correspondiente
+                                    al modelo, coloca la punta negra en GND secundario.
+                                </li>
+
+                                <li>
+                                    Coloca la punta roja sobre el punto de 5 V standby
+                                    identificado mediante el pinout exacto.
+                                </li>
+
+                                <li>
+                                    Registra la tensión sin mover las puntas.
+                                </li>
+
+                            </ol>
+
+
+                            <div class="check">
+
+                                <strong>
+                                    Valor de referencia
+                                </strong>
+
+                                <p>
+                                    En determinadas fuentes y revisiones de PS4 se
+                                    documentan valores de standby próximos a
+                                    <strong>5 V DC</strong>. Como referencia práctica,
+                                    pueden encontrarse lecturas alrededor de
+                                    <strong>4.8 a 5.1 V DC</strong>.
+                                </p>
+
+                                <p>
+                                    El valor exacto debe contrastarse con la fuente y
+                                    el modelo concreto. No utilices este intervalo para
+                                    identificar pines de una fuente diferente.
+                                </p>
+
+                            </div>
+
+
+                            <h4>
+                                ¿Qué significa la medición de 5 V?
+                            </h4>
+
+                            <div class="repair-table-wrap">
+
+                                <table class="repair-table">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>Medición 5VSB</th>
+                                            <th>Interpretación</th>
+                                            <th>Siguiente paso</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr>
+
+                                            <td>
+                                                ≈ 4.8–5.1 V
+                                            </td>
+
+                                            <td>
+                                                El circuito de standby está produciendo
+                                                una tensión compatible con la referencia.
+                                            </td>
+
+                                            <td>
+                                                Comprobar orden de encendido y salida de 12 V.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                0 V
+                                            </td>
+
+                                            <td>
+                                                La etapa de standby no está entregando
+                                                tensión o existe un problema de alimentación,
+                                                conexión o protección.
+                                            </td>
+
+                                            <td>
+                                                Confirmar entrada, conexiones y fuente.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Muy por debajo de 5 V
+                                            </td>
+
+                                            <td>
+                                                Puede existir una anomalía en standby
+                                                o una carga anormal.
+                                            </td>
+
+                                            <td>
+                                                Confirmar modelo, pinout y punto de medición.
+                                                Si la lectura se mantiene, investigar fuente
+                                                o carga.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Claramente por encima de 5 V
+                                            </td>
+
+                                            <td>
+                                                La tensión no coincide con el comportamiento
+                                                esperado de una salida de standby de aproximadamente
+                                                5 V.
+                                            </td>
+
+                                            <td>
+                                                Detener la sustitución de piezas y verificar
+                                                la fuente específica.
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    Una lectura de 5 V no significa que la fuente esté completamente bien
+                                </strong>
+
+                                <p>
+                                    El circuito de standby puede funcionar correctamente
+                                    mientras la etapa encargada de producir los 12 V
+                                    presenta un problema.
+                                </p>
+
+                            </div>
+
+
+                            <h4>
+                                Medición de la salida principal de 12 V
+                            </h4>
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    No esperes necesariamente 12 V en standby
+                                </strong>
+
+                                <p>
+                                    En varias fuentes de PS4 la salida principal de 12 V
+                                    permanece deshabilitada mientras la consola está en
+                                    espera. Por ello, encontrar aproximadamente 0 V en
+                                    esa línea antes de solicitar el encendido puede ser
+                                    normal para determinadas fuentes.
+                                </p>
+
+                            </div>
+
+
+                            <ol>
+
+                                <li>
+                                    Mantén el multímetro en <strong>voltaje DC</strong>.
+                                </li>
+
+                                <li>
+                                    Conecta la punta negra a un punto de
+                                    <strong>GND secundario</strong> correctamente identificado.
+                                </li>
+
+                                <li>
+                                    Coloca la punta roja en el punto de salida de
+                                    <strong>12 V</strong> indicado específicamente
+                                    para esa fuente.
+                                </li>
+
+                                <li>
+                                    Observa la lectura mientras la consola permanece
+                                    en standby.
+                                </li>
+
+                                <li>
+                                    Solicita el encendido de la consola.
+                                </li>
+
+                                <li>
+                                    Observa si la tensión aumenta aproximadamente
+                                    hasta <strong>12 V DC</strong>.
+                                </li>
+
+                                <li>
+                                    Si la tensión aparece y posteriormente cae,
+                                    registra exactamente cuándo ocurre la caída.
+                                </li>
+
+                            </ol>
+
+
+                            <h4>
+                                La secuencia importa más que una lectura aislada
+                            </h4>
+
+                            <div class="repair-table-wrap">
+
+                                <table class="repair-table">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>Estado</th>
+                                            <th>5 V standby</th>
+                                            <th>12 V</th>
+                                            <th>Qué investigar</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr>
+
+                                            <td>
+                                                Standby
+                                            </td>
+
+                                            <td>
+                                                ≈ 5 V
+                                            </td>
+
+                                            <td>
+                                                Puede ser 0 V
+                                            </td>
+
+                                            <td>
+                                                Estado previo al encendido.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Orden de encendido
+                                            </td>
+
+                                            <td>
+                                                ≈ 5 V
+                                            </td>
+
+                                            <td>
+                                                Debe aparecer aproximadamente 12 V
+                                                en las fuentes donde esa es la salida
+                                                principal especificada.
+                                            </td>
+
+                                            <td>
+                                                Fuente y señal de habilitación.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Consola encendida
+                                            </td>
+
+                                            <td>
+                                                ≈ 5 V
+                                            </td>
+
+                                            <td>
+                                                ≈ 12 V
+                                            </td>
+
+                                            <td>
+                                                Si la consola continúa fallando,
+                                                avanzar hacia la placa.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                12 V aparece y cae
+                                            </td>
+
+                                            <td>
+                                                ≈ 5 V
+                                            </td>
+
+                                            <td>
+                                                12 V → 0 V
+                                            </td>
+
+                                            <td>
+                                                Protección, carga anormal, señal de
+                                                control o problema de placa/fuente.
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
                         </div>
+
                     </section>
-                    <div class="repair-result"><strong>Cómo interpretar el resultado</strong>
-                        <p>Una prueba negativa no es un fracaso: es información. Registra qué se probó, con qué pieza o
-                            condición y qué cambió. Evita reemplazar varios componentes al mismo tiempo.</p>
+
+
+                    <section id="interpretar" class="repair-step">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                06
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Interpretar las mediciones
+                                </h3>
+
+                                <p>
+                                    La medición solamente tiene sentido cuando se relaciona
+                                    con el comportamiento de la consola.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="repair-step-body">
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-5.svg"
+                                    alt="Diagrama NúcleoTech: medir 5 V de standby y 12 V de una fuente de PS4"
+                                    loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
+                                </figcaption>
+
+                            </figure>
+                            <div class="diagnostic-grid">
+
+                                <div class="diagnostic-card">
+
+                                    <span class="diagnostic-label">
+                                        CASO A
+                                    </span>
+
+                                    <h3>
+                                        5 V ausentes
+                                    </h3>
+
+                                    <p>
+                                        Si la fuente está correctamente alimentada pero
+                                        no aparece la tensión de standby, el problema
+                                        se concentra inicialmente en la fuente o en
+                                        su alimentación.
+                                    </p>
+
+                                    <strong>
+                                        Siguiente paso:
+                                    </strong>
+
+                                    <p>
+                                        Confirmar conexión, entrada de CA y referencia
+                                        de la fuente. Si el 5 V continúa ausente,
+                                        evaluar la fuente antes de diagnosticar la placa.
+                                    </p>
+
+                                </div>
+
+
+                                <div class="diagnostic-card">
+
+                                    <span class="diagnostic-label">
+                                        CASO B
+                                    </span>
+
+                                    <h3>
+                                        5 V presentes, 12 V nunca aparece
+                                    </h3>
+
+                                    <p>
+                                        La etapa de standby funciona, pero la salida
+                                        principal no se habilita.
+                                    </p>
+
+                                    <strong>
+                                        Siguiente paso:
+                                    </strong>
+
+                                    <p>
+                                        Comprobar el circuito de habilitación según
+                                        el pinout exacto. No conviene asumir que la
+                                        fuente está defectuosa sin comprobar la señal
+                                        de control.
+                                    </p>
+
+                                </div>
+
+
+                                <div class="diagnostic-card">
+
+                                    <span class="diagnostic-label">
+                                        CASO C
+                                    </span>
+
+                                    <h3>
+                                        5 V presentes y 12 V aparece
+                                    </h3>
+
+                                    <p>
+                                        La fuente está produciendo sus salidas principales
+                                        de forma compatible con la prueba realizada.
+                                    </p>
+
+                                    <strong>
+                                        Siguiente paso:
+                                    </strong>
+
+                                    <p>
+                                        Si la consola sigue sin arrancar, el diagnóstico
+                                        debe avanzar hacia la placa principal, señales
+                                        de encendido, protecciones y reguladores secundarios.
+                                    </p>
+
+                                </div>
+
+
+                                <div class="diagnostic-card">
+
+                                    <span class="diagnostic-label">
+                                        CASO D
+                                    </span>
+
+                                    <h3>
+                                        12 V aparece y después desaparece
+                                    </h3>
+
+                                    <p>
+                                        Este patrón demuestra que la fuente puede iniciar
+                                        su salida principal, pero algo ocurre durante
+                                        la secuencia de arranque.
+                                    </p>
+
+                                    <strong>
+                                        Siguiente paso:
+                                    </strong>
+
+                                    <p>
+                                        Determinar si la caída es provocada por la fuente
+                                        entrando en protección, por una carga anormal
+                                        en la placa o porque desaparece la señal de
+                                        habilitación.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    Regla de diagnóstico NúcleoTech
+                                </strong>
+
+                                <p>
+                                    <strong>
+                                        No interpretes una tensión aislada.
+                                    </strong>
+                                    Relaciona siempre el valor medido con el momento,
+                                    la señal de control y el comportamiento de la consola.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section id="placa" class="repair-step">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                07
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Si la fuente entrega 5 V y 12 V
+                                </h3>
+
+                                <p>
+                                    No tiene sentido seguir cambiando fuentes sin evidencia.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="repair-step-body">
+                            <figure>
+
+                                <img src="imagenes/guias/ps4-no-enciende-paso-5.svg"
+                                    alt="Diagrama NúcleoTech: medir 5 V de standby y 12 V de una fuente de PS4"
+                                    loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para entender la lógica
+                                    de esta etapa.
+                                </figcaption>
+
+                            </figure>
+                            <p>
+                                Si las mediciones de la fuente son correctas y la consola
+                                continúa sin arrancar, el diagnóstico cambia de nivel.
+                                Ahora hay que investigar qué ocurre en la placa principal.
+                            </p>
+
+                            <h4>
+                                Secuencia recomendada
+                            </h4>
+
+                            <ol>
+
+                                <li>
+                                    Confirmar que la señal de encendido llega correctamente
+                                    desde el sistema de control.
+                                </li>
+
+                                <li>
+                                    Comprobar que los 12 V realmente permanecen presentes
+                                    cuando la consola intenta iniciar.
+                                </li>
+
+                                <li>
+                                    Revisar fusibles y protecciones de la placa.
+                                </li>
+
+                                <li>
+                                    Buscar cortocircuitos evidentes en las principales
+                                    líneas de alimentación.
+                                </li>
+
+                                <li>
+                                    Continuar hacia reguladores secundarios y líneas
+                                    de alimentación del sistema.
+                                </li>
+
+                                <li>
+                                    En modelos concretos, investigar los circuitos
+                                    asociados al Southbridge, APU, memoria y gestión
+                                    de energía cuando las pruebas anteriores lo indiquen.
+                                </li>
+
+                            </ol>
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    No saltes directamente al APU
+                                </strong>
+
+                                <p>
+                                    Un diagnóstico de placa debe avanzar desde las
+                                    condiciones básicas hacia las más complejas.
+                                    Si la alimentación primaria y secundaria todavía
+                                    no está correctamente caracterizada, buscar un
+                                    supuesto fallo del APU es prematuro.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <div class="repair-result">
+
+                        <strong>
+                            Cómo interpretar el resultado
+                        </strong>
+
+                        <p>
+                            Una prueba negativa no es un fracaso: es información.
+                            Registra qué se probó, con qué condición, qué tensión se
+                            obtuvo y qué cambió. Evita reemplazar varios componentes
+                            al mismo tiempo porque después será difícil saber cuál
+                            era realmente la causa.
+                        </p>
+
                     </div>
-                    <h2>Tabla rápida de diagnóstico</h2>
-                    <div class="repair-table-wrap">
-                        <table class="repair-table">
-                            <thead>
-                                <tr>
-                                    <th>Síntoma</th>
-                                    <th>Primera comprobación</th>
-                                    <th>Siguiente hipótesis</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Sin LED ni pitido</td>
-                                    <td>Toma/cable comprobados</td>
-                                    <td>Prioridad: alimentación externa → PSU → placa</td>
-                                </tr>
-                                <tr>
-                                    <td>Pitido o LED pero no arranca</td>
-                                    <td>Observar secuencia</td>
-                                    <td>Prioridad: arranque/placa según síntoma</td>
-                                </tr>
-                                <tr>
-                                    <td>Enciende y se apaga</td>
-                                    <td>Tiempo hasta apagado</td>
-                                    <td>Prioridad: alimentación, protección o térmica</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+
+                    <section id="tabla">
+
+                        <h2>
+                            Tabla rápida de diagnóstico
+                        </h2>
+
+                        <div class="repair-table-wrap">
+
+                            <table class="repair-table">
+
+                                <thead>
+
+                                    <tr>
+                                        <th>Resultado</th>
+                                        <th>Qué significa</th>
+                                        <th>Prioridad</th>
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            5 V ausentes
+                                        </td>
+
+                                        <td>
+                                            No existe standby correcto.
+                                        </td>
+
+                                        <td>
+                                            Entrada / conexión / fuente
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+                                            5 V correctos + 12 V ausente
+                                        </td>
+
+                                        <td>
+                                            Standby funciona, pero la salida principal
+                                            no aparece.
+                                        </td>
+
+                                        <td>
+                                            Habilitación / fuente
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+                                            5 V + 12 V correctos
+                                        </td>
+
+                                        <td>
+                                            La fuente supera la prueba básica.
+                                        </td>
+
+                                        <td>
+                                            Placa principal
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+                                            12 V aparece y cae
+                                        </td>
+
+                                        <td>
+                                            Existe un problema durante el arranque.
+                                        </td>
+
+                                        <td>
+                                            Protección / carga / control
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>
+                                            12 V estable pero sin arranque
+                                        </td>
+
+                                        <td>
+                                            La fuente deja de ser la primera sospechosa.
+                                        </td>
+
+                                        <td>
+                                            Señales / placa
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <section id="errores">
+
+                        <h2>
+                            Errores frecuentes al diagnosticar una PS4
+                        </h2>
+
+                        <div class="repair-step-body">
+
+                            <ul>
+
+                                <li>
+                                    <strong>
+                                        Medir 12 V en standby y declarar dañada la fuente.
+                                    </strong>
+                                    En varias fuentes la salida principal se habilita
+                                    solamente después de la orden de encendido.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Usar un pinout de otra fuente.
+                                    </strong>
+                                    La disposición de señales puede cambiar entre
+                                    modelos y revisiones.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Confundir GND con una señal de control.
+                                    </strong>
+                                    No todos los pines del conector son salidas de potencia.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Medir tensión sin observar cuándo aparece.
+                                    </strong>
+                                    Una lectura de 12 V durante un instante y una lectura
+                                    estable de 12 V son diagnósticamente diferentes.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Condenar la fuente porque la consola se apaga.
+                                    </strong>
+                                    La protección puede estar reaccionando a una carga
+                                    o condición existente en la placa.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Abrir la fuente para buscar componentes quemados.
+                                    </strong>
+                                    Una fuente puede fallar sin presentar daños visibles.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Medir el primario sin experiencia.
+                                    </strong>
+                                    No es necesario para este diagnóstico básico y
+                                    aumenta considerablemente el riesgo.
+                                </li>
+
+                                <li>
+                                    <strong>
+                                        Sustituir varias piezas a la vez.
+                                    </strong>
+                                    Si cambias fuente, placa o componentes simultáneamente,
+                                    pierdes información sobre la causa original.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </section>
+
+
+                    <section id="seguridad-mediciones">
+
+                        <h2>
+                            Seguridad durante las mediciones
+                        </h2>
+
+                        <div class="repair-callout">
+
+                            <strong>
+                                Esta guía se limita a pruebas de baja tensión
+                            </strong>
+
+                            <p>
+                                La fuente de una PS4 contiene circuitos conectados
+                                directamente a la red eléctrica. El lado primario
+                                puede presentar tensiones peligrosas incluso después
+                                de desconectar el equipo.
+                            </p>
+
+                        </div>
+
+                        <ul>
+
+                            <li>
+                                No midas el primario de la fuente si no tienes formación
+                                específica en fuentes conmutadas.
+                            </li>
+
+                            <li>
+                                No toques capacitores grandes ni componentes del primario.
+                            </li>
+
+                            <li>
+                                No realices mediciones con puntas deterioradas o sin
+                                aislamiento adecuado.
+                            </li>
+
+                            <li>
+                                Identifica primero el pinout correspondiente a tu fuente.
+                            </li>
+
+                            <li>
+                                Evita apoyar ambas puntas del multímetro de forma que
+                                puedan tocar dos pines simultáneamente.
+                            </li>
+
+                            <li>
+                                Si no tienes experiencia trabajando con electrónica
+                                energizada, limita el diagnóstico a comprobaciones externas
+                                y considera utilizar una fuente conocida en buen estado
+                                como prueba cruzada.
+                            </li>
+
+                            <li>
+                                Nunca sustituyas un fusible por uno de mayor corriente
+                                ni lo puentes.
+                            </li>
+
+                        </ul>
+
+                    </section>
+
+
+                    <section id="fuentes">
+
+                        <h2>
+                            Fuentes, licencias y referencias técnicas
+                        </h2>
+
+                        <p>
+                            Esta guía combina una ruta de diagnóstico práctica con
+                            referencias técnicas de reparación. Los valores de tensión
+                            deben contrastarse siempre con el modelo de consola,
+                            revisión de hardware y número de parte de la fuente.
+                        </p>
+
+                        <ul class="repair-sources">
+
+                            <li>
+                                <a href="https://commons.wikimedia.org/wiki/File:Sony-PlayStation-4-PS4-Console-BR.jpg"
+                                    target="_blank" rel="noopener noreferrer">
+                                    Fuente de la imagen principal
+                                </a>
+                                — Wikimedia Commons.
+                            </li>
+
+                            <li>
+                                <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                                    rel="noopener noreferrer">
+                                    Creative Commons BY-SA 4.0
+                                </a>
+                                cuando corresponda a la licencia indicada en la imagen.
+                            </li>
+
+                            <li>
+                                <a href="https://www.ifixit.com/Device/PlayStation_4" target="_blank"
+                                    rel="noopener noreferrer">
+                                    iFixit — documentación de reparación de PlayStation 4
+                                </a>
+                                como referencia técnica.
+                            </li>
+
+                            <li>
+                                Documentación técnica específica del fabricante de la
+                                fuente cuando esté disponible.
+                            </li>
+
+                        </ul>
+
+                        <div class="repair-callout">
+
+                            <strong>
+                                Nota sobre los valores publicados
+                            </strong>
+
+                            <p>
+                                Las referencias de aproximadamente 5 V de standby y
+                                12 V de salida principal corresponden a determinadas
+                                fuentes y revisiones. No deben utilizarse para identificar
+                                pines en una fuente diferente.
+                            </p>
+
+                            <p>
+                                El modelo CUH y el número de parte de la fuente deben
+                                determinarse antes de realizar una medición sobre el
+                                conector.
+                            </p>
+
+                        </div>
+
+                    </section>
+
+
+                    <section>
+
+                        <h2>
+                            Artículos relacionados
+                        </h2>
+
+                        <ul>
+
+                            <li>
+                                <a href="ps4-no-video.html">
+                                    PS4 no muestra video
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="ps4-se-apaga.html">
+                                    PS4 se apaga
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="ps4-teardown-completo.html">
+                                    PS4 teardown completo
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="pc-no-arranca.html">
+                                    PC de escritorio no arranca
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="laptop-no-enciende.html">
+                                    Laptop no enciende
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                        <div class="repair-bottom-nav">
+
+                            <a class="btn secondary" href="reparaciones.html">
+                                ← Anterior
+                            </a>
+
+                            <a class="btn" href="ps4-no-video.html">
+                                Siguiente →
+                            </a>
+
+                        </div>
+
+                    </section>
+
                 </section>
-                <section id="fuentes">
-                    <h2>Fuentes, licencias y referencias</h2>
-                    <ul class="repair-sources">
-                        <li><a href="https://commons.wikimedia.org/wiki/File:Sony-PlayStation-4-PS4-Console-BR.jpg"
-                                target="_blank" rel="noopener noreferrer">Fuente de imagen / referencia</a> — revisa la
-                            licencia indicada en la ficha antes de redistribuir.</li>
-                        <li><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
-                                rel="noopener noreferrer">Creative Commons BY-SA 4.0</a> cuando aplique a la imagen.
-                        </li>
-                        <li><a href="https://www.ifixit.com/Device/PlayStation_4" target="_blank"
-                                rel="noopener noreferrer">iFixit / documentación de reparación</a> como referencia
-                            técnica para PlayStation cuando corresponda.</li>
-                    </ul>
-                    
-                </section>
-                <section>
-                    <h2>Artículos relacionados</h2>
-                    <ul>
-                        <li><a href="ps4-no-video.html">Ps4 No Video</a></li>
-                        <li><a href="ps4-se-apaga.html">Ps4 Se Apaga</a></li>
-                        <li><a href="ps4-teardown-completo.html">Ps4 Teardown Completo</a></li>
-                    </ul>
-                    <div class="repair-bottom-nav"><a class="btn secondary" href="reparaciones.html">← Anterior</a><a
-                            class="btn" href="ps4-no-video.html">Siguiente →</a></div>
-                </section>
+
             </article>
             <aside class="repair-side">
                 <div class="adsense-slot adsense-slot--rectangle"></div>
@@ -358,28 +1968,125 @@
                         desmontar.</p>
                 </div>
             </aside>
+
         </div>
+
     </main>
+
+
     <footer class="site-footer">
+
         <div class="wrap footer-grid">
-            <span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
-            <div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a
-                    href="noticias.html">Noticias</a><a href="sobre-nosotros.html">Sobre nosotros</a><a
-                    href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a
-                    href="contacto.html">Contacto</a></div>
+
+            <span>
+                © 2026 NúcleoTech. Todos los derechos reservados.
+            </span>
+
+            <div class="footer-links">
+
+                <a href="reparaciones.html">
+                    Reparaciones
+                </a>
+
+                <a href="mikrotik.html">
+                    MikroTik
+                </a>
+
+                <a href="noticias.html">
+                    Noticias
+                </a>
+
+                <a href="sobre-nosotros.html">
+                    Sobre nosotros
+                </a>
+
+                <a href="politica-privacidad.html">
+                    Política de privacidad
+                </a>
+
+                <a href="fuentes.html">
+                    Fuentes
+                </a>
+
+                <a href="contacto.html">
+                    Contacto
+                </a>
+
+            </div>
+
         </div>
+
     </footer>
+
+
     <script>
+
         document.addEventListener('DOMContentLoaded', () => {
-            const links = [...document.querySelectorAll('.repair-toc a[data-target]')];
-            const targets = links.map(a => document.getElementById(a.dataset.target)).filter(Boolean);
-            const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { links.forEach(a => a.classList.toggle('is-current', a.dataset.target === e.target.id)); } }) }, { rootMargin: '-90px 0px -65% 0px', threshold: 0 });
-            targets.forEach(t => obs.observe(t));
-            const toggle = document.querySelector('.repair-toc-toggle'), box = document.querySelector('.repair-toc-links');
-            if (toggle && box) toggle.addEventListener('click', () => box.classList.toggle('open'));
+
+            const links = [
+                ...document.querySelectorAll('.repair-toc a[data-target]')
+            ];
+
+            const targets = links
+                .map(a => document.getElementById(a.dataset.target))
+                .filter(Boolean);
+
+            const obs = new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            links.forEach(link => {
+
+                                link.classList.toggle(
+                                    'is-current',
+                                    link.dataset.target === entry.target.id
+                                );
+
+                            });
+
+                        }
+
+                    });
+
+                },
+                {
+                    rootMargin: '-90px 0px -65% 0px',
+                    threshold: 0
+                }
+            );
+
+            targets.forEach(target => obs.observe(target));
+
+
+            const toggle = document.querySelector('.repair-toc-toggle');
+            const box = document.querySelector('.repair-toc-links');
+
+            if (toggle && box) {
+
+                toggle.addEventListener('click', () => {
+
+                    const isOpen = box.classList.toggle('open');
+
+                    toggle.setAttribute(
+                        'aria-expanded',
+                        isOpen ? 'true' : 'false'
+                    );
+
+                });
+
+            }
+
         });
+
     </script>
+
+
     <script src="script.js"></script>
+    ```
+
 </body>
 
 </html>
