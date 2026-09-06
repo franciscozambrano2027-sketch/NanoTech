@@ -1,54 +1,448 @@
-<!DOCTYPE html><html lang="es"><head>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
     <!-- Favicon NúcleoTech -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-5TYV7T1LR0');
-</script>
+        gtag('config', 'G-5TYV7T1LR0');
+    </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5675726602507111"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>PC de escritorio no arranca: diagnóstico POST paso a paso | NúcleoTech</title><meta name="description" content="Usa el POST como punto de separación entre alimentación, memoria, vídeo y almacenamiento."><link rel="stylesheet" href="styles.css">
+        crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>PC de escritorio no arranca: diagnóstico POST paso a paso | NúcleoTech</title>
+    <meta name="description"
+        content="Usa el POST como punto de separación entre alimentación, memoria, vídeo y almacenamiento.">
+    <link rel="stylesheet" href="styles.css">
     <link rel="canonical" href="https://nucleo-tech.org/pc-no-arranca.html">
-</head><body><header class="site-header"><div class="wrap">
-<a href="index.html" class="logo">Núcleo<span>Tech</span></a>
-<nav class="main-nav">
-<a href="index.html">Inicio</a>
-<a href="resenas.html">Guías</a>
-<a href="reparaciones.html">Reparaciones</a>
-<a href="mikrotik.html">MikroTik</a>
-<a href="noticias.html">Noticias</a>
-<a href="cotizacion.html">Cotización</a>
-<a href="comunidad-facebook.html">Comunidad</a>
-<a href="sobre-nosotros.html">Sobre nosotros</a>
-<a href="contacto.html">Contacto</a>
-</nav><button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
-</div></header>
-<header class="repair-hero"><div class="wrap"><p class="eyebrow-plain">PC y Laptop</p><h1>PC de escritorio no arranca: diagnóstico POST paso a paso</h1><p class="dek">Usa el POST como punto de separación entre alimentación, memoria, vídeo y almacenamiento.</p><div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech · 2026</span></div></div></header>
-<main class="wrap repair-guide"><div class="repair-shell"><aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button><div class="repair-toc-links"><p class="toc-title">Contenido</p><a href="#introduccion" data-target="introduccion">Introducción</a><a href="#seguridad" data-target="seguridad">Seguridad</a><a href="#herramientas" data-target="herramientas">Herramientas</a><a href="#diagnostico" data-target="diagnostico">Diagnóstico</a><a href="#fuentes" data-target="fuentes">Fuentes</a><a href="#paso-1" data-target="paso-1">1. Definir el fallo</a><a href="#paso-2" data-target="paso-2">2. Comprobar alimentación</a><a href="#paso-3" data-target="paso-3">3. Reducir a configuración mínima</a><a href="#paso-4" data-target="paso-4">4. Interpretar POST</a><a href="#paso-5" data-target="paso-5">5. Probar memoria</a><a href="#paso-6" data-target="paso-6">6. Separar vídeo y almacenamiento</a></div></aside>
-<article class="repair-main"><section id="introduccion"><h2>Introducción</h2><figure class="repair-photo"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Computer.tower.750pix.jpg" alt="Torre de PC de escritorio" loading="eager"><figcaption>Adrian Pingstone / Wikimedia Commons — dominio público. <a href="https://commons.wikimedia.org/wiki/File:Computer.tower.750pix.jpg" target="_blank" rel="noopener noreferrer">Ver ficha de licencia y origen</a>.</figcaption></figure><div class="repair-intro"><strong>Objetivo de esta guía</strong><p>La meta es llegar a una hipótesis con evidencia. No se trata de desmontar por desmontar: cada paso elimina una causa posible y prepara el siguiente.</p></div></section>
-<section id="seguridad"><h2>Antes de empezar: seguridad</h2><div class="repair-warning"><strong>⚠ Desconecta completamente el equipo.</strong><p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p></div><ul><li>Trabaja sobre una superficie limpia, seca y bien iluminada.</li><li>Organiza tornillos y conectores por etapa.</li><li>Fotografía conexiones antes de desconectarlas cuando desmontes.</li><li>No fuerces una cubierta: una resistencia inesperada suele indicar una fijación pendiente.</li></ul></section>
-<section id="herramientas"><h2>Herramientas y material</h2><div class="repair-tools"><span class="repair-tool">Cargador compatible</span><span class="repair-tool">Linterna</span><span class="repair-tool">Destornilladores según modelo</span><span class="repair-tool">Pulsera/superficie ESD cuando corresponda</span><span class="repair-tool">Herramienta de monitorización</span></div><div class="repair-note"><strong>Regla NanoTech:</strong> una herramienta debe resolver una tarea concreta. Si una intervención requiere instrumental que no tienes, la guía debe detenerse ahí, no improvisar.</div></section>
-<section id="diagnostico"><h2>Diagnóstico paso a paso</h2><section class="repair-step" id="paso-1"><div class="repair-step-head"><span class="repair-step-num">01</span><div><h3>Definir el fallo</h3><p>¿No enciende? ¿Enciende sin imagen? ¿Llega al logo? ¿Reinicia? Documenta el comportamiento exacto.</p></div></div><div class="repair-step-body"><figure><img src="imagenes/guias/pc-no-arranca-paso-1.svg" alt="Diagrama NanoTech: Definir el fallo" loading="lazy"><figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption></figure><div class="repair-step-grid"><div><h4>Qué hacer</h4><ol><li>Sin luces ni ventiladores: no está llegando corriente a la placa (fuente, cable, toma o interruptor).</li><li>Ventiladores giran un instante y se apagan: la fuente o la placa están cortando por protección (cortocircuito o sobrecarga).</li><li>Ventiladores giran de forma continua pero no hay imagen: el arranque no supera el POST; el problema está en CPU, RAM o vídeo.</li><li>Llega al logo o a Windows y luego reinicia o se cuelga: el POST terminó bien, la causa está más adelante (drivers, sistema operativo o temperatura bajo carga).</li></ol></div><div class="check"><strong>Punto de control</strong><p>Anota el patrón exacto (luces, sonidos, pitidos, cuánto tarda en apagarse) antes de tocar nada: cada patrón manda a una rama distinta de esta guía.</p><strong>Resultado esperado</strong><p>Con el patrón identificado, puedes saltar directo al paso correspondiente (2 si no hay señales de vida, 4 si hay POST sin imagen, 6 si llega a BIOS) en vez de seguir todos los pasos en orden.</p></div></div></div></section><section class="repair-step" id="paso-2"><div class="repair-step-head"><span class="repair-step-num">02</span><div><h3>Comprobar alimentación</h3><p>Revisa cable, toma, interruptor de fuente y conexiones principales con el equipo desconectado.</p></div></div><div class="repair-step-body"><figure><img src="imagenes/guias/pc-no-arranca-paso-2.svg" alt="Diagrama NanoTech: Comprobar alimentación" loading="lazy"><figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption></figure><div class="repair-step-grid"><div><h4>Qué hacer</h4><ol><li>Prueba la toma de corriente con otro aparato para descartar el punto eléctrico, y confirma que el interruptor trasero de la fuente (0/1) esté en 1.</li><li>Con el equipo desconectado, revisa que el conector de 24 pines a la placa y el de 4/8 pines junto al socket de CPU estén completamente encajados; se aflojan con facilidad al mover o limpiar el equipo.</li><li>Si tienes la fuente fuera del equipo y algo de experiencia, puedes hacer la "prueba del clip": puentea el cable verde con uno negro del conector de 24 pines fuera de la placa. Si el ventilador de la fuente gira, hay arranque eléctrico (esto no confirma que el voltaje bajo carga sea correcto, solo que enciende).</li></ol></div><div class="check"><strong>Punto de control</strong><p>No abras la carcasa metálica de la fuente para medir en el interior: los capacitores pueden retener carga peligrosa incluso desconectada de la corriente.</p><strong>Resultado esperado</strong><p>Si ni con el clip gira el ventilador de la fuente, esta es la sospechosa principal: prueba con una fuente de reemplazo antes de seguir. Si gira, continúa al paso 3.</p></div></div></div></section><section class="repair-step" id="paso-3"><div class="repair-step-head"><span class="repair-step-num">03</span><div><h3>Reducir a configuración mínima</h3><p>Desconecta periféricos y dispositivos no necesarios. Mantén placa, CPU, refrigeración, un módulo de RAM y vídeo necesario según el equipo.</p></div></div><div class="repair-step-body"><figure><img src="imagenes/guias/pc-no-arranca-paso-3.svg" alt="Diagrama NanoTech: Reducir a configuración mínima" loading="lazy"><figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption></figure><div class="repair-step-grid"><div><h4>Qué hacer</h4><ol><li>Desconecta discos, unidades ópticas, tarjetas adicionales y todo periférico salvo teclado y monitor.</li><li>Deja solo placa, CPU con su disipador, un único módulo de RAM en el slot que indique el manual (a menudo no es el más cercano a la CPU) y vídeo integrado o una sola GPU si el CPU no tiene gráficos.</li><li>Si el botón del gabinete no enciende el equipo, puentea brevemente los pines de "power switch" del panel frontal en la placa con un destornillador plano; es el mismo circuito que activa el botón.</li></ol></div><div class="check"><strong>Punto de control</strong><p>El objetivo de reducir al mínimo es aislar: si en esta configuración arranca, algo del ensamblaje original —un periférico, una tarjeta o un contacto con la carcasa— causaba el fallo, no la placa base.</p><strong>Resultado esperado</strong><p>Si arranca en mínimo, reincorpora componentes de uno en uno (otra RAM, luego discos, luego tarjetas) hasta que el fallo reaparezca; el último añadido es el responsable. Si no arranca ni en mínimo, continúa al paso 4.</p></div></div></div></section><section class="repair-step" id="paso-4"><div class="repair-step-head"><span class="repair-step-num">04</span><div><h3>Interpretar POST</h3><p>Escucha códigos o observa LEDs de diagnóstico si la placa dispone de ellos.</p></div></div><div class="repair-step-body"><figure><img src="imagenes/guias/pc-no-arranca-paso-4.svg" alt="Diagrama NanoTech: Interpretar POST" loading="lazy"><figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption></figure><div class="repair-step-grid"><div><h4>Qué hacer</h4><ol><li>Si la placa tiene un display de dos dígitos o LEDs rotulados CPU/DRAM/VGA/BOOT, anota cuál queda fijo: indica en qué etapa se detuvo el arranque.</li><li>Si no hay LEDs, cuenta los pitidos del altavoz interno de la placa (el speaker de placa, no el del gabinete). La cantidad y el ritmo forman un código, pero varían según el fabricante del BIOS (AMI, Award/Phoenix) e incluso según el modelo exacto.</li><li>Busca la tabla de códigos del manual de tu placa específica; los códigos genéricos que circulan en internet no siempre coinciden con tu modelo.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Un LED fijo en "DRAM" casi siempre apunta a memoria mal asentada, no a una placa dañada: no cambies piezas antes de leer el código.</p><strong>Resultado esperado</strong><p>CPU fijo → revisa alimentación del socket. DRAM fijo → ve al paso 5. VGA fijo → prueba vídeo integrado o cambia de slot PCIe. BOOT fijo → la plataforma ya superó el POST, sigue al paso 6.</p></div></div></div></section><section class="repair-step" id="paso-5"><div class="repair-step-head"><span class="repair-step-num">05</span><div><h3>Probar memoria</h3><p>Con el equipo apagado, prueba un módulo y una ranura siguiendo la documentación de la placa.</p></div></div><div class="repair-step-body"><figure><img src="imagenes/guias/pc-no-arranca-paso-5.svg" alt="Diagrama NanoTech: Probar memoria" loading="lazy"><figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption></figure><div class="repair-step-grid"><div><h4>Qué hacer</h4><ol><li>Con el equipo apagado y desenchufado, retira todos los módulos salvo uno y colócalo en el slot que recomiende el manual.</li><li>Limpia los contactos dorados con una goma de borrar suave si llevan tiempo instalados, y limpia el slot con aire comprimido.</li><li>Prueba cada módulo por separado en ese mismo slot antes de cambiar módulo y slot a la vez, para no mezclar dos variables en una sola prueba.</li></ol></div><div class="check"><strong>Punto de control</strong><p>No cambies módulo y slot al mismo tiempo: si pruebas un módulo distinto en un slot distinto y falla, no sabrás cuál de los dos era el problema.</p><strong>Resultado esperado</strong><p>Si algún módulo individual permite arrancar, el que falló en las otras pruebas está dañado o es incompatible. Si ningún módulo enciende en ningún slot, el problema probablemente está en el controlador de memoria de la placa o CPU, no en la RAM.</p></div></div></div></section><section class="repair-step" id="paso-6"><div class="repair-step-head"><span class="repair-step-num">06</span><div><h3>Separar vídeo y almacenamiento</h3><p>Si aparece BIOS pero no Windows, el problema se desplaza a almacenamiento/arranque. Si no aparece imagen, prioriza POST/vídeo.</p></div></div><div class="repair-step-body"><figure><img src="imagenes/guias/pc-no-arranca-paso-6.svg" alt="Diagrama NanoTech: Separar vídeo y almacenamiento" loading="lazy"><figcaption>Esquema original NanoTech para entender la lógica de esta etapa.</figcaption></figure><div class="repair-step-grid"><div><h4>Qué hacer</h4><ol><li>Si llegaste a BIOS/UEFI, ya sabes que CPU, RAM y placa funcionan; el problema pasó a ser de arranque del sistema operativo.</li><li>Confirma que el disco con el sistema aparezca listado en la sección Boot o Storage del BIOS. Si no aparece, revisa el cable de datos y el de alimentación del disco por separado, y prueba otro puerto SATA.</li><li>Revisa el orden de arranque (Boot Order): un disco sano no arranca si el BIOS intenta primero un USB vacío o una tarjeta de red.</li><li>Si el disco aparece pero Windows no carga, arranca desde un USB de instalación y usa "Reparar el equipo" antes de asumir que el disco está dañado.</li></ol></div><div class="check"><strong>Punto de control</strong><p>Un disco que no aparece en el BIOS es un problema de conexión o del propio disco, no del sistema operativo instalado en él.</p><strong>Resultado esperado</strong><p>Disco visible + orden de arranque correcto + no arranca → problema de arranque de Windows, no de hardware. Disco no visible → revisa cables o prueba el disco en otro puerto antes de darlo por dañado.</p></div></div></div></section><div class="repair-result"><strong>Cómo interpretar el resultado</strong><p>Una prueba negativa no es un fracaso: es información. Registra qué se probó, con qué pieza o condición y qué cambió. Evita reemplazar varios componentes al mismo tiempo.</p></div><h2>Tabla rápida de diagnóstico</h2><div class="repair-table-wrap"><table class="repair-table"><thead><tr><th>Síntoma</th><th>Primera comprobación</th><th>Siguiente hipótesis</th></tr></thead><tbody><tr><td>Ventiladores no giran</td><td>Sin LEDs</td><td>Prioridad: alimentación</td></tr><tr><td>Ventiladores giran sin imagen</td><td>POST/LEDs</td><td>Prioridad: RAM/vídeo</td></tr><tr><td>BIOS aparece</td><td>No carga sistema</td><td>Prioridad: SSD/arranque</td></tr></tbody></table></div></section>
-<section id="fuentes"><h2>Fuentes, licencias y referencias</h2><ul class="repair-sources"><li><a href="https://commons.wikimedia.org/wiki/File:Computer.tower.750pix.jpg" target="_blank" rel="noopener noreferrer">Fuente de imagen / referencia</a> — revisa la licencia indicada en la ficha antes de redistribuir.</li><li><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons BY-SA 4.0</a> cuando aplique a la imagen.</li><li><a href="https://www.ifixit.com/Device/PlayStation_4" target="_blank" rel="noopener noreferrer">iFixit / documentación de reparación</a> como referencia técnica para PlayStation cuando corresponda.</li></ul></section>
-<section><h2>Artículos relacionados</h2><ul><li><a href="laptop-no-enciende.html">Laptop No Enciende</a></li><li><a href="mantenimiento-pc.html">Mantenimiento Pc</a></li><li><a href="mantenimiento-preventivo.html">Mantenimiento Preventivo</a></li></ul><div class="repair-bottom-nav"><a class="btn secondary" href="laptop-sobrecalienta.html">← Anterior</a><a class="btn" href="laptop-no-enciende.html">Siguiente →</a></div></section>
-</article><aside class="repair-side"><div class="adsense-slot adsense-slot--rectangle"></div><div class="repair-side-card"><strong>Comunidad</strong><p>Publicaciones visuales, casos y consejos de reparación.</p><a class="btn facebook-btn" href="https://www.facebook.com/profile.php?id=61593321905984" target="_blank" rel="noopener">Facebook NanoTech</a></div><div class="repair-side-card"><strong>Nota técnica</strong><p class="repair-disclaimer">Los procedimientos internos dependen de la revisión exacta del equipo. Comprueba el modelo, la revisión de hardware y la documentación del fabricante antes de desmontar.</p></div></aside></div></main><footer class="site-footer"><div class="wrap footer-grid">
-<span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
-<div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a href="noticias.html">Noticias</a><a href="cotizacion.html">Cotización</a><a href="sobre-nosotros.html">Sobre nosotros</a><a href="politica-privacidad.html">Política de privacidad</a><a href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div>
-</div></footer><script>
-document.addEventListener('DOMContentLoaded',()=>{
- const links=[...document.querySelectorAll('.repair-toc a[data-target]')];
- const targets=links.map(a=>document.getElementById(a.dataset.target)).filter(Boolean);
- const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('is-current',a.dataset.target===e.target.id));}})},{rootMargin:'-90px 0px -65% 0px',threshold:0});
- targets.forEach(t=>obs.observe(t));
- const toggle=document.querySelector('.repair-toc-toggle'), box=document.querySelector('.repair-toc-links');
- if(toggle&&box) toggle.addEventListener('click',()=>box.classList.toggle('open'));
-});
-</script><script src="script.js"></script></body></html>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <a href="index.html" class="logo">Núcleo<span>Tech</span></a>
+            <nav class="main-nav">
+                <a href="index.html">Inicio</a>
+                <a href="resenas.html">Guías</a>
+                <a href="reparaciones.html">Reparaciones</a>
+                <a href="mikrotik.html">MikroTik</a>
+                <a href="noticias.html">Noticias</a>
+                <a href="cotizacion.html">Cotización</a>
+                <a href="comunidad-facebook.html">Comunidad</a>
+                <a href="sobre-nosotros.html">Sobre nosotros</a>
+                <a href="contacto.html">Contacto</a>
+            </nav><button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">Menú</button>
+        </div>
+    </header>
+    <header class="repair-hero">
+        <div class="wrap">
+            <p class="eyebrow-plain">PC y Laptop</p>
+            <h1>PC de escritorio no arranca: diagnóstico POST paso a paso</h1>
+            <p class="dek">Usa el POST como punto de separación entre alimentación, memoria, vídeo y almacenamiento.</p>
+            <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech ·
+                    2026</span></div>
+        </div>
+    </header>
+    <main class="wrap repair-guide">
+        <div class="repair-shell">
+            <aside class="repair-toc"><button class="repair-toc-toggle" type="button">Atajos de esta guía</button>
+                <div class="repair-toc-links">
+                    <p class="toc-title">Contenido</p><a href="#introduccion"
+                        data-target="introduccion">Introducción</a><a href="#seguridad"
+                        data-target="seguridad">Seguridad</a><a href="#herramientas"
+                        data-target="herramientas">Herramientas</a><a href="#diagnostico"
+                        data-target="diagnostico">Diagnóstico</a><a href="#fuentes" data-target="fuentes">Fuentes</a><a
+                        href="#paso-1" data-target="paso-1">1. Definir el fallo</a><a href="#paso-2"
+                        data-target="paso-2">2. Comprobar alimentación</a><a href="#paso-3" data-target="paso-3">3.
+                        Reducir a configuración mínima</a><a href="#paso-4" data-target="paso-4">4. Interpretar
+                        POST</a><a href="#paso-5" data-target="paso-5">5. Probar memoria</a><a href="#paso-6"
+                        data-target="paso-6">6. Separar vídeo y almacenamiento</a>
+                </div>
+            </aside>
+            <article class="repair-main">
+                <section id="introduccion">
+                    <h2>Introducción</h2>
+                    <figure class="repair-photo"><img
+                            src="imagenes/PC/PC-NO-ARRANCA/PC de escritorio no arranca diagnóstico POST paso a paso.jpg"
+                            alt="Torre de PC de escritorio" loading="eager">
+                        <figcaption>Adrian Pingstone / Wikimedia Commons — dominio público. <a
+                                href="https://commons.wikimedia.org/wiki/File:Computer.tower.750pix.jpg" target="_blank"
+                                rel="noopener noreferrer">Ver ficha de licencia y origen</a>.</figcaption>
+                    </figure>
+                    <div class="repair-intro"><strong>Objetivo de esta guía</strong>
+                        <p>La meta es llegar a una hipótesis con evidencia. No se trata de desmontar por desmontar: cada
+                            paso elimina una causa posible y prepara el siguiente.</p>
+                    </div>
+                </section>
+                <section id="seguridad">
+                    <h2>Antes de empezar: seguridad</h2>
+                    <div class="repair-warning"><strong>⚠ Desconecta completamente el equipo.</strong>
+                        <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta
+                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>
+                    </div>
+                    <ul>
+                        <li>Trabaja sobre una superficie limpia, seca y bien iluminada.</li>
+                        <li>Organiza tornillos y conectores por etapa.</li>
+                        <li>Fotografía conexiones antes de desconectarlas cuando desmontes.</li>
+                        <li>No fuerces una cubierta: una resistencia inesperada suele indicar una fijación pendiente.
+                        </li>
+                    </ul>
+                </section>
+                <section id="herramientas">
+                    <h2>Herramientas y material</h2>
+                    <div class="repair-tools"><span class="repair-tool">Cargador compatible</span><span
+                            class="repair-tool">Linterna</span><span class="repair-tool">Destornilladores según
+                            modelo</span><span class="repair-tool">Pulsera/superficie ESD cuando corresponda</span><span
+                            class="repair-tool">Herramienta de monitorización</span></div>
+                    <div class="repair-note"><strong>Regla NanoTech:</strong> una herramienta debe resolver una tarea
+                        concreta. Si una intervención requiere instrumental que no tienes, la guía debe detenerse ahí,
+                        no improvisar.</div>
+                </section>
+                <section id="diagnostico">
+                    <h2>Diagnóstico paso a paso</h2>
+                    <section class="repair-step" id="paso-1">
+                        <div class="repair-step-head"><span class="repair-step-num">01</span>
+                            <div>
+                                <h3>Definir el fallo</h3>
+                                <p>¿No enciende? ¿Enciende sin imagen? ¿Llega al logo? ¿Reinicia? Documenta el
+                                    comportamiento exacto.</p>
+                            </div>
+                        </div>
+                        <div class="repair-step-body">
+                            <figure><img src="imagenes/guias/pc-no-arranca-paso-1.svg"
+                                    alt="Diagrama NanoTech: Definir el fallo" loading="lazy">
+                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                </figcaption>
+                            </figure>
+                            <div class="repair-step-grid">
+                                <div>
+                                    <h4>Qué hacer</h4>
+                                    <ol>
+                                        <li>Sin luces ni ventiladores: no está llegando corriente a la placa (fuente,
+                                            cable, toma o interruptor).</li>
+                                        <li>Ventiladores giran un instante y se apagan: la fuente o la placa están
+                                            cortando por protección (cortocircuito o sobrecarga).</li>
+                                        <li>Ventiladores giran de forma continua pero no hay imagen: el arranque no
+                                            supera el POST; el problema está en CPU, RAM o vídeo.</li>
+                                        <li>Llega al logo o a Windows y luego reinicia o se cuelga: el POST terminó
+                                            bien, la causa está más adelante (drivers, sistema operativo o temperatura
+                                            bajo carga).</li>
+                                    </ol>
+                                </div>
+                                <div class="check"><strong>Punto de control</strong>
+                                    <p>Anota el patrón exacto (luces, sonidos, pitidos, cuánto tarda en apagarse) antes
+                                        de tocar nada: cada patrón manda a una rama distinta de esta guía.</p>
+                                    <strong>Resultado esperado</strong>
+                                    <p>Con el patrón identificado, puedes saltar directo al paso correspondiente (2 si
+                                        no hay señales de vida, 4 si hay POST sin imagen, 6 si llega a BIOS) en vez de
+                                        seguir todos los pasos en orden.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="repair-step" id="paso-2">
+                        <div class="repair-step-head"><span class="repair-step-num">02</span>
+                            <div>
+                                <h3>Comprobar alimentación</h3>
+                                <p>Revisa cable, toma, interruptor de fuente y conexiones principales con el equipo
+                                    desconectado.</p>
+                            </div>
+                        </div>
+                        <div class="repair-step-body">
+                            <figure><img src="imagenes/guias/pc-no-arranca-paso-2.svg"
+                                    alt="Diagrama NanoTech: Comprobar alimentación" loading="lazy">
+                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                </figcaption>
+                            </figure>
+                            <div class="repair-step-grid">
+                                <div>
+                                    <h4>Qué hacer</h4>
+                                    <ol>
+                                        <li>Prueba la toma de corriente con otro aparato para descartar el punto
+                                            eléctrico, y confirma que el interruptor trasero de la fuente (0/1) esté en
+                                            1.</li>
+                                        <li>Con el equipo desconectado, revisa que el conector de 24 pines a la placa y
+                                            el de 4/8 pines junto al socket de CPU estén completamente encajados; se
+                                            aflojan con facilidad al mover o limpiar el equipo.</li>
+                                        <li>Si tienes la fuente fuera del equipo y algo de experiencia, puedes hacer la
+                                            "prueba del clip": puentea el cable verde con uno negro del conector de 24
+                                            pines fuera de la placa. Si el ventilador de la fuente gira, hay arranque
+                                            eléctrico (esto no confirma que el voltaje bajo carga sea correcto, solo que
+                                            enciende).</li>
+                                    </ol>
+                                </div>
+                                <div class="check"><strong>Punto de control</strong>
+                                    <p>No abras la carcasa metálica de la fuente para medir en el interior: los
+                                        capacitores pueden retener carga peligrosa incluso desconectada de la corriente.
+                                    </p><strong>Resultado esperado</strong>
+                                    <p>Si ni con el clip gira el ventilador de la fuente, esta es la sospechosa
+                                        principal: prueba con una fuente de reemplazo antes de seguir. Si gira, continúa
+                                        al paso 3.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="repair-step" id="paso-3">
+                        <div class="repair-step-head"><span class="repair-step-num">03</span>
+                            <div>
+                                <h3>Reducir a configuración mínima</h3>
+                                <p>Desconecta periféricos y dispositivos no necesarios. Mantén placa, CPU,
+                                    refrigeración, un módulo de RAM y vídeo necesario según el equipo.</p>
+                            </div>
+                        </div>
+                        <div class="repair-step-body">
+                            <figure><img src="imagenes/guias/pc-no-arranca-paso-3.svg"
+                                    alt="Diagrama NanoTech: Reducir a configuración mínima" loading="lazy">
+                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                </figcaption>
+                            </figure>
+                            <div class="repair-step-grid">
+                                <div>
+                                    <h4>Qué hacer</h4>
+                                    <ol>
+                                        <li>Desconecta discos, unidades ópticas, tarjetas adicionales y todo periférico
+                                            salvo teclado y monitor.</li>
+                                        <li>Deja solo placa, CPU con su disipador, un único módulo de RAM en el slot que
+                                            indique el manual (a menudo no es el más cercano a la CPU) y vídeo integrado
+                                            o una sola GPU si el CPU no tiene gráficos.</li>
+                                        <li>Si el botón del gabinete no enciende el equipo, puentea brevemente los pines
+                                            de "power switch" del panel frontal en la placa con un destornillador plano;
+                                            es el mismo circuito que activa el botón.</li>
+                                    </ol>
+                                </div>
+                                <div class="check"><strong>Punto de control</strong>
+                                    <p>El objetivo de reducir al mínimo es aislar: si en esta configuración arranca,
+                                        algo del ensamblaje original —un periférico, una tarjeta o un contacto con la
+                                        carcasa— causaba el fallo, no la placa base.</p><strong>Resultado
+                                        esperado</strong>
+                                    <p>Si arranca en mínimo, reincorpora componentes de uno en uno (otra RAM, luego
+                                        discos, luego tarjetas) hasta que el fallo reaparezca; el último añadido es el
+                                        responsable. Si no arranca ni en mínimo, continúa al paso 4.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="repair-step" id="paso-4">
+                        <div class="repair-step-head"><span class="repair-step-num">04</span>
+                            <div>
+                                <h3>Interpretar POST</h3>
+                                <p>Escucha códigos o observa LEDs de diagnóstico si la placa dispone de ellos.</p>
+                            </div>
+                        </div>
+                        <div class="repair-step-body">
+                            <figure><img src="imagenes/guias/pc-no-arranca-paso-4.svg"
+                                    alt="Diagrama NanoTech: Interpretar POST" loading="lazy">
+                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                </figcaption>
+                            </figure>
+                            <div class="repair-step-grid">
+                                <div>
+                                    <h4>Qué hacer</h4>
+                                    <ol>
+                                        <li>Si la placa tiene un display de dos dígitos o LEDs rotulados
+                                            CPU/DRAM/VGA/BOOT, anota cuál queda fijo: indica en qué etapa se detuvo el
+                                            arranque.</li>
+                                        <li>Si no hay LEDs, cuenta los pitidos del altavoz interno de la placa (el
+                                            speaker de placa, no el del gabinete). La cantidad y el ritmo forman un
+                                            código, pero varían según el fabricante del BIOS (AMI, Award/Phoenix) e
+                                            incluso según el modelo exacto.</li>
+                                        <li>Busca la tabla de códigos del manual de tu placa específica; los códigos
+                                            genéricos que circulan en internet no siempre coinciden con tu modelo.</li>
+                                    </ol>
+                                </div>
+                                <div class="check"><strong>Punto de control</strong>
+                                    <p>Un LED fijo en "DRAM" casi siempre apunta a memoria mal asentada, no a una placa
+                                        dañada: no cambies piezas antes de leer el código.</p><strong>Resultado
+                                        esperado</strong>
+                                    <p>CPU fijo → revisa alimentación del socket. DRAM fijo → ve al paso 5. VGA fijo →
+                                        prueba vídeo integrado o cambia de slot PCIe. BOOT fijo → la plataforma ya
+                                        superó el POST, sigue al paso 6.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="repair-step" id="paso-5">
+                        <div class="repair-step-head"><span class="repair-step-num">05</span>
+                            <div>
+                                <h3>Probar memoria</h3>
+                                <p>Con el equipo apagado, prueba un módulo y una ranura siguiendo la documentación de la
+                                    placa.</p>
+                            </div>
+                        </div>
+                        <div class="repair-step-body">
+                            <figure><img src="imagenes/guias/pc-no-arranca-paso-5.svg"
+                                    alt="Diagrama NanoTech: Probar memoria" loading="lazy">
+                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                </figcaption>
+                            </figure>
+                            <div class="repair-step-grid">
+                                <div>
+                                    <h4>Qué hacer</h4>
+                                    <ol>
+                                        <li>Con el equipo apagado y desenchufado, retira todos los módulos salvo uno y
+                                            colócalo en el slot que recomiende el manual.</li>
+                                        <li>Limpia los contactos dorados con una goma de borrar suave si llevan tiempo
+                                            instalados, y limpia el slot con aire comprimido.</li>
+                                        <li>Prueba cada módulo por separado en ese mismo slot antes de cambiar módulo y
+                                            slot a la vez, para no mezclar dos variables en una sola prueba.</li>
+                                    </ol>
+                                </div>
+                                <div class="check"><strong>Punto de control</strong>
+                                    <p>No cambies módulo y slot al mismo tiempo: si pruebas un módulo distinto en un
+                                        slot distinto y falla, no sabrás cuál de los dos era el problema.</p>
+                                    <strong>Resultado esperado</strong>
+                                    <p>Si algún módulo individual permite arrancar, el que falló en las otras pruebas
+                                        está dañado o es incompatible. Si ningún módulo enciende en ningún slot, el
+                                        problema probablemente está en el controlador de memoria de la placa o CPU, no
+                                        en la RAM.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="repair-step" id="paso-6">
+                        <div class="repair-step-head"><span class="repair-step-num">06</span>
+                            <div>
+                                <h3>Separar vídeo y almacenamiento</h3>
+                                <p>Si aparece BIOS pero no Windows, el problema se desplaza a almacenamiento/arranque.
+                                    Si no aparece imagen, prioriza POST/vídeo.</p>
+                            </div>
+                        </div>
+                        <div class="repair-step-body">
+                            <figure><img src="imagenes/guias/pc-no-arranca-paso-6.svg"
+                                    alt="Diagrama NanoTech: Separar vídeo y almacenamiento" loading="lazy">
+                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                </figcaption>
+                            </figure>
+                            <div class="repair-step-grid">
+                                <div>
+                                    <h4>Qué hacer</h4>
+                                    <ol>
+                                        <li>Si llegaste a BIOS/UEFI, ya sabes que CPU, RAM y placa funcionan; el
+                                            problema pasó a ser de arranque del sistema operativo.</li>
+                                        <li>Confirma que el disco con el sistema aparezca listado en la sección Boot o
+                                            Storage del BIOS. Si no aparece, revisa el cable de datos y el de
+                                            alimentación del disco por separado, y prueba otro puerto SATA.</li>
+                                        <li>Revisa el orden de arranque (Boot Order): un disco sano no arranca si el
+                                            BIOS intenta primero un USB vacío o una tarjeta de red.</li>
+                                        <li>Si el disco aparece pero Windows no carga, arranca desde un USB de
+                                            instalación y usa "Reparar el equipo" antes de asumir que el disco está
+                                            dañado.</li>
+                                    </ol>
+                                </div>
+                                <div class="check"><strong>Punto de control</strong>
+                                    <p>Un disco que no aparece en el BIOS es un problema de conexión o del propio disco,
+                                        no del sistema operativo instalado en él.</p><strong>Resultado esperado</strong>
+                                    <p>Disco visible + orden de arranque correcto + no arranca → problema de arranque de
+                                        Windows, no de hardware. Disco no visible → revisa cables o prueba el disco en
+                                        otro puerto antes de darlo por dañado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="repair-result"><strong>Cómo interpretar el resultado</strong>
+                        <p>Una prueba negativa no es un fracaso: es información. Registra qué se probó, con qué pieza o
+                            condición y qué cambió. Evita reemplazar varios componentes al mismo tiempo.</p>
+                    </div>
+                    <h2>Tabla rápida de diagnóstico</h2>
+                    <div class="repair-table-wrap">
+                        <table class="repair-table">
+                            <thead>
+                                <tr>
+                                    <th>Síntoma</th>
+                                    <th>Primera comprobación</th>
+                                    <th>Siguiente hipótesis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ventiladores no giran</td>
+                                    <td>Sin LEDs</td>
+                                    <td>Prioridad: alimentación</td>
+                                </tr>
+                                <tr>
+                                    <td>Ventiladores giran sin imagen</td>
+                                    <td>POST/LEDs</td>
+                                    <td>Prioridad: RAM/vídeo</td>
+                                </tr>
+                                <tr>
+                                    <td>BIOS aparece</td>
+                                    <td>No carga sistema</td>
+                                    <td>Prioridad: SSD/arranque</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section id="fuentes">
+                    <h2>Fuentes, licencias y referencias</h2>
+                    <ul class="repair-sources">
+                        <li><a href="https://commons.wikimedia.org/wiki/File:Computer.tower.750pix.jpg" target="_blank"
+                                rel="noopener noreferrer">Fuente de imagen / referencia</a> — revisa la licencia
+                            indicada en la ficha antes de redistribuir.</li>
+                        <li><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                                rel="noopener noreferrer">Creative Commons BY-SA 4.0</a> cuando aplique a la imagen.
+                        </li>
+                        <li><a href="https://www.ifixit.com/Device/PlayStation_4" target="_blank"
+                                rel="noopener noreferrer">iFixit / documentación de reparación</a> como referencia
+                            técnica para PlayStation cuando corresponda.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Artículos relacionados</h2>
+                    <ul>
+                        <li><a href="laptop-no-enciende.html">Laptop No Enciende</a></li>
+                        <li><a href="mantenimiento-pc.html">Mantenimiento Pc</a></li>
+                        <li><a href="mantenimiento-preventivo.html">Mantenimiento Preventivo</a></li>
+                    </ul>
+                    <div class="repair-bottom-nav"><a class="btn secondary" href="laptop-sobrecalienta.html">←
+                            Anterior</a><a class="btn" href="laptop-no-enciende.html">Siguiente →</a></div>
+                </section>
+            </article>
+            <aside class="repair-side">
+                <div class="adsense-slot adsense-slot--rectangle"></div>
+                <div class="repair-side-card"><strong>Comunidad</strong>
+                    <p>Publicaciones visuales, casos y consejos de reparación.</p><a class="btn facebook-btn"
+                        href="https://www.facebook.com/profile.php?id=61593321905984" target="_blank"
+                        rel="noopener">Facebook NanoTech</a>
+                </div>
+                <div class="repair-side-card"><strong>Nota técnica</strong>
+                    <p class="repair-disclaimer">Los procedimientos internos dependen de la revisión exacta del equipo.
+                        Comprueba el modelo, la revisión de hardware y la documentación del fabricante antes de
+                        desmontar.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+            <span>© 2026 NúcleoTech. Todos los derechos reservados.</span>
+            <div class="footer-links"><a href="reparaciones.html">Reparaciones</a><a href="mikrotik.html">MikroTik</a><a
+                    href="noticias.html">Noticias</a><a href="cotizacion.html">Cotización</a><a
+                    href="sobre-nosotros.html">Sobre nosotros</a><a href="politica-privacidad.html">Política de
+                    privacidad</a><a href="fuentes.html">Fuentes</a><a href="contacto.html">Contacto</a></div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = [...document.querySelectorAll('.repair-toc a[data-target]')];
+            const targets = links.map(a => document.getElementById(a.dataset.target)).filter(Boolean);
+            const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { links.forEach(a => a.classList.toggle('is-current', a.dataset.target === e.target.id)); } }) }, { rootMargin: '-90px 0px -65% 0px', threshold: 0 });
+            targets.forEach(t => obs.observe(t));
+            const toggle = document.querySelector('.repair-toc-toggle'), box = document.querySelector('.repair-toc-links');
+            if (toggle && box) toggle.addEventListener('click', () => box.classList.toggle('open'));
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
