@@ -88,14 +88,8 @@
                 <section id="seguridad">
                     <h2>Antes de empezar: seguridad</h2>
                     <div class="repair-warning"><strong>âš  Desconecta completamente el equipo.</strong>
-<<<<<<< HEAD
                         <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta
-                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>
-=======
-                        <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta
-                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>
->>>>>>> abec3c0cd60900cb868d11ccb395d0a71f695002
-                    </div>
+                            ni realices mediciones energizadas si no tienes formación e instrumental apropiados.</p>                    </div>
                     <ul>
                         <li>Trabaja sobre una superficie limpia, seca y bien iluminada.</li>
                         <li>Organiza tornillos y conectores por etapa.</li>
@@ -282,16 +276,15 @@
                                 <div>
                                     <h4>Qué hacer</h4>
                                     <ol>
-                                        <li>Haz la prueba desde el cliente afectado.</li>
-                                        <li>Compara gateway, IP pública y dominio.</li>
-                                        <li>Guarda copia de configuración antes de cambios.</li>
+                                        <li>Ejecuta el ping tanto desde el router como desde un cliente de la LAN; si falla solo desde el cliente, el problema es interno (firewall/NAT), no del router hacia Internet.</li>
+                                        <li>Compara con el ping al gateway del paso 4: si el gateway responde pero esta IP pública no, el problema está entre el router y el proveedor (WAN).</li>
+                                        <li>Repite con una segunda IP pública (8.8.8.8) para descartar que sea un destino o ruta puntual caída.</li>
                                     </ol>
                                 </div>
                                 <div class="check"><strong>Punto de control</strong>
-                                    <p>Esta prueba separa conectividad de resolución de nombres.</p><strong>Resultado
+                                    <p>Esta prueba separa conectividad de resolución de nombres: si el ping por IP funciona con 0% de pérdida pero los dominios no cargan, el problema es de DNS, no de conectividad.</p><strong>Resultado
                                         esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+                                    <p>Ping exitoso a IP pública, dominios fallan → continúa al paso 6 (DNS). Ping falla incluso a IP pública → revisa ruta por defecto y NAT en el paso 7.</p>
                                 </div>
                             </div>
                         </div>
@@ -330,16 +323,15 @@
                                 <div>
                                     <h4>Qué hacer</h4>
                                     <ol>
-                                        <li>Haz la prueba desde el cliente afectado.</li>
-                                        <li>Compara gateway, IP pública y dominio.</li>
-                                        <li>Guarda copia de configuración antes de cambios.</li>
+                                        <li>Ejecuta la resolución tanto desde el router como intentando navegar desde un cliente, para saber si el fallo es del router o de cómo reparte DNS a los clientes.</li>
+                                        <li>Si el router no resuelve, prueba temporalmente con un DNS público (1.1.1.1 u 8.8.8.8) en <code>/ip dns set servers=</code> para descartar un fallo del DNS del proveedor.</li>
+                                        <li>Verifica que "allow-remote-requests" esté habilitado si el router debe servir de DNS a los clientes de la LAN.</li>
                                     </ol>
                                 </div>
                                 <div class="check"><strong>Punto de control</strong>
-                                    <p>No cambies firewall/NAT para arreglar un problema que solo afecta DNS.</p>
+                                    <p>No cambies firewall/NAT para arreglar un problema que solo afecta DNS: si el ping por IP del paso 5 ya funcionó, firewall y ruteo quedan descartados.</p>
                                     <strong>Resultado esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+                                    <p>Cambiar a un DNS público resuelve el problema → el DNS del proveedor fallaba. El router resuelve pero los clientes no → revisa "allow-remote-requests" y el DNS que reciben por DHCP.</p>
                                 </div>
                             </div>
                         </div>
@@ -382,16 +374,15 @@
                                 <div>
                                     <h4>Qué hacer</h4>
                                     <ol>
-                                        <li>Haz la prueba desde el cliente afectado.</li>
-                                        <li>Compara gateway, IP pública y dominio.</li>
-                                        <li>Guarda copia de configuración antes de cambios.</li>
+                                        <li>Confirma que exista una ruta "0.0.0.0/0" activa apuntando al gateway de WAN correcto (no inactiva ni con distancia administrativa mayor que otra ruta).</li>
+                                        <li>Revisa los contadores de la regla NAT con <code>/ip firewall nat print stats</code>: un contador en cero con tráfico real sugiere que "out-interface-list=WAN" no apunta a la interfaz correcta.</li>
+                                        <li>Revisa <code>/ip firewall connection print</code> para ver si las conexiones salientes llegan a "established" o quedan incompletas, señal de NAT o firewall bloqueando el retorno.</li>
                                     </ol>
                                 </div>
                                 <div class="check"><strong>Punto de control</strong>
-                                    <p>Haz respaldo antes de cambios en producción.</p><strong>Resultado
+                                    <p>Haz respaldo antes de cambios en producción (<code>/export</code>): un cambio mal aplicado en rutas o NAT puede cortar Internet a toda la red, no solo al cliente diagnosticado.</p><strong>Resultado
                                         esperado</strong>
-                                    <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la
-                                        rama de diagnóstico correspondiente.</p>
+                                    <p>Ruta correcta y contador de NAT incrementando → la salida a Internet funciona a nivel de router, revisa si el problema es de un cliente específico. Ruta ausente o contador en cero → corrige la ruta o la regla de NAT.</p>
                                 </div>
                             </div>
                         </div>

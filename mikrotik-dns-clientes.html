@@ -208,14 +208,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Configura servidores DNS.</li>
-                  <li>Evita habilitar consultas remotas si no necesitas que el router atienda clientes.</li>
-                  <li>Si habilitas el servicio para la LAN, limita el acceso con firewall.</li>
+                  <li>Configura al menos dos servidores DNS (por ejemplo 1.1.1.1 y 8.8.8.8) para tener redundancia si uno falla.</li>
+                  <li>Evita "allow-remote-requests=yes" si no necesitas que el router atienda consultas DNS de la LAN: dejarlo activo innecesariamente expone un servicio adicional a la red.</li>
+                  <li>Si lo habilitas para la LAN, restringe con una regla de firewall que solo permita consultas DNS (puerto 53) desde tu subred local, no desde WAN.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Define servidores DNS apropiados para tu entorno.</p>
+                <p>Un router con "allow-remote-requests=yes" expuesto también hacia la WAN puede ser abusado para ataques de amplificación DNS; confirma con el firewall que ese servicio solo responde a la LAN.</p><strong>Interpretación</strong>
+                <p>DNS configurado y servicio restringido a la LAN → continúa al paso 4 para validar desde un cliente real.</p>
               </div>
             </div>
           </div>
@@ -256,14 +256,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Renueva lease.</li>
-                  <li>Comprueba servidores DNS recibidos.</li>
-                  <li>Prueba varios dominios.</li>
+                  <li>Renueva la concesión DHCP del cliente para que reciba la configuración de DNS actualizada.</li>
+                  <li>En el cliente, revisa qué servidor DNS recibió realmente (ipconfig /all en Windows, o la configuración de red del sistema) y confirma que coincide con lo configurado en el router.</li>
+                  <li>Prueba resolver varios dominios distintos, no solo uno, para descartar que sea un problema puntual de un dominio específico.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Confirma que DHCP entrega DNS correcto.</p>
+                <p>Confirma que DHCP entrega DNS correcto: si el cliente recibió un DNS distinto al configurado en el router, revisa si hay otro servidor DHCP en la red compitiendo con el MikroTik.</p><strong>Interpretación</strong>
+                <p>Cliente resuelve dominios con normalidad → configuración exitosa de punta a punta. Cliente recibe un DNS distinto o no resuelve → revisa conflictos de DHCP o el firewall entre el cliente y el router.</p>
               </div>
             </div>
           </div>

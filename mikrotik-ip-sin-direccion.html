@@ -207,14 +207,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Haz ping al gateway desde el cliente.</li>
-                  <li>Si falla, revisa VLAN/bridge, máscara y aislamiento.</li>
-                  <li>No cambies NAT todavía.</li>
+                  <li>Haz ping al gateway desde el cliente, no solo desde el propio router.</li>
+                  <li>Si falla, revisa que el cliente esté en el mismo bridge/VLAN que la IP del gateway, y que la máscara de subred coincida en ambos lados.</li>
+                  <li>No toques reglas de NAT todavía: un fallo de ping al gateway es un problema de capa 2/3 local, el NAT no interviene en esta prueba.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Una IP válida no garantiza que el cliente alcance el router.</p>
+                <p>Una IP válida no garantiza que el cliente alcance el router: un cliente en la VLAN equivocada puede tener una IP que parece correcta pero estar aislado del gateway real por el bridge.</p><strong>Interpretación</strong>
+                <p>Ping al gateway exitoso → continúa al paso 4 (salida a Internet). Ping al gateway falla → revisa VLAN, bridge y máscara antes de seguir, el problema está en la red local.</p>
               </div>
             </div>
           </div>
@@ -256,14 +256,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Haz ping a una IP pública.</li>
-                  <li>Si funciona pero un dominio no, pasa al diagnóstico DNS.</li>
-                  <li>Si falla, revisa ruta por defecto y WAN.</li>
+                  <li>Haz ping a una IP pública conocida (1.1.1.1) desde el cliente.</li>
+                  <li>Si el ping funciona pero un dominio no carga en el navegador, el problema es de DNS, no de conectividad: pasa al paso 5.</li>
+                  <li>Si el ping falla, revisa que exista la ruta por defecto "0.0.0.0/0" y que la interfaz WAN esté activa.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Separa conectividad IP de resolución DNS.</p>
+                <p>Separa conectividad IP de resolución DNS: probar por IP antes que por dominio evita perder tiempo revisando DNS cuando el problema real es de ruteo, o viceversa.</p><strong>Interpretación</strong>
+                <p>Ping a IP pública exitoso → conectividad de Internet funciona, cualquier problema restante es de DNS (paso 5). Ping falla → revisa ruta por defecto y estado de la WAN.</p>
               </div>
             </div>
           </div>
@@ -304,14 +304,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Comprueba servidores DNS configurados.</li>
-                  <li>Verifica si el router puede resolver nombres.</li>
-                  <li>Si el router actúa como caché para clientes, revisa allow-remote-requests y firewall.</li>
+                  <li>Comprueba los servidores DNS configurados en el router con <code>/ip dns print</code>.</li>
+                  <li>Verifica si el router puede resolver nombres con <code>/resolve</code> directamente desde la consola.</li>
+                  <li>Si el router sirve de DNS a los clientes, revisa que "allow-remote-requests" esté habilitado y que el firewall no bloquee el puerto 53 desde la LAN.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>DNS convierte nombres de dominio en direcciones IP.</p>
+                <p>DNS convierte nombres de dominio en direcciones IP: si el router mismo no resuelve, el problema está en los servidores DNS configurados, no en cómo el router los reparte a los clientes.</p><strong>Interpretación</strong>
+                <p>El router resuelve pero el cliente no → revisa allow-remote-requests y firewall. Ni el router resuelve → cambia a un DNS público conocido (1.1.1.1, 8.8.8.8) para descartar el DNS del proveedor.</p>
               </div>
             </div>
           </div>

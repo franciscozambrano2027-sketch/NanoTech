@@ -211,14 +211,14 @@ add chain=input action=drop comment="drop other input"</code></pre>
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Identifica WinBox, SSH y WebFig.</li>
-                  <li>Permite administración solo desde redes confiables.</li>
-                  <li>Prueba desde una segunda sesión antes de cerrar la actual.</li>
+                  <li>Identifica qué servicios de administración tienes activos (WinBox puerto 8291, SSH puerto 22, WebFig puerto 80/443) con <code>/ip service print</code>.</li>
+                  <li>Restringe esos servicios a la LAN o a una red de gestión específica, nunca abiertos a la WAN sin necesidad real.</li>
+                  <li>Antes de aplicar el "drop" final, abre una segunda sesión (otra pestaña o conexión) sin cerrar la actual, para confirmar que sigues teniendo acceso tras el cambio.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Restringe servicios de administración a la LAN o a una red de gestión.</p>
+                <p>Prueba desde una segunda sesión antes de cerrar la actual: si la regla de "drop" te deja fuera por error, perder el acceso remoto a un router sin acceso físico puede significar tener que resetearlo de fábrica.</p><strong>Interpretación</strong>
+                <p>Segunda sesión conecta con normalidad tras el cambio → las reglas están bien ordenadas, continúa al paso 4. Segunda sesión no conecta → revisa el orden de las reglas antes de cerrar tu sesión actual.</p>
               </div>
             </div>
           </div>
@@ -259,14 +259,14 @@ add chain=input action=drop comment="drop other input"</code></pre>
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Observa contadores.</li>
-                  <li>Comprueba LAN e Internet.</li>
-                  <li>Documenta qué regla tomó la decisión.</li>
+                  <li>Observa los contadores de cada regla tras un rato de uso normal: una regla de permiso con contador en cero puede indicar que nunca se activa (orden incorrecto) o que ese tráfico simplemente no ocurre.</li>
+                  <li>Comprueba que la LAN siga navegando a Internet con normalidad y que la administración remota autorizada siga funcionando.</li>
+                  <li>Si algo se bloquea inesperadamente, revisa el log con <code>/log print where topics~"firewall"</code> para ver qué regla tomó la decisión de bloqueo.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Un firewall debe comprobarse con tráfico real y contadores.</p>
+                <p>Un firewall debe comprobarse con tráfico real y contadores, no solo revisando la sintaxis de las reglas: una regla bien escrita en el orden equivocado puede bloquear tráfico legítimo sin ningún mensaje de error.</p><strong>Interpretación</strong>
+                <p>Contadores incrementando en las reglas esperadas y sin bloqueos inesperados → el firewall está funcionando como se diseñó. Tráfico legítimo bloqueado → revisa el orden de las reglas, la más específica debe ir antes que la más general.</p>
               </div>
             </div>
           </div>

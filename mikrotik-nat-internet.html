@@ -201,14 +201,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Aplica la regla a la interfaz WAN real.</li>
-                  <li>No uses nombres inventados de interfaz.</li>
-                  <li>Comprueba contadores de la regla.</li>
+                  <li>Aplica "out-interface-list=WAN" apuntando a la lista de interfaces WAN real de tu router, verificable con <code>/interface list member print</code>.</li>
+                  <li>No escribas el nombre de una interfaz que no existe o que pertenece a otra lista: la regla se crea sin error pero nunca traduce ningún paquete.</li>
+                  <li>Tras crearla, genera tráfico real desde un cliente y revisa que el contador de la regla suba.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Masquerade es una forma común de srcnat cuando la IP WAN puede cambiar.</p>
+                <p>Masquerade es una forma común de srcnat cuando la IP WAN puede cambiar (por ejemplo, con IP dinámica del proveedor); si tu IP pública es fija, también puedes usar "action=src-nat to-addresses=" con la IP exacta.</p><strong>Interpretación</strong>
+                <p>Contador de la regla incrementa con tráfico de la LAN → NAT funcionando, continúa al paso 4. Contador en cero pese al tráfico → revisa que la interfaz WAN esté correctamente en esa lista.</p>
               </div>
             </div>
           </div>
@@ -248,14 +248,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Ping a una IP pública desde un cliente.</li>
-                  <li>Después prueba un dominio.</li>
-                  <li>Si IP funciona y DNS falla, no sigas modificando NAT.</li>
+                  <li>Haz ping a una IP pública (1.1.1.1) desde un cliente de la LAN, no desde el router mismo.</li>
+                  <li>Si el ping funciona, prueba después resolver un dominio en el navegador del cliente.</li>
+                  <li>Si el ping por IP funciona pero el dominio no carga, el problema es de DNS, no de NAT: no sigas modificando reglas de NAT o firewall.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Comprueba primero IP y después DNS.</p>
+                <p>Comprueba primero IP y después DNS: probar en ese orden evita perder tiempo ajustando NAT cuando el problema real está en la resolución de nombres.</p><strong>Interpretación</strong>
+                <p>Ping y dominio funcionan desde el cliente → NAT configurado correctamente de punta a punta. Ping funciona pero el dominio no → revisa la guía de DNS, el NAT ya está confirmado como correcto.</p>
               </div>
             </div>
           </div>
