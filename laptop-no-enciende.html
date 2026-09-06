@@ -86,15 +86,9 @@
         </section>
         <section id="seguridad">
           <h2>Antes de empezar: seguridad</h2>
-          <div class="repair-warning"><strong>âš  Desconecta completamente el equipo.</strong>
-<<<<<<< HEAD
+          <div class="repair-warning"><strong>  Desconecta completamente el equipo.</strong>
             <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta ni realices
-              mediciones energizadas si no tienes formación e instrumental apropiados.</p>
-=======
-            <p>Retira alimentación y periféricos antes de abrir. No trabajes con una fuente de red abierta ni realices
-              mediciones energizadas si no tienes formación e instrumental apropiados.</p>
->>>>>>> abec3c0cd60900cb868d11ccb395d0a71f695002
-          </div>
+              mediciones energizadas si no tienes formación e instrumental apropiados.</p>          </div>
           <ul>
             <li>Trabaja sobre una superficie limpia, seca y bien iluminada.</li>
             <li>Organiza tornillos y conectores por etapa.</li>
@@ -129,15 +123,15 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Sin LED de carga ni de encendido: la corriente no llega a la placa (cargador, puerto DC o circuito de carga).</li>
+                    <li>LED de carga encendido pero no responde al botón: puede ser el propio botón, o carga residual atascada en el circuito ("flea power").</li>
+                    <li>Ventilador y LEDs encienden pero no hay imagen ni en pantalla externa: el POST no completa; sospecha de RAM, placa o vídeo.</li>
+                    <li>Llega al logo del fabricante y se apaga o congela: el POST terminó bien, la falla está en RAM, almacenamiento o el sistema operativo.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>La frase “no enciende” puede describir fallas diferentes.</p><strong>Resultado esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Antes de desmontar nada, prueba un reinicio de hardware: desconecta el cargador, retira la batería si es extraíble, mantén el botón de encendido presionado 15-30 segundos para drenar la carga residual, y vuelve a conectar solo el cargador.</p><strong>Resultado esperado</strong>
+                  <p>Si el reinicio de hardware soluciona el problema, era carga residual acumulada, no una pieza dañada. Si no cambia nada, sigue la rama del patrón identificado.</p>
                 </div>
               </div>
             </div>
@@ -159,15 +153,15 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Verifica que el propio adaptador tenga corriente probándolo en otra toma, para descartar el cable de pared.</li>
+                    <li>Prueba con otro cargador original o certificado del mismo voltaje y amperaje mínimo: un amperaje inferior al que pide el equipo puede impedir el encendido aunque parezca "cargar" despacio.</li>
+                    <li>Si es USB-C, revisa que entregue el wattage que exige el laptop (no todos los cargadores de 65W son intercambiables entre marcas) y prueba también con otro cable USB-C, porque el cable falla con frecuencia.</li>
+                    <li>Observa el LED de carga del equipo: un parpadeo específico suele ser un código de error de carga documentado en el manual del fabricante.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>No uses un cargador dudoso para hacer pruebas prolongadas.</p><strong>Resultado esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>No dejes el equipo cargando horas "a ver si prende" con un cargador sospechoso: un voltaje incorrecto sostenido puede agravar un circuito de carga ya dañado.</p><strong>Resultado esperado</strong>
+                  <p>Si con un cargador confirmado bueno tampoco enciende, el cargador queda descartado; continúa al paso 3. Si enciende con otro cargador, el original (adaptador o cable) es el responsable.</p>
                 </div>
               </div>
             </div>
@@ -188,16 +182,15 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Desconecta todo USB, HDMI, tarjetas SD, mouse y estaciones de acoplamiento (docks): un accesorio con corto interno puede impedir el arranque sin señales visibles de daño.</li>
+                    <li>Si usas un dock o hub USB-C para cargar, conecta el cargador original directo al puerto de carga del equipo, sin el dock de por medio.</li>
+                    <li>Intenta encender solo con cargador; si la batería es removible, prueba primero sin ella.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>Un periférico defectuoso puede impedir o alterar el arranque.</p><strong>Resultado
+                  <p>La única forma confiable de descartar un accesorio con corto es quitar todo sin excepciones, incluida la tarjeta SD que a veces queda olvidada en el lector.</p><strong>Resultado
                     esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Si con todo desconectado enciende, reconecta periféricos de uno en uno hasta identificar el causante. Si sigue sin encender, continúa al paso 4.</p>
                 </div>
               </div>
             </div>
@@ -219,16 +212,15 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Conecta un monitor externo por HDMI antes de encender el equipo: si aparece imagen ahí pero la pantalla interna queda negra, el problema es la pantalla, su cable flex o el inversor, no la placa.</li>
+                    <li>Si tampoco hay imagen en el monitor externo, prueba forzar la salida de vídeo con la combinación de teclas del fabricante (Fn + tecla de monitor), por si el equipo envía la señal solo a la pantalla interna.</li>
+                    <li>Presta atención al sonido de arranque de Windows aunque no haya imagen: si suena, el sistema operativo sí está cargando y el problema queda acotado a vídeo.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>Si BIOS aparece, el problema puede estar en pantalla o sistema y no en alimentación.</p>
+                  <p>Si aparece BIOS o el sonido de arranque en el monitor externo, placa, CPU y RAM quedan descartadas: el problema es de pantalla, cable flex o GPU.</p>
                   <strong>Resultado esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Imagen en el externo pero no en el interno → pantalla o cable flex. Sin imagen en ninguno, con LEDs y ventilador activos → sigue al paso 5 antes de sospechar de la placa.</p>
                 </div>
               </div>
             </div>
@@ -250,16 +242,16 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Con el equipo apagado y desconectado, accede al panel de RAM/SSD por la tapa inferior (si la RAM está soldada, omite esta prueba y arranca desde un USB de diagnóstico en su lugar).</li>
+                    <li>Si hay dos módulos, retira uno y enciende; repite con el otro módulo solo. No pruebes ambos a la vez ni cambies también el disco en la misma prueba.</li>
+                    <li>Reasienta el módulo presionando hasta oír el clip de los seguros laterales: un falso contacto por polvo o mala inserción es una causa común tras transportar el equipo.</li>
+                    <li>Desconecta el disco y enciende sin él: si aparece un mensaje de "no boot device" en vez de pantalla negra, la placa y la RAM están bien y el problema es del disco o su cable.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>No cambies RAM y SSD simultáneamente si quieres conservar una ruta de diagnóstico clara.</p>
+                  <p>Cambia una sola variable por prueba: memoria por un lado, disco por otro; si sustituyes ambos a la vez y funciona, no sabrás cuál era la pieza dañada.</p>
                   <strong>Resultado esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Si con un solo módulo enciende, el otro módulo o su slot está dañado. Si sin el disco aparece un mensaje de arranque, el problema es del almacenamiento. Si nada cambia, sigue al paso 6.</p>
                 </div>
               </div>
             </div>
@@ -281,16 +273,15 @@
                 <div>
                   <h4>Qué hacer</h4>
                   <ol>
-                    <li>Lee el síntoma completo antes de desmontar.</li>
-                    <li>Realiza una sola prueba y anota el resultado.</li>
-                    <li>Si el resultado no coincide, vuelve al paso anterior y no sustituyas piezas todavía.</li>
+                    <li>Si agotaste cargador, periféricos, pantalla, RAM y almacenamiento sin resultado, el fallo probablemente está en la placa: circuito de carga, chip de arranque (EC/Super I/O) o un componente dañado por sobretensión previa.</li>
+                    <li>Busca señales físicas: manchas de líquido, componentes hinchados o quemados, u olor a quemado cerca del conector de carga (frecuente tras una caída con el cargador puesto o exposición a líquidos).</li>
+                    <li>A partir de aquí se necesita multímetro y, en la mayoría de casos, el esquemático (boardview) del modelo exacto para medir las líneas de voltaje en el conector de carga y los reguladores.</li>
                   </ol>
                 </div>
                 <div class="check"><strong>Punto de control</strong>
-                  <p>No inyectes tensión ni puentes líneas sin esquema y experiencia.</p><strong>Resultado
+                  <p>No inyectes voltaje ni puentees pistas de la placa sin el esquemático del modelo exacto: sin esa referencia es fácil dañar un componente que sí funcionaba.</p><strong>Resultado
                     esperado</strong>
-                  <p>Si la prueba es correcta, continúa. Si no lo es, conserva el resultado y sigue la rama de
-                    diagnóstico correspondiente.</p>
+                  <p>Con daño físico visible, la reparación requiere soldadura y reemplazo del componente específico (servicio especializado). Sin daño visible, hace falta medición con multímetro guiada por el esquemático para localizar la falla exacta.</p>
                 </div>
               </div>
             </div>
