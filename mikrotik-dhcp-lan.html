@@ -204,14 +204,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Reserva la IP del router fuera del pool.</li>
-                  <li>Usa 192.168.88.10-192.168.88.254 como ejemplo.</li>
-                  <li>Adapta el rango a tu red.</li>
+                  <li>Reserva la IP del router (192.168.88.1) fuera del rango del pool.</li>
+                  <li>Usa 192.168.88.10-192.168.88.254 como ejemplo, o adáptalo al tamaño real de tu red.</li>
+                  <li>Verifica con <code>/ip pool print</code> que el rango no se solape con IPs estáticas ya asignadas manualmente (impresoras, cámaras, servidores).</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>El pool define las direcciones que DHCP entregará.</p>
+                <p>Un pool que se solapa con una IP estática existente puede entregar por DHCP una dirección que ya está en uso, causando conflictos intermitentes difíciles de diagnosticar después.</p><strong>Interpretación</strong>
+                <p>Pool creado sin solapamientos → continúa al paso 4. Rango solapado con IPs estáticas → ajústalo antes de crear el servidor DHCP.</p>
               </div>
             </div>
           </div>
@@ -253,14 +253,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Crea el DHCP server.</li>
-                  <li>Define gateway y DNS en la red DHCP.</li>
-                  <li>Comprueba una lease desde un cliente.</li>
+                  <li>Crea el DHCP server asociándolo al bridge y al pool creados en los pasos anteriores.</li>
+                  <li>Define gateway y DNS en la red DHCP para que los clientes reciban ambos datos junto con su IP.</li>
+                  <li>Verifica en la consulta que quede "disabled=no": un servidor creado con "disabled=yes" no reparte direcciones aunque el resto esté bien configurado.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Asocia el servidor al bridge y al pool.</p>
+                <p>Confirma que la interfaz asociada sea la correcta (el bridge, no una interfaz física individual si usas bridge): un DHCP server sobre la interfaz equivocada nunca verá las solicitudes de los clientes.</p><strong>Interpretación</strong>
+                <p>Servidor habilitado sobre la interfaz correcta → continúa al paso 5. Aparece deshabilitado o sobre la interfaz equivocada → corrígelo antes de validar con un cliente.</p>
               </div>
             </div>
           </div>
@@ -297,14 +297,14 @@
               <div>
                 <h4>Qué hacer</h4>
                 <ol>
-                  <li>Renueva la concesión.</li>
-                  <li>Comprueba IP y gateway.</li>
-                  <li>Haz ping al router y luego a Internet.</li>
+                  <li>Renueva la concesión desde el cliente (ipconfig /release seguido de /renew en Windows, o desconectar/reconectar la interfaz de red).</li>
+                  <li>Comprueba que la IP recibida esté dentro del rango del pool y que el gateway coincida con la IP del router.</li>
+                  <li>Haz ping al router y luego a una IP pública para confirmar conectividad de punta a punta.</li>
                 </ol>
               </div>
               <div class="check"><strong>Punto de control</strong>
-                <p>Registra el resultado antes de continuar.</p><strong>Interpretación</strong>
-                <p>Confirma IP, gateway, DNS e Internet desde el cliente.</p>
+                <p>Un cliente con estado "bound" en <code>/ip dhcp-server lease print</code> confirma que el DHCP funciona; una IP tipo 169.254.x.x (APIPA) en el cliente significa que nunca recibió respuesta del servidor.</p><strong>Interpretación</strong>
+                <p>Cliente con IP del pool y "bound" → configuración exitosa. Cliente sin IP o con 169.254.x.x → revisa que el enlace llegue al bridge correcto y que el DHCP server esté habilitado en esa interfaz.</p>
               </div>
             </div>
           </div>
