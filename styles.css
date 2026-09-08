@@ -178,8 +178,16 @@ img {
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
 }
 .article-cover {
-  aspect-ratio: 16/8.5;
-  margin: 0 0 32px;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto 32px;
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 .content-layout {
   display: grid;
