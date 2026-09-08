@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-5TYV7T1LR0');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5675726602507111"
+        crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PS3 luz amarilla (YLOD): causas, diagnóstico y primeros pasos | NúcleoTech</title>
+
+    <meta name="description"
+        content="Guía técnica para diagnosticar una PlayStation 3 con luz amarilla de la muerte o YLOD. Aprende qué significa la luz amarilla, cuáles son sus causas, cómo identificar el modelo, revisar alimentación, interpretar la secuencia de LEDs y avanzar hacia un diagnóstico de placa.">
+
+    <meta name="keywords"
+        content="PS3 luz amarilla, PS3 YLOD, luz amarilla PS3, PlayStation 3 luz amarilla, PS3 no enciende, PS3 se apaga, reparar PS3, diagnóstico YLOD, SYSCON PS3, RSX PS3, CELL PS3, NEC TOKIN PS3, fuente PS3">
+
+    <meta name="author" content="NúcleoTech">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="PS3 luz amarilla (YLOD): causas y diagnóstico técnico">
+    <meta property="og:description"
+        content="Qué significa la luz amarilla de una PS3, cuáles pueden ser sus causas y cómo realizar un diagnóstico ordenado antes de aplicar reflow, reballing o cambiar componentes.">
+    <meta property="og:url" content="https://nucleo-tech.org/ps3-luz-amarilla.html">
+    <meta property="og:site_name" content="NúcleoTech">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PS3 luz amarilla: diagnóstico técnico">
+    <meta name="twitter:description"
+        content="Guía NúcleoTech para diagnosticar una PS3 con YLOD, desde los primeros pasos hasta la investigación de placa.">
+
+    <link rel="canonical" href="https://nucleo-tech.org/ps3-luz-amarilla.html">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="wrap">
+
+            <a href="index.html" class="logo">
+                Núcleo<span>Tech</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+
+                <a href="index.html">Inicio</a>
+                <a href="resenas.html">Guías</a>
+                <a href="reparaciones.html">Reparaciones</a>
+                <a href="mikrotik.html">MikroTik</a>
+                <a href="noticias.html">Noticias</a>
+                <a href="cotizacion.html">Cotización</a>
+                <a href="comunidad-facebook.html">Comunidad</a>
+                <a href="sobre-nosotros.html">Sobre nosotros</a>
+                <a href="contacto.html">Contacto</a>
+
+            </nav>
+
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+                Menú
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <header class="repair-hero">
+
+        <div class="wrap">
+
+            <p class="eyebrow-plain">
+                PlayStation 3
+            </p>
+
+            <h1>
+                PS3 con luz amarilla (YLOD): causas, primeros pasos y diagnóstico
+            </h1>
+
+            <p class="dek">
+                La luz amarilla no es un diagnóstico por sí sola. Aprende a identificar
+                la secuencia de fallo, descartar alimentación y avanzar hacia la placa
+                sin cambiar componentes a ciegas.
+            </p>
+
+            <div class="repair-meta">
+
+                <span>Guía paso a paso</span>
+                <span>Diagnóstico electrónico</span>
+                <span>NúcleoTech · 2026</span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="wrap repair-guide">
+
+        <div class="repair-shell">
+
+
+            <aside class="repair-toc">
+
+                <button class="repair-toc-toggle" type="button" aria-expanded="false">
+                    Atajos de esta guía
+                </button>
+
+                <div class="repair-toc-links">
+
+                    <p class="toc-title">
+                        Contenido
+                    </p>
+
+                    <a href="#introduccion" data-target="introduccion">
+                        Introducción
+                    </a>
+
+                    <a href="#que-es-ylod" data-target="que-es-ylod">
+                        ¿Qué es la luz amarilla?
+                    </a>
+
+                    <a href="#seguridad" data-target="seguridad">
+                        Seguridad
+                    </a>
+
+                    <a href="#herramientas" data-target="herramientas">
+                        Herramientas
+                    </a>
+
+                    <a href="#causas" data-target="causas">
+                        Causas posibles
+                    </a>
+
+                    <a href="#diagnostico" data-target="diagnostico">
+                        Diagnóstico
+                    </a>
+
+                    <a href="#paso-1" data-target="paso-1">
+                        1. Confirmar el síntoma
+                    </a>
+
+                    <a href="#paso-2" data-target="paso-2">
+                        2. Identificar modelo
+                    </a>
+
+                    <a href="#paso-3" data-target="paso-3">
+                        3. Comprobar alimentación
+                    </a>
+
+                    <a href="#paso-4" data-target="paso-4">
+                        4. Observar la secuencia de LEDs
+                    </a>
+
+                    <a href="#paso-5" data-target="paso-5">
+                        5. Revisar placa
+                    </a>
+
+                    <a href="#paso-6" data-target="paso-6">
+                        6. Diagnóstico avanzado
+                    </a>
+
+                    <a href="#syscon" data-target="syscon">
+                        SYSCON y códigos de error
+                    </a>
+
+                    <a href="#reflow" data-target="reflow">
+                        Reflow, reballing y realidad
+                    </a>
+
+                    <a href="#tabla" data-target="tabla">
+                        Tabla de diagnóstico
+                    </a>
+
+                    <a href="#errores" data-target="errores">
+                        Errores frecuentes
+                    </a>
+
+                    <a href="#fuentes" data-target="fuentes">
+                        Fuentes y referencias
+                    </a>
+
+                </div>
+
+            </aside>
+
+
+            <article class="repair-main">
+
+
+                <section id="introduccion">
+
+                    <h2>
+                        Introducción
+                    </h2>
+
+                    <figure class="repair-photo">
+
+                        <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/PS3 con luz amarilla (YLOD).jpg"
+                            alt="PlayStation 3 con diagnóstico de luz amarilla YLOD" loading="eager">
+
+                        <figcaption>
+                            Imagen de referencia para identificar el problema conocido
+                            como YLOD o Yellow Light of Death.
+                        </figcaption>
+
+                    </figure>
+
+
+                    <div class="repair-intro">
+
+                        <strong>
+                            Objetivo de esta guía
+                        </strong>
+
+                        <p>
+                            Una PlayStation 3 que muestra una luz amarilla y posteriormente
+                            se apaga presenta un fallo durante su proceso de arranque.
+                            Este comportamiento se conoce habitualmente como
+                            <strong>YLOD (Yellow Light of Death)</strong>.
+                        </p>
+
+                        <p>
+                            Sin embargo, la luz amarilla no significa automáticamente
+                            que el RSX esté defectuoso, que los chips tengan soldaduras
+                            rotas o que sea necesario realizar un reflow.
+                        </p>
+
+                        <p>
+                            El objetivo de esta guía es establecer una ruta de diagnóstico
+                            que permita separar un problema de alimentación de un fallo
+                            de placa, almacenamiento, regulación, comunicación o
+                            procesamiento.
+                        </p>
+
+                    </div>
+
+
+                    <div class="repair-note">
+
+                        <strong>
+                            Principio de diagnóstico NúcleoTech:
+                        </strong>
+
+                        <p>
+                            <strong>YLOD es un síntoma, no una pieza.</strong>
+                            Antes de calentar una placa, cambiar capacitores,
+                            sustituir una fuente o realizar reballing, hay que
+                            obtener evidencia del fallo.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section id="que-es-ylod">
+
+                    <h2>
+                        ¿Qué significa la luz amarilla de una PS3?
+                    </h2>
+
+                    <p>
+                        Durante el arranque, la PlayStation 3 realiza una secuencia
+                        de comprobaciones internas. Si una condición crítica no se
+                        cumple, el sistema puede detener el proceso de arranque y
+                        mostrar una secuencia característica de LEDs.
+                    </p>
+
+                    <p>
+                        En muchas consolas, el comportamiento puede observarse como:
+                    </p>
+
+                    <div class="repair-table-wrap">
+
+                        <table class="repair-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Comportamiento</th>
+                                    <th>Interpretación inicial</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Standby</td>
+                                    <td>LED rojo</td>
+                                    <td>La consola recibe alimentación de espera.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Encendido</td>
+                                    <td>LED verde</td>
+                                    <td>Se inicia la secuencia de arranque.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Fallo</td>
+                                    <td>LED amarillo durante un instante</td>
+                                    <td>Se detecta una condición de error durante el arranque.</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Final</td>
+                                    <td>LED rojo parpadeando</td>
+                                    <td>La consola detuvo el proceso de arranque.</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="repair-callout">
+
+                        <strong>
+                            Importante
+                        </strong>
+
+                        <p>
+                            No todas las revisiones de hardware tienen exactamente
+                            el mismo comportamiento interno. Por eso, el modelo
+                            de la consola y los códigos de diagnóstico son importantes.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section id="seguridad">
+
+                    <h2>
+                        Antes de empezar: seguridad
+                    </h2>
+
+                    <div class="repair-warning">
+
+                        <strong>
+                            ⚠ Desconecta completamente la consola antes de desmontarla.
+                        </strong>
+
+                        <p>
+                            La fuente de alimentación contiene circuitos conectados
+                            a la red eléctrica. El diagnóstico del primario de una
+                            fuente no debe realizarse sin conocimientos específicos
+                            sobre fuentes conmutadas.
+                        </p>
+
+                    </div>
+
+                    <ul>
+
+                        <li>
+                            Trabaja sobre una superficie limpia, seca y bien iluminada.
+                        </li>
+
+                        <li>
+                            Desconecta la consola de la red eléctrica antes de abrirla.
+                        </li>
+
+                        <li>
+                            No manipules el primario de la fuente energizada.
+                        </li>
+
+                        <li>
+                            No provoques cortocircuitos deliberadamente para "probar"
+                            la placa.
+                        </li>
+
+                        <li>
+                            Utiliza puntas de multímetro aisladas.
+                        </li>
+
+                        <li>
+                            No sustituyas fusibles por otros de mayor corriente.
+                        </li>
+
+                        <li>
+                            No apliques calor a la placa como primera prueba.
+                        </li>
+
+                        <li>
+                            Si no tienes experiencia con electrónica de reparación,
+                            limita el procedimiento a comprobaciones externas.
+                        </li>
+
+                    </ul>
+
+                </section>
+
+
+                <section id="herramientas">
+
+                    <h2>
+                        Herramientas y material
+                    </h2>
+
+                    <div class="repair-tools">
+
+                        <span class="repair-tool">
+                            Destornilladores Phillips
+                        </span>
+
+                        <span class="repair-tool">
+                            Torx de seguridad
+                        </span>
+
+                        <span class="repair-tool">
+                            Herramienta plástica
+                        </span>
+
+                        <span class="repair-tool">
+                            Pinzas
+                        </span>
+
+                        <span class="repair-tool">
+                            Linterna
+                        </span>
+
+                        <span class="repair-tool">
+                            Lupa
+                        </span>
+
+                        <span class="repair-tool">
+                            Multímetro digital
+                        </span>
+
+                        <span class="repair-tool">
+                            Puntas aisladas
+                        </span>
+
+                        <span class="repair-tool">
+                            Estación de soldadura
+                        </span>
+
+                        <span class="repair-tool">
+                            Documentación técnica
+                        </span>
+
+                        <span class="repair-tool">
+                            Interfaz de diagnóstico SYSCON
+                        </span>
+
+                    </div>
+
+                    <div class="repair-note">
+
+                        <strong>
+                            No necesitas todas las herramientas desde el principio.
+                        </strong>
+
+                        <p>
+                            Las primeras etapas solamente requieren inspección,
+                            comprobaciones básicas y un multímetro. El diagnóstico
+                            SYSCON y las reparaciones BGA corresponden a un nivel
+                            considerablemente más avanzado.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <section id="causas">
+
+                    <h2>
+                        Causas posibles del YLOD
+                    </h2>
+
+                    <p>
+                        La luz amarilla no identifica por sí sola el componente que está
+                        fallando. La consola puede detener el proceso de arranque por
+                        diferentes condiciones eléctricas, térmicas o de hardware.
+                    </p>
+
+                    <div class="repair-note">
+
+                        <strong>
+                            Antes de cambiar componentes:
+                        </strong>
+
+                        <p>
+                            determina en qué etapa del arranque se produce el fallo.
+                            El objetivo es pasar de un síntoma general a una causa
+                            comprobable mediante mediciones y diagnóstico.
+                        </p>
+
+                    </div>
+
+
+                    <div class="repair-table-wrap">
+
+                        <table class="repair-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Área
+                                    </th>
+
+                                    <th>
+                                        Posible problema
+                                    </th>
+
+                                    <th>
+                                        Qué comprobar
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Alimentación</strong>
+                                    </td>
+
+                                    <td>
+                                        Fuente defectuosa, tensión incorrecta o
+                                        alimentación inestable durante el arranque.
+                                    </td>
+
+                                    <td>
+                                        Standby, salidas de la fuente, conectores
+                                        y comportamiento durante el encendido.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Regulación</strong>
+                                    </td>
+
+                                    <td>
+                                        Fallo en un regulador, línea de alimentación
+                                        o circuito de protección.
+                                    </td>
+
+                                    <td>
+                                        Tensiones secundarias, fusibles, reguladores
+                                        y posibles cortocircuitos.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>RSX</strong>
+                                    </td>
+
+                                    <td>
+                                        Problemas relacionados con el procesador gráfico,
+                                        su alimentación, encapsulado o conexiones BGA.
+                                    </td>
+
+                                    <td>
+                                        Códigos de diagnóstico, alimentación del RSX
+                                        y pruebas específicas de la placa.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>CELL</strong>
+                                    </td>
+
+                                    <td>
+                                        Una condición relacionada con el procesador
+                                        principal puede impedir la inicialización.
+                                    </td>
+
+                                    <td>
+                                        Alimentaciones, señales de arranque y códigos
+                                        registrados por el sistema.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Southbridge</strong>
+                                    </td>
+
+                                    <td>
+                                        Una falla en la lógica de control o comunicación
+                                        puede interrumpir la secuencia de arranque.
+                                    </td>
+
+                                    <td>
+                                        Alimentaciones, señales de control y diagnóstico
+                                        SYSCON.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Capacitores</strong>
+                                    </td>
+
+                                    <td>
+                                        Problemas en determinadas redes de filtrado
+                                        o estabilización de las líneas de alimentación.
+                                    </td>
+
+                                    <td>
+                                        Medición de las líneas, resistencia a masa y
+                                        comportamiento eléctrico.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Placa</strong>
+                                    </td>
+
+                                    <td>
+                                        Cortocircuitos, corrosión, daños físicos,
+                                        reparaciones anteriores o componentes defectuosos.
+                                    </td>
+
+                                    <td>
+                                        Inspección visual, continuidad, resistencia
+                                        y mediciones dirigidas.
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Temperatura</strong>
+                                    </td>
+
+                                    <td>
+                                        Sobrecalentamiento, contaminación o problemas
+                                        en el sistema térmico.
+                                    </td>
+
+                                    <td>
+                                        Estado del disipador, pasta térmica, ventilador
+                                        y antecedentes de la consola.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="repair-callout">
+
+                        <strong>
+                            No confundas una causa posible con una causa confirmada
+                        </strong>
+
+                        <p>
+                            Que una PS3 presente YLOD no demuestra que el RSX, CELL,
+                            los capacitores o la fuente estén dañados. Cada posibilidad
+                            debe confirmarse mediante el diagnóstico correspondiente.
+                        </p>
+
+                    </div>
+
+
+                    <h3>
+                        ¿Por dónde empezar?
+                    </h3>
+
+                    <ol>
+
+                        <li>
+                            Confirmar la secuencia exacta de LEDs.
+                        </li>
+
+                        <li>
+                            Identificar el modelo CECH y la revisión de hardware.
+                        </li>
+
+                        <li>
+                            Comprobar alimentación y standby.
+                        </li>
+
+                        <li>
+                            Inspeccionar visualmente la placa.
+                        </li>
+
+                        <li>
+                            Buscar cortocircuitos o anomalías en las líneas de alimentación.
+                        </li>
+
+                        <li>
+                            Obtener códigos de diagnóstico cuando sea posible.
+                        </li>
+
+                        <li>
+                            Realizar mediciones específicas antes de intervenir sobre
+                            RSX, CELL o componentes BGA.
+                        </li>
+
+                    </ol>
+
+
+                    <div class="repair-result">
+
+                        <strong>
+                            La idea clave
+                        </strong>
+
+                        <p>
+                            El YLOD te dice que el arranque falló. El diagnóstico debe
+                            descubrir <strong>por qué</strong> falló.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <section id="diagnostico">
+
+                    <h2>
+                        Diagnóstico paso a paso
+                    </h2>
+
+
+                    <section class="repair-step" id="paso-1">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                01
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Confirmar exactamente el síntoma
+                                </h3>
+
+                                <p>
+                                    Antes de desmontar la consola, registra qué ocurre
+                                    cuando intentas encenderla.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-step-body">
+
+                            <figure>
+
+                                <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/1.jpg"
+                                    alt="Diagrama NúcleoTech para identificar la secuencia de luz amarilla de PS3"
+                                    loading="lazy">
+
+                                <figcaption>
+                                    Esquema original NúcleoTech para identificar
+                                    el comportamiento de la consola.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <div class="repair-step-grid">
+
+                                <div>
+
+                                    <h4>
+                                        Qué observar
+                                    </h4>
+
+                                    <ol>
+
+                                        <li>
+                                            Conecta la consola a una toma eléctrica
+                                            conocida.
+                                        </li>
+
+                                        <li>
+                                            Observa el LED rojo de standby.
+                                        </li>
+
+                                        <li>
+                                            Pulsa el botón de encendido.
+                                        </li>
+
+                                        <li>
+                                            Observa si cambia a verde.
+                                        </li>
+
+                                        <li>
+                                            Comprueba si aparece amarillo.
+                                        </li>
+
+                                        <li>
+                                            Observa si posteriormente queda rojo
+                                            parpadeando.
+                                        </li>
+
+                                        <li>
+                                            Registra cuánto tiempo permanece encendida.
+                                        </li>
+
+                                    </ol>
+
+                                </div>
+
+
+                                <div class="check">
+
+                                    <strong>
+                                        Punto de control
+                                    </strong>
+
+                                    <p>
+                                        El comportamiento exacto es más útil que
+                                        simplemente decir "tiene YLOD".
+                                    </p>
+
+                                    <strong>
+                                        Resultado esperado
+                                    </strong>
+
+                                    <p>
+                                        Debes poder describir la secuencia completa
+                                        de LEDs antes de desmontar.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="repair-step" id="paso-2">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                02
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Identificar el modelo exacto
+                                </h3>
+
+                                <p>
+                                    No todas las PlayStation 3 utilizan la misma
+                                    arquitectura ni la misma fuente.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-step-body">
+
+                            <figure>
+
+                                <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/2.jpg"
+                                    alt="Identificación del modelo de PlayStation 3" loading="lazy">
+
+                                <figcaption>
+                                    Identificación del modelo antes de comenzar
+                                    el diagnóstico.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <div class="repair-step-grid">
+
+                                <div>
+
+                                    <h4>
+                                        Anota la información
+                                    </h4>
+
+                                    <ol>
+
+                                        <li>
+                                            Busca el modelo CECH en la etiqueta de la consola.
+                                        </li>
+
+                                        <li>
+                                            Registra si se trata de una PS3 Fat,
+                                            Slim o Super Slim.
+                                        </li>
+
+                                        <li>
+                                            Anota la capacidad del disco.
+                                        </li>
+
+                                        <li>
+                                            Identifica la referencia de la fuente
+                                            si la consola ha sido desmontada.
+                                        </li>
+
+                                        <li>
+                                            Si existe una reparación anterior,
+                                            registra qué componentes fueron sustituidos.
+                                        </li>
+
+                                    </ol>
+
+                                </div>
+
+
+                                <div class="check">
+
+                                    <strong>
+                                        ¿Por qué importa?
+                                    </strong>
+
+                                    <p>
+                                        Las diferentes revisiones utilizan distintas
+                                        placas, procesadores, fuentes y sistemas
+                                        de alimentación.
+                                    </p>
+
+                                    <strong>
+                                        Regla
+                                    </strong>
+
+                                    <p>
+                                        Nunca utilices un esquema o pinout de otra
+                                        revisión solamente porque el conector parece
+                                        idéntico.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="repair-step" id="paso-3">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                03
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Comprobar alimentación
+                                </h3>
+
+                                <p>
+                                    Antes de culpar al procesador gráfico o al BGA,
+                                    comprueba si la consola recibe correctamente
+                                    las condiciones eléctricas necesarias.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-step-body">
+
+                            <figure>
+
+                                <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/3.jpg"
+                                    alt="Comprobación de alimentación de PlayStation 3" loading="lazy">
+
+                                <figcaption>
+                                    Comprobación inicial de la alimentación.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <h4>
+                                Primero realiza las comprobaciones externas
+                            </h4>
+
+                            <ol>
+
+                                <li>
+                                    Comprueba la toma eléctrica.
+                                </li>
+
+                                <li>
+                                    Inspecciona el cable de alimentación.
+                                </li>
+
+                                <li>
+                                    Comprueba el conector de entrada de la consola.
+                                </li>
+
+                                <li>
+                                    Busca signos de humedad, corrosión o daño físico.
+                                </li>
+
+                                <li>
+                                    Comprueba el funcionamiento del standby.
+                                </li>
+
+                            </ol>
+
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    No condenes la fuente por el YLOD
+                                </strong>
+
+                                <p>
+                                    La aparición de luz amarilla no demuestra por sí
+                                    misma que la fuente de alimentación sea la causa.
+                                    La fuente debe comprobarse de acuerdo con el modelo
+                                    específico de PS3.
+                                </p>
+
+                            </div>
+
+
+                            <h4>
+                                Inspección visual de la placa
+                            </h4>
+
+                            <ul>
+
+                                <li>
+                                    Componentes quemados.
+                                </li>
+
+                                <li>
+                                    Zonas con decoloración.
+                                </li>
+
+                                <li>
+                                    Corrosión.
+                                </li>
+
+                                <li>
+                                    Restos de líquido.
+                                </li>
+
+                                <li>
+                                    Componentes desplazados.
+                                </li>
+
+                                <li>
+                                    Reparaciones anteriores.
+                                </li>
+
+                                <li>
+                                    Soldaduras manipuladas.
+                                </li>
+
+                                <li>
+                                    Cables o conectores dañados.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="repair-step" id="paso-4">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                04
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Observar la secuencia de LEDs
+                                </h3>
+
+                                <p>
+                                    El comportamiento del indicador proporciona
+                                    información sobre el momento en que se detiene
+                                    el arranque.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-step-body">
+
+                            <figure>
+
+                                <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/4.jpg"
+                                    alt="Secuencia de LEDs de una PlayStation 3 con YLOD" loading="lazy">
+
+                                <figcaption>
+                                    Secuencia de referencia del comportamiento
+                                    de los indicadores.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <div class="repair-table-wrap">
+
+                                <table class="repair-table">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th>Comportamiento</th>
+                                            <th>Qué indica inicialmente</th>
+                                            <th>Siguiente investigación</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr>
+
+                                            <td>
+                                                No hay LED
+                                            </td>
+
+                                            <td>
+                                                La consola no presenta la condición
+                                                básica de standby.
+                                            </td>
+
+                                            <td>
+                                                Entrada, fuente y circuito de standby.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Rojo estable
+                                            </td>
+
+                                            <td>
+                                                Existe alimentación de espera.
+                                            </td>
+
+                                            <td>
+                                                Probar la secuencia de encendido.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Verde → amarillo → rojo
+                                            </td>
+
+                                            <td>
+                                                La consola interrumpe el arranque
+                                                después de comenzar la inicialización.
+                                            </td>
+
+                                            <td>
+                                                Diagnóstico de alimentación, placa
+                                                y códigos de error.
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+
+                                            <td>
+                                                Verde → apagado
+                                            </td>
+
+                                            <td>
+                                                Existe otro patrón de fallo.
+                                            </td>
+
+                                            <td>
+                                                No asumir YLOD sin registrar el comportamiento.
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+                            <div class="repair-note">
+
+                                <strong>
+                                    Una secuencia no identifica automáticamente
+                                    el componente defectuoso.
+                                </strong>
+
+                                <p>
+                                    El objetivo de observar los LEDs es saber en qué
+                                    etapa detener la investigación, no sustituir
+                                    el diagnóstico electrónico.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="repair-step" id="paso-5">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                05
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Revisar la placa principal
+                                </h3>
+
+                                <p>
+                                    Si la alimentación básica está presente,
+                                    el diagnóstico debe avanzar hacia las líneas
+                                    internas y los circuitos de la placa.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-step-body">
+
+                            <figure>
+
+                                <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/5.jpg"
+                                    alt="Diagnóstico de placa principal de PlayStation 3" loading="lazy">
+
+                                <figcaption>
+                                    Zonas generales que pueden intervenir en
+                                    el diagnóstico de una PS3.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <h4>
+                                No empieces calentando el RSX
+                            </h4>
+
+                            <p>
+                                El RSX es uno de los componentes que más aparece
+                                en las discusiones sobre YLOD, pero no debe considerarse
+                                automáticamente culpable.
+                            </p>
+
+                            <p>
+                                Antes de realizar cualquier reparación BGA conviene
+                                comprobar:
+                            </p>
+
+                            <ol>
+
+                                <li>
+                                    Fuente de alimentación.
+                                </li>
+
+                                <li>
+                                    Standby.
+                                </li>
+
+                                <li>
+                                    Fusibles y protecciones.
+                                </li>
+
+                                <li>
+                                    Líneas principales de alimentación.
+                                </li>
+
+                                <li>
+                                    Posibles cortocircuitos.
+                                </li>
+
+                                <li>
+                                    Reguladores.
+                                </li>
+
+                                <li>
+                                    Códigos de diagnóstico.
+                                </li>
+
+                            </ol>
+
+
+                            <div class="repair-callout">
+
+                                <strong>
+                                    El RSX no debe ser el primer sospechoso
+                                </strong>
+
+                                <p>
+                                    Si no se ha determinado por qué la consola
+                                    detiene el arranque, aplicar calor puede ocultar
+                                    temporalmente el síntoma sin solucionar la causa.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="repair-step" id="paso-6">
+
+                        <div class="repair-step-head">
+
+                            <span class="repair-step-num">
+                                06
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Diagnóstico electrónico avanzado
+                                </h3>
+
+                                <p>
+                                    Cuando las comprobaciones básicas no explican
+                                    el fallo, es necesario investigar las líneas
+                                    y condiciones de arranque.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-step-body">
+
+                            <figure>
+
+                                <img src="imagenes/PS3/PS3 con luz amarilla (YLOD)/6.jpg"
+                                    alt="Diagnóstico electrónico avanzado de PlayStation 3" loading="lazy">
+
+                                <figcaption>
+                                    Diagnóstico avanzado de placa.
+                                </figcaption>
+
+                            </figure>
+
+
+                            <h4>
+                                Áreas que pueden investigarse
+                            </h4>
+
+                            <ul>
+
+                                <li>
+                                    Líneas de alimentación del sistema.
+                                </li>
+
+                                <li>
+                                    Reguladores de tensión.
+                                </li>
+
+                                <li>
+                                    Cortocircuitos en railes de alimentación.
+                                </li>
+
+                                <li>
+                                    Circuitos de gestión de energía.
+                                </li>
+
+                                <li>
+                                    Southbridge.
+                                </li>
+
+                                <li>
+                                    CELL.
+                                </li>
+
+                                <li>
+                                    RSX.
+                                </li>
+
+                                <li>
+                                    Memoria.
+                                </li>
+
+                                <li>
+                                    Comunicación entre subsistemas.
+                                </li>
+
+                                <li>
+                                    Códigos registrados por SYSCON.
+                                </li>
+
+                            </ul>
+
+
+                            <div class="repair-note">
+
+                                <strong>
+                                    Nivel avanzado
+                                </strong>
+
+                                <p>
+                                    Las mediciones sobre una placa energizada deben
+                                    realizarse únicamente cuando se conoce exactamente
+                                    qué punto se está midiendo y qué valor se espera.
+                                    Un multímetro colocado al azar puede provocar
+                                    un cortocircuito.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </section>
+
+
+                <section id="syscon">
+
+                    <h2>
+                        SYSCON: una herramienta fundamental para el diagnóstico
+                    </h2>
+
+                    <p>
+                        En una reparación profesional de PS3, los códigos registrados
+                        por el sistema de control pueden proporcionar información mucho
+                        más útil que simplemente observar el LED amarillo.
+                    </p>
+
+                    <p>
+                        El <strong>SYSCON</strong> supervisa diferentes condiciones
+                        del sistema y puede registrar códigos relacionados con
+                        problemas detectados durante el funcionamiento.
+                    </p>
+
+
+                    <div class="repair-callout">
+
+                        <strong>
+                            ¿Por qué es importante?
+                        </strong>
+
+                        <p>
+                            Dos consolas pueden mostrar exactamente el mismo YLOD
+                            visualmente y tener causas eléctricas diferentes.
+                            Los códigos de diagnóstico pueden ayudar a reducir
+                            considerablemente el área de búsqueda.
+                        </p>
+
+                    </div>
+
+
+                    <h4>
+                        Ruta recomendada
+                    </h4>
+
+                    <ol>
+
+                        <li>
+                            Confirmar el modelo CECH.
+                        </li>
+
+                        <li>
+                            Registrar la secuencia de LEDs.
+                        </li>
+
+                        <li>
+                            Comprobar alimentación.
+                        </li>
+
+                        <li>
+                            Acceder al sistema de diagnóstico cuando sea apropiado.
+                        </li>
+
+                        <li>
+                            Obtener los códigos registrados.
+                        </li>
+
+                        <li>
+                            Relacionar el código con las líneas y circuitos implicados.
+                        </li>
+
+                        <li>
+                            Realizar mediciones dirigidas.
+                        </li>
+
+                    </ol>
+
+
+                    <div class="repair-warning">
+
+                        <strong>
+                            ⚠ No interpretes un código de forma aislada.
+                        </strong>
+
+                        <p>
+                            Un código es una pista. Debe relacionarse con el modelo,
+                            la revisión de placa, las condiciones de alimentación
+                            y el comportamiento observado.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section id="reflow">
+
+    <h2>
+        Reflow, reballing y el error de "calentar la PS3"
+    </h2>
+
+    <p>
+        Una de las prácticas más conocidas para intentar solucionar una
+        PS3 con YLOD es aplicar calor sobre la placa. El problema es que
+        esta técnica suele presentarse como una reparación universal,
+        cuando en realidad el YLOD puede tener diferentes causas.
+    </p>
+
+    <div class="repair-note">
+
+        <strong>
+            El calor no es un diagnóstico
+        </strong>
+
+        <p>
+            Antes de realizar cualquier intervención térmica hay que
+            determinar qué está provocando el fallo. Aplicar calor sin
+            conocer la causa puede ocultar temporalmente el problema o
+            incluso provocar daños adicionales en la placa.
+        </p>
+
+    </div>
+
+
+    <div class="repair-table-wrap">
+
+        <table class="repair-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Método
+                    </th>
+
+                    <th>
+                        ¿Qué intenta hacer?
+                    </th>
+
+                    <th>
+                        Limitaciones
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        <strong>Reflow</strong>
+                    </td>
+
+                    <td>
+                        Calentar determinadas zonas de la placa para
+                        intentar volver a fundir las uniones de soldadura
+                        BGA y recuperar temporalmente una conexión.
+                    </td>
+
+                    <td>
+                        Si la causa no está relacionada con una conexión
+                        BGA, el procedimiento no corrige el fallo.
+                        Además, un calentamiento incorrecto puede producir
+                        daños adicionales.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <strong>Reballing</strong>
+                    </td>
+
+                    <td>
+                        Retirar un chip BGA, limpiar sus conexiones y
+                        reconstruirlas utilizando nuevas esferas de
+                        soldadura antes de volver a instalarlo.
+                    </td>
+
+                    <td>
+                        No garantiza la reparación si el propio chip,
+                        la placa, la alimentación o cualquier otro
+                        circuito relacionado presenta una falla.
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <strong>Calor casero</strong>
+                    </td>
+
+                    <td>
+                        Utilizar pistolas de calor, hornos u otros métodos
+                        improvisados para elevar la temperatura de la placa.
+                    </td>
+
+                    <td>
+                        La temperatura puede ser difícil de controlar y
+                        puede dañar componentes, conectores, PCB,
+                        encapsulados o soldaduras cercanas.
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <h3>
+        Reflow: ¿qué intenta conseguir?
+    </h3>
+
+    <p>
+        Un reflow busca modificar térmicamente las uniones de soldadura
+        de un componente BGA para intentar recuperar una conexión
+        deficiente.
+    </p>
+
+    <div class="repair-callout">
+
+        <strong>
+            El problema
+        </strong>
+
+        <p>
+            Que una PS3 presente YLOD no demuestra que exista una falla
+            en las soldaduras BGA. Si el origen está en la alimentación,
+            regulación, un componente defectuoso, el propio chip o
+            cualquier otra parte de la placa, aplicar un reflow no
+            solucionará la causa.
+        </p>
+
+    </div>
+
+
+    <h3>
+        Reballing: ¿qué cambia realmente?
+    </h3>
+
+    <p>
+        El reballing es una intervención mucho más profunda que un reflow.
+        El componente BGA se retira de la placa, se eliminan las
+        conexiones de soldadura existentes, se prepara nuevamente el
+        encapsulado y se instala utilizando nuevas esferas de soldadura.
+    </p>
+
+    <div class="repair-note">
+
+        <strong>
+            Reballing no significa reparación garantizada
+        </strong>
+
+        <p>
+            Si el chip está defectuoso, existe un problema en la placa,
+            hay una alimentación incorrecta o la causa del YLOD se
+            encuentra en otro circuito, sustituir las esferas de soldadura
+            no resolverá el problema.
+        </p>
+
+    </div>
+
+
+    <h3>
+        ¿Por qué no es recomendable "calentar la PS3"?
+    </h3>
+
+    <p>
+        Los métodos improvisados pueden elevar la temperatura de la placa
+        de manera desigual y sin un control adecuado del perfil térmico.
+        Esto puede afectar componentes que originalmente no estaban
+        relacionados con la avería.
+    </p>
+
+    <ul>
+
+        <li>
+            Puede deformar o deteriorar la PCB.
+        </li>
+
+        <li>
+            Puede afectar conectores y componentes sensibles al calor.
+        </li>
+
+        <li>
+            Puede provocar desplazamiento o daño en componentes SMD.
+        </li>
+
+        <li>
+            Puede deteriorar encapsulados y materiales de la placa.
+        </li>
+
+        <li>
+            Puede crear nuevas fallas difíciles de localizar.
+        </li>
+
+        <li>
+            Puede producir una reparación temporal que dificulte
+            posteriormente el diagnóstico real.
+        </li>
+
+    </ul>
+
+
+    <div class="repair-result">
+
+        <strong>
+            ¿Qué puede ocurrir después?
+        </strong>
+
+        <p>
+            La consola puede llegar a encender temporalmente y dar la
+            impresión de haber sido reparada. Sin embargo, si la causa
+            original continúa presente, el YLOD puede regresar.
+        </p>
+
+    </div>
+
+
+    <h3>
+        ¿Cuándo tendría sentido investigar una falla BGA?
+    </h3>
+
+    <p>
+        Una posible falla BGA debe considerarse dentro de un diagnóstico
+        completo y no únicamente porque la consola presente luz amarilla.
+        Primero deben descartarse otras causas mediante inspección,
+        mediciones eléctricas y, cuando sea posible, información obtenida
+        del sistema de diagnóstico.
+    </p>
+
+    <ol>
+
+        <li>
+            Confirmar que el síntoma realmente corresponde a YLOD.
+        </li>
+
+        <li>
+            Identificar el modelo y revisión de la PS3.
+        </li>
+
+        <li>
+            Comprobar la fuente de alimentación y las líneas principales.
+        </li>
+
+        <li>
+            Revisar reguladores, fusibles y posibles cortocircuitos.
+        </li>
+
+        <li>
+            Obtener códigos de diagnóstico cuando sea posible.
+        </li>
+
+        <li>
+            Determinar si existe evidencia que justifique investigar
+            una posible falla BGA.
+        </li>
+
+    </ol>
+
+
+    <div class="repair-callout">
+
+        <strong>
+            Regla NúcleoTech
+        </strong>
+
+        <p>
+            <strong>
+                No realices un reflow simplemente porque la PS3 presenta YLOD.
+            </strong>
+            Primero determina la causa del fallo y demuestra que existe
+            una condición compatible con un problema BGA antes de
+            considerar una intervención térmica.
+        </p>
+
+    </div>
+
+
+    <div class="repair-result">
+
+        <strong>
+            La idea clave
+        </strong>
+
+        <p>
+            <strong>YLOD es un síntoma, no una orden para aplicar calor.</strong>
+            Una reparación profesional comienza con diagnóstico y termina
+            con una intervención que tenga una causa técnica demostrada.
+        </p>
+
+    </div>
+
+</section>
+
+
+                    <div class="repair-callout">
+
+                        <strong>
+                            Regla NúcleoTech
+                        </strong>
+
+                        <p>
+                            <strong>No realices reflow porque la consola tiene YLOD.</strong>
+                            Primero demuestra que existe una condición compatible
+                            con una falla BGA.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section id="tabla">
+
+                    <h2>
+                        Tabla rápida de diagnóstico
+                    </h2>
+
+
+                    <div class="repair-table-wrap">
+
+                        <table class="repair-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Resultado</th>
+                                    <th>Interpretación inicial</th>
+                                    <th>Prioridad</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        No hay standby
+                                    </td>
+
+                                    <td>
+                                        La consola no presenta correctamente
+                                        la condición básica de espera.
+                                    </td>
+
+                                    <td>
+                                        Entrada / fuente / standby
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Standby correcto + YLOD
+                                    </td>
+
+                                    <td>
+                                        La consola inicia el proceso pero
+                                        detiene el arranque.
+                                    </td>
+
+                                    <td>
+                                        Placa / alimentación / diagnóstico
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Fuente sospechosa
+                                    </td>
+
+                                    <td>
+                                        Debe verificarse antes de culpar a la placa.
+                                    </td>
+
+                                    <td>
+                                        Fuente
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Alimentación correcta
+                                    </td>
+
+                                    <td>
+                                        La investigación debe desplazarse hacia
+                                        la placa.
+                                    </td>
+
+                                    <td>
+                                        Regulación / señales / SYSCON
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Código SYSCON disponible
+                                    </td>
+
+                                    <td>
+                                        Existe información adicional sobre la condición
+                                        detectada.
+                                    </td>
+
+                                    <td>
+                                        Interpretación técnica
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Evidencia de fallo BGA
+                                    </td>
+
+                                    <td>
+                                        Puede justificarse una investigación de
+                                        RSX/CELL y sus conexiones.
+                                    </td>
+
+                                    <td>
+                                        Reparación BGA
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <section id="errores">
+
+                    <h2>
+                        Errores frecuentes al diagnosticar una PS3 con YLOD
+                    </h2>
+
+
+                    <div class="repair-step-body">
+
+                        <ul>
+
+                            <li>
+
+                                <strong>
+                                    "YLOD significa RSX dañado."
+                                </strong>
+
+                                <p>
+                                    No necesariamente. El YLOD indica una interrupción
+                                    del proceso de arranque, no un componente concreto.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "Hay que hacer reflow."
+                                </strong>
+
+                                <p>
+                                    El calor no debe utilizarse como sustituto de un
+                                    diagnóstico.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "Cambiar los NEC/TOKIN siempre arregla la PS3."
+                                </strong>
+
+                                <p>
+                                    Los capacitores pueden participar en determinados
+                                    fallos, pero sustituirlos sin confirmar la causa
+                                    es otra forma de cambiar piezas a ciegas.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "La fuente funciona porque tiene voltaje."
+                                </strong>
+
+                                <p>
+                                    Una medición aislada no demuestra que todas las
+                                    condiciones de alimentación y regulación sean
+                                    correctas durante el arranque.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "Si después del reflow funciona, estaba reparada."
+                                </strong>
+
+                                <p>
+                                    Un funcionamiento temporal después de aplicar calor
+                                    no demuestra que la causa haya sido solucionada
+                                    de forma permanente.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "Todas las PS3 se diagnostican igual."
+                                </strong>
+
+                                <p>
+                                    Existen numerosas revisiones de hardware y
+                                    diferencias importantes entre generaciones.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "Hay que desmontar todo inmediatamente."
+                                </strong>
+
+                                <p>
+                                    Las primeras comprobaciones deben comenzar por
+                                    el síntoma, alimentación externa y modelo.
+                                </p>
+
+                            </li>
+
+
+                            <li>
+
+                                <strong>
+                                    "Un multímetro basta para encontrar cualquier YLOD."
+                                </strong>
+
+                                <p>
+                                    El multímetro es fundamental, pero determinados
+                                    diagnósticos requieren osciloscopio, instrumental
+                                    BGA, documentación específica o lectura de SYSCON.
+                                </p>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </section>
+
+
+                <section id="seguridad-mediciones">
+
+                    <h2>
+                        Seguridad durante las mediciones
+                    </h2>
+
+
+                    <div class="repair-callout">
+
+                        <strong>
+                            Esta guía separa diagnóstico básico de reparación avanzada
+                        </strong>
+
+                        <p>
+                            Las pruebas de tensión deben realizarse únicamente sobre
+                            puntos correctamente identificados. No coloques las puntas
+                            del multímetro sobre componentes al azar.
+                        </p>
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Utiliza siempre el modo de tensión DC cuando corresponda.
+                        </li>
+
+                        <li>
+                            No midas corriente colocando el multímetro en paralelo
+                            con una línea de alimentación.
+                        </li>
+
+                        <li>
+                            Comprueba dos veces la posición de las puntas.
+                        </li>
+
+                        <li>
+                            No trabajes sobre el primario de la fuente sin formación.
+                        </li>
+
+                        <li>
+                            No provoques cortocircuitos para comprobar una línea.
+                        </li>
+
+                        <li>
+                            No utilices herramientas metálicas sin control cerca
+                            de puntos energizados.
+                        </li>
+
+                        <li>
+                            Si no puedes identificar el punto de medición, detente.
+                        </li>
+
+                    </ul>
+
+                </section>
+
+
+                <section id="fuentes">
+
+                    <h2>
+                        Fuentes, licencias y referencias técnicas
+                    </h2>
+
+                    <p>
+                        El diagnóstico de una PS3 debe apoyarse en documentación
+                        específica de la revisión de hardware. Las diferencias entre
+                        modelos hacen que los valores, puntos de medición y circuitos
+                        puedan cambiar.
+                    </p>
+
+
+                    <ul class="repair-sources">
+
+                        <li>
+                            Documentación técnica y esquemas correspondientes
+                            a la revisión concreta de la placa.
+                        </li>
+
+                        <li>
+                            Documentación de servicio disponible para determinadas
+                            revisiones de PlayStation 3.
+                        </li>
+
+                        <li>
+                            Documentación técnica relacionada con el sistema
+                            SYSCON y sus códigos de diagnóstico.
+                        </li>
+
+                        <li>
+                            Recursos de reparación electrónica especializados
+                            en PlayStation 3.
+                        </li>
+
+                        <li>
+                            Documentación de fabricantes de componentes cuando
+                            sea necesaria para interpretar circuitos específicos.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="repair-callout">
+
+                        <strong>
+                            Nota técnica NúcleoTech
+                        </strong>
+
+                        <p>
+                            Los valores de tensión, puntos de prueba y procedimientos
+                            deben contrastarse con el modelo CECH y la revisión exacta
+                            de la placa.
+                        </p>
+
+                        <p>
+                            No utilices valores encontrados para una PS3 Fat en una
+                            PS3 Slim o Super Slim sin verificar previamente la
+                            documentación correspondiente.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section>
+
+                    <h2>
+                        Artículos relacionados
+                    </h2>
+
+                    <ul>
+
+                        <li>
+                            <a href="ps4-no-enciende.html">
+                                PS4 no enciende
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ps4-no-video.html">
+                                PS4 no muestra video
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ps4-se-apaga.html">
+                                PS4 se apaga
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ps4-teardown-completo.html">
+                                PS4 teardown completo
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="reparaciones.html">
+                                Todas las guías de reparación
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+                    <div class="repair-bottom-nav">
+
+                        <a class="btn secondary" href="reparaciones.html">
+                            ← Anterior
+                        </a>
+
+                        <a class="btn" href="ps4-no-enciende.html">
+                            Siguiente →
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+            </article>
+
+
+            <aside class="repair-side">
+
+                <div class="adsense-slot adsense-slot--rectangle"></div>
+
+
+                <div class="repair-side-card">
+
+                    <strong>
+                        Comunidad
+                    </strong>
+
+                    <p>
+                        Publicaciones visuales, casos y consejos de reparación.
+                    </p>
+
+                    <a class="btn facebook-btn" href="https://www.facebook.com/profile.php?id=61593321905984"
+                        target="_blank" rel="noopener">
+
+                        Facebook NúcleoTech
+
+                    </a>
+
+                </div>
+
+
+                <div class="repair-side-card">
+
+                    <strong>
+                        Nota técnica
+                    </strong>
+
+                    <p class="repair-disclaimer">
+
+                        El YLOD es un síntoma de fallo durante el proceso de
+                        arranque. La causa exacta depende del modelo, revisión
+                        de hardware y condición eléctrica de la consola.
+
+                    </p>
+
+                </div>
+
+
+                <div class="repair-side-card">
+
+                    <strong>
+                        No cambies piezas por intuición
+                    </strong>
+
+                    <p class="repair-disclaimer">
+
+                        Antes de realizar reflow, reballing o sustituir componentes,
+                        obtén evidencia del fallo mediante una ruta de diagnóstico.
+
+                    </p>
+
+                </div>
+
+            </aside>
+
+
+        </div>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="wrap footer-grid">
+
+            <span>
+                © 2026 NúcleoTech. Todos los derechos reservados.
+            </span>
+
+            <div class="footer-links">
+
+                <a href="reparaciones.html">
+                    Reparaciones
+                </a>
+
+                <a href="mikrotik.html">
+                    MikroTik
+                </a>
+
+                <a href="noticias.html">
+                    Noticias
+                </a>
+
+                <a href="sobre-nosotros.html">
+                    Sobre nosotros
+                </a>
+
+                <a href="politica-privacidad.html">
+                    Política de privacidad
+                </a>
+
+                <a href="fuentes.html">
+                    Fuentes
+                </a>
+
+                <a href="contacto.html">
+                    Contacto
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const links = [
+                ...document.querySelectorAll('.repair-toc a[data-target]')
+            ];
+
+            const targets = links
+                .map(a => document.getElementById(a.dataset.target))
+                .filter(Boolean);
+
+            const obs = new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            links.forEach(link => {
+
+                                link.classList.toggle(
+                                    'is-current',
+                                    link.dataset.target === entry.target.id
+                                );
+
+                            });
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    rootMargin: '-90px 0px -65% 0px',
+                    threshold: 0
+                }
+
+            );
+
+            targets.forEach(target => obs.observe(target));
+
+
+            const toggle = document.querySelector('.repair-toc-toggle');
+            const box = document.querySelector('.repair-toc-links');
+
+            if (toggle && box) {
+
+                toggle.addEventListener('click', () => {
+
+                    const isOpen = box.classList.toggle('open');
+
+                    toggle.setAttribute(
+                        'aria-expanded',
+                        isOpen ? 'true' : 'false'
+                    );
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
