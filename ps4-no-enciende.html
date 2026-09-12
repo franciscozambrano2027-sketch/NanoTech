@@ -9,7 +9,21 @@
     <link rel="apple-touch-icon" href="/assets/favicon.png">
 
     ```
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -1958,7 +1972,7 @@
                 <div class="repair-side-card"><strong>Comunidad</strong>
                     <p>Publicaciones visuales, casos y consejos de reparación.</p><a class="btn facebook-btn"
                         href="https://www.facebook.com/profile.php?id=61593321905984" target="_blank"
-                        rel="noopener">Facebook NanoTech</a>
+                        rel="noopener">Facebook NúcleoTech</a>
                 </div>
                 <div class="repair-side-card"><strong>Nota técnica</strong>
                     <p class="repair-disclaimer">Los procedimientos internos dependen de la revisión exacta del equipo.

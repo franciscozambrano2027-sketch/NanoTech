@@ -7,7 +7,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -50,7 +64,7 @@
       <p class="eyebrow-plain">MikroTik</p>
       <h1>MikroTik: configurar DHCP Server para una LAN desde cero</h1>
       <p class="dek">Ejemplo RouterOS v7 para una LAN 192.168.88.0/24, con gateway 192.168.88.1 y pool de clientes.</p>
-      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech · 2026</span>
+      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NúcleoTech · 2026</span>
       </div>
     </div>
   </header>
@@ -75,7 +89,7 @@
           <h2>Introducción</h2>
           <figure class="repair-photo"><img alt="Diagrama MikroTik: configurar DHCP Server para una LAN desde cero"
               loading="eager" src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero.jpg" />
-            <figcaption>Diagrama original de NanoTech para visualizar el problema y el orden de comprobación.
+            <figcaption>Diagrama original de NúcleoTech para visualizar el problema y el orden de comprobación.
             </figcaption>
           </figure>
           <div class="repair-intro"><strong>Objetivo</strong>
@@ -112,17 +126,17 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 1. Hacer respaldo" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 1. Hacer respaldo" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/1-hacer-respaldo.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
               <div class="code-block">
                 <div class="code-label"><span>Respaldo antes del cambio · COMANDO PRINCIPAL Copiar</span><button
                     class="copy-code" type="button">Copiar</button></div>
-                <pre><code>/export terse file=nanotech-dhcp-before
-/system backup save name=nanotech-dhcp-before</code></pre>
+                <pre><code>/export terse file=nucleo-tech-dhcp-before
+/system backup save name=nucleo-tech-dhcp-before</code></pre>
               </div>
               <div class="code-block">
                 <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"
@@ -146,9 +160,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 2. Crear IP de la LAN" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 2. Crear IP de la LAN" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/2-crear-ip-de-la-lan.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -179,9 +193,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 3. Crear pool" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 3. Crear pool" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/3-crear-pool.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -226,9 +240,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 4. Crear servidor DHCP" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 4. Crear servidor DHCP" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/4-crear-servidor-dhcp.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -275,8 +289,8 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 5. Validar" loading="lazy" src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/5-validar.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+            <figure><img alt="Diagrama NúcleoTech: 5. Validar" loading="lazy" src="imagenes/mikrotik/mikrotik-configurar-dhcp-server-para-una-lan-desde-cero/5-validar.jpg" />
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">

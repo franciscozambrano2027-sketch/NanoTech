@@ -181,7 +181,7 @@ img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 700px;
+  max-height: 560px;
   object-fit: contain;
   object-position: center;
   margin: 0 auto 32px;
@@ -628,7 +628,7 @@ img {
   text-underline-offset: 3px;
 }
 
-/* NanoTech repair guide system v4 */
+/* NúcleoTech repair guide system v4 */
 .repair-guide {
   padding-bottom: 80px;
 }
@@ -930,7 +930,7 @@ img {
   }
 }
 
-/* Biblioteca técnica NanoTech */
+/* Biblioteca técnica NúcleoTech */
 .repair-guide {
   padding: 36px 24px 80px;
 }
@@ -1166,7 +1166,7 @@ img {
   color: var(--muted);
 }
 
-/* Biblioteca técnica NanoTech */
+/* Biblioteca técnica NúcleoTech */
 .repair-guide {
   padding: 36px 24px 80px;
 }
@@ -1412,7 +1412,7 @@ img {
   color: var(--muted);
 }
 
-/* NanoTech v6 — repair hub + technical guide refinement */
+/* NúcleoTech v6 — repair hub + technical guide refinement */
 .repair-hub {
   padding: 28px 0 72px;
 }
@@ -3573,4 +3573,18 @@ COTIZACION — NUCLEOTECH
   .repair-guide .repair-main {
     max-width: none;
   }
+}
+
+/* Protección editorial: ninguna imagen de artículo puede desbordar su contenedor. */
+.article-body img,
+.article-main img,
+.page-body img,
+.repair-main img {
+  max-width: 100%;
+  height: auto;
+}
+.article-cover {
+  max-width: 100%;
+  max-height: 560px;
+  object-fit: contain;
 }

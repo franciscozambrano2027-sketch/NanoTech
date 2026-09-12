@@ -7,6 +7,20 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
+<!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
 <script>
@@ -49,7 +63,7 @@
             <p class="eyebrow-plain">MikroTik y Redes</p>
             <h1>MikroTik sin Internet: diagnóstico paso a paso por capas</h1>
             <p class="dek">Comprueba enlace, IP, gateway, salida por IP, DNS, ruta y NAT en ese orden.</p>
-            <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech ·
+            <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NúcleoTech ·
                     2026</span></div>
         </div>
     </header>
@@ -77,7 +91,7 @@
                     <h2>Introducción</h2>
                     <figure class="repair-photo"><img alt="Diagrama de diagnóstico de MikroTik y Redes" loading="eager"
                             src="imagenes/mikrotik/mikrotik-sin-internet.jpg" />
-                        <figcaption>Diagrama original de NanoTech. La documentación externa se utiliza como referencia
+                        <figcaption>Diagrama original de NúcleoTech. La documentación externa se utiliza como referencia
                             técnica, no como sustituto del contenido.</figcaption>
                     </figure>
                     <div class="repair-intro"><strong>Objetivo de esta guía</strong>
@@ -104,7 +118,7 @@
                             class="repair-tool">Cable Ethernet</span><span class="repair-tool">PC de
                             diagnóstico</span><span class="repair-tool">Ping/traceroute</span><span
                             class="repair-tool">Copia de seguridad de configuración</span></div>
-                    <div class="repair-note"><strong>Regla NanoTech:</strong> una herramienta debe resolver una tarea
+                    <div class="repair-note"><strong>Regla NúcleoTech:</strong> una herramienta debe resolver una tarea
                         concreta. Si una intervención requiere instrumental que no tienes, la guía debe detenerse ahí,
                         no improvisar.</div>
                 </section>
@@ -122,9 +136,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Confirmar el alcance" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Confirmar el alcance" loading="lazy"
                                     src="imagenes/mikrotik/determinar-alcance.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -154,9 +168,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Comprobar enlace" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Comprobar enlace" loading="lazy"
                                     src="imagenes/mikrotik/comprobar-enlace.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -188,9 +202,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Comprobar IP" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Comprobar IP" loading="lazy"
                                     src="imagenes/mikrotik/comprobar-ip.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -221,9 +235,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Probar gateway" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Probar gateway" loading="lazy"
                                     src="imagenes/mikrotik/gateway.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -253,9 +267,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Probar una IP pública" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Probar una IP pública" loading="lazy"
                                     src="imagenes/mikrotik/ip-publica.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -300,9 +314,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Comprobar DNS" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Comprobar DNS" loading="lazy"
                                     src="imagenes/mikrotik/comprobar-dns.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -348,9 +362,9 @@
                             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                                 consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                                 hipótesis.</div>
-                            <figure><img alt="Diagrama NanoTech: Revisar ruta y NAT" loading="lazy"
+                            <figure><img alt="Diagrama NúcleoTech: Revisar ruta y NAT" loading="lazy"
                                     src="imagenes/mikrotik/comprueba-ruta.jpg" />
-                                <figcaption>Esquema original NanoTech para entender la lógica de esta etapa.
+                                <figcaption>Esquema original NúcleoTech para entender la lógica de esta etapa.
                                 </figcaption>
                             </figure>
                             <div class="mikrotik-code-injected">
@@ -455,7 +469,7 @@
                 <div class="repair-side-card"><strong>Comunidad</strong>
                     <p>Publicaciones visuales, casos y consejos de reparación.</p><a class="btn facebook-btn"
                         href="https://www.facebook.com/profile.php?id=61593321905984" rel="noopener"
-                        target="_blank">Facebook NanoTech</a>
+                        target="_blank">Facebook NúcleoTech</a>
                 </div>
                 <div class="repair-side-card"><strong>Nota técnica</strong>
                     <p class="repair-disclaimer">Los procedimientos internos dependen de la revisión exacta del equipo.

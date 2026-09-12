@@ -7,7 +7,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -49,7 +63,7 @@
       <p class="eyebrow-plain">MikroTik</p>
       <h1>MikroTik: NAT de salida para dar Internet a la LAN</h1>
       <p class="dek">Configura y verifica srcnat/masquerade sin confundir NAT con routing o DNS.</p>
-      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech · 2026</span>
+      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NúcleoTech · 2026</span>
       </div>
     </div>
   </header>
@@ -73,7 +87,7 @@
           <h2>Introducción</h2>
           <figure class="repair-photo"><img alt="Diagrama MikroTik: NAT de salida para dar Internet a la LAN"
               loading="eager" src="imagenes/mikrotik/mikrotik-nat-de-salida-para-dar-internet-a-la-lan/mikrotik-nat-de-salida-para-dar-internet-a-la-lan.jpg" />
-            <figcaption>Diagrama original de NanoTech para visualizar el problema y el orden de comprobación.
+            <figcaption>Diagrama original de NúcleoTech para visualizar el problema y el orden de comprobación.
             </figcaption>
           </figure>
           <div class="repair-intro"><strong>Objetivo</strong>
@@ -110,9 +124,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 1. Confirmar ruta WAN" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 1. Confirmar ruta WAN" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-nat-de-salida-para-dar-internet-a-la-lan/1-confirmar-ruta-wan.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -144,9 +158,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 2. Confirmar LAN" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 2. Confirmar LAN" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-nat-de-salida-para-dar-internet-a-la-lan/2-confirmar-lan.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -176,9 +190,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 3. Crear masquerade" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 3. Crear masquerade" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-nat-de-salida-para-dar-internet-a-la-lan/3-crear-masquerade.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -223,9 +237,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 4. Validar" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 4. Validar" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-nat-de-salida-para-dar-internet-a-la-lan/4-validar.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">

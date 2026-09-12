@@ -6,7 +6,7 @@
 - Se eliminaron espacios, tildes, caracteres especiales y nombres heredados con secuencias `#U00...`.
 - Las referencias de las páginas HTML se actualizaron para apuntar a las nuevas rutas.
 - Las imágenes publicadas usan rutas relativas desde la raíz del sitio, por ejemplo:
-  `imagenes/telefono/celular-no-carga/celular-no-carga.jpg`
+  `imagenes/Telefono/celular-no-carga/celular-no-carga.jpg`
 - Se corrigieron las rutas de PS4, Laptop, Celulares y MikroTik.
 - La automatización ahora normaliza una imagen editorial al publicar un borrador, siempre que el archivo exista dentro de `imagenes/`.
 - Se agregó `scripts/validate/validate_assets.py` para detectar referencias inexistentes o no canónicas.

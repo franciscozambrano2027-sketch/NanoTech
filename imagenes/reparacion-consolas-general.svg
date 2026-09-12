@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Consolas — diagrama de diagnóstico</title>
+<desc id="desc">Síntoma → prueba externa → diagnóstico → reparación</desc>
+<rect width="1200" height="675" rx="28" fill="#0a0f16"/>
+<g fill="none" stroke="#2a3442" stroke-width="3">
+<rect x="70" y="70" width="1060" height="535" rx="22"/>
+<path d="M190 335H1010"/>
+<path d="M410 250V420M630 250V420M850 250V420"/>
+</g>
+<g fill="#f2f5f8" font-family="Arial,Helvetica,sans-serif" text-anchor="middle">
+<text x="600" y="145" font-size="48" font-weight="700">NúcleoTech</text>
+<text x="600" y="195" font-size="30">Consolas</text>
+<text x="190" y="315" font-size="25" font-weight="700">1</text><text x="190" y="365" font-size="22">Síntoma</text>
+<text x="410" y="315" font-size="25" font-weight="700">2</text><text x="410" y="365" font-size="22">Prueba</text>
+<text x="630" y="315" font-size="25" font-weight="700">3</text><text x="630" y="365" font-size="22">Hipótesis</text>
+<text x="850" y="315" font-size="25" font-weight="700">4</text><text x="850" y="365" font-size="22">Verificación</text>
+<text x="600" y="520" font-size="24">Síntoma → prueba externa → diagnóstico → reparación</text>
+</g></svg>

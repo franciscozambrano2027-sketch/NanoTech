@@ -7,7 +7,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -52,7 +66,7 @@
       <h1>MikroTik: DNS para clientes y diagnóstico cuando las páginas no abren</h1>
       <p class="dek">Separa un fallo de DNS de un fallo de Internet y configura el router como caché solo cuando sea
         necesario.</p>
-      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech · 2026</span>
+      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NúcleoTech · 2026</span>
       </div>
     </div>
   </header>
@@ -77,7 +91,7 @@
           <figure class="repair-photo"><img
               alt="Diagrama MikroTik: DNS para clientes y diagnóstico cuando las páginas no abren" loading="eager"
               src="imagenes/mikrotik/mikrotik-dns-para-clientes-y-diagnostico/mikrotik-dns-para-clientes-y-diagnostico-cuando-las-paginas-no-abren.jpg" />
-            <figcaption>Diagrama original de NanoTech para visualizar el problema y el orden de comprobación.
+            <figcaption>Diagrama original de NúcleoTech para visualizar el problema y el orden de comprobación.
             </figcaption>
           </figure>
           <div class="repair-intro"><strong>Objetivo</strong>
@@ -114,9 +128,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 1. Probar IP pública" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 1. Probar IP pública" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-dns-para-clientes-y-diagnostico/1-probar-ip-publica.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -148,9 +162,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 2. Probar dominio" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 2. Probar dominio" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-dns-para-clientes-y-diagnostico/2-probar-dominio.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -181,9 +195,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 3. Configurar servidores DNS" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 3. Configurar servidores DNS" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-dns-para-clientes-y-diagnostico/3-conf-servidores.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -230,9 +244,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 4. Validar desde un cliente" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 4. Validar desde un cliente" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-dns-para-clientes-y-diagnostico/4-validar-desde-un-cliente.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">

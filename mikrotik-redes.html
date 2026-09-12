@@ -6,6 +6,20 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
+<!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
 <script>
@@ -51,7 +65,7 @@
             <h1>RouterOS desde la terminal: qué consultar antes de configurar.</h1>
             <p class="dek">Una guía base para aprender el orden de diagnóstico y dejar cada consulta documentada. No se
                 mezclan comandos de PC ni celulares: aquí todo gira alrededor de RouterOS.</p>
-            <div class="repair-meta"><span>RouterOS v7</span><span>CLI + diagnóstico</span><span>NanoTech · 2026</span>
+            <div class="repair-meta"><span>RouterOS v7</span><span>CLI + diagnóstico</span><span>NúcleoTech · 2026</span>
             </div>
         </div>
     </header>
@@ -77,7 +91,7 @@
                     <h2>Introducción</h2>
                     <figure class="repair-photo"><img alt="Diagrama de fundamentos MikroTik" loading="eager"
                             src="imagenes/mikrotik/Mikrotik-ClienteSinIP.png" />
-                        <figcaption>Diagrama original de NanoTech para visualizar la relación entre interfaz, IP, ruta,
+                        <figcaption>Diagrama original de NúcleoTech para visualizar la relación entre interfaz, IP, ruta,
                             DNS, NAT y firewall.</figcaption>
                     </figure>
                     <div class="repair-intro"><strong>Objetivo</strong>
@@ -96,9 +110,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Identificar interfaces" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Identificar interfaces" loading="lazy"
                                 src="imagenes/mikrotik/IdentificarInterfaz.png" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -144,9 +158,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Revisar direccionamiento" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Revisar direccionamiento" loading="lazy"
                                 src="imagenes/mikrotik/direccionamiento.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -192,9 +206,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Revisar rutas" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Revisar rutas" loading="lazy"
                                 src="imagenes/mikrotik/rutas.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -239,9 +253,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Probar conectividad" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Probar conectividad" loading="lazy"
                                 src="imagenes/mikrotik/pruebasConectividad.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -287,9 +301,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Probar DNS" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Probar DNS" loading="lazy"
                                 src="imagenes/mikrotik/dns.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -336,9 +350,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Revisar NAT" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Revisar NAT" loading="lazy"
                                 src="imagenes/mikrotik/nat.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -384,9 +398,9 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Observar firewall" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Observar firewall" loading="lazy"
                                 src="imagenes/mikrotik/firewall.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
@@ -431,16 +445,16 @@
                         <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a
                             consultar → prueba. Si el resultado no coincide, detén el procedimiento y corrige la
                             hipótesis.</div>
-                        <figure><img alt="Diagrama NanoTech: Documentar y respaldar" loading="lazy"
+                        <figure><img alt="Diagrama NúcleoTech: Documentar y respaldar" loading="lazy"
                                 src="imagenes/mikrotik/documentar.jpg" />
-                            <figcaption>Esquema original NanoTech. La imagen resume la lógica; los comandos de abajo son
+                            <figcaption>Esquema original NúcleoTech. La imagen resume la lógica; los comandos de abajo son
                                 la parte operativa.</figcaption>
                         </figure>
                         <div class="mikrotik-code-injected">
                             <div class="code-block">
                                 <div class="code-label"><span>COMANDO PRINCIPAL</span><button class="copy-code"
                                         type="button">Copiar</button></div>
-                                <pre><code>/export terse file=nanotech-fundamentos</code></pre>
+                                <pre><code>/export terse file=nucleo-tech-fundamentos</code></pre>
                             </div>
                             <div class="code-block">
                                 <div class="code-label"><span>CONSULTA · VERIFICACIÓN</span><button class="copy-code"

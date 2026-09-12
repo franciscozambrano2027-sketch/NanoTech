@@ -7,7 +7,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png">
     <link rel="apple-touch-icon" href="/assets/favicon.png">
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Consent Mode: estado conservador hasta que el CMP registre la elección del usuario. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+</script>
+<!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TYV7T1LR0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -52,7 +66,7 @@
       <h1>MikroTik: firewall básico explicado por cadenas</h1>
       <p class="dek">Entiende input, forward y output antes de añadir reglas y evita bloquearte por cambiar el orden sin
         comprobarlo.</p>
-      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NanoTech · 2026</span>
+      <div class="repair-meta"><span>Guía paso a paso</span><span>Diagnóstico primero</span><span>NúcleoTech · 2026</span>
       </div>
     </div>
   </header>
@@ -76,7 +90,7 @@
           <h2>Introducción</h2>
           <figure class="repair-photo"><img alt="Diagrama MikroTik: firewall básico explicado por cadenas"
               loading="eager" src="imagenes/mikrotik/mikrotik-firewall-basico-explicado-por-cadenas/mikrotik-firewall-basico-explicado-por-cadenas.jpg" />
-            <figcaption>Diagrama original de NanoTech para visualizar el problema y el orden de comprobación.
+            <figcaption>Diagrama original de NúcleoTech para visualizar el problema y el orden de comprobación.
             </figcaption>
           </figure>
           <div class="repair-intro"><strong>Objetivo</strong>
@@ -113,9 +127,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 1. Identificar cadenas" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 1. Identificar cadenas" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-firewall-basico-explicado-por-cadenas/1-cadena-input.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -147,9 +161,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 2. Revisar conexiones establecidas" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 2. Revisar conexiones establecidas" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-firewall-basico-explicado-por-cadenas/2-revisar-conexiones-establecidas.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -180,9 +194,9 @@
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 3. Proteger acceso al router" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 3. Proteger acceso al router" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-firewall-basico-explicado-por-cadenas/3-proteger-acceso-al-router.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
@@ -233,9 +247,9 @@ add chain=input action=drop comment="drop other input"</code></pre>
           <div class="repair-step-body">
             <div class="mt-step-rule">Orden recomendado: consulta → interpreta → configura → vuelve a consultar →
               prueba. Si el resultado no coincide, detén el procedimiento y corrige la hipótesis.</div>
-            <figure><img alt="Diagrama NanoTech: 4. Validar y observar" loading="lazy"
+            <figure><img alt="Diagrama NúcleoTech: 4. Validar y observar" loading="lazy"
                 src="imagenes/mikrotik/mikrotik-firewall-basico-explicado-por-cadenas/4-validar-y-observar.jpg" />
-              <figcaption>Esquema original NanoTech. Úsalo junto con el procedimiento, no como sustituto de una
+              <figcaption>Esquema original NúcleoTech. Úsalo junto con el procedimiento, no como sustituto de una
                 medición.</figcaption>
             </figure>
             <div class="mikrotik-code-injected">
