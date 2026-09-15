@@ -19,7 +19,7 @@
     "http://www.microsiervos.com/archivo/mundoreal/techo-humanidad-limites-poblacion-planeta-tendiendo-cero.html",
     "http://www.microsiervos.com/archivo/ordenadores/after-dark-macos-salvapantallas-toasters-fish.html"
   ],
-  "indice_guia_siguiente": 4,
+  "indice_guia_siguiente": 5,
   "articulos": [
     {
       "slug": "como-limpiar-el-polvo-de-tu-pc-sin-danar-los-componentes",
@@ -99,5 +99,9 @@
       "fuente_nombre": "",
       "fuente_url": ""
     }
+  ],
+  "noticias_en_revision": [
+    "https://www.genbeta.com/inteligencia-artificial/meta-se-ha-puesto-a-cabeza-carrera-agentes-ia-adquiriendo-manus-2-000-millones-dolares",
+    "https://www.genbeta.com/inteligencia-artificial/sera-trabajo-estresante-promete-sam-altman-esta-oferta-eso-ofrece-medio-millon-dolares-sueldo"
   ]
 }

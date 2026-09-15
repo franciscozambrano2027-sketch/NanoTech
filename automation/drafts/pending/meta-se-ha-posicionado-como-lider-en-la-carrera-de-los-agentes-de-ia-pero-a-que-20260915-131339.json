@@ -1,0 +1,19 @@
+{
+  "estado": "pendiente",
+  "creado": "2026-09-15T13:13:39.759482+00:00",
+  "slug_sugerido": "meta-se-ha-posicionado-como-lider-en-la-carrera-de-los-agentes-de-ia-pero-a-que-20260915-131339",
+  "titulo": "Meta se ha posicionado como líder en la carrera de los agentes de IA, pero a qué coste",
+  "resumen_meta": "Meta ha adquirido a Manus, una startup de IA agéntica, por 2.000 millones de dólares, en un movimiento que podría cambiar el juego en el desarrollo de inteligencia artificial",
+  "cuerpo_html": "<p>En un movimiento que podría tener un impacto significativo en la industria de la inteligencia artificial, Meta ha anunciado la adquisición de Manus, una startup de IA agéntica con sede en Singapur y origen chino. La operación, valorada en 2.000 millones de dólares, es una de las más grandes del año y refleja la determinación de Meta para liderar la carrera en la creación de agentes de IA capaces de realizar tareas complejas con poca supervisión.</p><h2>¿Qué significa esta adquisición para Meta y la industria?</h2><p>La adquisición de Manus se considera un paso importante para que Meta se posicione como líder en la creación de agentes de IA. Los agentes de IA son capaces de realizar tareas complejas, como analizar información, escribir código y ejecutar tareas propias de trabajo de oficina, con poca supervisión. Esto se diferencia de los chatbots, que solo pueden realizar tareas más simples, como responder preguntas o generar texto.</p><p>La adquisición de Manus también sugiere que Meta quiere evitar los riesgos asociados con la creación de agentes de IA, como el ruido geopolítico, las dudas regulatorias y los riesgos reputacionales. Meta ha anunciado que cortará los vínculos de Manus con China y reforzará barreras de seguridad y gobernanza de datos para asegurarse de que la tecnología sea utilizada de manera segura y responsable.</p><p>La industria de la inteligencia artificial está en un momento de gran cambio y crecimiento, y la adquisición de Manus es solo un ejemplo de cómo las empresas están buscando formas de liderar este cambio. Los agentes de IA tienen el potencial de revolucionar la forma en que las empresas y los individuos trabajan, y es importante que las empresas estén a la vanguardia de este cambio.</p><p>En conclusión, la adquisición de Manus por Meta es un movimiento que refleja la determinación de la empresa para liderar la carrera en la creación de agentes de IA. Esto tiene implicaciones importantes para la industria y para los usuarios, empresas y consumidores que dependen de la inteligencia artificial para realizar sus tareas y objetivos.</p>",
+  "categoria": "Software",
+  "tipo": "noticia",
+  "fuente_nombre": "Genbeta",
+  "fuente_url": "https://www.genbeta.com/inteligencia-artificial/meta-se-ha-puesto-a-cabeza-carrera-agentes-ia-adquiriendo-manus-2-000-millones-dolares",
+  "imagen": "",
+  "imagen_instrucciones": "OBLIGATORIO: coloca primero la imagen elegida dentro del repositorio y escribe aqui su ruta relativa, por ejemplo imagenes/noticias/nombre.jpg. Este borrador no se puede publicar sin imagen.",
+  "origen": {
+    "fuente_nombre": "Genbeta",
+    "fuente_url": "https://www.genbeta.com/inteligencia-artificial/meta-se-ha-puesto-a-cabeza-carrera-agentes-ia-adquiriendo-manus-2-000-millones-dolares",
+    "titulo_original": "Meta se ha puesto a la cabeza de la carrera de los agentes de IA adquiriendo Manus por 2.000 millones de dólares"
+  }
+}
